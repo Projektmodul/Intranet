@@ -14,6 +14,6 @@ public class UnserUnternehmenView extends Div {
 
     public UnserUnternehmenView() {
         setId("unser-unternehmen-view");
-        add(new Text("Content placeholder"));
+        add(new Text("Unser Unternehmen"));
     }
 }

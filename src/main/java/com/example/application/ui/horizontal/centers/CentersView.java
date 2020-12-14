@@ -12,7 +12,7 @@ public class CentersView extends Div {
 
     public CentersView() {
         setId("centers-view");
-        add(new Text("Content placeholder"));
+        add(new Text("Centers"));
     }
 
 }
