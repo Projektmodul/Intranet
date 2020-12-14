@@ -13,6 +13,7 @@ public class BibliothekView extends Div {
     public BibliothekView() {
         setId("bibliothek-view");
         add(new Text("Bibliothek"));
+        System.out.println("Hello");
     }
 
 }
