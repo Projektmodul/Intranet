@@ -6,13 +6,13 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "Community", layout = MainView.class)
-@PageTitle("Community")
-public class CommunityView extends Div {
+@Route(value = "Blog", layout = MainView.class)
+@PageTitle("Blog")
+public class BlogView extends Div {
 
-    public CommunityView() {
-        setId("community-view");
-        add(new Text("Community"));
+    public BlogView() {
+        setId("blog-view");
+        add(new Text("Blog"));
     }
 
 }

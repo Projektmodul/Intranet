@@ -6,13 +6,13 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "Projekte", layout = MainView.class)
-@PageTitle("Projekte")
-public class ProjekteView extends Div {
+@Route(value = "Nordlicht", layout = MainView.class)
+@PageTitle("Nordlicht")
+public class NordlichtView extends Div {
 
-    public ProjekteView() {
-        setId("projekte-view");
-        add(new Text("Projekte"));
+    public NordlichtView() {
+        setId("nordlicht-view");
+        add(new Text("Nordlicht"));
     }
 
 }
