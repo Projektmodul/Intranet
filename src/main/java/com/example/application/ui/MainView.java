@@ -91,7 +91,6 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
     private VerticalLayout createTopBar(HorizontalLayout header, MenuBar menu) {
         VerticalLayout layout = new VerticalLayout();
-        //layout.getThemeList().add("dark");
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setPadding(false);
