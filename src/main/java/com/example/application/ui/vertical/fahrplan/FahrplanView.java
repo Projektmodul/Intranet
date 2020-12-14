@@ -12,7 +12,7 @@ public class FahrplanView extends Div {
 
     public FahrplanView() {
         setId("fahrplan-view");
-        add(new Text("Content placeholder"));
+        add(new Text("Content text replacer"));
     }
 
 }
