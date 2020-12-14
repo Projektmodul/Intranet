@@ -12,7 +12,7 @@ public class Center1View extends Div {
 
     public Center1View() {
         setId("center1-view");
-        add(new Text("Center1"));
+        add(new Text("Center mit mehr Text als sonst1"));
     }
 
 }
