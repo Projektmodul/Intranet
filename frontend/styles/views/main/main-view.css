@@ -1,0 +1,41 @@
+#header {
+  height: var(--lumo-size-xl);
+}
+#header h1 {
+  font-size: var(--lumo-font-size-l);
+  margin: 0;
+}
+
+#header #avatar {
+  margin-right: var(--lumo-space-m);
+  margin-left: auto;
+}
+
+.navBar{
+  background-color: #515151;
+  text-decoration-color: white ;
+  color: white;
+}
+
+.vertical-layout{
+  background-color: #3765ac;
+  text-decoration-color: white;
+  padding-top: 2rem;
+  padding-left: 1.7rem;
+
+}
+
+.header{
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a[highlight], a:hover{
+  font-weight: bold;
+  color:red;
+  text-decoration: none;
+}
+
+
+
