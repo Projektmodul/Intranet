@@ -1,4 +1,4 @@
-package com.example.application.ui.vertical.apps;
+package com.example.application.ui.vertical.help;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
@@ -6,12 +6,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "apps", layout = MainView.class)
-@PageTitle("Apps")
-public class AppsView extends Div {
+@Route(value = "help", layout = MainView.class)
+@PageTitle("Hilfe")
+public class HelpView extends Div {
 
-    public AppsView() {
-        setId("apps-view");
+    public HelpView() {
+        setId("help-view");
         add(new Text("Content placeholder"));
     }
 

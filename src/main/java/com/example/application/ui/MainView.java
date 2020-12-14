@@ -1,34 +1,27 @@
 package com.example.application.ui;
 
-import com.example.application.ui.horizontal.bibliothek.*;
-import com.example.application.ui.horizontal.centers.Center1View;
-import com.example.application.ui.horizontal.centers.CentersView;
+import com.example.application.ui.horizontal.library.*;
+import com.example.application.ui.horizontal.center.CenterIView;
 import com.example.application.ui.horizontal.community.BlogView;
-import com.example.application.ui.horizontal.community.CommunityView;
 import com.example.application.ui.horizontal.community.IdeasManagementView;
 import com.example.application.ui.horizontal.community.NoticeBoardView;
-import com.example.application.ui.horizontal.projekte.NordlichtView;
-import com.example.application.ui.horizontal.projekte.ProjekteView;
+import com.example.application.ui.horizontal.projects.NordlichtView;
 import com.example.application.ui.horizontal.services.BusinessTripsView;
-import com.example.application.ui.horizontal.services.ServicesView;
-import com.example.application.ui.horizontal.unserunternehmen.*;
+import com.example.application.ui.horizontal.ourCompany.*;
 import com.example.application.ui.vertical.apps.AppsView;
-import com.example.application.ui.vertical.betriebsrestaurant.BetriebsrestaurantView;
-import com.example.application.ui.vertical.einstellungen.EinstellungenView;
-import com.example.application.ui.vertical.fahrplan.FahrplanView;
-import com.example.application.ui.vertical.favoriten.FavoritenView;
-import com.example.application.ui.vertical.hilfe.HilfeView;
-import com.example.application.ui.vertical.kalendar.KalendarView;
+import com.example.application.ui.vertical.canteen.CanteenView;
+import com.example.application.ui.vertical.settings.SettingsView;
+import com.example.application.ui.vertical.timetable.TimetableView;
+import com.example.application.ui.vertical.favorits.FavoritsView;
+import com.example.application.ui.vertical.help.HelpView;
+import com.example.application.ui.vertical.calendar.CalendarView;
 import com.example.application.ui.vertical.mailing.MailingView;
-import com.example.application.ui.vertical.meinProfil.MeinProfilView;
-import com.example.application.ui.vertical.meineKontakte.MeineKontakteView;
-import com.example.application.ui.vertical.searching.SearchingView;
-import com.example.application.ui.vertical.telefonbuch.TelefonbuchView;
-import com.example.application.ui.vertical.zuletztBesucht.ZuletztBesuchtView;
-import com.helger.commons.state.ILeftRightIndicator;
+import com.example.application.ui.vertical.myProfile.MyProfileView;
+import com.example.application.ui.vertical.myContacts.MyContactsView;
+import com.example.application.ui.vertical.search.SearchView;
+import com.example.application.ui.vertical.phoneBook.PhoneBookView;
+import com.example.application.ui.vertical.lastVisited.LastVisitedView;
 import com.vaadin.flow.component.applayout.AppLayout;
-import com.vaadin.flow.component.applayout.DrawerToggle;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -49,7 +42,7 @@ import com.vaadin.flow.server.PWA;
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
-@PWA(name = "My Project", shortName = "My Project", enableInstallPrompt = false)
+@PWA(name = "BSAG Intranet", shortName = "BSAG Intranet", enableInstallPrompt = false)
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
@@ -57,10 +50,10 @@ public class MainView extends AppLayout {
 
     private static MenuBar menuBar;
     private static String[] items;
-    private static String[] subItemsUnserUnternehmen;
-    private static String[] subItemsCenters;
-    private static String[] subItemsProjekte;
-    private static String[] subItemsBibliothek;
+    private static String[] subItemsOurCompany;
+    private static String[] subItemsCenter;
+    private static String[] subItemsProjects;
+    private static String[] subItemsLibrary;
     private static String[] subItemsServices;
     private static String[] subItemsCommunity;
 
@@ -68,7 +61,7 @@ public class MainView extends AppLayout {
     private static final Class<? extends com.vaadin.flow.component.Component>[][] navigationMatrix = new Class[][]{
             {MainView.class},
             {WelcomeView.class, AboutUsView.class, NewsView.class, CareerView.class, SportView.class},
-            {Center1View.class},
+            {CenterIView.class},
             {NordlichtView.class},
             {WikiView.class, DocumentsView.class, ArchiveView.class, MediaView.class, FAQView.class},
             {BusinessTripsView.class},
@@ -79,10 +72,10 @@ public class MainView extends AppLayout {
     public MainView() {
         HorizontalLayout header = createHeader();
         items = new String[]{"","Unser Unternehmen", "Centers", "Projekte", "Bibliothek", "Services", "Community"};
-        subItemsUnserUnternehmen = new String[]{"Willkommen", "Über Uns", "Nachrichten", "Stellenangebote", "Sport & Freizeit"};
-        subItemsCenters = new String[]{"Center I"};
-        subItemsProjekte = new String[]{"Nordlicht"};
-        subItemsBibliothek = new String[]{"Wiki", "Unterlagen", "Archive", "Medien", "FAQ"};
+        subItemsOurCompany = new String[]{"Willkommen", "Über Uns", "Nachrichten", "Stellenangebote", "Sport & Freizeit"};
+        subItemsCenter = new String[]{"Center I"};
+        subItemsProjects = new String[]{"Nordlicht"};
+        subItemsLibrary = new String[]{"Wiki", "Unterlagen", "Archive", "Medien", "FAQ"};
         subItemsServices = new String[]{"Dienstreisen"};
         subItemsCommunity = new String[]{"Blog", "Schwarzes Brett", "Ideenmanagement"};
         menuBar = createMenuItems();
@@ -143,16 +136,16 @@ public class MainView extends AppLayout {
                 String[] currentSubMenu = new String[1];
                 switch (i) {
                     case 1:
-                        currentSubMenu = subItemsUnserUnternehmen;
+                        currentSubMenu = subItemsOurCompany;
                         break;
                     case 2:
-                        currentSubMenu = subItemsCenters;
+                        currentSubMenu = subItemsCenter;
                         break;
                     case 3:
-                        currentSubMenu = subItemsProjekte;
+                        currentSubMenu = subItemsProjects;
                         break;
                     case 4:
-                        currentSubMenu = subItemsBibliothek;
+                        currentSubMenu = subItemsLibrary;
                         break;
                     case 5:
                         currentSubMenu = subItemsServices;
@@ -188,56 +181,30 @@ public class MainView extends AppLayout {
     private void createDrawer() {
     /*    RouterLink listLink = new RouterLink("", MainView.class);
         listLink.setHighlightCondition(HighlightConditions.sameLocation());*/
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Suche", SearchingView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Suche", SearchView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Mein Profil", MeinProfilView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Mein Portal", MyProfileView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Telefonbuch", TelefonbuchView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Telefonbuch", PhoneBookView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Einstellungen", EinstellungenView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Einstellungen", SettingsView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Hilfe", HilfeView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Hilfe", HelpView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Meine Kontakte", MeineKontakteView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Meine Kontakte", MyContactsView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Mailing", MailingView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Mailing", MailingView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Kalendar", KalendarView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Kalendar", CalendarView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Fahrplan", FahrplanView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Fahrplan", TimetableView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Apps", AppsView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Apps", AppsView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Favoriten", FavoritenView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Favoriten", FavoritsView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Betriebsrestaurant", BetriebsrestaurantView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Betriebsrestaurant", CanteenView.class)));
 
-        addToDrawer(new VerticalLayout(
-                new RouterLink("Zuletzt besucht", ZuletztBesuchtView.class)
-        ));
+        addToDrawer(new VerticalLayout(new RouterLink("Zuletzt besucht", LastVisitedView.class)));
     }
 }
