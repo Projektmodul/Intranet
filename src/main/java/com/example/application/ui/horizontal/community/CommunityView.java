@@ -6,7 +6,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "Community", layout = MainView.class)
+@Route(value = "community", layout = MainView.class)
 @PageTitle("Community")
 public class CommunityView extends Div {
 
