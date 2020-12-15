@@ -135,7 +135,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
     private static void getAvailableMenuItems() {
         for (int i=0; i < items.length; i++) {
-            MenuItem copy_item = menuBar.addItem(items[i]);
+            MenuItem copyItem = menuBar.addItem(items[i]);
             if (i > 0) {
                 //Stream.of(items[i]).forEach(menuBar::addItem);
                 String[] currentSubMenu = new String[1];
@@ -162,12 +162,12 @@ public class MainView extends VerticalLayout implements RouterLayout {
                         System.out.println("SubMenu not found!");
                         // menuBar.setOpenOnHover(false);
                 }
-                createSubMenuItems(copy_item, currentSubMenu,i);
+                createSubMenuItems(copyItem, currentSubMenu,i);
             } else {
-                Icon home_logo = new Icon(VaadinIcon.HOME_O);
-                home_logo.setSize("30px");
-                home_logo.setColor("white");
-                copy_item.add(home_logo);
+                Icon homeLogo = new Icon(VaadinIcon.HOME_O);
+                homeLogo.setSize("30px");
+                homeLogo.setColor("white");
+                copyItem.add(homeLogo);
             }
 
         }
