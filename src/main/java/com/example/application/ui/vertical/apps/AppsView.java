@@ -15,4 +15,4 @@ public class AppsView extends Div {
         add(new Text("Content placeholder"));
     }
 
-}
+} //Jessica war hier :)
