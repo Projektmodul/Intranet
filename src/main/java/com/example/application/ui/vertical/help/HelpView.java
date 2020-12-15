@@ -13,6 +13,7 @@ public class HelpView extends Div {
     public HelpView() {
         setId("help-view");
         add(new Text("Content placeholder"));
+        //test test
     }
 
 }
