@@ -1,6 +1,14 @@
 package com.example.application.ui;
 
 
+import com.example.application.ui.horizontal.center.CenterIView;
+import com.example.application.ui.horizontal.community.BlogView;
+import com.example.application.ui.horizontal.community.IdeasManagementView;
+import com.example.application.ui.horizontal.community.NoticeBoardView;
+import com.example.application.ui.horizontal.library.*;
+import com.example.application.ui.horizontal.ourCompany.*;
+import com.example.application.ui.horizontal.projects.NordlichtView;
+import com.example.application.ui.horizontal.services.BusinessTripsView;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -14,7 +22,8 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouterLayout;
+import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
 
 
@@ -22,33 +31,40 @@ import com.vaadin.flow.server.PWA;
  * The main view is a top-level placeholder for other views.
  */
 
-@Route("")
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
-@PWA(name = "My Project", shortName = "My Project", enableInstallPrompt = false)
+@PWA(name = "BSAG Intranet", shortName = "BSAG Intranet", enableInstallPrompt = false)
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
-public class MainView extends VerticalLayout{
+public class MainView extends VerticalLayout implements RouterLayout {
 
     private static MenuBar menuBar;
     private static String[] items;
-    private static String[] subItemsUnserUnternehmen;
-    private static String[] subItemsCenters;
-    private static String[] subItemsProjekte;
-    private static String[] subItemsBibliothek;
+    private static String[] subItemsOurCompany;
+    private static String[] subItemsCenter;
+    private static String[] subItemsProjects;
+    private static String[] subItemsLibrary;
     private static String[] subItemsServices;
     private static String[] subItemsCommunity;
 
-    private SideBar sideBar;
+    private static final Class<? extends com.vaadin.flow.component.Component>[][] navigationMatrix = new Class[][]{
+            {MainView.class},
+            {WelcomeView.class, AboutUsView.class, NewsView.class, CareerView.class, SportView.class},
+            {CenterIView.class},
+            {NordlichtView.class},
+            {WikiView.class, DocumentsView.class, ArchiveView.class, MediaView.class, FAQView.class},
+            {BusinessTripsView.class},
+            {BlogView.class, NoticeBoardView.class, IdeasManagementView.class}
+    };
 
     public MainView() {
         HorizontalLayout header = createHeader();
-        items = new String[]{"","Unser Unternehmen", "Centers", "Projekte", "Bibliothek", "Services", "Community"};
-        subItemsUnserUnternehmen = new String[]{"Willkommen", "Über Uns", "Nachrichten", "Stellenangebote", "Sport & Freizeit"};
-        subItemsCenters = new String[]{"Center I"};
-        subItemsProjekte = new String[]{"Nordlicht"};
-        subItemsBibliothek = new String[]{"Wiki", "Unterlagen", "Archive", "Medien", "FAQ"};
+        items = new String[]{"","Unser Unternehmen", "Center", "Projekte", "Bibliothek", "Services", "Community"};
+        subItemsOurCompany = new String[]{"Willkommen", "Über Uns", "Nachrichten", "Stellenangebote", "Sport & Freizeit"};
+        subItemsCenter = new String[]{"Center I"};
+        subItemsProjects = new String[]{"Nordlicht"};
+        subItemsLibrary = new String[]{"Wiki", "Unterlagen", "Archiv", "Medien", "FAQ"};
         subItemsServices = new String[]{"Dienstreisen"};
         subItemsCommunity = new String[]{"Blog", "Schwarzes Brett", "Ideenmanagement"};
         menuBar = createMenuItems();
@@ -57,13 +73,13 @@ public class MainView extends VerticalLayout{
         addClassName("main-view");
         setSizeFull();
 
-        sideBar = new SideBar();
+        SideBar sideBar = new SideBar();
         sideBar.setSizeFull();
 
         Div text = new Div();
         text.addClassName("text-div");
 
-        Div content = new Div(text,sideBar);
+        Div content = new Div(text, sideBar);
         content.addClassName("content");
         content.setSizeFull();
 
@@ -125,16 +141,16 @@ public class MainView extends VerticalLayout{
                 String[] currentSubMenu = new String[1];
                 switch (i) {
                     case 1:
-                        currentSubMenu = subItemsUnserUnternehmen;
+                        currentSubMenu = subItemsOurCompany;
                         break;
                     case 2:
-                        currentSubMenu = subItemsCenters;
+                        currentSubMenu = subItemsCenter;
                         break;
                     case 3:
-                        currentSubMenu = subItemsProjekte;
+                        currentSubMenu = subItemsProjects;
                         break;
                     case 4:
-                        currentSubMenu = subItemsBibliothek;
+                        currentSubMenu = subItemsLibrary;
                         break;
                     case 5:
                         currentSubMenu = subItemsServices;
@@ -146,7 +162,7 @@ public class MainView extends VerticalLayout{
                         System.out.println("SubMenu not found!");
                         // menuBar.setOpenOnHover(false);
                 }
-                createSubMenuItems(copy_item, currentSubMenu);
+                createSubMenuItems(copy_item, currentSubMenu,i);
             } else {
                 Icon home_logo = new Icon(VaadinIcon.HOME_O);
                 home_logo.setSize("30px");
@@ -158,10 +174,11 @@ public class MainView extends VerticalLayout{
 
     }
 
-    private static void createSubMenuItems(MenuItem menuItem, String[] subItems) {
+    private static void createSubMenuItems(MenuItem menuItem, String[] subItems, int navMenuCount) {
         SubMenu subMenu = menuItem.getSubMenu();
-        for (int i=0; i < subItems.length; i++ ) {
-            MenuItem subItem = subMenu.addItem(subItems[i]);
+        for (int j=0; j < navigationMatrix[navMenuCount].length; j++) {
+            // MenuItem subItem = subMenu.addItem(subItems[i]);
+            subMenu.add(new RouterLink(subItems[j], navigationMatrix[navMenuCount][j]));
         }
     }
 
