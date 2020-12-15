@@ -13,6 +13,7 @@ public class MailingView extends Div {
     public MailingView() {
         setId("mailing-view");
         add(new Text("Content placeholder"));
+        add(new Text("Huhu :)"));
     }
 
 }
