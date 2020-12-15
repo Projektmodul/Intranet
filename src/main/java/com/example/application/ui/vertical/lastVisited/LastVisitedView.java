@@ -12,7 +12,7 @@ public class LastVisitedView extends Div {
 
     public LastVisitedView() {
         setId("lastVisited-view");
-        add(new Text("Content placeholder "));
+        add(new Text("TEST"));
     }
 
 }
