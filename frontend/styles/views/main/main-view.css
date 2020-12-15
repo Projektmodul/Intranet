@@ -11,31 +11,43 @@
   margin-left: auto;
 }
 
-.navBar{
+
+.main-view .navBar{
   background-color: #515151;
-  text-decoration-color: white ;
-  color: white;
+  --lumo-primary-text-color: white;
 }
 
-.vertical-layout{
+
+.main-view .content {
+  display: flex;
+}
+
+.main-view .text-div{
+  flex: 4;
+}
+
+.main-view .side-bar{
+  flex: 1;
+  padding: var(--lumo-space-m);
+
+}
+.tabs-div{
+  display: flex;
+}
+
+
+.main-view .vertical-layout{
   background-color: #3765ac;
   text-decoration-color: white;
+  color: white;
   padding-top: 2rem;
   padding-left: 1.7rem;
 
 }
 
-.header{
+.main-view .header{
 
   display: flex;
   flex-wrap: wrap;
 }
-
-a[highlight], a:hover{
-  font-weight: bold;
-  color:red;
-  text-decoration: none;
-}
-
-
 
