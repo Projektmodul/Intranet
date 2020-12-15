@@ -12,7 +12,7 @@ public class CanteenView extends Div {
 
     public CanteenView() {
         setId("canteen-view");
-        add(new Text("Content placeholder"));
+        add(new Text("Ich habe hunger!!!"));
     }
 
 }
