@@ -12,7 +12,7 @@ public class CalendarView extends Div {
 
     public CalendarView() {
         setId("calendar-view");
-        add(new Text("Content placeholder"));
+        add(new Text("Das ist der Test von Laura :D"));
     }
 
 }
