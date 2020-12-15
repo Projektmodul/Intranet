@@ -1,35 +1,65 @@
 package com.example.application.ui;
 
+import com.example.application.ui.vertical.apps.AppsView;
+import com.example.application.ui.vertical.calendar.CalendarView;
+import com.example.application.ui.vertical.canteen.CanteenView;
+import com.example.application.ui.vertical.favorites.FavoritesView;
+import com.example.application.ui.vertical.help.HelpView;
+import com.example.application.ui.vertical.lastVisited.LastVisitedView;
+import com.example.application.ui.vertical.mailing.MailingView;
+import com.example.application.ui.vertical.myContacts.MyContactsView;
+import com.example.application.ui.vertical.myProfile.MyProfileView;
+import com.example.application.ui.vertical.phoneBook.PhoneBookView;
+import com.example.application.ui.vertical.search.SearchView;
+import com.example.application.ui.vertical.settings.SettingsView;
+import com.example.application.ui.vertical.timetable.TimetableView;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.router.RouterLink;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
 
 public class SideBar extends Div {
 
-    Tabs tabs = new Tabs();
-    Tab tab1 = new Tab("Suche");
-    Tab tab2 = new Tab("Mein Profil");
-    Tab tab3 = new Tab("Telefonbuch");
-    Tab tab4 = new Tab("Einstellungen");
-    Tab tab5 = new Tab("Hilfe");
-    Tab tab6 = new Tab("Meine Kontakte");
-    Tab tab7 = new Tab("Mailing");
-    Tab tab8 = new Tab("Kalender");
-    Tab tab9 = new Tab("Fahrplan");
-    Tab tab10 = new Tab("Apps");
-    Tab tab11 = new Tab("Favoriten");
-    Tab tab12 = new Tab("Betriebsrestaurant");
-    Tab tab13 = new Tab("Zuletzt besucht");
+    Tabs tabs;
+
 
     public SideBar(){
 
         addClassName("side-bar");
 
-        tabs.add(tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9,tab10,tab11,tab12,tab13);
+        tabs = new Tabs();
+        Tab[] tabArray = new Tab[13];
+        for (int i = 0; i<tabArray.length;i++) {
+            tabArray[i] = new Tab("");
+        }
+
+        tabArray[0].add(new RouterLink("Suche",SearchView.class));
+        tabArray[1].add(new RouterLink("Mein Profil", MyProfileView.class));
+        tabArray[2].add(new RouterLink("Telefonbuch", PhoneBookView.class));
+        tabArray[3].add(new RouterLink("Einstellungen", SettingsView.class));
+        tabArray[4].add(new RouterLink("Hilfe", HelpView.class));
+        tabArray[5].add(new RouterLink("Meine Kontakte", MyContactsView.class));
+        tabArray[6].add(new RouterLink("Mailing", MailingView.class));
+        tabArray[7].add(new RouterLink("Kalender", CalendarView.class));
+        tabArray[8].add(new RouterLink("Fahrplan", TimetableView.class));
+        tabArray[9].add(new RouterLink("Apps", AppsView.class));
+        tabArray[10].add(new RouterLink("Favoriten", FavoritesView.class));
+        tabArray[11].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
+        tabArray[12].add(new RouterLink("Zuletzt besucht", LastVisitedView.class));
+
+        for (int i=0;i<tabArray.length;i++) {
+            tabs.add(tabArray[i]);
+        }
+
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
 
         add(tabs);
+
 
     }
 }
