@@ -2,6 +2,7 @@ package com.example.application.ui.vertical.favorits;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
@@ -9,10 +10,13 @@ import com.example.application.ui.MainView;
 @Route(value = "favorits", layout = MainView.class)
 @PageTitle("Favoriten")
 public class FavoritsView extends Div {
+    TextField textfield = new TextField("Add Text");
 
     public FavoritsView() {
         setId("favorits-view");
-        add(new Text("Content placeholder"));
+
+        add(new Text("Content placeholder"), textfield);
+
     }
 
 }
