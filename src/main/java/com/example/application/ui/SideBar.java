@@ -17,6 +17,8 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.RouterLink;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -30,24 +32,27 @@ public class SideBar extends Div {
         addClassName("side-bar");
 
         tabs = new Tabs();
-        HashMap<Tab,Class> tabHashMap = new HashMap<>();
-        tabHashMap.put(new Tab("Suche"), SearchView.class);
-        tabHashMap.put(new Tab("Mein Profil"), MyProfileView.class);
-        tabHashMap.put(new Tab("Telefonbuch"), PhoneBookView.class);
-        tabHashMap.put(new Tab("Einstellungen"), SettingsView.class);
-        tabHashMap.put(new Tab("Hilfe"), HelpView.class);
-        tabHashMap.put(new Tab("Meine Kontakte"), MyContactsView.class);
-        tabHashMap.put(new Tab("Mailing"), MailingView.class);
-        tabHashMap.put(new Tab("Kalender"), CalendarView.class);
-        tabHashMap.put(new Tab("Fahrplan"), TimetableView.class);
-        tabHashMap.put(new Tab("Apps"), AppsView.class);
-        tabHashMap.put(new Tab("Favoriten"), FavoritesView.class);
-        tabHashMap.put(new Tab("Betriebsrestaurant"), CanteenView.class);
-        tabHashMap.put(new Tab("Zuletzt besucht"), LastVisitedView.class);
+        Tab[] tabArray = new Tab[13];
+        for (int i = 0; i<tabArray.length;i++) {
+            tabArray[i] = new Tab("");
+        }
 
+        tabArray[0].add(new RouterLink("Suche",SearchView.class));
+        tabArray[1].add(new RouterLink("Mein Profil", MyProfileView.class));
+        tabArray[2].add(new RouterLink("Telefonbuch", PhoneBookView.class));
+        tabArray[3].add(new RouterLink("Einstellungen", SettingsView.class));
+        tabArray[4].add(new RouterLink("Hilfe", HelpView.class));
+        tabArray[5].add(new RouterLink("Meine Kontakte", MyContactsView.class));
+        tabArray[6].add(new RouterLink("Mailing", MailingView.class));
+        tabArray[7].add(new RouterLink("Kalender", CalendarView.class));
+        tabArray[8].add(new RouterLink("Fahrplan", TimetableView.class));
+        tabArray[9].add(new RouterLink("Apps", AppsView.class));
+        tabArray[10].add(new RouterLink("Favoriten", FavoritesView.class));
+        tabArray[11].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
+        tabArray[12].add(new RouterLink("Zuletzt besucht", LastVisitedView.class));
 
-        for (HashMap.Entry<Tab, Class> entry : tabHashMap.entrySet()) {
-            tabs.add(entry.getKey());
+        for (int i=0;i<tabArray.length;i++) {
+            tabs.add(tabArray[i]);
         }
 
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
@@ -55,15 +60,6 @@ public class SideBar extends Div {
 
         add(tabs);
 
-        addRoutes(tabHashMap);
 
-    }
-
-    private void addRoutes(HashMap<Tab,Class> tabHashMap) {
-
-        for (HashMap.Entry<Tab, Class> entry : tabHashMap.entrySet()) {
-            // MenuItem subItem = subMenu.addItem(subItems[i]);
-           add(new RouterLink(entry.getKey().getLabel(),entry.getValue()));
-        }
     }
 }

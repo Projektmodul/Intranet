@@ -9,6 +9,7 @@ import com.example.application.ui.horizontal.library.*;
 import com.example.application.ui.horizontal.ourCompany.*;
 import com.example.application.ui.horizontal.projects.NordlichtView;
 import com.example.application.ui.horizontal.services.BusinessTripsView;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -48,7 +49,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
     private static String[] subItemsServices;
     private static String[] subItemsCommunity;
 
-    private static final Class<? extends com.vaadin.flow.component.Component>[][] navigationMatrix = new Class[][]{
+    private static final Class<? extends Component>[][] navigationMatrix = new Class[][]{
             {MainView.class},
             {WelcomeView.class, AboutUsView.class, NewsView.class, CareerView.class, SportView.class},
             {CenterIView.class},
