@@ -17,6 +17,7 @@ import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.NativeButton;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.menubar.MenuBar;
@@ -115,7 +116,16 @@ public class MainView extends VerticalLayout implements RouterLayout {
         logo.setWidth("22rem");
         logo.addClassName("logo");
         logo.setId("logo");
-        header.add(logo);
+        //header.add(logo);
+
+        NativeButton logoBtn = new NativeButton("");
+        logoBtn.addClickListener( e-> {
+            logoBtn.getUI().ifPresent(ui -> ui.navigate(""));
+        });
+
+        logoBtn.add(logo);
+        logoBtn.addClassName("logoBtn");
+        header.add(logoBtn);
 
         Icon avatar = new Icon(VaadinIcon.SIGN_OUT);
         //Image avatar = new Image("images/user.svg", "Avatar");
@@ -168,6 +178,9 @@ public class MainView extends VerticalLayout implements RouterLayout {
                 Icon homeLogo = new Icon(VaadinIcon.HOME_O);
                 homeLogo.setSize("30px");
                 homeLogo.setColor("white");
+                homeLogo.addClickListener( e-> {
+                    homeLogo.getUI().ifPresent(ui -> ui.navigate(""));
+                });
                 copyItem.add(homeLogo);
             }
 

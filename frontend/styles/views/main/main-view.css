@@ -51,3 +51,13 @@
   flex-wrap: wrap;
 }
 
+/* -- To make the logo button invisible -- */
+.logoBtn,
+.logoBtn:active,
+.logoBtn:hover,
+.logoBtn:focus {
+  background-color: transparent;
+  border: none;
+  outline:none;
+  cursor: pointer;
+}
