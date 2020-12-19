@@ -1,5 +1,6 @@
 package com.example.application.ui.vertical.myProfile;
 
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -7,6 +8,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
+
+import java.awt.*;
 
 @Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
@@ -82,23 +85,5 @@ public class MyProfileView extends Div {
 
         add(content);
     }
-
-
-
-    //Vor- und Nachname
-    //E-Mailadresse
-    //Telefonnummer
-    //Center
-    //Raumnummer
-    //Adresse
-    //Kontodaten
-    //Profilbild
-    //Tätikeitsbeschreibung
-
-    //Profil bearbeiten
-        //Profilbild
-        //Tätigkeitsbeschreibung
-        //Adresse
-        //Kontodaten
 
 }
