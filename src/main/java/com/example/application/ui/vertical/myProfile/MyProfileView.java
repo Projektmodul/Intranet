@@ -2,7 +2,10 @@ package com.example.application.ui.vertical.myProfile;
 
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
+
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -19,84 +22,101 @@ public class MyProfileView extends Div {
         setId("myProfile-view");
 
         VerticalLayout content = new VerticalLayout();
-        content.setSizeFull();
-
         content.addComponentAsFirst(new Label("Mein Profil"));
+
+        HorizontalLayout data = new HorizontalLayout();
+
+        VerticalLayout left = new VerticalLayout();
 
         TextField firstname = new TextField();
         firstname.setValue("Test");
         firstname.setLabel("Vorname");
         firstname.setReadOnly(true);
-        content.addComponentAtIndex(1, firstname);
 
         TextField surname = new TextField();
         surname.setValue("Test");
         surname.setLabel("Nachname");
         surname.setReadOnly(true);
-        content.addComponentAtIndex(2, surname);
+
+        HorizontalLayout name = new HorizontalLayout();
+        name.addComponentAsFirst(firstname);
+        name.addComponentAtIndex(1, surname);
+        left.addComponentAsFirst(name);
 
         TextField email = new TextField();
         email.setValue("Test");
         email.setLabel("E-Mail");
         email.setReadOnly(true);
-        content.addComponentAtIndex(3, email);
 
         TextField telephone = new TextField();
         telephone.setValue("Test");
         telephone.setLabel("Telefonnummer");
         telephone.setReadOnly(true);
-        content.addComponentAtIndex(4, telephone);
+
+        HorizontalLayout emailPhone = new HorizontalLayout();
+        emailPhone.addComponentAsFirst(email);
+        emailPhone.addComponentAtIndex(1, telephone);
+        left.addComponentAtIndex(1, emailPhone);
 
         TextField center = new TextField();
         center.setValue("Test");
         center.setLabel("Center");
         center.setReadOnly(true);
-        content.addComponentAtIndex(5, center);
 
         TextField roomnumber = new TextField();
         roomnumber.setValue("Test");
         roomnumber.setLabel("Raumnummer");
         roomnumber.setReadOnly(true);
-        content.addComponentAtIndex(6, roomnumber);
+
+        HorizontalLayout centerRoom = new HorizontalLayout();
+        centerRoom.addComponentAsFirst(center);
+        centerRoom.addComponentAtIndex(1, roomnumber);
+        left.addComponentAtIndex(2, centerRoom);
 
         TextField address = new TextField();
         address.setValue("Test");
         address.setLabel("Adresse");
         address.setReadOnly(true);
-        content.addComponentAtIndex(7, address);
+
+        left.addComponentAtIndex(3, address);
 
         TextField iban = new TextField();
         iban.setValue("Test");
         iban.setLabel("Kontodaten");
         iban.setReadOnly(true);
-        content.addComponentAtIndex(8, iban);
 
-        TextField profilepicture = new TextField();
-        profilepicture.setValue("Test");
-        profilepicture.setLabel("Profilbild");
-        profilepicture.setReadOnly(true);
-        content.addComponentAtIndex(9, profilepicture);
+        left.addComponentAtIndex(4, iban);
+
+        VerticalLayout right = new VerticalLayout();
+
+        Image profilepicture = new Image("images/user.png", "My Profile Picture");
+        profilepicture.setHeight("auto");
+        profilepicture.setWidth("22rem");
+        profilepicture.addClassName("user");
+
+        right.addComponentAsFirst(profilepicture);
 
         TextField job_description = new TextField();
         job_description.setValue("Test");
         job_description.setLabel("Tätigkeitsbeschreibung");
         job_description.setReadOnly(true);
-        content.addComponentAtIndex(10, job_description);
 
+        right.addComponentAtIndex(1, job_description);
+
+        content.setSizeFull();
+        content.getStyle().set("border", "2px solid #9E9E9E");
+        data.setWidth("100%");
+        data.getStyle().set("text-align", "right");
+        data.getStyle().set("border", "1px solid #9E9E9E");
+        data.addComponentAsFirst(left);
+        data.addComponentAtIndex(1, right);
+        content.addComponentAtIndex(1, data);
         add(content);
     }
 
 
 
-    //Vor- und Nachname
-    //E-Mailadresse
-    //Telefonnummer
-    //Center
-    //Raumnummer
-    //Adresse
-    //Kontodaten
-    //Profilbild
-    //Tätikeitsbeschreibung
+
 
     //Profil bearbeiten
         //Profilbild
