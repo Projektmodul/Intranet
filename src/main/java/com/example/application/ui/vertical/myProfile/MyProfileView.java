@@ -1,6 +1,5 @@
 package com.example.application.ui.vertical.myProfile;
 
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 
 import com.vaadin.flow.component.html.Image;
@@ -11,8 +10,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
-
-import java.awt.*;
 
 @Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
@@ -29,7 +26,7 @@ public class MyProfileView extends Div {
         VerticalLayout left = new VerticalLayout();
 
         TextField firstname = new TextField();
-        firstname.setValue("Test");
+        firstname.setValue("Value");
         firstname.setLabel("Vorname");
         firstname.setReadOnly(true);
 
