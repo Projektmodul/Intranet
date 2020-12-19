@@ -86,4 +86,22 @@ public class MyProfileView extends Div {
         add(content);
     }
 
+
+
+    //Vor- und Nachname
+    //E-Mailadresse
+    //Telefonnummer
+    //Center
+    //Raumnummer
+    //Adresse
+    //Kontodaten
+    //Profilbild
+    //Tätikeitsbeschreibung
+
+    //Profil bearbeiten
+        //Profilbild
+        //Tätigkeitsbeschreibung
+        //Adresse
+        //Kontodaten
+
 }
