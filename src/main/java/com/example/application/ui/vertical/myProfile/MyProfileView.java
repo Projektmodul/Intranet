@@ -35,7 +35,7 @@ public class MyProfileView extends Div {
         firstname.setReadOnly(true);
 
         TextField surname = new TextField();
-        surname.setValue("Test");
+        surname.setValue(user.getSurname());
         surname.setLabel("Nachname");
         surname.setReadOnly(true);
 
@@ -65,7 +65,7 @@ public class MyProfileView extends Div {
         center.setReadOnly(true);
 
         TextField roomnumber = new TextField();
-        roomnumber.setValue("Test");
+        roomnumber.setValue(user.getRoomnumber());
         roomnumber.setLabel("Raumnummer");
         roomnumber.setReadOnly(true);
 
@@ -75,14 +75,14 @@ public class MyProfileView extends Div {
         left.addComponentAtIndex(2, centerRoom);
 
         TextField address = new TextField();
-        address.setValue("Test");
+        address.setValue(user.getAddress_id());
         address.setLabel("Adresse");
         address.setReadOnly(true);
 
         left.addComponentAtIndex(3, address);
 
         TextField iban = new TextField();
-        iban.setValue("Test");
+        iban.setValue(user.getIban());
         iban.setLabel("Kontodaten");
         iban.setReadOnly(true);
 
@@ -92,13 +92,13 @@ public class MyProfileView extends Div {
 
         Image profilepicture = new Image("images/user.png", "My Profile Picture");
         profilepicture.setHeight("auto");
-        profilepicture.setWidth("22rem");
+        profilepicture.setWidth("15rem");
         profilepicture.addClassName("user");
 
         right.addComponentAsFirst(profilepicture);
 
         TextField job_description = new TextField();
-        job_description.setValue("Test");
+        job_description.setValue(user.getJob_description());
         job_description.setLabel("Tätigkeitsbeschreibung");
         job_description.setReadOnly(true);
 

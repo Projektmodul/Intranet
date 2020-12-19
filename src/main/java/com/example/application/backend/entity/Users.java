@@ -31,8 +31,8 @@ public class Users {
         this.job_description = job_description;
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return "" + id;
     }
 
     public void setId(int id) {
@@ -72,8 +72,8 @@ public class Users {
         this.firstname = firstname;
     }
 
-    public int getAddress_id() {
-        return address_id;
+    public String getAddress_id() {
+        return "" + address_id;
     }
 
     public void setAddress_id(int address_id) {
@@ -88,8 +88,8 @@ public class Users {
         this.iban = iban;
     }
 
-    public char getCenter() {
-        return center;
+    public String getCenter() {
+        return "" + center;
     }
 
     public void setCenter(char center) {
