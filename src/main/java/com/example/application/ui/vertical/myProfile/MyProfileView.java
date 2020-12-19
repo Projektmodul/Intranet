@@ -1,16 +1,21 @@
 package com.example.application.ui.vertical.myProfile;
 
 import com.example.application.backend.entity.Users;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
+
+import javax.swing.text.html.parser.ContentModel;
 
 @Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
@@ -104,6 +109,10 @@ public class MyProfileView extends Div {
 
         right.addComponentAtIndex(1, job_description);
 
+        Button updateProfile = new Button("Profil bearbeiten", new Icon(VaadinIcon.PENCIL));
+        updateProfile.setIconAfterText(true);
+        right.addComponentAtIndex(2, updateProfile);
+
         content.setSizeFull();
         content.getStyle().set("border", "2px solid #9E9E9E");
         data.setWidth("100%");
@@ -114,10 +123,6 @@ public class MyProfileView extends Div {
         content.addComponentAtIndex(1, data);
         add(content);
     }
-
-
-
-
 
     //Profil bearbeiten
         //Profilbild
