@@ -12,6 +12,7 @@ public class ProjectsView extends Div {
 
     public ProjectsView() {
         setId("projects-view");
+        setClassName("pageContentPosition");
         add(new Text("Projekte"));
     }
 }

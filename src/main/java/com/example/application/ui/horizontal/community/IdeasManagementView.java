@@ -12,6 +12,7 @@ public class IdeasManagementView extends Div {
 
     public IdeasManagementView() {
         setId("ideasManagement-view");
+        setClassName("pageContentPosition");
         add(new Text("Ideenmanagement"));
     }
 

@@ -12,6 +12,7 @@ public class AboutUsView extends Div {
 
     public AboutUsView() {
         setId("aboutUs-view");
+        setClassName("pageContentPosition");
         add(new Text("Über Uns"));
     }
 

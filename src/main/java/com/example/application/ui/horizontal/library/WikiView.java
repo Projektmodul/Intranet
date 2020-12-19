@@ -11,6 +11,7 @@ import com.example.application.ui.MainView;
 public class WikiView extends Div {
     public WikiView() {
         setId("wiki-view");
+        setClassName("pageContentPosition");
         add(new Text("Wiki"));
     }
 }

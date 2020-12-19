@@ -15,7 +15,7 @@ public class FavoritesView extends Div {
 
     public FavoritesView() {
         setId("favorits-view");
-
+        setClassName("pageContentPosition");
         add(new Text("Content placeholder"), textfield);
 
     }

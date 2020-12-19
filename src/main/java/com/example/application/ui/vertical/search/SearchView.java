@@ -12,6 +12,7 @@ public class SearchView extends Div {
 
     public SearchView() {
         setId("search-view");
+        setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }
 

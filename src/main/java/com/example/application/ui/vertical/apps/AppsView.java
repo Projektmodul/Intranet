@@ -13,6 +13,7 @@ public class AppsView extends Div {
 
     public AppsView() {
         setId("apps-view");
+        setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }
 

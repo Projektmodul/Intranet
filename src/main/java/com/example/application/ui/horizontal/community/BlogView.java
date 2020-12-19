@@ -12,6 +12,7 @@ public class BlogView extends Div {
 
     public BlogView() {
         setId("blog-view");
+        setClassName("pageContentPosition");
         add(new Text("Blog"));
     }
 

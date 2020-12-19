@@ -12,6 +12,7 @@ public class WelcomeView extends Div {
 
     public WelcomeView() {
         setId("welcome-view");
+        setClassName("pageContentPosition");
         add(new Text("Willkommen"));
     }
 

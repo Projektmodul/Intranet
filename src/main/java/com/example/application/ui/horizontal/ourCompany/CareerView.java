@@ -12,6 +12,7 @@ public class CareerView extends Div {
 
     public CareerView() {
         setId("career-view");
+        setClassName("pageContentPosition");
         add(new Text("Stellenangebote"));
     }
 
