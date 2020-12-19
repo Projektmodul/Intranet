@@ -12,6 +12,7 @@ public class PhoneBookView extends Div {
 
     public PhoneBookView() {
         setId("phoneBook-view");
+        setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }
 

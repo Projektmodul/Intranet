@@ -12,6 +12,7 @@ public class MyProfileView extends Div {
 
     public MyProfileView() {
         setId("myProfile-view");
+        setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }
 

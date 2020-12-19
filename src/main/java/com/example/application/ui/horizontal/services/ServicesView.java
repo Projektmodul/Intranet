@@ -12,6 +12,7 @@ public class ServicesView extends Div {
 
     public ServicesView() {
         setId("services-view");
+        setClassName("pageContentPosition");
         add(new Text("Services"));
     }
 

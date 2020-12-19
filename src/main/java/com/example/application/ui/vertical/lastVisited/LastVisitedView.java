@@ -12,6 +12,7 @@ public class LastVisitedView extends Div {
 
     public LastVisitedView() {
         setId("lastVisited-view");
+        setClassName("pageContentPosition");
         add(new Text("TEST"));
     }
 

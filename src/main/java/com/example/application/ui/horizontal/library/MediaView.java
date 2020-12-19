@@ -12,6 +12,7 @@ public class MediaView extends Div {
 
     public MediaView() {
         setId("media-view");
+        setClassName("pageContentPosition");
         add(new Text("Medien"));
     }
 
