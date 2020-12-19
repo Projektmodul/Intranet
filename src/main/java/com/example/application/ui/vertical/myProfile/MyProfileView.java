@@ -1,6 +1,5 @@
 package com.example.application.ui.vertical.myProfile;
 
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -83,5 +82,23 @@ public class MyProfileView extends Div {
 
         add(content);
     }
+
+
+
+    //Vor- und Nachname
+    //E-Mailadresse
+    //Telefonnummer
+    //Center
+    //Raumnummer
+    //Adresse
+    //Kontodaten
+    //Profilbild
+    //Tätikeitsbeschreibung
+
+    //Profil bearbeiten
+        //Profilbild
+        //Tätigkeitsbeschreibung
+        //Adresse
+        //Kontodaten
 
 }
