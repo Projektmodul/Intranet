@@ -13,6 +13,7 @@ public class CenterIView extends Div {
     public CenterIView() {
         setId("centerI-view");
         add(new Text("CenterI"));
+
     }
 
 }

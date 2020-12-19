@@ -14,6 +14,7 @@ public class OurCompanyView extends Div {
 
     public OurCompanyView() {
         setId("ourCompany-view");
-        add(new Text("Unser Unternehmen"));
+        setClassName("pageContentPosition");
+        add(new Text(""));
     }
 }
