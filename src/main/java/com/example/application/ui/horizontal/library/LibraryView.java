@@ -12,6 +12,7 @@ public class LibraryView extends Div {
 
     public LibraryView() {
         setId("library-view");
+        setClassName("pageContentPosition");
         add(new Text("Bibliothek"));
         System.out.println("Hello");
     }

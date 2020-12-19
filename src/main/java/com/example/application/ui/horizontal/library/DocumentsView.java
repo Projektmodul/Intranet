@@ -12,6 +12,7 @@ public class DocumentsView extends Div {
 
     public DocumentsView() {
         setId("documents-view");
+        setClassName("pageContentPosition");
         add(new Text("Unterlagen"));
     }
 

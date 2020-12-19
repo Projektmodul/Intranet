@@ -12,6 +12,7 @@ public class FAQView extends Div {
 
     public FAQView() {
         setId("fAQ-view");
+        setClassName("pageContentPosition");
         add(new Text("FAQ"));
     }
 

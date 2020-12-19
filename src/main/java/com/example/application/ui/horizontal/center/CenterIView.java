@@ -11,8 +11,10 @@ import com.vaadin.flow.router.Route;
 public class CenterIView extends Div {
 
     public CenterIView() {
+        setClassName("pageContentPosition");
         setId("centerI-view");
         add(new Text("CenterI"));
+
     }
 
 }

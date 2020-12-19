@@ -12,6 +12,7 @@ public class ArchiveView extends Div {
 
     public ArchiveView() {
         setId("archive-view");
+        setClassName("pageContentPosition");
         add(new Text("Archiv"));
     }
 

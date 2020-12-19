@@ -12,6 +12,7 @@ public class NoticeBoardView extends Div {
 
     public NoticeBoardView() {
         setId("noticeBoard-view");
+        setClassName("pageContentPosition");
         add(new Text("Schwarzes Brett"));
     }
 
