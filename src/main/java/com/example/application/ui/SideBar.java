@@ -57,14 +57,12 @@ public class SideBar extends Div {
         tabArray[11].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
         tabArray[12].add(new RouterLink("Zuletzt besucht", LastVisitedView.class));
 
-
         for (Tab tab : tabArray) {
             tabs.add(tab);
         }
 
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
-
         tabs.setClassName("tabsView");
 
         VerticalLayout vertiView = new VerticalLayout();
