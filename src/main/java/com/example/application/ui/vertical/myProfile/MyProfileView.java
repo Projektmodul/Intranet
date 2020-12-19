@@ -29,11 +29,11 @@ public class MyProfileView extends Div {
         firstname.setReadOnly(true);
         content.addComponentAtIndex(1, firstname);
 
-        TextField lastname = new TextField();
-        lastname.setValue("Test");
-        lastname.setLabel("Nachname");
-        lastname.setReadOnly(true);
-        content.addComponentAtIndex(2, lastname);
+        TextField surname = new TextField();
+        surname.setValue("Test");
+        surname.setLabel("Nachname");
+        surname.setReadOnly(true);
+        content.addComponentAtIndex(2, surname);
 
         TextField email = new TextField();
         email.setValue("Test");
@@ -65,11 +65,11 @@ public class MyProfileView extends Div {
         address.setReadOnly(true);
         content.addComponentAtIndex(7, address);
 
-        TextField accountDetails = new TextField();
-        accountDetails.setValue("Test");
-        accountDetails.setLabel("Kontodaten");
-        accountDetails.setReadOnly(true);
-        content.addComponentAtIndex(8, accountDetails);
+        TextField iban = new TextField();
+        iban.setValue("Test");
+        iban.setLabel("Kontodaten");
+        iban.setReadOnly(true);
+        content.addComponentAtIndex(8, iban);
 
         TextField profilepicture = new TextField();
         profilepicture.setValue("Test");
