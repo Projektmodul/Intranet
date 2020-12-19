@@ -1,5 +1,6 @@
 package com.example.application.ui.vertical.myProfile;
 
+import com.example.application.backend.entity.Users;
 import com.vaadin.flow.component.html.Div;
 
 import com.vaadin.flow.component.html.Image;
@@ -18,6 +19,9 @@ public class MyProfileView extends Div {
     public MyProfileView() {
         setId("myProfile-view");
 
+        Users user = new Users(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
+
+
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new Label("Mein Profil"));
 
@@ -26,7 +30,7 @@ public class MyProfileView extends Div {
         VerticalLayout left = new VerticalLayout();
 
         TextField firstname = new TextField();
-        firstname.setValue("Value");
+        firstname.setValue(user.getFirstname());
         firstname.setLabel("Vorname");
         firstname.setReadOnly(true);
 
@@ -41,12 +45,12 @@ public class MyProfileView extends Div {
         left.addComponentAsFirst(name);
 
         TextField email = new TextField();
-        email.setValue("Test");
+        email.setValue(user.getEmail());
         email.setLabel("E-Mail");
         email.setReadOnly(true);
 
         TextField telephone = new TextField();
-        telephone.setValue("Test");
+        telephone.setValue(user.getTelefon());
         telephone.setLabel("Telefonnummer");
         telephone.setReadOnly(true);
 
@@ -56,7 +60,7 @@ public class MyProfileView extends Div {
         left.addComponentAtIndex(1, emailPhone);
 
         TextField center = new TextField();
-        center.setValue("Test");
+        center.setValue(user.getCenter());
         center.setLabel("Center");
         center.setReadOnly(true);
 

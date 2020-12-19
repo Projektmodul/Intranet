@@ -96,16 +96,16 @@ public class Users {
         this.center = center;
     }
 
-    public int getRoomnumber() {
-        return roomnumber;
+    public String getRoomnumber() {
+        return "" + roomnumber;
     }
 
     public void setRoomnumber(int roomnumber) {
         this.roomnumber = roomnumber;
     }
 
-    public int getTelefon() {
-        return telefon;
+    public String getTelefon() {
+        return "" + telefon;
     }
 
     public void setTelefon(int telefon) {
