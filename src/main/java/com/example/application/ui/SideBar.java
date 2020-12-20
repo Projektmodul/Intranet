@@ -30,7 +30,7 @@ public class SideBar extends Div {
 
         addClassName("side-bar");
         //insert icon for alert
-        Icon alert = new Icon(VaadinIcon.LIGHTBULB);
+        Icon alert = new Icon(VaadinIcon.BELL);
         alert.setClassName("alertStyle");
         //insert field for search
         TextField searchField = new TextField();

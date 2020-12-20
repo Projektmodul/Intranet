@@ -36,7 +36,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
          * */
          //create the object navBar from class HorizontalBar
         HorizontalBar navBar = new HorizontalBar();
-        navBar.setClassName("layoutNavbar");
+
         Image bsagLogo = new Image("images/bsag.png", "My Project logo");
         bsagLogo.setClassName("bsagStyle");
 
@@ -49,36 +49,28 @@ public class MainView extends VerticalLayout implements RouterLayout {
         Icon logout = new Icon(VaadinIcon.SIGN_OUT);
         logout.setClassName("logoutStyle");
 
-        /*Icon alert = new Icon(VaadinIcon.ALARM);
-        alert.setClassName("alertStyle");*/
-
         SideBar sideBar = new SideBar();
         sideBar.setClassName("layoutSideBar");
 
-        /*HorizontalLayout sideMenu = new HorizontalLayout();
-        sideMenu.add(alert, sideBar);*/
-
-        Div text = new Div();
-        text.addClassName("text-div");
-        Div content = new Div(text);
+        Div content = new Div();
         content.addClassName("content");
 
         HorizontalLayout sideBarLayout = new HorizontalLayout();
         sideBarLayout.add(content,sideBar);
+        content.setId("sideBarPosition");
 
-        //create two horizontal Header for topBar
+        //create horizontal Header for topBar
         HorizontalLayout headerOne = new HorizontalLayout();
         headerOne.add(logoBtn,logout);
-        HorizontalLayout headerTwo = new HorizontalLayout();
-        headerTwo.add(navBar);
+        VerticalLayout topBar = new VerticalLayout();
+        topBar.add(headerOne, navBar);
+        topBar.setClassName("topBarStyle");
 
         VerticalLayout layout = new VerticalLayout();
-        layout.add(headerOne, headerTwo,sideBarLayout);
+        layout.add(topBar,sideBarLayout);
         layout.addClassName("vertical-layout");
-        VerticalLayout topBar = new VerticalLayout();
-        topBar.add(layout);
 
-        add(topBar);
+        add(layout);
 
 
 

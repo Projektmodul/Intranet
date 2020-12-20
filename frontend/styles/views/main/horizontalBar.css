@@ -1,6 +1,7 @@
 /*created @ de Boer, Marieke Menna & MonikaMartius */
 
-.icons{
+.icons
+{
     color: #FFFFFF;
     width: 65px;
     height: 65px;
@@ -11,13 +12,17 @@
     height: 50px;
 }
 .menuBarStyleOne{
-    position: absolute;
-    left: 2.92%;
-    right: 2.99%;
+    width: 76.50%;
+    height: 20%;
     background: #4B4A4A;
     opacity: 0.7;
     box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
+    position: absolute;
+    left: 4.40%;
+    right: 0.8%;
+    top: 60.31%;
+    bottom: 75.43%;
 }
 
 .spanStyle{
@@ -33,6 +38,12 @@
     width: 140px;
     height: 140px;
 }
+
+.custom-menubar-popup {
+    background-color: red;
+    height: 90%; // adjust as needed
+}
+
 
 
 

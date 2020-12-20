@@ -1,6 +1,7 @@
 //created @ Monika Martius
 package com.example.application.ui;
 
+import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Label;
@@ -8,6 +9,7 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -15,7 +17,7 @@ import com.vaadin.flow.component.tabs.Tab;
 @CssImport("./styles/views/main/horizontalBar.css")
 
 
-public class HorizontalBar extends HorizontalLayout {
+public class HorizontalBar extends VerticalLayout {
 
     Label welcome;
     Label centers;
@@ -174,7 +176,7 @@ public class HorizontalBar extends HorizontalLayout {
         VerticalLayout layoutNordlight = new VerticalLayout(nordlightText, nordlightTab);
         layoutNordlight.setClassName("layoutVerti");
         layoutNordlight.getStyle().set("background-color", "#581092");
-        layoutNordlight.setAlignItems(Alignment.CENTER);
+        layoutNordlight.setAlignItems(FlexComponent.Alignment.CENTER);
 
         //creating menuBarProjects
         projects = new Label("Projekte");
