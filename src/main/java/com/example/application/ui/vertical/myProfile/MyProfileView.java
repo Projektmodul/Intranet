@@ -33,12 +33,8 @@ public class MyProfileView extends Div {
         content.addComponentAsFirst(new Label("Mein Profil"));
         content.setSizeFull();
         content.getStyle().set("border", "2px solid #9E9E9E");
-        data.setWidth("100%");
-        data.getStyle().set("text-align", "right");
-        data.getStyle().set("border", "1px solid #9E9E9E");
-        data.addComponentAsFirst(left);
-        data.addComponentAtIndex(1, right);
-        content.addComponentAtIndex(1, data);
+        content.addComponentAtIndex(1, initData());
+
         add(content);
     }
 
