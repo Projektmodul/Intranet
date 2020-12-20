@@ -1,41 +1,41 @@
 package com.example.application.backend.entity;
 
 public class Permissions {
-    private int permission_id;
-    private String permission_name;
-    private int role_id;
+    private int permissionId;
+    private String permissionName;
+    private int roleId;
 
     public Permissions() {
 
     }
 
-    public Permissions(int permission_id, String permission_name, int role_id) {
-        this.permission_id = permission_id;
-        this.permission_name = permission_name;
-        this.role_id = role_id;
+    public Permissions(int permissionId, String permissionName, int roleId) {
+        this.permissionId = permissionId;
+        this.permissionName = permissionName;
+        this.roleId = roleId;
     }
 
-    public int getPermission_id() {
-        return permission_id;
+    public int getPermissionId() {
+        return permissionId;
     }
 
-    public void setPermission_id(int permission_id) {
-        this.permission_id = permission_id;
+    public void setPermissionId(int permissionId) {
+        this.permissionId = permissionId;
     }
 
-    public String getPermission_name() {
-        return permission_name;
+    public String getPermissionName() {
+        return permissionName;
     }
 
-    public void setPermission_name(String permission_name) {
-        this.permission_name = permission_name;
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 }

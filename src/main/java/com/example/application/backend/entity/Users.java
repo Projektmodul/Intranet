@@ -6,29 +6,29 @@ public class Users {
     private String password;
     private String surname;
     private String firstname;
-    private int address_id;
+    private int addressId;
     private String iban;
     private char center;
     private int roomnumber;
     private int telefon;
     private String email;
-    private String job_description;
+    private String jobDescription;
 
     public Users() {
 
     }
 
-    public Users(int id, String firstname, String surname, int address_id, String iban, char center, int roomnumber, int telefon, String email, String job_description) {
+    public Users(int id, String firstname, String surname, int addressId, String iban, char center, int roomnumber, int telefon, String email, String jobDescription) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
-        this.address_id = address_id;
+        this.addressId = addressId;
         this.iban = iban;
         this.center = center;
         this.roomnumber = roomnumber;
         this.telefon = telefon;
         this.email = email;
-        this.job_description = job_description;
+        this.jobDescription = jobDescription;
     }
 
     public String getId() {
@@ -72,12 +72,12 @@ public class Users {
         this.firstname = firstname;
     }
 
-    public String getAddress_id() {
-        return "" + address_id;
+    public String getAddressId() {
+        return "" + addressId;
     }
 
-    public void setAddress_id(int address_id) {
-        this.address_id = address_id;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public String getIban() {
@@ -124,7 +124,7 @@ public class Users {
         return jobDescription;
     }
 
-    public void setJob_description(String job_description) {
-        this.job_description = job_description;
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
     }
 }

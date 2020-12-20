@@ -1,7 +1,7 @@
 package com.example.application.backend.entity;
 
 public class Addresses {
-    private int address_id;
+    private int addressId;
     private String streetname;
     private int streetnumber;
     private int postcode;
@@ -11,20 +11,20 @@ public class Addresses {
 
     }
 
-    public Addresses(int address_id, String streetname, int streetnumber, int postcode, String city) {
-        this.address_id = address_id;
+    public Addresses(int addressId, String streetname, int streetnumber, int postcode, String city) {
+        this.addressId = addressId;
         this.streetname = streetname;
         this.streetnumber = streetnumber;
         this.postcode = postcode;
         this.city = city;
     }
 
-    public int getAddress_id() {
-        return address_id;
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setAddress_id(int address_id) {
-        this.address_id = address_id;
+    public void setAddress_id(int addressId) {
+        this.addressId = addressId;
     }
 
     public String getStreetname() {
