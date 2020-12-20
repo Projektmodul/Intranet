@@ -197,7 +197,7 @@ public class MyProfileView extends Div {
         updatePostcode.setLabel("PLZ");
 
         TextField updateCity = new TextField();
-        updateCity.setValue("Bremen"); //address.getCity..
+        updateCity.setValue(addressExample.getCity());
         updateCity.setLabel("Stadt");
 
 
