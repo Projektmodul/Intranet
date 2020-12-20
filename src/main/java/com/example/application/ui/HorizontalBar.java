@@ -29,7 +29,7 @@ public class HorizontalBar extends HorizontalLayout {
         //Text selected = new Text("");
         MenuBar menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
-        menuBar.setClassName("menuBarStyleOne");
+        menuBar.setId("menuBarStyleOne");
 
         /*
          *  ourCompany
@@ -195,9 +195,6 @@ public class HorizontalBar extends HorizontalLayout {
         Icon wiki = new Icon(VaadinIcon.VIMEO);
         wiki.setClassName("icons");
         wiki.addClickListener( e-> handshake.getUI().ifPresent(ui -> ui.navigate("wiki")));
-        //Image wiki = new Image("images/wikiU.png", "My Project logo");
-        //wiki.setClassName("image");
-        //wiki.getStyle().set("color","white");
 
         Icon archive = new Icon(VaadinIcon.ARCHIVE);
         archive.setClassName("icons");

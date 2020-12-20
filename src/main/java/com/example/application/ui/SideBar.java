@@ -22,13 +22,13 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
 
-public class SideBar extends Div {
+public class SideBar extends VerticalLayout {
 
     Tabs tabs;
 
     public SideBar(){
 
-        addClassName("sideBar");
+        setId("sideBar");
         //insert icon for alertIcon
         Icon alertIcon = new Icon(VaadinIcon.LIGHTBULB);
         alertIcon.setId("alert");
@@ -65,9 +65,7 @@ public class SideBar extends Div {
         tabs.setFlexGrowForEnclosedTabs(1);
         tabs.setClassName("tabsView");
 
-        VerticalLayout vertiView = new VerticalLayout();
-        vertiView.add(alertIcon,searchField,tabs);
+        add(alertIcon,searchField,tabs);
 
-        add(vertiView);
     }
 }

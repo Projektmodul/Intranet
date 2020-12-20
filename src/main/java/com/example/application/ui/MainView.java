@@ -51,7 +51,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
         SideBar sideBar = new SideBar();
 
-        Div content = new Div();
+        VerticalLayout content = new VerticalLayout();
         content.setId("content");
         content.addClassName("text");
 
