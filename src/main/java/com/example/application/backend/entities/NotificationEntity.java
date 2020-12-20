@@ -1,4 +1,4 @@
-package com.example.application.ui;
+package com.example.application.backend.entities;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.details.Details;
@@ -15,13 +15,13 @@ import com.vaadin.flow.component.html.H5;
  */
 
 
-public class Notification {
+public class NotificationEntity {
     private String title;
     private String description;
     private String date; //this could be later changed into a Date object instead of a string
     private Details details;
 
-    public Notification(String title, String description, String date){
+    public NotificationEntity(String title, String description, String date){
         this.title = title;
         this.description = description;
         this.date = date;

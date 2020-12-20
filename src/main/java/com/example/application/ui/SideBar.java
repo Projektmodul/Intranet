@@ -9,6 +9,7 @@ import com.example.application.ui.vertical.lastVisited.LastVisitedView;
 import com.example.application.ui.vertical.mailing.MailingView;
 import com.example.application.ui.vertical.myContacts.MyContactsView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
+import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.search.SearchView;
 import com.example.application.ui.vertical.settings.SettingsView;
@@ -27,17 +28,17 @@ import com.vaadin.flow.router.RouterLink;
 public class SideBar extends Div {
 
     Tabs tabs;
-    private Notifications notifications;
+    private NotificationsView notificationsView;
 
     public SideBar(){
-        notifications = new Notifications();
-        notifications.addNotifications();
+        notificationsView = new NotificationsView();
+        notificationsView.addNotifications();
 
         addClassName("side-bar");
         //insert icon for alert
         Icon alert = new Icon(VaadinIcon.LIGHTBULB);
         alert.setClassName("alertStyle");
-        alert.addClickListener(e-> notifications.open());
+        alert.addClickListener(e-> notificationsView.open());
         //insert field for search
         TextField searchField = new TextField();
         searchField.setClassName("searchStyle");

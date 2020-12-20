@@ -1,5 +1,6 @@
-package com.example.application.ui;
+package com.example.application.ui.vertical.notifications;
 
+import com.example.application.backend.entities.NotificationEntity;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -16,25 +17,25 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  */
 
 @CssImport("./styles/views/main/notification.css")
-public class Notifications extends Dialog {
+public class NotificationsView extends Dialog {
 
     private H4 notificationText ;
     private VerticalLayout notificationsContainer;
-    private Notification[] notifications;
+    private NotificationEntity[] notifications;
 
-    public Notifications(){
+    public NotificationsView(){
         //These are only for demo, could be deleted once the data in the database is ready to be used
-        Notification not1 = new Notification("Es wurde eine neue Datei hinzugefügt",
+        NotificationEntity not1 = new NotificationEntity("Es wurde eine neue Datei hinzugefügt",
                 "Mauris at mi vel felis commodo facilisis. Morbi mattis erat lorem, " +
                         "in cursus mauris consectetur vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus.", "10.07.2022");
-        Notification not2 = new Notification("Die Speisekarte für diese Woche ist online",
+        NotificationEntity not2 = new NotificationEntity("Die Speisekarte für diese Woche ist online",
                 "Mauris at mi vel felis commodo facilisis. Morbi mattis erat lorem, " +
                         "in cursus mauris consectetur vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus.", "23.12.2022");
-        Notification not3 = new Notification("Holen Sie sich die lokalen Nachrichten!",
+        NotificationEntity not3 = new NotificationEntity("Holen Sie sich die lokalen Nachrichten!",
                 "Mauris at mi vel felis commodo facilisis. Morbi mattis erat lorem, " +
                         "in cursus mauris consectetur vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus.", "08.03.2022");
 
-        notifications = new Notification[]{not1,not2,not3};
+        notifications = new NotificationEntity[]{not1,not2,not3};
 
         notificationText = new H4("Notifications: ");
         notificationsContainer = new VerticalLayout(notificationText);
@@ -55,8 +56,8 @@ public class Notifications extends Dialog {
     }
 
     public void addNotifications(){
-        for(Notification notification : notifications){
-            notificationsContainer.add(notification.getDetails());
+        for(NotificationEntity notificationEntity : notifications){
+            notificationsContainer.add(notificationEntity.getDetails());
         }
     }
 
