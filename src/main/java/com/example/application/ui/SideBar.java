@@ -34,14 +34,14 @@ public class SideBar extends Div {
         notificationsView = new NotificationsView();
         notificationsView.addNotifications();
 
-        addClassName("side-bar");
-        //insert icon for alert
-        Icon alert = new Icon(VaadinIcon.LIGHTBULB);
-        alert.setClassName("alertStyle");
-        alert.addClickListener(e-> notificationsView.open());
+        addClassName("sideBar");
+        //insert icon for alertIcon
+        Icon alertIcon = new Icon(VaadinIcon.LIGHTBULB);
+        alertIcon.setId("alert");
+        alertIcon.addClickListener(e-> notificationsView.open());
         //insert field for search
         TextField searchField = new TextField();
-        searchField.setClassName("searchStyle");
+        searchField.setId("search");
         searchField.setPlaceholder("Suchbegriff eingeben...");
 
         tabs = new Tabs();
@@ -73,7 +73,7 @@ public class SideBar extends Div {
         tabs.setClassName("tabsView");
 
         VerticalLayout vertiView = new VerticalLayout();
-        vertiView.add(alert,searchField,tabs);
+        vertiView.add(alertIcon,searchField,tabs);
 
         add(vertiView);
     }
