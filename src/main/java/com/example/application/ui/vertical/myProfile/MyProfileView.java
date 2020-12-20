@@ -1,6 +1,8 @@
 package com.example.application.ui.vertical.myProfile;
 
 import com.example.application.backend.entity.Users;
+import com.example.application.backend.entity.Addresses;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
@@ -25,6 +27,7 @@ import com.example.application.ui.MainView;
 public class MyProfileView extends Div {
 
     private Users user = new Users(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
+    private Addresses addressExample = new Addresses(1,"Beispielstraße", 123, 28359, "Bremen");
 
     public MyProfileView() {
         setId("myProfile-view");
@@ -57,6 +60,7 @@ public class MyProfileView extends Div {
         HorizontalLayout name = new HorizontalLayout();
         HorizontalLayout emailPhone = new HorizontalLayout();
         HorizontalLayout centerRoom = new HorizontalLayout();
+        HorizontalLayout addressIban = new HorizontalLayout();
 
         TextField firstname = new TextField();
         firstname.setValue(user.getFirstname());
@@ -88,8 +92,9 @@ public class MyProfileView extends Div {
         roomnumber.setLabel("Raumnummer");
         roomnumber.setReadOnly(true);
 
-        TextField address = new TextField();
-        address.setValue(user.getAddressId());
+        TextArea address = new TextArea();
+        address.setValue(addressExample.getStreetname()+" "+addressExample.getStreetnumber()+"\n"+
+                addressExample.getPostcode()+" "+addressExample.getCity());
         address.setLabel("Adresse");
         address.setReadOnly(true);
 
@@ -111,9 +116,9 @@ public class MyProfileView extends Div {
         centerRoom.addComponentAtIndex(1, roomnumber);
         left.addComponentAtIndex(2, centerRoom);
 
-        left.addComponentAtIndex(3, address);
-
-        left.addComponentAtIndex(4, iban);
+        addressIban.addComponentAsFirst(address);
+        addressIban.addComponentAtIndex(1, iban);
+        left.addComponentAtIndex(3, addressIban);
 
         return left;
     }
@@ -185,15 +190,15 @@ public class MyProfileView extends Div {
         HorizontalLayout postcodeCity = new HorizontalLayout();
 
         TextField updateStreet = new TextField();
-        updateStreet.setValue(user.getAddressId()); //address.getStreet...
+        updateStreet.setValue(addressExample.getStreetname());
         updateStreet.setLabel("Straße");
 
         IntegerField updateNumber = new IntegerField();
-        updateNumber.setValue(12); //address.getNumber...
+        updateNumber.setValue(addressExample.getStreetnumber());
         updateNumber.setLabel("Hausnummer");
 
         IntegerField updatePostcode = new IntegerField();
-        updatePostcode.setValue(29378); //address.getPostcode...
+        updatePostcode.setValue(addressExample.getPostcode());
         updatePostcode.setLabel("PLZ");
 
         TextField updateCity = new TextField();
