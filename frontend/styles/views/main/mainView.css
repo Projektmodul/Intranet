@@ -54,6 +54,7 @@
 
 #contentWithSidebar{
   width: 100%;
+  max-width: 1264px;
 }
 
 
