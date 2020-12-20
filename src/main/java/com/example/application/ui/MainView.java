@@ -35,7 +35,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
          * */
          //create the object navBar from class HorizontalBar
         HorizontalBar navBar = new HorizontalBar();
-        navBar.setId("navbar");
+        //navBar.setId("navbar");
 
         Image logoImage = new Image("images/bsag.png", "My Project logo");
         logoImage.setId("logoImage");
@@ -50,11 +50,10 @@ public class MainView extends VerticalLayout implements RouterLayout {
         logoutIcon.setId("logout");
 
         SideBar sideBar = new SideBar();
-        //sideBar.setId("sideBar");
 
         Div content = new Div();
-        content.addClassName("content");
-        content.addClassName("text-div");
+        content.setId("content");
+        content.addClassName("text");
 
         HorizontalLayout contentWithSidebar = new HorizontalLayout();
         contentWithSidebar.add(content,sideBar);
@@ -62,6 +61,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
         HorizontalLayout header = new HorizontalLayout();
         header.add(logoButton,logoutIcon);
+        header.setId("header");
 
         add(header, navBar, contentWithSidebar);
         addClassName("vertical-layout");

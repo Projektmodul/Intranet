@@ -1,4 +1,4 @@
-/*created @ MonikaMartius*/
+/*created @ MonikaMartius, Changed @ Vanessa Skowronksy*/
 
 .vertical-layout{
   background: linear-gradient(180deg, #0D5699 0%,
@@ -8,20 +8,17 @@
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   text-decoration-color: white;
   color: white;
-  position: absolute;
-  width: auto;
   height: 185px;
-  left: 0;
-  top: -15px;
+  align-items: center;
 }
 
-#navbar{
-  position: absolute;
-  width: 1303px;
-  right: 2.99%;
-  left: 1.5%;
-  top: 68%;
-  bottom: 6.03%;
+#header{
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+#header::before{
+  content: none;
 }
 
 #search{
@@ -47,14 +44,9 @@
 #logout{
   width: auto;
   height: 60px;
-  position: absolute;
-  left: 94.74%;
-  right: 0.8%;
-  top: 8.31%;
-  bottom: 75.43%;
 }
 
-.content{
+#content{
   position: absolute;
   width: 1200px;
   height: 710px;
