@@ -1,0 +1,27 @@
+/*
+    @author Sabrine Gamdou
+    @version 1.0
+    @since 20-12-2020
+*/
+
+/* Positioning the Close button and styling it */
+#notificationBtn{
+    background-color: darkgrey;
+    color: white;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+/* Close Button gets darker when hovered on */
+#notificationBtn:hover {
+    background-color:#4B4A4A ;
+}
+
+/* Styling the notifications container */
+.notificationsContainer{
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
+    padding: 1rem;
+    margin: 0;
+
+}

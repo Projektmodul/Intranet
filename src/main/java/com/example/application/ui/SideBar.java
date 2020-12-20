@@ -9,10 +9,12 @@ import com.example.application.ui.vertical.lastVisited.LastVisitedView;
 import com.example.application.ui.vertical.mailing.MailingView;
 import com.example.application.ui.vertical.myContacts.MyContactsView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
+import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.search.SearchView;
 import com.example.application.ui.vertical.settings.SettingsView;
 import com.example.application.ui.vertical.timetable.TimetableView;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -22,16 +24,21 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
 
+@CssImport("./styles/views/main/mainView.css")
 public class SideBar extends Div {
 
     Tabs tabs;
+    private NotificationsView notificationsView;
 
     public SideBar(){
+        notificationsView = new NotificationsView();
+        notificationsView.addNotifications();
 
         addClassName("side-bar");
         //insert icon for alert
         Icon alert = new Icon(VaadinIcon.LIGHTBULB);
         alert.setClassName("alertStyle");
+        alert.addClickListener(e-> notificationsView.open());
         //insert field for search
         TextField searchField = new TextField();
         searchField.setClassName("searchStyle");
