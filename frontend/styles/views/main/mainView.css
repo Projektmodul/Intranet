@@ -87,7 +87,7 @@
   width: auto !important;
 }
 
-.alert:hover{
+#alert:hover{
   cursor:pointer;
 }
 
