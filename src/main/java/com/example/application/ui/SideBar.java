@@ -25,13 +25,17 @@ import com.vaadin.flow.router.RouterLink;
 public class SideBar extends Div {
 
     Tabs tabs;
+    private Notifications notifications;
 
     public SideBar(){
+        notifications = new Notifications();
+        notifications.addNotifications();
 
         addClassName("side-bar");
         //insert icon for alert
         Icon alert = new Icon(VaadinIcon.LIGHTBULB);
         alert.setClassName("alertStyle");
+        alert.addClickListener(e-> notifications.open());
         //insert field for search
         TextField searchField = new TextField();
         searchField.setClassName("searchStyle");
