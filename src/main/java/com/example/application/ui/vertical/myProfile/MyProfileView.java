@@ -2,20 +2,24 @@ package com.example.application.ui.vertical.myProfile;
 
 import com.example.application.backend.entity.Users;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-import javax.swing.text.html.parser.ContentModel;
 
 @Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
@@ -109,7 +113,37 @@ public class MyProfileView extends Div {
 
         right.addComponentAtIndex(1, job_description);
 
+        HorizontalLayout update = new HorizontalLayout();
+        VerticalLayout updateRight = new VerticalLayout();
+        VerticalLayout updateLeft = new VerticalLayout();
+
+        HorizontalLayout addressNumber = new HorizontalLayout();
+        HorizontalLayout postcodeCity = new HorizontalLayout();
+
+        update.addComponentAsFirst(updateLeft);
+        update.addComponentAtIndex(1, updateRight);
+
+        updateLeft.addComponentAsFirst(new TextField("Kontodaten", user.getIban()));
+        updateLeft.addComponentAtIndex(1, new TextArea("Tätigkeitsbeschreibung", user.getJob_description()));
+        updateLeft.addComponentAtIndex(2, new Button("Bild hochladen", new Icon(VaadinIcon.UPLOAD)));
+
+        updateRight.addComponentAsFirst(addressNumber);
+        updateRight.addComponentAtIndex(1, postcodeCity);
+
+
+        addressNumber.addComponentAsFirst(new TextField("Straße", user.getAddress_id())); //address.getStreet...
+        addressNumber.addComponentAtIndex(1,new IntegerField("Hausnummer", "12")); //address.getNumber...
+
+        postcodeCity.addComponentAsFirst(new IntegerField("PLZ", "28359")); //address.getPostcode...
+        postcodeCity.addComponentAtIndex(1, new TextField("Stadt", "Bremen")); //address.getCity..
+
+        Dialog contentDialog = new Dialog();
+        contentDialog.add(
+                new H1("Profil bearbeiten"),
+                update);
+
         Button updateProfile = new Button("Profil bearbeiten", new Icon(VaadinIcon.PENCIL));
+        updateProfile.addClickListener(e -> contentDialog.open());
         updateProfile.setIconAfterText(true);
         right.addComponentAtIndex(2, updateProfile);
 
