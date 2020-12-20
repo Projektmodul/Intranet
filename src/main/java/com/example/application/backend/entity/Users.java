@@ -120,8 +120,8 @@ public class Users {
         this.email = email;
     }
 
-    public String getJob_description() {
-        return job_description;
+    public String getJobDescription() {
+        return jobDescription;
     }
 
     public void setJob_description(String job_description) {
