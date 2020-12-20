@@ -1,7 +1,6 @@
 /*created @ de Boer, Marieke Menna & Monika Martius */
 package com.example.application.ui;
 
-import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -28,7 +27,7 @@ import com.vaadin.flow.server.PWA;
 @Route(value = "my-view", layout = MainView.class)
 @PageTitle("My View")
 
-public class MainView extends AppLayout {
+public class MainView extends VerticalLayout implements RouterLayout {
 
     public MainView() {
 
@@ -50,8 +49,14 @@ public class MainView extends AppLayout {
         Icon logout = new Icon(VaadinIcon.SIGN_OUT);
         logout.setClassName("logoutStyle");
 
+        /*Icon alert = new Icon(VaadinIcon.ALARM);
+        alert.setClassName("alertStyle");*/
+
         SideBar sideBar = new SideBar();
         sideBar.setClassName("layoutSideBar");
+
+        /*HorizontalLayout sideMenu = new HorizontalLayout();
+        sideMenu.add(alert, sideBar);*/
 
         Div text = new Div();
         text.addClassName("text-div");
