@@ -3,6 +3,7 @@ package com.example.application.ui.vertical.myProfile;
 import com.example.application.backend.entities.UsersEntity;
 import com.example.application.backend.entities.AddressesEntity;
 
+import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -19,9 +20,12 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.ParentLayout;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
+@CssImport("./styles/views/main/content.css")
+@Route(value = "myProfile", layout = ContentHolder.class)
 /**
  * MyProfile View shows the informations from the current user
  * The user is able to change his profile information
@@ -44,7 +48,7 @@ public class MyProfileView extends Div {
      */
     public MyProfileView() {
         setId("myProfile-view");
-
+        setClassName("pageContentPosition");
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new Label("Mein Profil"));
         content.setSizeFull();

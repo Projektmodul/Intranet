@@ -33,6 +33,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
         /*
          * Header
          * */
+        setId("MainView");
          //create the object navBar from class HorizontalBar
         HorizontalBar navBar = new HorizontalBar();
         //navBar.setId("navbar");
@@ -49,21 +50,11 @@ public class MainView extends VerticalLayout implements RouterLayout {
         Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
         logoutIcon.setId("logout");
 
-        SideBar sideBar = new SideBar();
-
-        VerticalLayout content = new VerticalLayout();
-        content.setId("content");
-        content.addClassName("text");
-
-        HorizontalLayout contentWithSidebar = new HorizontalLayout();
-        contentWithSidebar.add(content,sideBar);
-        contentWithSidebar.setId("contentWithSidebar");
-
         HorizontalLayout header = new HorizontalLayout();
         header.add(logoButton,logoutIcon);
         header.setId("header");
 
-        add(header, navBar, contentWithSidebar);
+        add(header, navBar);
         addClassName("vertical-layout");
 
     }

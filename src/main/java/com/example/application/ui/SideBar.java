@@ -26,8 +26,6 @@ import com.vaadin.flow.router.RouterLink;
 @CssImport("./styles/views/main/mainView.css")
 public class SideBar extends VerticalLayout {
 
-
-
     Tabs tabs;
     private NotificationsView notificationsView;
 
