@@ -6,7 +6,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "timetable", layout = MainView.class)
+
+@Route(value = "https://fahrplaner.vbn.de", layout = MainView.class)
 @PageTitle("Fahrplan")
 public class TimetableView extends Div {
 
