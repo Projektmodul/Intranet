@@ -14,6 +14,9 @@ public class TimetableView extends Div {
         setId("timetable-view");
         setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
+
+
     }
+
 
 }
