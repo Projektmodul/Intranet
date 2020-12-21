@@ -5,7 +5,6 @@ import com.example.application.backend.entities.AddressesEntity;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 
@@ -40,6 +39,9 @@ public class MyProfileView extends Div {
     private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
     private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
 
+    /*
+     * Constructor of the MyProfileVew class where the content is added to the view
+     */
     public MyProfileView() {
         setId("myProfile-view");
 
@@ -52,6 +54,10 @@ public class MyProfileView extends Div {
         add(content);
     }
 
+    /*
+     * The method initData generates the horizontal layout data and adds two vertical layouts
+     * @return data
+     */
     private HorizontalLayout initData () {
         HorizontalLayout data = new HorizontalLayout();
 
@@ -65,6 +71,11 @@ public class MyProfileView extends Div {
         return data;
     }
 
+    /*
+     * The method initVerticalLayoutLeft generates the left vertical layout for data
+     * Includes the text fields firstname, surname, email, telephone, center, roomnumber, address and iban
+     * @return left
+     */
     private VerticalLayout initVerticalLayoutLeft () {
         VerticalLayout left = new VerticalLayout();
 
@@ -134,6 +145,11 @@ public class MyProfileView extends Div {
         return left;
     }
 
+    /*
+     * The method initVerticalLayoutRight generates the right vertical layout for data
+     * Includes the text field job description, the profilepicture and the button updateProfile
+     * @return right
+     */
     private VerticalLayout initVerticalLayoutRight () {
         VerticalLayout right = new VerticalLayout();
 
@@ -159,6 +175,11 @@ public class MyProfileView extends Div {
         return right;
     }
 
+    /*
+     * The method initContentDialog generates a dialog window with a horizontal layout update,
+     * where the user can update his profile
+     * @return contentDialog
+     */
     private Dialog initContentDialog () {
         Dialog contentDialog = new Dialog();
         contentDialog.setCloseOnOutsideClick(false);
@@ -183,6 +204,10 @@ public class MyProfileView extends Div {
         return contentDialog;
     }
 
+    /*
+     * The method initUpdateVerticalLayoutLeft generates the left vertical layout for update
+     * @return updateLeft
+     */
     private VerticalLayout initUpdateVerticalLayoutLeft () {
         VerticalLayout updateLeft = new VerticalLayout();
 
@@ -205,6 +230,10 @@ public class MyProfileView extends Div {
         return updateLeft;
     }
 
+    /*
+     * The method initUpdateVerticalLayoutRight generates the right vertical layout for update
+     * @return updateRight
+     */
     private VerticalLayout initUpdateVerticalLayoutRight () {
         VerticalLayout updateRight = new VerticalLayout();
 
