@@ -37,7 +37,7 @@ public class SideBar extends VerticalLayout {
 
         setId("sideBar");
         //insert icon for alertIcon
-        Icon alertIcon = new Icon(VaadinIcon.LIGHTBULB);
+        Icon alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alert");
         alertIcon.addClickListener(e-> notificationsView.open());
         //insert field for search
