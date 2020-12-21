@@ -27,7 +27,7 @@ public class HorizontalBar extends MenuBar {
         Icon home = new Icon(VaadinIcon.HOME);
         home.setSize("35px");
         home.setColor("#FFFFFF");
-        home.addClickListener(e -> home.getUI().ifPresent(ui -> ui.navigate("")));
+        home.addClickListener(e -> home.getUI().ifPresent(ui -> ui.navigate("home")));
         addItem(home);
 
         /*

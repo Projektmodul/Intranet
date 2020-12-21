@@ -10,7 +10,6 @@ import com.vaadin.flow.router.RouteAlias;
 
 @Route(value = "ourCompany", layout = ContentHolder.class)
 @PageTitle("Unser Unternehmen")
-@RouteAlias(value = "", layout = MainView.class)
 public class OurCompanyView extends Div {
 
     public OurCompanyView() {
