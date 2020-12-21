@@ -1,14 +1,14 @@
-package com.example.application.backend.entity;
+package com.example.application.backend.entities;
 
-public class Roles {
+public class RolesEntity {
     private int roleId;
     private String roleName;
 
-    public Roles(){
+    public RolesEntity(){
 
     }
 
-    public Roles(int roleId, String roleName){
+    public RolesEntity(int roleId, String roleName){
         this.roleId = roleId;
         this.roleName = roleName;
     }

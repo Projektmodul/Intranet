@@ -1,6 +1,6 @@
-package com.example.application.backend.entity;
+package com.example.application.backend.entities;
 
-public class Users {
+public class UsersEntity {
     private int id;
     private String username;
     private String password;
@@ -14,11 +14,11 @@ public class Users {
     private String email;
     private String jobDescription;
 
-    public Users() {
+    public UsersEntity() {
 
     }
 
-    public Users(int id, String firstname, String surname, int addressId, String iban, char center, int roomnumber, int telefon, String email, String jobDescription) {
+    public UsersEntity(int id, String firstname, String surname, int addressId, String iban, char center, int roomnumber, int telefon, String email, String jobDescription) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;

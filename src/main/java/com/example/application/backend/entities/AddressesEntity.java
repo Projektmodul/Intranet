@@ -1,17 +1,17 @@
-package com.example.application.backend.entity;
+package com.example.application.backend.entities;
 
-public class Addresses {
+public class AddressesEntity {
     private int addressId;
     private String streetname;
     private int streetnumber;
     private int postcode;
     private String city;
 
-    public Addresses() {
+    public AddressesEntity() {
 
     }
 
-    public Addresses(int addressId, String streetname, int streetnumber, int postcode, String city) {
+    public AddressesEntity(int addressId, String streetname, int streetnumber, int postcode, String city) {
         this.addressId = addressId;
         this.streetname = streetname;
         this.streetnumber = streetnumber;
@@ -23,7 +23,7 @@ public class Addresses {
         return addressId;
     }
 
-    public void setAddress_id(int addressId) {
+    public void setAddressId(int addressId) {
         this.addressId = addressId;
     }
 

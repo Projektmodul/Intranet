@@ -1,15 +1,15 @@
-package com.example.application.backend.entity;
+package com.example.application.backend.entities;
 
-public class Permissions {
+public class PermissionsEntity {
     private int permissionId;
     private String permissionName;
     private int roleId;
 
-    public Permissions() {
+    public PermissionsEntity() {
 
     }
 
-    public Permissions(int permissionId, String permissionName, int roleId) {
+    public PermissionsEntity(int permissionId, String permissionName, int roleId) {
         this.permissionId = permissionId;
         this.permissionName = permissionName;
         this.roleId = roleId;

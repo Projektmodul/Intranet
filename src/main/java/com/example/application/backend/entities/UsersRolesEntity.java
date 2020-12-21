@@ -1,15 +1,15 @@
-package com.example.application.backend.entity;
+package com.example.application.backend.entities;
 
-public class UsersRoles {
+public class UsersRolesEntity {
     private int id;
     private int roleId;
     private int userId;
 
-    public UsersRoles() {
+    public UsersRolesEntity() {
 
     }
 
-    public UsersRoles(int id, int roleId, int userId) {
+    public UsersRolesEntity(int id, int roleId, int userId) {
         this.id = id;
         this.roleId = roleId;
         this.userId = userId;
