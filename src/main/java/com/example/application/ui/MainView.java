@@ -30,59 +30,42 @@ import com.vaadin.flow.server.PWA;
 public class MainView extends VerticalLayout implements RouterLayout {
 
     public MainView() {
-
         /*
          * Header
          * */
          //create the object navBar from class HorizontalBar
         HorizontalBar navBar = new HorizontalBar();
-        navBar.setClassName("layoutNavbar");
-        Image bsagLogo = new Image("images/bsag.png", "My Project logo");
-        bsagLogo.setClassName("bsagStyle");
+        //navBar.setId("navbar");
 
-        NativeButton logoBtn = new NativeButton("");
-        logoBtn.addClickListener( e-> logoBtn.getUI().ifPresent(ui -> ui.navigate("")));
+        Image logoImage = new Image("images/bsag.png", "My Project logo");
+        logoImage.setId("logoImage");
 
-        logoBtn.add(bsagLogo);
-        logoBtn.setClassName("bsagBtnStyle");
+        NativeButton logoButton = new NativeButton("");
+        logoButton.addClickListener( e-> logoButton.getUI().ifPresent(ui -> ui.navigate("")));
 
-        Icon logout = new Icon(VaadinIcon.SIGN_OUT);
-        logout.setClassName("logoutStyle");
+        logoButton.add(logoImage);
+        logoButton.setId("logoButton");
 
-        /*Icon alert = new Icon(VaadinIcon.ALARM);
-        alert.setClassName("alertStyle");*/
+        Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
+        logoutIcon.setId("logout");
 
         SideBar sideBar = new SideBar();
-        sideBar.setClassName("layoutSideBar");
 
-        /*HorizontalLayout sideMenu = new HorizontalLayout();
-        sideMenu.add(alert, sideBar);*/
+        VerticalLayout content = new VerticalLayout();
+        content.setId("content");
+        content.addClassName("text");
 
-        Div text = new Div();
-        text.addClassName("text-div");
-        Div content = new Div(text);
-        content.addClassName("content");
+        HorizontalLayout contentWithSidebar = new HorizontalLayout();
+        contentWithSidebar.add(content,sideBar);
+        contentWithSidebar.setId("contentWithSidebar");
 
-        HorizontalLayout sideBarLayout = new HorizontalLayout();
-        sideBarLayout.add(content,sideBar);
+        HorizontalLayout header = new HorizontalLayout();
+        header.add(logoButton,logoutIcon);
+        header.setId("header");
 
-        //create two horizontal Header for topBar
-        HorizontalLayout headerOne = new HorizontalLayout();
-        headerOne.add(logoBtn,logout);
-        HorizontalLayout headerTwo = new HorizontalLayout();
-        headerTwo.add(navBar);
-
-        VerticalLayout layout = new VerticalLayout();
-        layout.add(headerOne, headerTwo,sideBarLayout);
-        layout.addClassName("vertical-layout");
-        VerticalLayout topBar = new VerticalLayout();
-        topBar.add(layout);
-
-        add(topBar);
-
-
+        add(header, navBar, contentWithSidebar);
+        addClassName("vertical-layout");
 
     }
-
 
 }

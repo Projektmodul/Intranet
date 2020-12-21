@@ -10,15 +10,18 @@
     width: auto;
     height: 50px;
 }
-.menuBarStyleOne{
-    position: absolute;
-    left: 2.92%;
-    right: 2.99%;
+#menuBar{
     background: #4B4A4A;
     opacity: 0.7;
     box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
+    max-width: 1264px;
+    width: 100%;
 }
+#menuBar::part(container) {
+    justify-content: space-evenly !important;
+}
+
 
 .spanStyle{
     color: #FFFFFF;
@@ -29,9 +32,10 @@
     text-align: center;
 }
 
-.layoutVerti{
+.submenu{
     width: 140px;
     height: 140px;
+    align-items: center;
 }
 
 

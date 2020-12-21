@@ -23,9 +23,10 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
-
 @CssImport("./styles/views/main/mainView.css")
-public class SideBar extends Div {
+public class SideBar extends VerticalLayout {
+
+
 
     Tabs tabs;
     private NotificationsView notificationsView;
@@ -34,14 +35,14 @@ public class SideBar extends Div {
         notificationsView = new NotificationsView();
         notificationsView.addNotifications();
 
-        addClassName("side-bar");
-        //insert icon for alert
-        Icon alert = new Icon(VaadinIcon.LIGHTBULB);
-        alert.setClassName("alertStyle");
-        alert.addClickListener(e-> notificationsView.open());
+        setId("sideBar");
+        //insert icon for alertIcon
+        Icon alertIcon = new Icon(VaadinIcon.LIGHTBULB);
+        alertIcon.setId("alert");
+        alertIcon.addClickListener(e-> notificationsView.open());
         //insert field for search
         TextField searchField = new TextField();
-        searchField.setClassName("searchStyle");
+        searchField.setId("search");
         searchField.setPlaceholder("Suchbegriff eingeben...");
 
         tabs = new Tabs();
@@ -72,9 +73,7 @@ public class SideBar extends Div {
         tabs.setFlexGrowForEnclosedTabs(1);
         tabs.setClassName("tabsView");
 
-        VerticalLayout vertiView = new VerticalLayout();
-        vertiView.add(alert,searchField,tabs);
+        add(alertIcon,searchField,tabs);
 
-        add(vertiView);
     }
 }
