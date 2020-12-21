@@ -21,6 +21,13 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
+/**
+ * MyProfile View
+ *
+ * @author Jessica Reistel and Laura Neuendorf
+ * @version 2.0
+ * @since 21.12.2020
+ */
 
 @Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
@@ -150,13 +157,24 @@ public class MyProfileView extends Div {
 
     private Dialog initContentDialog () {
         Dialog contentDialog = new Dialog();
+        contentDialog.setCloseOnOutsideClick(false);
+        contentDialog.setCloseOnEsc(false);
+
+        Div saveCancel = new Div();
+        saveCancel.addClassName("saveCancelButton");
+
+        Button saveButton = new Button("Save", e -> contentDialog.close());
+        Button cancelButton = new Button("Cancel", e -> contentDialog.close());
+        saveButton.setId("button");
+        cancelButton.setId("button");
+        saveCancel.add(saveButton, cancelButton);
 
         HorizontalLayout update = new HorizontalLayout();
 
 
         update.addComponentAsFirst(initUpdateVerticalLayoutLeft());
         update.addComponentAtIndex(1, initUpdateVerticalLayoutRight());
-        contentDialog.add(new H1("Profil bearbeiten"), update);
+        contentDialog.add(new H1("Profil bearbeiten"), update, saveCancel);
 
         return contentDialog;
     }
