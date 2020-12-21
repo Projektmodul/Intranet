@@ -49,7 +49,7 @@ public class HorizontalBar extends MenuBar {
         subMenuListCompany.add(layoutNews);
         subMenuListCompany.add(layoutSport);
         subMenuListCompany.add(layoutJobs);
-        createMenuItem(subMenuListCompany, "Unser Unternehmen");
+        createMenuItem(subMenuListCompany, "Unser Unternehmen", "ourCompany");
 
         /*
          * Centers
@@ -59,7 +59,7 @@ public class HorizontalBar extends MenuBar {
 
         ArrayList<VerticalLayout> subMenuListCenter = new ArrayList<>();
         subMenuListCenter.add(layoutCenterI);
-        createMenuItem(subMenuListCenter, "Center");
+        createMenuItem(subMenuListCenter, "Center", "centers");
 
         /*
          * Projects
@@ -68,7 +68,7 @@ public class HorizontalBar extends MenuBar {
 
         ArrayList<VerticalLayout> subMenuListProjects = new ArrayList<>();
         subMenuListProjects.add(layoutNordlicht);
-        createMenuItem(subMenuListProjects, "Projekte");
+        createMenuItem(subMenuListProjects, "Projekte", "projects");
 
         /*
          * Library
@@ -89,7 +89,7 @@ public class HorizontalBar extends MenuBar {
         subMenuListLibrary.add(layoutArchive);
         subMenuListLibrary.add(layoutMedia);
         subMenuListLibrary.add(layoutFAQ);
-        createMenuItem(subMenuListLibrary, "Bibliothek");
+        createMenuItem(subMenuListLibrary, "Bibliothek", "library");
 
         /*
          * Services
@@ -108,7 +108,7 @@ public class HorizontalBar extends MenuBar {
         subMenuListServices.add(layoutLSA);
         subMenuListServices.add(layoutDrive);
         subMenuListServices.add(layoutBusinessTrip);
-        createMenuItem(subMenuListServices, "Services");
+        createMenuItem(subMenuListServices, "Services", "service");
 
 
         /*
@@ -124,7 +124,7 @@ public class HorizontalBar extends MenuBar {
         subMenuListCommunity.add(layoutBlog);
         subMenuListCommunity.add(layoutNoticeBoard);
         subMenuListCommunity.add(layoutIdeaManagement);
-        createMenuItem(subMenuListCommunity, "Community");
+        createMenuItem(subMenuListCommunity, "Community", "community");
     }
 
     private VerticalLayout createSubMenu(Icon icon, String backgroundcolor, String spanText, String route) {
@@ -144,7 +144,7 @@ public class HorizontalBar extends MenuBar {
 
     }
 
-    private void createMenuItem(ArrayList<VerticalLayout> layoutList, String labelText) {
+    private void createMenuItem(ArrayList<VerticalLayout> layoutList, String labelText, String route) {
 
         HorizontalLayout layout = new HorizontalLayout();
 
@@ -156,6 +156,7 @@ public class HorizontalBar extends MenuBar {
         Label label = new Label(labelText);
         label.getStyle().set("color", "white");
         MenuItem menuItem = addItem(label);
+        menuItem.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
         menuItem.getSubMenu().addItem(layout);
 
     }

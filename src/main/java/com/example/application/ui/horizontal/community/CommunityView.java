@@ -14,7 +14,7 @@ public class CommunityView extends Div {
     public CommunityView() {
         setId("community-view");
         setClassName("pageContentPosition");
-        add(new Text("Community"));
+        add(new Text("Übersicht Community"));
     }
 
 }

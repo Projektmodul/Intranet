@@ -14,7 +14,7 @@ public class CentersView extends Div {
     public CentersView() {
         setId("centers-view");
         setClassName("pageContentPosition");
-        add(new Text("Centers"));
+        add(new Text(" Übersicht Center"));
     }
 
 }
