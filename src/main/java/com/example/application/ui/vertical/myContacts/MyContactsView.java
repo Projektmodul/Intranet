@@ -12,6 +12,7 @@ public class MyContactsView extends Div {
 
     public MyContactsView() {
         setId("myContacts-view");
+        setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
         add(new Text("GitHub Setup"));
     }

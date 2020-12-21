@@ -9,27 +9,41 @@ import com.example.application.ui.vertical.lastVisited.LastVisitedView;
 import com.example.application.ui.vertical.mailing.MailingView;
 import com.example.application.ui.vertical.myContacts.MyContactsView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
+import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.search.SearchView;
 import com.example.application.ui.vertical.settings.SettingsView;
 import com.example.application.ui.vertical.timetable.TimetableView;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
+@CssImport("./styles/views/main/mainView.css")
+public class SideBar extends VerticalLayout {
 
-import java.util.Arrays;
-import java.util.HashMap;
 
-
-public class SideBar extends Div {
 
     Tabs tabs;
-
+    private NotificationsView notificationsView;
 
     public SideBar(){
+        notificationsView = new NotificationsView();
+        notificationsView.addNotifications();
 
-        addClassName("side-bar");
+        setId("sideBar");
+        //insert icon for alertIcon
+        Icon alertIcon = new Icon(VaadinIcon.LIGHTBULB);
+        alertIcon.setId("alert");
+        alertIcon.addClickListener(e-> notificationsView.open());
+        //insert field for search
+        TextField searchField = new TextField();
+        searchField.setId("search");
+        searchField.setPlaceholder("Suchbegriff eingeben...");
 
         tabs = new Tabs();
         Tab[] tabArray = new Tab[13];
@@ -51,15 +65,15 @@ public class SideBar extends Div {
         tabArray[11].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
         tabArray[12].add(new RouterLink("Zuletzt besucht", LastVisitedView.class));
 
-        for (int i=0;i<tabArray.length;i++) {
-            tabs.add(tabArray[i]);
+        for (Tab tab : tabArray) {
+            tabs.add(tab);
         }
 
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
+        tabs.setClassName("tabsView");
 
-        add(tabs);
-
+        add(alertIcon,searchField,tabs);
 
     }
 }

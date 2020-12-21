@@ -12,6 +12,7 @@ public class SportView extends Div {
 
     public SportView() {
         setId("sport-view");
+        setClassName("pageContentPosition");
         add(new Text("Sport & Freizeit"));
     }
 

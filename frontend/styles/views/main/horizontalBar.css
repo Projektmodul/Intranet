@@ -1,0 +1,44 @@
+/*created @ de Boer, Marieke Menna & MonikaMartius */
+
+.icons{
+    color: #FFFFFF;
+    width: 65px;
+    height: 65px;
+}
+
+.image{
+    width: auto;
+    height: 50px;
+}
+#menuBar{
+    background: #4B4A4A;
+    opacity: 0.7;
+    box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    max-width: 1264px;
+    width: 100%;
+}
+#menuBar::part(container) {
+    justify-content: space-evenly !important;
+}
+
+
+.spanStyle{
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 120px;
+    height: 120px;
+    alignment: center;
+    text-align: center;
+}
+
+.submenu{
+    width: 140px;
+    height: 140px;
+    align-items: center;
+}
+
+
+
+
+

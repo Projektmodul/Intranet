@@ -12,6 +12,7 @@ public class NewsView extends Div {
 
     public NewsView() {
         setId("news-view");
+        setClassName("pageContentPosition");
         add(new Text("Nachrichten"));
     }
 
