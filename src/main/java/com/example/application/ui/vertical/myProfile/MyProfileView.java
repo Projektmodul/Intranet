@@ -24,7 +24,8 @@ import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
 /**
- * MyProfile View
+ * MyProfile View shows the informations from the current user
+ * The user is able to change his profile information
  *
  * @author Jessica Reistel and Laura Neuendorf
  * @version 2.0
@@ -35,7 +36,7 @@ import com.example.application.ui.MainView;
 @PageTitle("Mein Profil")
 @CssImport("./styles/views/main/myProfileView.css")
 public class MyProfileView extends Div {
-
+    //These are only for demo, could be deleted once the data in the database is ready to be used
     private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
     private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
 
