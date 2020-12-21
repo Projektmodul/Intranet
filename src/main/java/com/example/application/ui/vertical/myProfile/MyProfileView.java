@@ -4,6 +4,8 @@ import com.example.application.backend.entities.UsersEntity;
 import com.example.application.backend.entities.AddressesEntity;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 
@@ -31,6 +33,7 @@ import com.example.application.ui.MainView;
 
 @Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
+@CssImport("./styles/views/main/myProfileView.css")
 public class MyProfileView extends Div {
 
     private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
