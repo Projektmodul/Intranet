@@ -26,18 +26,17 @@ import com.example.application.ui.MainView;
 
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = ContentHolder.class)
-/**
- * MyProfile View shows the informations from the current user
- * The user is able to change his profile information
- *
- * @author Jessica Reistel and Laura Neuendorf
+@PageTitle("Mein Profil")
+
+/*
+  MyProfile View shows the information from the current user
+  The user is able to change his profile information
+
+  @author Jessica Reistel and Laura Neuendorf
  * @version 2.0
  * @since 21.12.2020
  */
 
-@Route(value = "myProfile", layout = MainView.class)
-@PageTitle("Mein Profil")
-@CssImport("./styles/views/main/myProfileView.css")
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
     private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
@@ -151,7 +150,7 @@ public class MyProfileView extends Div {
 
     /*
      * The method initVerticalLayoutRight generates the right vertical layout for data
-     * Includes the text field job description, the profilepicture and the button updateProfile
+     * Includes the text field job description, the profile picture and the button updateProfile
      * @return right
      */
     private VerticalLayout initVerticalLayoutRight () {
@@ -190,12 +189,12 @@ public class MyProfileView extends Div {
         contentDialog.setCloseOnEsc(false);
 
         Div saveCancel = new Div();
-        saveCancel.addClassName("saveCancelButton");
+        saveCancel.setId("saveCancelDiv");
 
         Button saveButton = new Button("Save", e -> contentDialog.close());
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
-        saveButton.setId("button");
-        cancelButton.setId("button");
+        saveButton.addClassName("myProfileButton");
+        cancelButton.addClassName("myProfileButton");
         saveCancel.add(saveButton, cancelButton);
 
         HorizontalLayout update = new HorizontalLayout();

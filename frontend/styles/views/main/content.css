@@ -5,3 +5,24 @@
     height: 100%;
     background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
 }
+
+/**
+ * Stylesheet for myProfileView
+ *
+ *@author Jessica Reistel and Laura Neuendorf
+ *@Version 1.0
+ *@since 21.12.2020
+ */
+
+/* Positioning the Save and Cancel button and styling it*/
+#saveCancelDiv{
+    text-align: center;
+}
+
+.myProfileButton{
+    background-color: darkgrey;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+}
