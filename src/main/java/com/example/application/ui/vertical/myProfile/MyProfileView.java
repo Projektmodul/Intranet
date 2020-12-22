@@ -24,18 +24,18 @@ import com.vaadin.flow.router.ParentLayout;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
+/**
+ *  MyProfile View shows the information from the current user
+ *  The user is able to change his profile information
+ *
+ *  @author Jessica Reistel and Laura Neuendorf
+ *  @version 2.0
+ *  @since 21.12.2020
+ */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = ContentHolder.class)
 @PageTitle("Mein Profil")
 
-/*
-  MyProfile View shows the information from the current user
-  The user is able to change his profile information
-
-  @author Jessica Reistel and Laura Neuendorf
- * @version 2.0
- * @since 21.12.2020
- */
 
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
