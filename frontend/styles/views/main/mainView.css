@@ -52,12 +52,6 @@
   background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
 }
 
-#contentWithSidebar{
-  width: 100%;
-  max-width: 1264px;
-}
-
-
 .textView {
   background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
 }
@@ -87,7 +81,26 @@
   width: auto !important;
 }
 
-#alert:hover{
-  cursor:pointer;
+#alert:hover {
+  cursor: pointer;
 }
+
+#contentHolder {
+
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 1264px;
+  justify-content: space-between;
+
+}
+#contentHolder::before{
+  content: none;
+}
+
+.pageContentPosition {
+  margin-top: 1.5em;
+  margin-left: 0;
+  color: #4B4A4A;
+}
+
 

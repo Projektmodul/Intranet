@@ -24,8 +24,6 @@ import com.vaadin.flow.server.PWA;
 @PWA(name = "BSAG Intranet", shortName = "BSAG Intranet", enableInstallPrompt = false)
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
-@Route(value = "my-view", layout = MainView.class)
-@PageTitle("My View")
 
 public class MainView extends VerticalLayout implements RouterLayout {
 
@@ -33,15 +31,15 @@ public class MainView extends VerticalLayout implements RouterLayout {
         /*
          * Header
          * */
+        setId("MainView");
          //create the object navBar from class HorizontalBar
         HorizontalBar navBar = new HorizontalBar();
-        //navBar.setId("navbar");
 
         Image logoImage = new Image("images/bsag.png", "My Project logo");
         logoImage.setId("logoImage");
 
         NativeButton logoButton = new NativeButton("");
-        logoButton.addClickListener( e-> logoButton.getUI().ifPresent(ui -> ui.navigate("")));
+        logoButton.addClickListener( e-> logoButton.getUI().ifPresent(ui -> ui.navigate("home")));
 
         logoButton.add(logoImage);
         logoButton.setId("logoButton");
@@ -49,21 +47,11 @@ public class MainView extends VerticalLayout implements RouterLayout {
         Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
         logoutIcon.setId("logout");
 
-        SideBar sideBar = new SideBar();
-
-        VerticalLayout content = new VerticalLayout();
-        content.setId("content");
-        content.addClassName("text");
-
-        HorizontalLayout contentWithSidebar = new HorizontalLayout();
-        contentWithSidebar.add(content,sideBar);
-        contentWithSidebar.setId("contentWithSidebar");
-
         HorizontalLayout header = new HorizontalLayout();
         header.add(logoButton,logoutIcon);
         header.setId("header");
 
-        add(header, navBar, contentWithSidebar);
+        add(header, navBar);
         addClassName("vertical-layout");
 
     }

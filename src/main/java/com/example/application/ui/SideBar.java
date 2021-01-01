@@ -26,8 +26,6 @@ import com.vaadin.flow.router.RouterLink;
 @CssImport("./styles/views/main/mainView.css")
 public class SideBar extends VerticalLayout {
 
-
-
     Tabs tabs;
     private NotificationsView notificationsView;
 
@@ -37,7 +35,7 @@ public class SideBar extends VerticalLayout {
 
         setId("sideBar");
         //insert icon for alertIcon
-        Icon alertIcon = new Icon(VaadinIcon.LIGHTBULB);
+        Icon alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alert");
         alertIcon.addClickListener(e-> notificationsView.open());
         //insert field for search

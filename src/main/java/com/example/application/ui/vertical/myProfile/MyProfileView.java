@@ -3,6 +3,7 @@ package com.example.application.ui.vertical.myProfile;
 import com.example.application.backend.entities.UsersEntity;
 import com.example.application.backend.entities.AddressesEntity;
 
+import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -19,21 +20,23 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.ParentLayout;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
 /**
- * MyProfile View shows the informations from the current user
- * The user is able to change his profile information
+ *  MyProfile View shows the information from the current user
+ *  The user is able to change his profile information
  *
- * @author Jessica Reistel and Laura Neuendorf
- * @version 2.0
- * @since 21.12.2020
+ *  @author Jessica Reistel and Laura Neuendorf
+ *  @version 2.0
+ *  @since 21.12.2020
  */
-
-@Route(value = "myProfile", layout = MainView.class)
+@CssImport("./styles/views/main/content.css")
+@Route(value = "myProfile", layout = ContentHolder.class)
 @PageTitle("Mein Profil")
-@CssImport("./styles/views/main/myProfileView.css")
+
+
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
     private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
@@ -44,7 +47,7 @@ public class MyProfileView extends Div {
      */
     public MyProfileView() {
         setId("myProfile-view");
-
+        setClassName("pageContentPosition");
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new Label("Mein Profil"));
         content.setSizeFull();
@@ -147,7 +150,7 @@ public class MyProfileView extends Div {
 
     /*
      * The method initVerticalLayoutRight generates the right vertical layout for data
-     * Includes the text field job description, the profilepicture and the button updateProfile
+     * Includes the text field job description, the profile picture and the button updateProfile
      * @return right
      */
     private VerticalLayout initVerticalLayoutRight () {
@@ -186,12 +189,12 @@ public class MyProfileView extends Div {
         contentDialog.setCloseOnEsc(false);
 
         Div saveCancel = new Div();
-        saveCancel.addClassName("saveCancelButton");
+        saveCancel.setId("saveCancelDiv");
 
         Button saveButton = new Button("Save", e -> contentDialog.close());
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
-        saveButton.setId("button");
-        cancelButton.setId("button");
+        saveButton.addClassName("myProfileButton");
+        cancelButton.addClassName("myProfileButton");
         saveCancel.add(saveButton, cancelButton);
 
         HorizontalLayout update = new HorizontalLayout();
