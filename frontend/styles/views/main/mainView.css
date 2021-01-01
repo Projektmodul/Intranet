@@ -46,6 +46,10 @@
   height: 60px;
 }
 
+#logout:hover{
+  cursor: pointer;
+}
+
 #content{
   width: 100%;
   height: 100%;
