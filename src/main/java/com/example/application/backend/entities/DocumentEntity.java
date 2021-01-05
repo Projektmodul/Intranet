@@ -38,6 +38,10 @@ public class DocumentEntity {
     @JoinColumn(name ="user_id")
     private UsersEntity user;
 
+    @OneToOne
+    @JoinColumn(name="notification_id")
+    private NotificationEntity notification;
+
     public int getDocumentId() {
         return documentId;
     }
@@ -93,5 +97,14 @@ public class DocumentEntity {
     public void setUser(UsersEntity user) {
         this.user = user;
     }
+
+    public NotificationEntity getNotification() {
+        return notification;
+    }
+
+    public void setNotification(NotificationEntity notification) {
+        this.notification = notification;
+    }
+
 
 }

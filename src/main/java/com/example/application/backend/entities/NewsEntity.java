@@ -35,6 +35,10 @@ public class NewsEntity {
     @ManyToMany(mappedBy = "news")
     private List<PageEntity> pages;
 
+    @OneToOne
+    @JoinColumn(name="notification_id")
+    private NotificationEntity notification;
+
     public int getNewsId() {
         return newsId;
     }
@@ -90,5 +94,14 @@ public class NewsEntity {
     public void setPages(List<PageEntity> pages) {
         this.pages = pages;
     }
+
+    public NotificationEntity getNotification() {
+        return notification;
+    }
+
+    public void setNotification(NotificationEntity notification) {
+        this.notification = notification;
+    }
+
 
 }

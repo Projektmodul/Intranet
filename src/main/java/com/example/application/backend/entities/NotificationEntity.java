@@ -24,6 +24,11 @@ public class NotificationEntity {
     private String description;
     private String category;
 
+    @OneToOne(mappedBy = "notification")
+    private NewsEntity news;
+
+    @OneToOne(mappedBy = "notification")
+    private DocumentEntity document;
 
     public int getNotificationId() {
         return notificationId;
@@ -57,23 +62,21 @@ public class NotificationEntity {
         this.category = category;
     }
 
-/*
-
-    public NotificationEntity(String title, String description, String date){
-        this.title = title;
-        this.description = description;
-        this.date = date;
-
-        details = new Details();
-        details.setSummaryText(this.title);
-        details.addContent(new H5(this.description),new Text(this.date));
-        details.addThemeVariants(DetailsVariant.REVERSE, DetailsVariant.REVERSE);
-
+    public NewsEntity getNews() {
+        return news;
     }
 
-    public Details getDetails() {
-        return details;
+    public void setNews(NewsEntity news) {
+        this.news = news;
     }
-*/
+
+    public DocumentEntity getDocument() {
+        return document;
+    }
+
+    public void setDocument(DocumentEntity documents) {
+        this.document = documents;
+    }
+
 
 }
