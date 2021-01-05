@@ -65,6 +65,7 @@ public class SideBar extends VerticalLayout {
 
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
+        tabs.setSelectedTab(null);
         tabs.setClassName("tabsView");
 
         add(alertIcon,searchField,tabs);
