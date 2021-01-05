@@ -22,7 +22,7 @@ import com.vaadin.flow.router.RouterLink;
 
 public class SideBar extends VerticalLayout {
 
-    Tabs tabs;
+    public Tabs tabs;
     private final NotificationsView notificationsView;
 
     public SideBar(){
@@ -65,6 +65,7 @@ public class SideBar extends VerticalLayout {
 
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
+        tabs.setSelectedTab(null);
         tabs.setClassName("tabsView");
 
         add(alertIcon,searchField,tabs);
