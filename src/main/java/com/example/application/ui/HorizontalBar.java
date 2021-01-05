@@ -108,7 +108,7 @@ public class HorizontalBar extends MenuBar {
         subMenuListServices.add(layoutLSA);
         subMenuListServices.add(layoutDrive);
         subMenuListServices.add(layoutBusinessTrip);
-        createMenuItem(subMenuListServices, "Services", "service");
+        createMenuItem(subMenuListServices, "Services", "services");
 
 
         /*
