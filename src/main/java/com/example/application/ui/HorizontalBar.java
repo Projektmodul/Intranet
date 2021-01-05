@@ -95,13 +95,13 @@ public class HorizontalBar extends MenuBar {
          * Services
          *          */
 
-        VerticalLayout layoutTime = createSubMenu(new Icon(VaadinIcon.CHART_TIMELINE), "#FF5621", "Zeitkonto", "");
+        VerticalLayout layoutTime = createSubMenu(new Icon(VaadinIcon.CHART_TIMELINE), "#FF5621", "Zeitkonto", "inProgress");
 
-        VerticalLayout layoutLSA = createSubMenu(new Icon(VaadinIcon.PYRAMID_CHART), "#FF5621", "LSA-Meldungen", "");
+        VerticalLayout layoutLSA = createSubMenu(new Icon(VaadinIcon.PYRAMID_CHART), "#FF5621", "LSA-Meldungen", "inProgress");
 
-        VerticalLayout layoutDrive = createSubMenu(new Icon(VaadinIcon.CAR), "#FF5621", "Fahrdienst", "");
+        VerticalLayout layoutDrive = createSubMenu(new Icon(VaadinIcon.CAR), "#FF5621", "Fahrdienst", "inProgress");
 
-        VerticalLayout layoutBusinessTrip = createSubMenu(new Icon(VaadinIcon.FLIGHT_TAKEOFF), "#FF5621", "Dienstreisen", "businessTrip");
+        VerticalLayout layoutBusinessTrip = createSubMenu(new Icon(VaadinIcon.FLIGHT_TAKEOFF), "#FF5621", "Dienstreisen", "inProgress");
 
         ArrayList<VerticalLayout> subMenuListServices = new ArrayList<>();
         subMenuListServices.add(layoutTime);
