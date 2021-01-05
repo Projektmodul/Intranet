@@ -1,21 +1,49 @@
 package com.example.application.backend.entities;
 
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * This is a basic address class.
+ *
+ * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
+ * @version 2.0
+ * @since   21-12-2020
+ * @lastUpdated 05.01.2021
+ */
+
+@Entity(name = "addresses")//name of the database table
 public class AddressesEntity {
+
+    @Id //specifies the primary key of the table
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // specifies how the primary key gets generated
+    @Column(name ="address_id")
     private int addressId;
-    private String streetname;
-    private int streetnumber;
-    private int postcode;
+
+    @Column(name ="streetname")
+    private String streetName;
+
+    @Column(name ="streetnumber")
+    private int streetNumber;
+
+    @Column(name ="postcode")
+    private int postCode;
+
     private String city;
+
+    @OneToMany(mappedBy = "address")
+    private List<UsersEntity> users;
 
     public AddressesEntity() {
 
     }
 
-    public AddressesEntity(int addressId, String streetname, int streetnumber, int postcode, String city) {
+    public AddressesEntity(int addressId, String streetName, int streetNumber, int postCode, String city) {
         this.addressId = addressId;
-        this.streetname = streetname;
-        this.streetnumber = streetnumber;
-        this.postcode = postcode;
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.postCode = postCode;
         this.city = city;
     }
 
@@ -27,28 +55,28 @@ public class AddressesEntity {
         this.addressId = addressId;
     }
 
-    public String getStreetname() {
-        return streetname;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setStreetname(String streetname) {
-        this.streetname = streetname;
+    public void setStreetName(String streetname) {
+        this.streetName = streetname;
     }
 
-    public int getStreetnumber() {
-        return streetnumber;
+    public int getStreetNumber() {
+        return streetNumber;
     }
 
-    public void setStreetnumber(int streetnumber) {
-        this.streetnumber = streetnumber;
+    public void setStreetNumber(int streetnumber) {
+        this.streetNumber = streetnumber;
     }
 
-    public int getPostcode() {
-        return postcode;
+    public int getPostCode() {
+        return postCode;
     }
 
-    public void setPostcode(int postcode) {
-        this.postcode = postcode;
+    public void setPostCode(int postcode) {
+        this.postCode = postcode;
     }
 
     public String getCity() {
@@ -58,4 +86,13 @@ public class AddressesEntity {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public List<UsersEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UsersEntity> users) {
+        this.users = users;
+    }
+
 }

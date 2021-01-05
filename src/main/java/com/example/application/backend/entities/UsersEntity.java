@@ -1,32 +1,70 @@
 package com.example.application.backend.entities;
 
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * This is a basic user class.
+ *
+ * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
+ * @version 3.0
+ * @since   21-12-2020
+ * @lastUpdated 05.01.2021
+ */
+
+@Entity(name= "users")
 public class UsersEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="user_id")
     private int id;
+
     private String username;
     private String password;
     private String surname;
     private String firstname;
-    private int addressId;
+
+    @ManyToOne
+    @JoinColumn(name ="address_id")
+    private AddressesEntity address;
+
     private String iban;
     private char center;
-    private int roomnumber;
-    private int telefon;
+
+    @Column(name ="room_number")
+    private int roomNumber;
+
+    @Column(name ="telephone_number")
+    private int telephoneNumber;
+
     private String email;
+
+    @Column(name ="job_description")
     private String jobDescription;
+
+    @ManyToMany
+    @JoinTable( //this defines the relationship and the foreign key columns
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<RolesEntity> roles;
 
     public UsersEntity() {
 
     }
 
-    public UsersEntity(int id, String firstname, String surname, int addressId, String iban, char center, int roomnumber, int telefon, String email, String jobDescription) {
+    public UsersEntity(int id, String firstname, String surname, AddressesEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
-        this.addressId = addressId;
+        this.address = address;
         this.iban = iban;
         this.center = center;
-        this.roomnumber = roomnumber;
-        this.telefon = telefon;
+        this.roomNumber = roomNumber;
+        this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.jobDescription = jobDescription;
     }
@@ -72,12 +110,12 @@ public class UsersEntity {
         this.firstname = firstname;
     }
 
-    public String getAddressId() {
-        return "" + addressId;
+    public AddressesEntity getAddress() {
+        return address;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setAddress(AddressesEntity address) {
+        this.address = address;
     }
 
     public String getIban() {
@@ -96,20 +134,20 @@ public class UsersEntity {
         this.center = center;
     }
 
-    public String getRoomnumber() {
-        return "" + roomnumber;
+    public String getRoomNumber() {
+        return "" + roomNumber;
     }
 
-    public void setRoomnumber(int roomnumber) {
-        this.roomnumber = roomnumber;
+    public void setRoomNumber(int roomnumber) {
+        this.roomNumber = roomnumber;
     }
 
-    public String getTelefon() {
-        return "" + telefon;
+    public String getTelephoneNumber() {
+        return "" + telephoneNumber;
     }
 
-    public void setTelefon(int telefon) {
-        this.telefon = telefon;
+    public void setTelephoneNumber(int telefon) {
+        this.telephoneNumber = telefon;
     }
 
     public String getEmail() {
@@ -127,4 +165,13 @@ public class UsersEntity {
     public void setJobDescription(String jobDescription) {
         this.jobDescription = jobDescription;
     }
+
+    public List<RolesEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RolesEntity> roles) {
+        this.roles = roles;
+    }
+
 }

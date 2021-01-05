@@ -27,7 +27,7 @@ public class SideBar extends VerticalLayout {
 
     public SideBar(){
         notificationsView = new NotificationsView();
-        notificationsView.addNotifications();
+        //notificationsView.addNotifications();
 
         setId("sideBar");
         //insert icon for alertIcon
