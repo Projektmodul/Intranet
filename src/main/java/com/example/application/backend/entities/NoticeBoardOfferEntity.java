@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name ="notice_board_offer")
+@Entity(name ="notice_board_offers")
 public class NoticeBoardOfferEntity {
 
     @Id
@@ -26,6 +26,14 @@ public class NoticeBoardOfferEntity {
     @OneToOne
     @JoinColumn(name="image_id")
     private ImageEntity image;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UsersEntity user;
+
+    @ManyToOne
+    @JoinColumn(name ="page_id")
+    private PageEntity page;
 
     public int getNoticeBoardOfferId() {
         return noticeBoardOfferId;
@@ -67,4 +75,11 @@ public class NoticeBoardOfferEntity {
         this.image = image;
     }
 
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
 }

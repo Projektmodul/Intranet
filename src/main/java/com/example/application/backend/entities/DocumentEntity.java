@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name = "document")
+@Entity(name = "documents")
 public class DocumentEntity {
 
     @Id
@@ -20,13 +20,23 @@ public class DocumentEntity {
     @Column(name ="document_id")
     private int documentId;
 
+    @Column(name ="file_name")
     private String fileName;
+
     private String path;
-    private String type;
+
     private String keyword;
 
     @OneToOne(mappedBy = "document")
     private JobOfferEntity jobOffer;
+
+    @ManyToOne
+    @JoinColumn(name ="page_id")
+    private PageEntity page;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UsersEntity user;
 
     public int getDocumentId() {
         return documentId;
@@ -52,14 +62,6 @@ public class DocumentEntity {
         this.path = path;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getKeyword() {
         return keyword;
     }
@@ -76,5 +78,20 @@ public class DocumentEntity {
         this.jobOffer = jobOffer;
     }
 
+    public PageEntity getPage() {
+        return page;
+    }
+
+    public void setPage(PageEntity page) {
+        this.page = page;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
 
 }

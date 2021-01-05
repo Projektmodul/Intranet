@@ -24,11 +24,11 @@ public class AddressesEntity {
     @Column(name ="streetname")
     private String streetName;
 
-    @Column(name ="streetnumber")
+    @Column(name ="street_number")
     private int streetNumber;
 
     @Column(name ="postcode")
-    private int postCode;
+    private int postcode;
 
     private String city;
 
@@ -39,11 +39,11 @@ public class AddressesEntity {
 
     }
 
-    public AddressesEntity(int addressId, String streetName, int streetNumber, int postCode, String city) {
+    public AddressesEntity(int addressId, String streetName, int streetNumber, int postcode, String city) {
         this.addressId = addressId;
         this.streetName = streetName;
         this.streetNumber = streetNumber;
-        this.postCode = postCode;
+        this.postcode = postcode;
         this.city = city;
     }
 
@@ -71,12 +71,12 @@ public class AddressesEntity {
         this.streetNumber = streetnumber;
     }
 
-    public int getPostCode() {
-        return postCode;
+    public int getPostcode() {
+        return postcode;
     }
 
-    public void setPostCode(int postcode) {
-        this.postCode = postcode;
+    public void setPostcode(int postcode) {
+        this.postcode = postcode;
     }
 
     public String getCity() {

@@ -13,7 +13,7 @@ import java.util.List;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name = "page")
+@Entity(name = "pages")
 public class PageEntity {
 
     @Id
@@ -34,13 +34,24 @@ public class PageEntity {
     @OneToMany(mappedBy = "page")
     private List<ImageEntity> images;
 
+    @OneToMany(mappedBy = "page")
+    private List<IdeaEntity> ideas;
+
+    @OneToMany(mappedBy = "page")
+    private List<NoticeBoardOfferEntity> noticeBoardOffers;
+
     @ManyToMany
     @JoinTable( //this defines the relationship and the foreign key columns
-            //name = "pages_news",
-            //joinColumns = @JoinColumn(name = "page_id"),
-            //inverseJoinColumns = @JoinColumn(name = "news_id")
+            name = "pages_news",
+            joinColumns = @JoinColumn(name = "page_id"),
+            inverseJoinColumns = @JoinColumn(name = "news_id")
     )
     private List<NewsEntity> news;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UsersEntity user;
+
 
     public int getPageId() {
         return pageId;
@@ -70,9 +81,7 @@ public class PageEntity {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+    public void setType(String type) { this.type = type; }
 
     public List<LinkEntity> getLinks() {
         return links;
@@ -104,6 +113,20 @@ public class PageEntity {
 
     public void setImages(List<ImageEntity> images) {
         this.images = images;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
+
+    public List<IdeaEntity> getIdeas() { return ideas; }
+
+    public void setIdeas(List<IdeaEntity> ideas) {
+        this.ideas = ideas;
     }
 
 }

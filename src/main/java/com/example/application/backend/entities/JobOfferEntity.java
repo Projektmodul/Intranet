@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name="job_offer")
+@Entity(name="job_offers")
 public class JobOfferEntity {
 
     @Id
@@ -28,6 +28,10 @@ public class JobOfferEntity {
     @OneToOne
     @JoinColumn(name="document_id")
     private DocumentEntity document;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UsersEntity user;
 
     public int getJobOfferId() {
         return jobOfferId;
@@ -83,6 +87,14 @@ public class JobOfferEntity {
 
     public void setDocument(DocumentEntity document) {
         this.document = document;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
 }

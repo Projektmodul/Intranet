@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name ="link")
+@Entity(name ="links")
 public class LinkEntity {
 
     @Id
@@ -26,6 +26,13 @@ public class LinkEntity {
     @OneToOne(mappedBy = "link")
     private NewsEntity news;
 
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UsersEntity user;
+
+    @ManyToOne
+    @JoinColumn(name ="page_id")
+    private PageEntity page;
 
     public int getLinkId() {
         return linkId;
@@ -59,4 +66,11 @@ public class LinkEntity {
         this.news = news;
     }
 
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
 }

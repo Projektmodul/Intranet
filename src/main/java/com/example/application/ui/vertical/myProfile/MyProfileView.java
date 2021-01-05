@@ -118,7 +118,7 @@ public class MyProfileView extends Div {
 
         TextArea address = new TextArea();
         address.setValue(addressesEntity.getStreetName()+" "+ addressesEntity.getStreetNumber()+"\n"+
-                addressesEntity.getPostCode()+" "+ addressesEntity.getCity());
+                addressesEntity.getPostcode()+" "+ addressesEntity.getCity());
         address.setLabel("Adresse");
         address.setReadOnly(true);
 
@@ -251,7 +251,7 @@ public class MyProfileView extends Div {
         updateNumber.setLabel("Hausnummer");
 
         IntegerField updatePostcode = new IntegerField();
-        updatePostcode.setValue(addressesEntity.getPostCode());
+        updatePostcode.setValue(addressesEntity.getPostcode());
         updatePostcode.setLabel("PLZ");
 
         TextField updateCity = new TextField();

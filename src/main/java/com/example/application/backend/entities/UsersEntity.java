@@ -52,6 +52,32 @@ public class UsersEntity {
     )
     private List<RolesEntity> roles;
 
+    @OneToMany(mappedBy = "user")
+    private List<DocumentEntity> documents;
+
+    @OneToMany(mappedBy = "user")
+    private List<ImageEntity> images;
+
+    @OneToMany(mappedBy = "user")
+    private List<LinkEntity> links;
+
+    @OneToMany(mappedBy = "user")
+    private List<PageEntity> pages;
+
+    @OneToMany(mappedBy = "user")
+    private List<IdeaEntity> ideas;
+
+    @OneToMany(mappedBy = "user")
+    private List<JobOfferEntity> jobOffers;
+
+    @OneToOne
+    @JoinColumn(name="setting_id")
+    private SettingsEntity settings;
+
+    public List<ImageEntity> getImages() {
+        return images;
+    }
+
     public UsersEntity() {
 
     }
@@ -76,7 +102,6 @@ public class UsersEntity {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getUsername() {
         return username;
@@ -172,6 +197,58 @@ public class UsersEntity {
 
     public void setRoles(List<RolesEntity> roles) {
         this.roles = roles;
+    }
+
+    public List<DocumentEntity> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<DocumentEntity> documents) {
+        this.documents = documents;
+    }
+
+    public void setImages(List<ImageEntity> images) {
+        this.images = images;
+    }
+
+    public List<LinkEntity> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<LinkEntity> links) {
+        this.links = links;
+    }
+
+    public List<PageEntity> getPages() {
+        return pages;
+    }
+
+    public void setPages(List<PageEntity> pages) {
+        this.pages = pages;
+    }
+
+    public List<IdeaEntity> getIdeas() {
+        return ideas;
+    }
+
+    public void setIdeas(List<IdeaEntity> ideas) {
+        this.ideas = ideas;
+    }
+
+    public List<JobOfferEntity> getJobOffers() {
+        return jobOffers;
+    }
+
+    public void setJobOffers(List<JobOfferEntity> jobOffers) {
+        this.jobOffers = jobOffers;
+    }
+
+    public SettingsEntity getSettings() {
+        return settings;
+    }
+
+    public void setSettings(SettingsEntity settings) {
+        this.settings = settings;
     }
 
 }

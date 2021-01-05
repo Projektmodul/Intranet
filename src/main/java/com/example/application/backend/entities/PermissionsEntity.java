@@ -53,7 +53,12 @@ public class PermissionsEntity {
         this.permissionName = permissionName;
     }
 
+    public List<RolesEntity> getRoles() {
+        return roles;
+    }
 
-
+    public void setRoles(List<RolesEntity> roles) {
+        this.roles = roles;
+    }
 
 }

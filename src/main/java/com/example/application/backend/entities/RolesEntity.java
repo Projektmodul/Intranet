@@ -25,7 +25,7 @@ public class RolesEntity {
     @ManyToMany
     @JoinTable( //this defines the relationship and the foreign key columns
             name = "permissions_roles",
-            //joinColumns = @JoinColumn(name = "role_id"),
+            joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     private List<PermissionsEntity> permissions;

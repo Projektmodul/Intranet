@@ -1,6 +1,7 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -12,7 +13,7 @@ import javax.persistence.*;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name ="idea")
+@Entity(name ="ideas")
 public class IdeaEntity {
 
     @Id
@@ -23,6 +24,14 @@ public class IdeaEntity {
     private String title;
     private String description;
     private String rating;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UsersEntity user;
+
+    @ManyToOne
+    @JoinColumn(name ="page_id")
+    private PageEntity page;
 
     public int getIdeaId() {
         return ideaId;
@@ -54,6 +63,14 @@ public class IdeaEntity {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
 }

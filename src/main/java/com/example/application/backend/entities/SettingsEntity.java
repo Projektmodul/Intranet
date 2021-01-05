@@ -17,7 +17,7 @@ public class SettingsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="settings_id")
+    @Column(name ="setting_id")
     private int settingsId;
 
     private String type;
@@ -28,6 +28,9 @@ public class SettingsEntity {
 
     @Column(name ="font_type")
     private String frontType;
+
+    @OneToOne(mappedBy = "settings")
+    private UsersEntity user;
 
     public int getSettingsId() {
         return settingsId;

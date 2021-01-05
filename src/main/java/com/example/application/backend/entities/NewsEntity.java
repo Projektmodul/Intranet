@@ -83,4 +83,12 @@ public class NewsEntity {
         this.image = image;
     }
 
+    public List<PageEntity> getPages() {
+        return pages;
+    }
+
+    public void setPages(List<PageEntity> pages) {
+        this.pages = pages;
+    }
+
 }

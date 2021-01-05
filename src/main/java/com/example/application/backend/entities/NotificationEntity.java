@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @lastUpdated 05.01.2021
  */
 
-@Entity(name ="notification")
+@Entity(name ="notifications")
 public class NotificationEntity {
 
     @Id
