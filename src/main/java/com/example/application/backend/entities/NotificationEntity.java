@@ -24,12 +24,6 @@ public class NotificationEntity {
     private String description;
     private String category;
 
-    @OneToOne(mappedBy = "notification")
-    private NewsEntity news;
-
-    @OneToOne(mappedBy = "notification")
-    private DocumentEntity document;
-
     public int getNotificationId() {
         return notificationId;
     }
@@ -61,22 +55,4 @@ public class NotificationEntity {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    public NewsEntity getNews() {
-        return news;
-    }
-
-    public void setNews(NewsEntity news) {
-        this.news = news;
-    }
-
-    public DocumentEntity getDocument() {
-        return document;
-    }
-
-    public void setDocument(DocumentEntity documents) {
-        this.document = documents;
-    }
-
-
 }
