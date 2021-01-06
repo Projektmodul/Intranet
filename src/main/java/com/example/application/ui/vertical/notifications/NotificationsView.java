@@ -19,8 +19,8 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 @CssImport("./styles/views/main/notification.css")
 public class NotificationsView extends Dialog {
 
-    /*private H4 notificationText ;
-    private VerticalLayout notificationsContainer;
+    private H4 notificationText ;
+    /*private VerticalLayout notificationsContainer;
     private NotificationEntity[] notifications;
 
     public NotificationsView(){
