@@ -1,4 +1,4 @@
-package com.example.application.backend.services;
+package com.example.application.backend.services.notifications;
 
 import com.example.application.backend.entities.NotificationEntity;
 import com.example.application.backend.repositories.NotificationRepository;

@@ -1,7 +1,7 @@
-package com.example.application.ui.vertical.notifications;
+package com.example.application.backend.services.notifications;
 
 import com.example.application.backend.entities.NotificationEntity;
-import com.example.application.backend.services.NotificationService;
+import com.example.application.backend.services.notifications.NotificationService;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.H5;
