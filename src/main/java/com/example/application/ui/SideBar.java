@@ -25,15 +25,17 @@ public class SideBar extends VerticalLayout {
     public Tabs tabs;
     private final NotificationsView notificationsView;
 
+    private final Icon alertIcon;
+
     public SideBar(){
         notificationsView = new NotificationsView();
         //notificationsView.addNotifications();
 
         setId("sideBar");
         //insert icon for alertIcon
-        Icon alertIcon = new Icon(VaadinIcon.BELL);
+        alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alert");
-        alertIcon.addClickListener(e-> notificationsView.open());
+
         //insert field for search
         TextField searchField = new TextField();
         searchField.setId("search");
@@ -70,5 +72,9 @@ public class SideBar extends VerticalLayout {
 
         add(alertIcon,searchField,tabs);
 
+    }
+
+    public void setEventOfNotificationView(NotificationsView notificationsView){
+        alertIcon.addClickListener(e-> notificationsView.open());
     }
 }
