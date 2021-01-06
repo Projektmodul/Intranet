@@ -20,7 +20,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 public class NotificationsView extends Dialog {
 
     private H4 notificationText ;
-    private VerticalLayout notificationsContainer;
+    /*private VerticalLayout notificationsContainer;
     private NotificationEntity[] notifications;
 
     public NotificationsView(){
@@ -59,6 +59,6 @@ public class NotificationsView extends Dialog {
         for(NotificationEntity notificationEntity : notifications){
             notificationsContainer.add(notificationEntity.getDetails());
         }
-    }
+    }*/
 
 }

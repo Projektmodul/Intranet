@@ -20,9 +20,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.ParentLayout;
 import com.vaadin.flow.router.Route;
-import com.example.application.ui.MainView;
 
 /**
  *  MyProfile View shows the information from the current user
@@ -39,8 +37,9 @@ import com.example.application.ui.MainView;
 
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
-    private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", 3, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
+
     private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
+    private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", addressesEntity, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
 
     /*
      * Constructor of the MyProfileVew class where the content is added to the view
@@ -103,7 +102,7 @@ public class MyProfileView extends Div {
         email.setReadOnly(true);
 
         TextField telephone = new TextField();
-        telephone.setValue(usersEntity.getTelefon());
+        telephone.setValue(usersEntity.getTelephoneNumber());
         telephone.setLabel("Telefonnummer");
         telephone.setReadOnly(true);
 
@@ -113,12 +112,12 @@ public class MyProfileView extends Div {
         center.setReadOnly(true);
 
         TextField roomnumber = new TextField();
-        roomnumber.setValue(usersEntity.getRoomnumber());
+        roomnumber.setValue(usersEntity.getRoomNumber());
         roomnumber.setLabel("Raumnummer");
         roomnumber.setReadOnly(true);
 
         TextArea address = new TextArea();
-        address.setValue(addressesEntity.getStreetname()+" "+ addressesEntity.getStreetnumber()+"\n"+
+        address.setValue(addressesEntity.getStreetName()+" "+ addressesEntity.getStreetNumber()+"\n"+
                 addressesEntity.getPostcode()+" "+ addressesEntity.getCity());
         address.setLabel("Adresse");
         address.setReadOnly(true);
@@ -244,11 +243,11 @@ public class MyProfileView extends Div {
         HorizontalLayout postcodeCity = new HorizontalLayout();
 
         TextField updateStreet = new TextField();
-        updateStreet.setValue(addressesEntity.getStreetname());
+        updateStreet.setValue(addressesEntity.getStreetName());
         updateStreet.setLabel("Straße");
 
         IntegerField updateNumber = new IntegerField();
-        updateNumber.setValue(addressesEntity.getStreetnumber());
+        updateNumber.setValue(addressesEntity.getStreetNumber());
         updateNumber.setLabel("Hausnummer");
 
         IntegerField updatePostcode = new IntegerField();
