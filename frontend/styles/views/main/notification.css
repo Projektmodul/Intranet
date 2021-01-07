@@ -15,7 +15,8 @@
 
 /* Close Button gets darker when hovered on */
 #notificationBtn:hover {
-    background-color:#4B4A4A ;
+    background-color:#4B4A4A;
+    cursor:pointer;
 }
 
 /* Styling the notifications container */
