@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class NordlichtView extends Div {
 
     public NordlichtView() {
-        setId("nordlicht-view");
+        setId("projektView");
         setClassName("pageContentPosition");
         add(new Text("Nordlicht"));
     }

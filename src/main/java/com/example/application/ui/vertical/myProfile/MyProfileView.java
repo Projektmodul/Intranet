@@ -45,13 +45,14 @@ public class MyProfileView extends Div {
      * Constructor of the MyProfileVew class where the content is added to the view
      */
     public MyProfileView() {
-        setId("myProfile-view");
+        setId("content-view_blue");
         setClassName("pageContentPosition");
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new Label("Mein Profil"));
-        content.setSizeFull();
-        content.getStyle().set("border", "2px solid #9E9E9E");
+        //content.setSizeFull(); kommt ins css...
+        //content.getStyle().set("border", "2px solid #9E9E9E"); kommt ins css...
         content.addComponentAtIndex(1, initData());
+        content.setClassName("contentView");
 
         add(content);
     }
@@ -63,12 +64,13 @@ public class MyProfileView extends Div {
     private HorizontalLayout initData () {
         HorizontalLayout data = new HorizontalLayout();
 
-        data.setWidth("100%");
-        data.getStyle().set("text-align", "right");
-        data.getStyle().set("border", "1px solid #9E9E9E");
+        //data.setWidth("100%"); css in content.css ausgelagert!
+        //data.getStyle().set("text-align", "right"); hat keine Auswirkung
+        //data.getStyle().set("border", "1px solid #9E9E9E"); css in content.css ausgelagert! jedoch nicht genutzt
 
         data.addComponentAsFirst(initVerticalLayoutLeft());
         data.addComponentAtIndex(1, initVerticalLayoutRight());
+        data.setClassName("layout_data");
 
         return data;
     }
@@ -143,6 +145,7 @@ public class MyProfileView extends Div {
         addressIban.addComponentAsFirst(address);
         addressIban.addComponentAtIndex(1, iban);
         left.addComponentAtIndex(3, addressIban);
+        left.setClassName("profileViewLeft");
 
         return left;
     }
@@ -173,6 +176,7 @@ public class MyProfileView extends Div {
         right.addComponentAsFirst(profilepicture);
         right.addComponentAtIndex(1, jobDescription);
         right.addComponentAtIndex(2, updateProfile);
+        right.setClassName("profileViewRight");
 
         return right;
     }

@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class CommunityView extends Div {
 
     public CommunityView() {
-        setId("community-view");
+        setId("communityView");
         setClassName("pageContentPosition");
         add(new Text("Übersicht Community"));
     }

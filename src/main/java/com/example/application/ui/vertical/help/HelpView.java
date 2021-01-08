@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class HelpView extends Div {
 
     public HelpView() {
-        setId("help-view");
+        setId("content-view_blue");
         setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
         //test test

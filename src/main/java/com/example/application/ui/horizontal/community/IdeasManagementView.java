@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class IdeasManagementView extends Div {
 
     public IdeasManagementView() {
-        setId("ideasManagement-view");
+        setId("communityView");
         setClassName("pageContentPosition");
         add(new Text("Ideenmanagement"));
     }

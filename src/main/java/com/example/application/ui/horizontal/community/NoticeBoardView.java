@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class NoticeBoardView extends Div {
 
     public NoticeBoardView() {
-        setId("noticeBoard-view");
+        setId("communityView");
         setClassName("pageContentPosition");
         add(new Text("Schwarzes Brett"));
     }

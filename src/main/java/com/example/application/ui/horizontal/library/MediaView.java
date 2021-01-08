@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class MediaView extends Div {
 
     public MediaView() {
-        setId("media-view");
+        setId("librarView");
         setClassName("pageContentPosition");
         add(new Text("Medien"));
     }

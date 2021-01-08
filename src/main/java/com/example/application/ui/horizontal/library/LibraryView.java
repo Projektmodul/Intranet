@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class LibraryView extends Div {
 
     public LibraryView() {
-        setId("library-view");
+        setId("librarView");
         setClassName("pageContentPosition");
         add(new Text("Übersicht Bibliothek"));
         System.out.println("Hello");

@@ -13,7 +13,7 @@ import com.vaadin.flow.router.RouteAlias;
 public class OurCompanyView extends Div {
 
     public OurCompanyView() {
-        setId("ourCompany-view");
+        setId("ourCompanyView");
         setClassName("pageContentPosition");
         add(new Text("Übersicht Unser Unternehmen"));
     }

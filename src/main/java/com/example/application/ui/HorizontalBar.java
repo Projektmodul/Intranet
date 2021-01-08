@@ -23,6 +23,7 @@ public class HorizontalBar extends MenuBar {
 
         setOpenOnHover(true);
         setId("menuBar");
+        setClassName("myMenuBar");
 
         Icon home = new Icon(VaadinIcon.HOME);
         home.setSize("35px");

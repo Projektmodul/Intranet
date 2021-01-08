@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class ServicesView extends Div {
 
     public ServicesView() {
-        setId("services-view");
+        setId("serviceView");
         setClassName("pageContentPosition");
         add(new Text("Übersicht Services"));
     }

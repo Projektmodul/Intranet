@@ -10,17 +10,18 @@
     width: auto;
     height: 50px;
 }
-#menuBar{
+#menuBar {
     background: #4B4A4A;
     opacity: 0.7;
     box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
-    max-width: 1264px;
-    width: 100%;
+    width: 95%;
+    height: 45px;
 }
-#menuBar::part(container) {
-    justify-content: space-evenly !important;
-}
+
+#menuBar::part(container){
+    justify-content: space-evenly;
+ }
 
 
 .spanStyle{

@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class DocumentsView extends Div {
 
     public DocumentsView() {
-        setId("documents-view");
+        setId("librarView");
         setClassName("pageContentPosition");
         add(new Text("Unterlagen"));
     }

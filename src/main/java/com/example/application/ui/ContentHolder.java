@@ -15,7 +15,7 @@ public class ContentHolder extends HorizontalLayout implements RouterLayout {
 
         setId("contentHolder");
         SideBar sideBar = new SideBar();
-
+        sideBar.setClassName("layoutSidebar");
         add(sideBar);
 
     }

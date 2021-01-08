@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class NewsView extends Div {
 
     public NewsView() {
-        setId("news-view");
+        setId("ourCompanyView");
         setClassName("pageContentPosition");
         add(new Text("Nachrichten"));
     }

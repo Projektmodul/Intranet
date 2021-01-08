@@ -13,7 +13,7 @@ import com.vaadin.flow.router.Route;
 public class PhoneBookView extends Div {
 
     public PhoneBookView() {
-        setId("phoneBook-view");
+        setId("content-view_blue");
         setClassName("pageContentPosition");
 
         VerticalLayout verticalLayout = new VerticalLayout();

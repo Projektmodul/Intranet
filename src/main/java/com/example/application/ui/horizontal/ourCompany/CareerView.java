@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class CareerView extends Div {
 
     public CareerView() {
-        setId("career-view");
+        setId("ourCompanyView");
         setClassName("pageContentPosition");
         add(new Text("Stellenangebote"));
     }

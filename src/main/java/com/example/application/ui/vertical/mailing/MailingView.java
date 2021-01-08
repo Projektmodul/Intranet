@@ -11,7 +11,7 @@ import com.vaadin.flow.router.Route;
 public class MailingView extends Div {
 
     public MailingView() {
-        setId("mailing-view");
+        setId("content-view_blue");
         setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
         add(new Text("Huhu :)"));

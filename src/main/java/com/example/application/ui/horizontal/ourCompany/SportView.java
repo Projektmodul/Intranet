@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class SportView extends Div {
 
     public SportView() {
-        setId("sport-view");
+        setId("ourCompanyView");
         setClassName("pageContentPosition");
         add(new Text("Sport & Freizeit"));
     }

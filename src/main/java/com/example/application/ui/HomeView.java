@@ -13,7 +13,7 @@ import com.vaadin.flow.router.RouteAlias;
 public class HomeView extends Div {
 
     public HomeView() {
-        setId("home-view");
+        setId("content-view_blue");
         setClassName("pageContentPosition");
         add(new Text("HomeView"));
     }

@@ -14,7 +14,7 @@ import com.vaadin.flow.router.Route;
 public class BlogView extends Div {
 
     public BlogView() {
-        setId("blog-view");
+        setId("communityView");
         setClassName("pageContentPosition");
 
         VerticalLayout verticalLayout = new VerticalLayout();

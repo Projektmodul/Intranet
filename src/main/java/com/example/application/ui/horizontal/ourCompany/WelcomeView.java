@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class WelcomeView extends Div {
 
     public WelcomeView() {
-        setId("welcome-view");
+        setId("ourCompanyView");
         setClassName("pageContentPosition");
         add(new Text("Willkommen"));
     }

@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class FAQView extends Div {
 
     public FAQView() {
-        setId("fAQ-view");
+        setId("librarView");
         setClassName("pageContentPosition");
         add(new Text("FAQ"));
     }

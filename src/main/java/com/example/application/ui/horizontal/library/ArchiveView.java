@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class ArchiveView extends Div {
 
     public ArchiveView() {
-        setId("archive-view");
+        setId("librarView");
         setClassName("pageContentPosition");
         add(new Text("Archiv"));
     }

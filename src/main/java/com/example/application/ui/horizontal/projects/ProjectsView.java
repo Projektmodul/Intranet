@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class ProjectsView extends Div {
 
     public ProjectsView() {
-        setId("projects-view");
+        setId("projektView");
         setClassName("pageContentPosition");
         add(new Text("Übersicht Projekte"));
     }
