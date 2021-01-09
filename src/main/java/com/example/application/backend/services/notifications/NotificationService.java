@@ -31,4 +31,11 @@ public class NotificationService {
         return getNotificationRepository().findBy(pageable);
     }
 
+    public void save(NotificationEntity notificationEntity) {
+        getNotificationRepository().saveAndFlush(notificationEntity);
+    }
+
+    public NotificationEntity findById(int notificationId){
+        return getNotificationRepository().findByNotificationId(notificationId);
+    }
 }
