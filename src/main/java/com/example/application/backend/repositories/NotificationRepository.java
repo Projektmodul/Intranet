@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NotificationRepository extends JpaRepository<NotificationEntity, Integer> {
     Page<NotificationEntity> findBy(Pageable pageable);
+    NotificationEntity findByNotificationId(int notificationId);
 }
