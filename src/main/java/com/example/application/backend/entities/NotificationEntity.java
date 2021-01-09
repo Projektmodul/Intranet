@@ -1,6 +1,8 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * This is a basic notification class. Title, description and date are the attributes, they are
@@ -23,6 +25,11 @@ public class NotificationEntity {
     private String title;
     private String description;
     private String category;
+
+    private boolean status;
+
+    @Column(name ="created_at")
+    private Timestamp date;
 
     public int getNotificationId() {
         return notificationId;
@@ -55,4 +62,22 @@ public class NotificationEntity {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    //Only the Date is needed for display
+    public Date getDate() {
+        return new Date(date.getTime());
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
 }
