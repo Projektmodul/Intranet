@@ -2,12 +2,13 @@ package com.example.application.ui.vertical.notifications;
 
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.H4;
 
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Notification Dialog, pops up when the Bulb/Notification icon is clicked.
@@ -23,7 +24,7 @@ public class NotificationsView extends Dialog {
 
 
     private H4 notificationText ;
-    private VerticalLayout notificationsContainer;
+    private VerticalLayout allNotificationsContainer;
 
 
     public NotificationsView() {
@@ -32,10 +33,12 @@ public class NotificationsView extends Dialog {
 
 
         notificationText = new H4("Notifications: ");
-        notificationsContainer = new VerticalLayout(notificationText);
 
-        this.add(notificationsContainer);
-        notificationsContainer.addClassName("notificationsContainer");
+
+        allNotificationsContainer = new VerticalLayout(notificationText);
+
+        this.add(allNotificationsContainer);
+        allNotificationsContainer.addClassName("notificationsContainer");
 
 
 
@@ -43,7 +46,7 @@ public class NotificationsView extends Dialog {
         Button closeButton = new Button("Close", event -> this.close());
 
         closeButton.setId("notificationBtn");
-        notificationsContainer.add(closeButton);
+        allNotificationsContainer.add(closeButton);
         this.setWidth("25%");
 
 
@@ -51,8 +54,8 @@ public class NotificationsView extends Dialog {
     }
 
 
-    public VerticalLayout getNotificationsContainer() {
-        return notificationsContainer;
+    public VerticalLayout getAllNotificationsContainer() {
+        return allNotificationsContainer;
     }
 
 
