@@ -4,6 +4,7 @@ import com.example.application.backend.services.notifications.NotificationServic
 import com.example.application.ui.ContentHolder;
 import com.example.application.backend.services.notifications.NotificationDataProvider;
 import com.example.application.ui.vertical.notifications.NotificationsView;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -44,7 +45,7 @@ public class NotificationPresenter {
         notificationDataProvider.findNotification(notificationService);
 
         //The presenter adds all retrieved notifications to the notificationsView
-        notificationDataProvider.addNotifications(notificationsView.getNotificationsContainer());
+        notificationDataProvider.addNotifications(notificationsView.getAllNotificationsContainer(), notificationService);
 
     }
 

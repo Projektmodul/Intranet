@@ -9,8 +9,8 @@
     background-color: darkgrey;
     color: white;
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 0.5rem;
+    right: 0.75rem;
 }
 
 /* Close Button gets darker when hovered on */
@@ -24,5 +24,21 @@
     background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
     padding: 1rem;
     margin: 0;
+    display: block;
 
+}
+
+/*Make selected notification visible*/
+.layout:active,
+.layout:focus,
+.layout:hover{
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 90.8%);
+}
+
+/*Hide the id of the notification*/
+.checkbox{
+    color:transparent;
+    padding-top: 0.3rem;
+    right:1.8rem;
+    position: absolute;
 }
