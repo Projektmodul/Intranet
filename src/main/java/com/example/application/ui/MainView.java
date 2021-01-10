@@ -1,6 +1,5 @@
 /*created @ de Boer, Marieke Menna & Monika Martius */
 package com.example.application.ui;
-
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -52,7 +51,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
         header.setId("header");
 
         add(header, navBar);
-        addClassName("vertical-layout");
+        addClassName("verticalLayout");
 
     }
 

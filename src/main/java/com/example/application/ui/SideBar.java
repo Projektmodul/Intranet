@@ -1,6 +1,5 @@
 package com.example.application.ui;
 
-
 import com.example.application.ui.vertical.canteen.CanteenView;
 import com.example.application.ui.vertical.help.HelpView;
 import com.example.application.ui.vertical.mailing.MailingView;
@@ -69,6 +68,5 @@ public class SideBar extends VerticalLayout {
         tabs.setClassName("tabsView");
 
         add(alertIcon,searchField,tabs);
-
     }
 }

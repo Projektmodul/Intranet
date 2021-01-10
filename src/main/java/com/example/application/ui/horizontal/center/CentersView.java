@@ -12,7 +12,7 @@ import com.vaadin.flow.router.Route;
 public class CentersView extends Div {
 
     public CentersView() {
-        setId("content-view_blue");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
         add(new Text(" Übersicht Center"));
     }

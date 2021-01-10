@@ -12,7 +12,7 @@ import com.vaadin.flow.router.Route;
 public class TimetableView extends Div {
 
     public TimetableView() {
-        setId("content-view_blue");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }

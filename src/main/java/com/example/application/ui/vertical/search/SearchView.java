@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class SearchView extends Div {
 
     public SearchView() {
-        setId("content-view_blue");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }

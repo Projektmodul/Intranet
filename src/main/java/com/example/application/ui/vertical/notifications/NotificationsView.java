@@ -21,9 +21,10 @@ public class NotificationsView extends Dialog {
 
     private H4 notificationText ;
     /*private VerticalLayout notificationsContainer;
-    private NotificationEntity[] notifications;
+    private NotificationEntity[] notifications;*/
 
     public NotificationsView(){
+        setId("contentViewBlue");/*
         //These are only for demo, could be deleted once the data in the database is ready to be used
         NotificationEntity not1 = new NotificationEntity("Es wurde eine neue Datei hinzugefügt",
                 "Mauris at mi vel felis commodo facilisis. Morbi mattis erat lorem, " +
@@ -59,6 +60,6 @@ public class NotificationsView extends Dialog {
         for(NotificationEntity notificationEntity : notifications){
             notificationsContainer.add(notificationEntity.getDetails());
         }
-    }*/
+    */}
 
 }

@@ -45,12 +45,10 @@ public class MyProfileView extends Div {
      * Constructor of the MyProfileVew class where the content is added to the view
      */
     public MyProfileView() {
-        setId("content-view_blue");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new Label("Mein Profil"));
-        //content.setSizeFull(); kommt ins css...
-        //content.getStyle().set("border", "2px solid #9E9E9E"); kommt ins css...
         content.addComponentAtIndex(1, initData());
         content.setClassName("contentView");
 
@@ -70,7 +68,7 @@ public class MyProfileView extends Div {
 
         data.addComponentAsFirst(initVerticalLayoutLeft());
         data.addComponentAtIndex(1, initVerticalLayoutRight());
-        data.setClassName("layout_data");
+        data.setClassName("layoutData");
 
         return data;
     }

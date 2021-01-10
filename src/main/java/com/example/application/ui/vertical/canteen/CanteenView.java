@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class CanteenView extends Div {
 
     public CanteenView() {
-        setId("content-view_blue");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
         add(new Text("Ich habe hunger!!!"));
     }
