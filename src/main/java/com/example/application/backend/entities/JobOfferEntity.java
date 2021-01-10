@@ -25,13 +25,13 @@ public class JobOfferEntity {
     private String type;
     private String location;
 
-    @OneToOne
+   /* @OneToOne
     @JoinColumn(name="document_id")
     private DocumentEntity document;
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UsersEntity user;*/
 
     public int getJobOfferId() {
         return jobOfferId;
@@ -81,7 +81,7 @@ public class JobOfferEntity {
         this.location = location;
     }
 
-    public DocumentEntity getDocument() {
+   /* public DocumentEntity getDocument() {
         return document;
     }
 
@@ -96,5 +96,5 @@ public class JobOfferEntity {
     public void setUser(UsersEntity user) {
         this.user = user;
     }
-
+*/
 }

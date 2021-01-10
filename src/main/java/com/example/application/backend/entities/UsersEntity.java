@@ -44,7 +44,7 @@ public class UsersEntity {
     @Column(name ="job_description")
     private String jobDescription;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable( //this defines the relationship and the foreign key columns
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -61,8 +61,8 @@ public class UsersEntity {
     @OneToMany(mappedBy = "user")
     private List<LinkEntity> links;
 
-    @OneToMany(mappedBy = "user")
-    private List<PageEntity> pages;
+    *//*@OneToMany(mappedBy = "user")
+    private List<PageEntity> pages;*//*
 
     @OneToMany(mappedBy = "user")
     private List<IdeaEntity> ideas;
@@ -76,7 +76,7 @@ public class UsersEntity {
 
     public List<ImageEntity> getImages() {
         return images;
-    }
+    }*/
 
     public UsersEntity() {
 
@@ -191,7 +191,7 @@ public class UsersEntity {
         this.jobDescription = jobDescription;
     }
 
-    public List<RolesEntity> getRoles() {
+    /*public List<RolesEntity> getRoles() {
         return roles;
     }
 
@@ -250,5 +250,5 @@ public class UsersEntity {
     public void setSettings(SettingsEntity settings) {
         this.settings = settings;
     }
-
+*/
 }

@@ -23,14 +23,14 @@ public class SettingsEntity {
     private String type;
     private String category;
 
-    @Column(name ="font_size")
+   /* @Column(name ="font_size")
     private String fontSize;
 
     @Column(name ="font_type")
     private String frontType;
 
     @OneToOne(mappedBy = "settings")
-    private UsersEntity user;
+    private UsersEntity user;*/
 
     public int getSettingsId() {
         return settingsId;
@@ -56,7 +56,7 @@ public class SettingsEntity {
         this.category = category;
     }
 
-    public String getFontSize() {
+   /* public String getFontSize() {
         return fontSize;
     }
 
@@ -70,6 +70,6 @@ public class SettingsEntity {
 
     public void setFrontType(String frontType) {
         this.frontType = frontType;
-    }
+    }*/
 
 }

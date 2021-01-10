@@ -22,9 +22,12 @@ public class PageEntity {
     private int pageId;
 
     private String title;
-    private String content;
-    private String type;
 
+    @Column(name="text")
+    private String content;
+
+    private String type;
+/*
     @OneToMany(mappedBy = "page")
     private List<LinkEntity> links;
 
@@ -50,7 +53,7 @@ public class PageEntity {
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UsersEntity user;*/
 
 
     public int getPageId() {
@@ -83,7 +86,7 @@ public class PageEntity {
 
     public void setType(String type) { this.type = type; }
 
-    public List<LinkEntity> getLinks() {
+  /*  public List<LinkEntity> getLinks() {
         return links;
     }
 
@@ -128,5 +131,5 @@ public class PageEntity {
     public void setIdeas(List<IdeaEntity> ideas) {
         this.ideas = ideas;
     }
-
+*/
 }

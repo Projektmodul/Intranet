@@ -21,13 +21,13 @@ public class PermissionsEntity {
     @Column(name ="permission_id")
     private int permissionId;
 
-    @Column(name ="permission_name")
+   /* @Column(name ="permission_name")
     private String permissionName;
 
     @ManyToMany(mappedBy = "permissions")
-    private List<RolesEntity> roles;
+    private List<RolesEntity> roles;*/
 
-    public PermissionsEntity() {
+   /* public PermissionsEntity() {
 
     }
 
@@ -59,6 +59,6 @@ public class PermissionsEntity {
 
     public void setRoles(List<RolesEntity> roles) {
         this.roles = roles;
-    }
+    }*/
 
 }

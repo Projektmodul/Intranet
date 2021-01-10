@@ -22,7 +22,7 @@ public class RolesEntity {
 
     private String roleName;
 
-    @ManyToMany
+   /* @ManyToMany
     @JoinTable( //this defines the relationship and the foreign key columns
             name = "permissions_roles",
             joinColumns = @JoinColumn(name = "role_id"),
@@ -33,7 +33,7 @@ public class RolesEntity {
 
     @ManyToMany(mappedBy = "roles")
     private List<UsersEntity> users;
-
+*/
     public RolesEntity(){
 
     }
@@ -59,7 +59,7 @@ public class RolesEntity {
         this.roleName = roleName;
     }
 
-    public List<PermissionsEntity> getPermissions() {
+    /*public List<PermissionsEntity> getPermissions() {
         return permissions;
     }
 
@@ -73,5 +73,5 @@ public class RolesEntity {
 
     public void setUsers(List<UsersEntity> users) {
         this.users = users;
-    }
+    }*/
 }

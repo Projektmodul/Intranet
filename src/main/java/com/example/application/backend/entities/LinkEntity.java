@@ -23,16 +23,16 @@ public class LinkEntity {
     private String title;
     private String url;
 
-    @OneToOne(mappedBy = "link")
+   /* @OneToOne(mappedBy = "link")
     private NewsEntity news;
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UsersEntity user;*/
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;
+    private PageEntity page;*/
 
     public int getLinkId() {
         return linkId;
@@ -58,7 +58,7 @@ public class LinkEntity {
         this.url = url;
     }
 
-    public NewsEntity getNews() {
+    /*public NewsEntity getNews() {
         return news;
     }
 
@@ -72,5 +72,5 @@ public class LinkEntity {
 
     public void setUser(UsersEntity user) {
         this.user = user;
-    }
+    }*/
 }

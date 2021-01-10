@@ -23,19 +23,19 @@ public class ImageEntity {
     private String fileName;
     private String path;
 
-    @OneToOne(mappedBy = "image")
+   /* @OneToOne(mappedBy = "image")
     private NewsEntity news;
 
     @OneToOne(mappedBy = "image")
     private NoticeBoardOfferEntity noticeBoardOffer;
-
+*//*
     @ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;
+    private PageEntity page;*//*
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UsersEntity user;*/
 
     public int getImageId() {
         return imageId;
@@ -61,7 +61,7 @@ public class ImageEntity {
         this.path = path;
     }
 
-    public NewsEntity getNews() {
+  /*  public NewsEntity getNews() {
         return news;
     }
 
@@ -83,15 +83,15 @@ public class ImageEntity {
 
     public void setUser(UsersEntity user) {
         this.user = user;
-    }
+    }*/
 
-    public PageEntity getPage() {
+   /* public PageEntity getPage() {
         return page;
     }
 
     public void setPage(PageEntity page) {
         this.page = page;
-    }
+    }*/
 
 
 }
