@@ -32,9 +32,9 @@ public class AddressesEntity {
 
     private String city;
 
-    @OneToMany(mappedBy = "address")
+   /* @OneToMany(mappedBy = "address")
     private List<UsersEntity> users;
-
+*/
     public AddressesEntity() {
 
     }
@@ -87,12 +87,12 @@ public class AddressesEntity {
         this.city = city;
     }
 
-    public List<UsersEntity> getUsers() {
+   /* public List<UsersEntity> getUsers() {
         return users;
     }
 
     public void setUsers(List<UsersEntity> users) {
         this.users = users;
-    }
+    }*/
 
 }

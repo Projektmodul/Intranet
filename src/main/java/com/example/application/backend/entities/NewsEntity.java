@@ -24,7 +24,7 @@ public class NewsEntity {
     private String description;
     private String type;
 
-    @OneToOne
+  /*  @OneToOne
     @JoinColumn(name="link_id")
     private LinkEntity link;
 
@@ -32,13 +32,13 @@ public class NewsEntity {
     @JoinColumn(name="image_id")
     private ImageEntity image;
 
-    @ManyToMany(mappedBy = "news")
-    private List<PageEntity> pages;
+    *//*@ManyToMany(mappedBy = "news")
+    private List<PageEntity> pages;*//*
 
     @OneToOne
     @JoinColumn(name="notification_id")
     private NotificationEntity notification;
-
+*/
     public int getNewsId() {
         return newsId;
     }
@@ -71,7 +71,7 @@ public class NewsEntity {
         this.type = type;
     }
 
-    public LinkEntity getLink() {
+  /*  public LinkEntity getLink() {
         return link;
     }
 
@@ -86,22 +86,22 @@ public class NewsEntity {
     public void setImage(ImageEntity image) {
         this.image = image;
     }
-
-    public List<PageEntity> getPages() {
+*/
+    /*public List<PageEntity> getPages() {
         return pages;
     }
 
     public void setPages(List<PageEntity> pages) {
         this.pages = pages;
-    }
-
+    }*/
+/*
     public NotificationEntity getNotification() {
         return notification;
     }
 
     public void setNotification(NotificationEntity notification) {
         this.notification = notification;
-    }
+    }*/
 
 
 }

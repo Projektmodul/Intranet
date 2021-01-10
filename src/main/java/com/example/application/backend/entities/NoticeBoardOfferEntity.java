@@ -23,17 +23,17 @@ public class NoticeBoardOfferEntity {
     private String description;
     private String category;
 
-    @OneToOne
+   /* @OneToOne
     @JoinColumn(name="image_id")
     private ImageEntity image;
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
-
+    private UsersEntity user;*/
+/*
     @ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;
+    private PageEntity page;*/
 
     public int getNoticeBoardOfferId() {
         return noticeBoardOfferId;
@@ -67,7 +67,7 @@ public class NoticeBoardOfferEntity {
         this.category = category;
     }
 
-    public ImageEntity getImage() {
+   /* public ImageEntity getImage() {
         return image;
     }
 
@@ -81,5 +81,5 @@ public class NoticeBoardOfferEntity {
 
     public void setUser(UsersEntity user) {
         this.user = user;
-    }
+    }*/
 }

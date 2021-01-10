@@ -27,12 +27,12 @@ public class DocumentEntity {
 
     private String keyword;
 
-    @OneToOne(mappedBy = "document")
+   /* @OneToOne(mappedBy = "document")
     private JobOfferEntity jobOffer;
 
-    @ManyToOne
+   *//* @ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;
+    private PageEntity page;*//*
 
     @ManyToOne
     @JoinColumn(name ="user_id")
@@ -40,7 +40,7 @@ public class DocumentEntity {
 
     @OneToOne
     @JoinColumn(name="notification_id")
-    private NotificationEntity notification;
+    private NotificationEntity notification;*/
 
     public int getDocumentId() {
         return documentId;
@@ -74,7 +74,7 @@ public class DocumentEntity {
         this.keyword = keyword;
     }
 
-    public JobOfferEntity getJobOffer() {
+   /* public JobOfferEntity getJobOffer() {
         return jobOffer;
     }
 
@@ -82,13 +82,13 @@ public class DocumentEntity {
         this.jobOffer = jobOffer;
     }
 
-    public PageEntity getPage() {
+  *//*  public PageEntity getPage() {
         return page;
     }
 
     public void setPage(PageEntity page) {
         this.page = page;
-    }
+    }*//*
 
     public UsersEntity getUser() {
         return user;
@@ -105,6 +105,6 @@ public class DocumentEntity {
     public void setNotification(NotificationEntity notification) {
         this.notification = notification;
     }
-
+*/
 
 }
