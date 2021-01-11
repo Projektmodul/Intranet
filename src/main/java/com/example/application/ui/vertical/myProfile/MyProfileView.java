@@ -36,11 +36,12 @@ import com.vaadin.flow.router.Route;
 
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
-    private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
+    //private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
 
     private MyProfileViewService myProfileViewService;
     private PageEntity pageEntity;
     private UsersEntity usersEntity;
+    private AddressesEntity addressesEntity;
 
 
 
@@ -72,9 +73,7 @@ public class MyProfileView extends Div {
     private HorizontalLayout initData () {
         HorizontalLayout data = new HorizontalLayout();
 
-        data.setWidth("100%");
-        data.getStyle().set("text-align", "right");
-        data.getStyle().set("border", "1px solid #9E9E9E");
+        data.setSizeFull();
 
         data.addComponentAsFirst(initVerticalLayoutLeft());
         data.addComponentAtIndex(1, initVerticalLayoutRight());
