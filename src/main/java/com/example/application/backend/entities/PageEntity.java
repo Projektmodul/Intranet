@@ -49,11 +49,11 @@ public class PageEntity {
             joinColumns = @JoinColumn(name = "page_id"),
             inverseJoinColumns = @JoinColumn(name = "news_id")
     )
-    private List<NewsEntity> news;
+    private List<NewsEntity> news;*/
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;*/
+    private UsersEntity user;
 
 
     public int getPageId() {
@@ -86,6 +86,14 @@ public class PageEntity {
 
     public void setType(String type) { this.type = type; }
 
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
+
   /*  public List<LinkEntity> getLinks() {
         return links;
     }
@@ -116,14 +124,6 @@ public class PageEntity {
 
     public void setImages(List<ImageEntity> images) {
         this.images = images;
-    }
-
-    public UsersEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UsersEntity user) {
-        this.user = user;
     }
 
     public List<IdeaEntity> getIdeas() { return ideas; }
