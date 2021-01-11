@@ -37,7 +37,6 @@ import com.vaadin.flow.router.Route;
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
     private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
-    private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", addressesEntity, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
 
     private MyProfileViewService myProfileViewService;
     private PageEntity pageEntity;
@@ -50,8 +49,10 @@ public class MyProfileView extends Div {
      */
     public MyProfileView(MyProfileViewService myProfileViewService) {
         this.myProfileViewService = myProfileViewService;
+
         setId("myProfile-view");
         setClassName("pageContentPosition");
+
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
         usersEntity = pageEntity.getUser();
 
