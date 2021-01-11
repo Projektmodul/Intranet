@@ -1,3 +1,5 @@
+/*created @ Litharshiga Sivarasa */
+
 package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.ui.ContentHolder;
@@ -24,16 +26,17 @@ public class OurCompanyView extends Div {
 
     public OurCompanyView() {
         setId("ourCompany-view");
-        setClassName("pageContentPosition");
+        setClassName("pageContentPositionOurCompany");
 
-        H1 headLine = new H1("Unsere Unternehmen");
-        headLine.setId("headline");
 
-        Label label2 = new Label("Wir sind täglich");
-        label2.setId("label2");
+        H1 headLineOurCompany = new H1("Unsere Unternehmen");
+        headLineOurCompany.setId("headlineOurCompany");
 
-        Label label3 = new Label("für sie da");
-        label3.setId("label3");
+        Label firstQuote = new Label("Wir sind täglich");
+        firstQuote.setId("firstQuote");
+
+        Label secondQuote = new Label("für sie da");
+        secondQuote.setId("secondQuote");
 
 
         HorizontalLayout layout = new HorizontalLayout();
@@ -48,7 +51,7 @@ public class OurCompanyView extends Div {
         Component component5 = createComponent(new Icon(VaadinIcon.DOLLAR), "#A00505", "Stellenangebote", "career");
         layout.add(component1, component2, component3, component4, component5);
 
-        add(headLine,label2, label3, layout);
+        add(headLineOurCompany,firstQuote, secondQuote, layout);
 
     }
 
