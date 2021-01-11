@@ -1,6 +1,7 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -23,7 +24,9 @@ public class UsersEntity {
     private String username;
     private String password;
     private String surname;
-    private String firstname;
+
+    @Column(name ="first_name")
+    private String firstName;
 
     @ManyToOne
     @JoinColumn(name ="address_id")
@@ -60,8 +63,10 @@ public class UsersEntity {
     @OneToMany(mappedBy = "user")
     private List<LinkEntity> links;
 
-    *//*@OneToMany(mappedBy = "user")
-    private List<PageEntity> pages;*//*
+    */
+    @OneToMany(mappedBy = "user")
+    private List<PageEntity> pages;
+    /*
 
     @OneToMany(mappedBy = "user")
     private List<IdeaEntity> ideas;
@@ -81,9 +86,9 @@ public class UsersEntity {
 
     }
 
-    public UsersEntity(int userId, String firstname, String surname, AddressesEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
+    public UsersEntity(int userId, String firstName, String surname, AddressesEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
         this.userId = userId;
-        this.firstname = firstname;
+        this.firstName = firstName;
         this.surname = surname;
         this.address = address;
         this.iban = iban;
@@ -126,12 +131,12 @@ public class UsersEntity {
         this.surname = surname;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     public AddressesEntity getAddress() {
@@ -190,6 +195,14 @@ public class UsersEntity {
         this.jobDescription = jobDescription;
     }
 
+    public List<PageEntity> getPages() {
+        return pages;
+    }
+
+    public void setPages(List<PageEntity> pages) {
+        this.pages = pages;
+    }
+
     /*public List<RolesEntity> getRoles() {
         return roles;
     }
@@ -216,14 +229,6 @@ public class UsersEntity {
 
     public void setLinks(List<LinkEntity> links) {
         this.links = links;
-    }
-
-    public List<PageEntity> getPages() {
-        return pages;
-    }
-
-    public void setPages(List<PageEntity> pages) {
-        this.pages = pages;
     }
 
     public List<IdeaEntity> getIdeas() {
