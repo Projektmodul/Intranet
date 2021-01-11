@@ -1,7 +1,6 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -19,7 +18,7 @@ public class UsersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="user_id")
-    private int id;
+    private int userId;
 
     private String username;
     private String password;
@@ -82,8 +81,8 @@ public class UsersEntity {
 
     }
 
-    public UsersEntity(int id, String firstname, String surname, AddressesEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
-        this.id = id;
+    public UsersEntity(int userId, String firstname, String surname, AddressesEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
+        this.userId = userId;
         this.firstname = firstname;
         this.surname = surname;
         this.address = address;
@@ -95,12 +94,12 @@ public class UsersEntity {
         this.jobDescription = jobDescription;
     }
 
-    public String getId() {
-        return "" + id;
+    public String getUserId() {
+        return "" + userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int id) {
+        this.userId = id;
     }
 
     public String getUsername() {
