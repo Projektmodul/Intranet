@@ -49,11 +49,11 @@ public class PageEntity {
             joinColumns = @JoinColumn(name = "page_id"),
             inverseJoinColumns = @JoinColumn(name = "news_id")
     )
-    private List<NewsEntity> news;
+    private List<NewsEntity> news;*/
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;*/
+    private UsersEntity user;
 
 
     public int getPageId() {

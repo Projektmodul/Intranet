@@ -5,6 +5,7 @@ import com.example.application.backend.entities.UsersEntity;
 import com.example.application.backend.entities.AddressesEntity;
 
 import com.example.application.backend.services.myProfile.MyProfileViewService;
+import com.example.application.backend.services.users.UsersService;
 import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -40,6 +41,8 @@ public class MyProfileView extends Div {
 
     private MyProfileViewService myProfileViewService;
     private PageEntity pageEntity;
+    private UsersEntity usersEntity;
+
 
 
     /*
@@ -50,6 +53,8 @@ public class MyProfileView extends Div {
         setId("myProfile-view");
         setClassName("pageContentPosition");
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
+        usersEntity = pageEntity.getUser();
+
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new H1(pageEntity.getTitle()));
         content.setSizeFull();
@@ -90,7 +95,7 @@ public class MyProfileView extends Div {
         HorizontalLayout addressIban = new HorizontalLayout();
 
         TextField firstname = new TextField();
-        firstname.setValue(usersEntity.getFirstname());
+        firstname.setValue(usersEntity.getFirstName());
         firstname.setLabel("Vorname");
         firstname.setReadOnly(true);
 
