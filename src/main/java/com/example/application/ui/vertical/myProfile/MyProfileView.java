@@ -56,11 +56,11 @@ public class MyProfileView extends Div {
 
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
         usersEntity = pageEntity.getUser();
+        addressesEntity = usersEntity.getAddress();
 
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new H1(pageEntity.getTitle()));
         content.setSizeFull();
-        content.getStyle().set("border", "2px solid #9E9E9E");
         content.addComponentAtIndex(1, initData());
 
         add(content);
@@ -131,6 +131,7 @@ public class MyProfileView extends Div {
         address.setReadOnly(true);
 
         TextField iban = new TextField();
+        iban.setWidth("250px");
         iban.setValue(usersEntity.getIban());
         iban.setLabel("Kontodaten");
         iban.setReadOnly(true);
@@ -168,7 +169,7 @@ public class MyProfileView extends Div {
         profilepicture.setWidth("15rem");
         profilepicture.addClassName("user");
 
-        TextField jobDescription = new TextField();
+        TextArea jobDescription = new TextArea();
         jobDescription.setValue(usersEntity.getJobDescription());
         jobDescription.setLabel("Tätigkeitsbeschreibung");
         jobDescription.setReadOnly(true);
