@@ -1,17 +1,16 @@
 package com.example.application.ui.vertical.myProfile;
 
+import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UsersEntity;
 import com.example.application.backend.entities.AddressesEntity;
 
+import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.*;
 
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -34,21 +33,25 @@ import com.vaadin.flow.router.Route;
 @Route(value = "myProfile", layout = ContentHolder.class)
 @PageTitle("Mein Profil")
 
-
 public class MyProfileView extends Div {
     //These are only for demo, could be deleted once the data in the database is ready to be used
-
     private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
     private UsersEntity usersEntity = new UsersEntity(1, "firstname", "surname", addressesEntity, "DE1273462537274", 'I', 5, 556434, "email", "wir sind toll" );
+
+    private MyProfileViewService myProfileViewService;
+    private PageEntity pageEntity;
+
 
     /*
      * Constructor of the MyProfileVew class where the content is added to the view
      */
-    public MyProfileView() {
+    public MyProfileView(MyProfileViewService myProfileViewService) {
+        this.myProfileViewService = myProfileViewService;
         setId("myProfile-view");
         setClassName("pageContentPosition");
+        pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
         VerticalLayout content = new VerticalLayout();
-        content.addComponentAsFirst(new Label("Mein Profil"));
+        content.addComponentAsFirst(new H1(pageEntity.getTitle()));
         content.setSizeFull();
         content.getStyle().set("border", "2px solid #9E9E9E");
         content.addComponentAtIndex(1, initData());
