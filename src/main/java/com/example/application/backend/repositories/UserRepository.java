@@ -4,4 +4,5 @@ import com.example.application.backend.entities.UsersEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UsersEntity, Integer> {
+    UsersEntity findByUserId(int userId);
 }
