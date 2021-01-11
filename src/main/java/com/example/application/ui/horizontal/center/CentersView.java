@@ -6,6 +6,7 @@ import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
@@ -21,12 +22,12 @@ import com.vaadin.flow.router.Route;
 
 @Route(value = "centers", layout = ContentHolder.class)
 @PageTitle("Centers")
+@CssImport("./styles/views/main/overViewPage.css")
 public class CentersView extends Div {
 
     public CentersView() {
         setId("centers-view");
-        setClassName("pageContentPositionCenter");
-        setId("centerI-view");
+        this.setClassName("pageContentPositionCenter");
 
         H1 headLineCenter = new H1("Center");
         headLineCenter.setId("headlineCenter");

@@ -5,6 +5,7 @@ package com.example.application.ui.horizontal.services;
 import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
@@ -21,6 +22,7 @@ import com.example.application.ui.MainView;
 
 @Route(value = "services", layout = ContentHolder.class)
 @PageTitle("Services")
+@CssImport("./styles/views/main/overViewPage.css")
 public class ServicesView extends Div {
 
     public ServicesView() {
