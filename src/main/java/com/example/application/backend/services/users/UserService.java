@@ -19,9 +19,9 @@ public class UserService {
         return userRepository;
     }
 
-    public void save (UserEntity userEntity){
+    /*public void save (UserEntity userEntity){
         getUserRepository().saveAndFlush(userEntity);
-    }
+    }*/
 
     public UserEntity findById (int userId) {
         System.out.println("FIND");
