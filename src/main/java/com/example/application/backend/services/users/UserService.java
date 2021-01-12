@@ -3,8 +3,19 @@ package com.example.application.backend.services.users;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.repositories.UserRepository;
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.textfield.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+/**
+ * DESCRIPTION
+ *
+ * @author  Jessica Reistel and Laura Neuendorf
+ * @version 2.0
+ * @since   11.01.2021
+ * @lastUpdated 12.01.2021
+ */
 
 @Service
 public class UserService {
@@ -24,10 +35,10 @@ public class UserService {
         return getUserRepository().findByUserId(userId);
     }*/
 
-    public void update(UserEntity userEntity){
+    public void update(UserEntity userEntity, TextField updateIban, TextArea updateJobDescription){
         System.out.println(userEntity.getIban());
-        userEntity.setIban("DE1234567890");
-        userEntity.setJobDescription("Ich bin eine Beschreibung.");
+        userEntity.setIban(updateIban.getValue());
+        userEntity.setJobDescription(updateJobDescription.getValue());
         System.out.println(userEntity.getIban());
         //usersEntity.setAddress();
         getUserRepository().saveAndFlush(userEntity);

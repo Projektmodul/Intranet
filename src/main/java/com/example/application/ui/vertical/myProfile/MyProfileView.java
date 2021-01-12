@@ -44,6 +44,8 @@ public class MyProfileView extends Div {
     private UserEntity userEntity;
     private AddressEntity addressEntity;
 
+    private TextField updateIban = new TextField();
+    private TextArea updateJobDescription = new TextArea();
 
 
     /*
@@ -202,9 +204,8 @@ public class MyProfileView extends Div {
         saveCancel.setId("saveCancelDiv");
 
         Button saveButton = new Button("Save", e -> {
-            userService.update(pageEntity.getUser());
+            userService.update(pageEntity.getUser(), updateIban, updateJobDescription);
             contentDialog.close();
-
         });
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
         saveButton.addClassName("myProfileButton");
@@ -232,7 +233,7 @@ public class MyProfileView extends Div {
         updateIban.setValue(userEntity.getIban());
         updateIban.setLabel("Kontodaten");
 
-        TextArea updateJobDescription = new TextArea();
+
         updateJobDescription.setValue(userEntity.getJobDescription());
         updateJobDescription.setLabel("Tätigkeitsbeschreibung");
 
