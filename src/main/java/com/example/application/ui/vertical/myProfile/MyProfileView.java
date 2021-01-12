@@ -7,6 +7,7 @@ import com.example.application.backend.entities.AddressEntity;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.ContentHolder;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -203,6 +204,7 @@ public class MyProfileView extends Div {
         Button saveButton = new Button("Save", e -> {
             userService.update(pageEntity.getUser());
             contentDialog.close();
+
         });
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
         saveButton.addClassName("myProfileButton");

@@ -10,7 +10,7 @@ import java.util.List;
  * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
  * @version 3.0
  * @since   21-12-2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 12.01.2021
  */
 
 @Entity(name= "users")
@@ -82,25 +82,8 @@ public class UserEntity {
         return images;
     }*/
 
-    public UserEntity() {
-
-    }
-
-    /*public UserEntity(int userId, String firstName, String surname, AddressEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.surname = surname;
-        this.address = address;
-        this.iban = iban;
-        this.center = center;
-        this.roomNumber = roomNumber;
-        this.telephoneNumber = telephoneNumber;
-        this.email = email;
-        this.jobDescription = jobDescription;
-    }*/
-
-    public String getUserId() {
-        return "" + userId;
+    public int getUserId() {
+        return userId;
     }
 
     public void setUserId(int id) {
