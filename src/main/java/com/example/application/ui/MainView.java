@@ -46,6 +46,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
         Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
         logoutIcon.setId("logout");
+        logoutIcon.addClickListener(e-> logoutIcon.getUI().ifPresent(ui -> ui.getPage().setLocation("/logout")));
 
         HorizontalLayout header = new HorizontalLayout();
         header.add(logoButton,logoutIcon);
