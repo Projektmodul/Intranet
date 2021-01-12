@@ -26,17 +26,18 @@ import com.vaadin.flow.router.Route;
 public class CentersView extends Div {
 
     public CentersView() {
-        setId("centers-view");
-        this.setClassName("pageContentPositionCenter");
+        setId("centersViewLayout");
+        setClassName("pageContentPositionCenter");
 
         H1 headLineCenter = new H1("Center");
         headLineCenter.setId("headlineCenter");
+        headLineCenter.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Wir halten");
-        firstQuote.setId("firstQuote");
+        firstQuote.setClassName("firstQuote");
 
         Label secondQuote = new Label("zusammen");
-        secondQuote.setId("secondQuote");
+        secondQuote.setClassName("secondQuote");
 
 
         HorizontalLayout layout = new HorizontalLayout();

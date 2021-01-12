@@ -26,17 +26,18 @@ import com.example.application.ui.MainView;
 public class ProjectsView extends Div {
 
     public ProjectsView() {
-        setId("projects-view");
+        setId("projectsViewLayout");
         setClassName("pageContentPositionProject");
 
         H1 headLineProject = new H1("Projekte");
         headLineProject.setId("headlineProject");
+        headLineProject.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Dynamisch in die");
-        firstQuote.setId("firstQuote");
+        firstQuote.setClassName("firstQuote");
 
         Label secondQuote = new Label("Überseestadt");
-        secondQuote.setId("secondQuote");
+        secondQuote.setClassName("secondQuote");
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);

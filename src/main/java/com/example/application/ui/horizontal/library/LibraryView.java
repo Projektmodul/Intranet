@@ -26,17 +26,18 @@ import com.example.application.ui.MainView;
 public class LibraryView extends Div {
 
     public LibraryView() {
-        setId("library-view");
+        setId("libraryViewLayout");
         setClassName("pageContentPositionLibrary");
 
         H1 headLineLibrary = new H1("Bibliothek");
         headLineLibrary.setId("headlineLibrary");
+        headLineLibrary.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Gut gelaunt die Welt");
-        firstQuote.setId("firstQuote");
+        firstQuote.setClassName("firstQuote");
 
         Label secondQuote = new Label("entdecken");
-        secondQuote.setId("secondQuote");
+        secondQuote.setClassName("secondQuote");
 
 
         HorizontalLayout layout = new HorizontalLayout();

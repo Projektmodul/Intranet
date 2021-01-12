@@ -27,18 +27,19 @@ import com.vaadin.flow.router.RouteAlias;
 public class OurCompanyView extends Div {
 
     public OurCompanyView() {
-        setId("ourCompany-view");
+        setId("ourCompanyViewLayout");
         setClassName("pageContentPositionOurCompany");
 
 
         H1 headLineOurCompany = new H1("Unsere Unternehmen");
         headLineOurCompany.setId("headlineOurCompany");
+        headLineOurCompany.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Wir sind täglich");
-        firstQuote.setId("firstQuote");
+        firstQuote.setClassName("firstQuote");
 
         Label secondQuote = new Label("für sie da");
-        secondQuote.setId("secondQuote");
+        secondQuote.setClassName("secondQuote");
 
 
         HorizontalLayout layout = new HorizontalLayout();

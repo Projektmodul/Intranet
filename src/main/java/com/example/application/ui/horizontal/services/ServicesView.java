@@ -26,17 +26,18 @@ import com.example.application.ui.MainView;
 public class ServicesView extends Div {
 
     public ServicesView() {
-        setId("services-view");
+        setId("servicesViewLayout");
         setClassName("pageContentPositionServices");
 
         H1 headLineServices = new H1("Services");
         headLineServices.setId("headlineServices");
+        headLineServices.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Mit 100 Prozent");
-        firstQuote.setId("firstQuote");
+        firstQuote.setClassName("firstQuote");
 
         Label secondQuote = new Label("Ökostrom");
-        secondQuote.setId("secondQuote");
+        secondQuote.setClassName("secondQuote");
 
 
         HorizontalLayout layout = new HorizontalLayout();

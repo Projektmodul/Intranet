@@ -26,17 +26,18 @@ import com.example.application.ui.MainView;
 public class CommunityView extends Div {
 
     public CommunityView() {
-        setId("community-view");
+        setId("communityViewLayout");
         setClassName("pageContentPositionCommunity");
 
         H1 headLineCommunity = new H1("Community");
         headLineCommunity.setId("headlineCommunity");
+        headLineCommunity.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Viele Verbindungen und");
-        firstQuote.setId("firstQuote");
+        firstQuote.setClassName("firstQuote");
 
         Label secondQuote = new Label("ganz Zentral");
-        secondQuote.setId("secondQuote");
+        secondQuote.setClassName("secondQuote");
 
 
         HorizontalLayout layout = new HorizontalLayout();

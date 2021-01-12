@@ -52,8 +52,8 @@
     background:linear-gradient(180deg, rgba(240, 209, 44, 0.5) 0%, rgba(196, 196, 196, 0) 90.98%);;
 }
 
-/* changing the font color*/
-#headlineCenter{
+/* setting the style of all h1 from the overview pages*/
+.overviewHStyle{
     margin-left: 15px;
     font-family: Gothic A1;
     font-style: normal;
@@ -62,82 +62,40 @@
     display: flex;
     align-items: center;
     text-align: center;
+}
 
+/* changing the font color*/
+#headlineCenter{
     color: #0D5699;
 }
 
 /* changing the font color*/
 #headlineProject{
-    margin-left: 15px;
-    font-family: Gothic A1;
-    font-style: normal;
-    font-size: 40px;
-    margin-bottom: 120px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
     color: #581092;
 }
 
 /* changing the font color*/
 #headlineLibrary{
-    margin-left: 15px;
-    font-family: Gothic A1;
-    font-style: normal;
-    font-size: 40px;
-    margin-bottom: 120px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    color: #2F7C78;
+      color: #2F7C78;
 }
 
 /* changing the font color*/
 #headlineServices{
-    margin-left: 15px;
-    font-family: Gothic A1;
-    font-style: normal;
-    font-size: 40px;
-    margin-bottom: 120px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
     color: orangered;
 }
 
 /* changing the font color*/
 #headlineCommunity{
-    margin-left: 15px;
-    font-family: Gothic A1;
-    font-style: normal;
-    font-size: 40px;
-    margin-bottom: 120px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
     color: #ffea00;
 }
 
 /* changing the font color*/
 #headlineOurCompany{
-    margin-left: 15px;
-    font-family: Gothic A1;
-    font-style: normal;
-    font-size: 40px;
-    margin-bottom: 120px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
     color: #A00505;
 }
 
 /* define the font style */
-#firstQuote{
+.firstQuote{
     margin-left: 15px;
     font-family: Gothic A1;
     font-style: italic;
@@ -147,11 +105,10 @@
     text-align: center;
     line-height: 10px;
     color: #FFFFFF;
-
 }
 
 /* define the font style */
-#secondQuote{
+.secondQuote{
     margin-left: 55px;
     font-family: Gothic A1;
     font-style: normal;
@@ -159,11 +116,5 @@
     display: flex;
     align-items: normal;
     text-align: center;
-
     color: #FFFFFF;
 }
-
-/*#layout{
-    background-color: green;
-}
-*/
