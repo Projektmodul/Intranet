@@ -229,7 +229,7 @@ public class MyProfileView extends Div {
     private VerticalLayout initUpdateVerticalLayoutLeft () {
         VerticalLayout updateLeft = new VerticalLayout();
 
-        TextField updateIban = new TextField();
+
         updateIban.setValue(userEntity.getIban());
         updateIban.setLabel("Kontodaten");
 
