@@ -2,7 +2,6 @@ package com.example.application.backend.entities;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * This is a basic page class.
@@ -53,7 +52,7 @@ public class PageEntity {
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UserEntity user;
 
 
     public int getPageId() {
@@ -86,11 +85,11 @@ public class PageEntity {
 
     public void setType(String type) { this.type = type; }
 
-    public UsersEntity getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 

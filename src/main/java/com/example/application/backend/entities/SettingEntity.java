@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 
 @Entity(name ="settings")
-public class SettingsEntity {
+public class SettingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

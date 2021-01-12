@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @Entity(name= "users")
-public class UsersEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class UsersEntity {
 
     @ManyToOne
     @JoinColumn(name ="address_id")
-    private AddressesEntity address;
+    private AddressEntity address;
 
     private String iban;
     private char center;
@@ -82,11 +82,11 @@ public class UsersEntity {
         return images;
     }*/
 
-    public UsersEntity() {
+    public UserEntity() {
 
     }
 
-    public UsersEntity(int userId, String firstName, String surname, AddressesEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
+    public UserEntity(int userId, String firstName, String surname, AddressEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
         this.userId = userId;
         this.firstName = firstName;
         this.surname = surname;
@@ -139,11 +139,11 @@ public class UsersEntity {
         this.firstName = firstname;
     }
 
-    public AddressesEntity getAddress() {
+    public AddressEntity getAddress() {
         return address;
     }
 
-    public void setAddress(AddressesEntity address) {
+    public void setAddress(AddressEntity address) {
         this.address = address;
     }
 

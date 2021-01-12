@@ -1,11 +1,10 @@
 package com.example.application.ui.vertical.myProfile;
 
 import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.entities.UsersEntity;
-import com.example.application.backend.entities.AddressesEntity;
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.entities.AddressEntity;
 
 import com.example.application.backend.services.myProfile.MyProfileViewService;
-import com.example.application.backend.services.users.UsersService;
 import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -40,8 +39,8 @@ public class MyProfileView extends Div {
 
     private MyProfileViewService myProfileViewService;
     private PageEntity pageEntity;
-    private UsersEntity usersEntity;
-    private AddressesEntity addressesEntity;
+    private UserEntity userEntity;
+    private AddressEntity addressEntity;
 
 
 
@@ -55,8 +54,8 @@ public class MyProfileView extends Div {
         setClassName("pageContentPosition");
 
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
-        usersEntity = pageEntity.getUser();
-        addressesEntity = usersEntity.getAddress();
+        userEntity = pageEntity.getUser();
+        addressEntity = userEntity.getAddress();
 
         VerticalLayout content = new VerticalLayout();
         content.addComponentAsFirst(new H1(pageEntity.getTitle()));
@@ -95,44 +94,44 @@ public class MyProfileView extends Div {
         HorizontalLayout addressIban = new HorizontalLayout();
 
         TextField firstname = new TextField();
-        firstname.setValue(usersEntity.getFirstName());
+        firstname.setValue(userEntity.getFirstName());
         firstname.setLabel("Vorname");
         firstname.setReadOnly(true);
 
         TextField surname = new TextField();
-        surname.setValue(usersEntity.getSurname());
+        surname.setValue(userEntity.getSurname());
         surname.setLabel("Nachname");
         surname.setReadOnly(true);
 
         TextField email = new TextField();
-        email.setValue(usersEntity.getEmail());
+        email.setValue(userEntity.getEmail());
         email.setLabel("E-Mail");
         email.setReadOnly(true);
 
         TextField telephone = new TextField();
-        telephone.setValue(usersEntity.getTelephoneNumber());
+        telephone.setValue(userEntity.getTelephoneNumber());
         telephone.setLabel("Telefonnummer");
         telephone.setReadOnly(true);
 
         TextField center = new TextField();
-        center.setValue(usersEntity.getCenter());
+        center.setValue(userEntity.getCenter());
         center.setLabel("Center");
         center.setReadOnly(true);
 
         TextField roomnumber = new TextField();
-        roomnumber.setValue(usersEntity.getRoomNumber());
+        roomnumber.setValue(userEntity.getRoomNumber());
         roomnumber.setLabel("Raumnummer");
         roomnumber.setReadOnly(true);
 
         TextArea address = new TextArea();
-        address.setValue(addressesEntity.getStreetName()+" "+ addressesEntity.getStreetNumber()+"\n"+
-                addressesEntity.getPostcode()+" "+ addressesEntity.getCity());
+        address.setValue(addressEntity.getStreetName()+" "+ addressEntity.getStreetNumber()+"\n"+
+                addressEntity.getPostcode()+" "+ addressEntity.getCity());
         address.setLabel("Adresse");
         address.setReadOnly(true);
 
         TextField iban = new TextField();
         iban.setWidth("250px");
-        iban.setValue(usersEntity.getIban());
+        iban.setValue(userEntity.getIban());
         iban.setLabel("Kontodaten");
         iban.setReadOnly(true);
 
@@ -170,7 +169,7 @@ public class MyProfileView extends Div {
         profilepicture.addClassName("user");
 
         TextArea jobDescription = new TextArea();
-        jobDescription.setValue(usersEntity.getJobDescription());
+        jobDescription.setValue(userEntity.getJobDescription());
         jobDescription.setLabel("Tätigkeitsbeschreibung");
         jobDescription.setReadOnly(true);
 
@@ -223,11 +222,11 @@ public class MyProfileView extends Div {
         VerticalLayout updateLeft = new VerticalLayout();
 
         TextField updateIban = new TextField();
-        updateIban.setValue(usersEntity.getIban());
+        updateIban.setValue(userEntity.getIban());
         updateIban.setLabel("Kontodaten");
 
         TextArea updateJobDescription = new TextArea();
-        updateJobDescription.setValue(usersEntity.getJobDescription());
+        updateJobDescription.setValue(userEntity.getJobDescription());
         updateJobDescription.setLabel("Tätigkeitsbeschreibung");
 
         Button updateProfilpicture = new Button("Bild hochladen", new Icon(VaadinIcon.UPLOAD));
@@ -252,19 +251,19 @@ public class MyProfileView extends Div {
         HorizontalLayout postcodeCity = new HorizontalLayout();
 
         TextField updateStreet = new TextField();
-        updateStreet.setValue(addressesEntity.getStreetName());
+        updateStreet.setValue(addressEntity.getStreetName());
         updateStreet.setLabel("Straße");
 
         IntegerField updateNumber = new IntegerField();
-        updateNumber.setValue(addressesEntity.getStreetNumber());
+        updateNumber.setValue(addressEntity.getStreetNumber());
         updateNumber.setLabel("Hausnummer");
 
         IntegerField updatePostcode = new IntegerField();
-        updatePostcode.setValue(addressesEntity.getPostcode());
+        updatePostcode.setValue(addressEntity.getPostcode());
         updatePostcode.setLabel("PLZ");
 
         TextField updateCity = new TextField();
-        updateCity.setValue(addressesEntity.getCity());
+        updateCity.setValue(addressEntity.getCity());
         updateCity.setLabel("Stadt");
 
 

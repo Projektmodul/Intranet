@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Entity(name ="roles")
-public class RolesEntity {
+public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +34,11 @@ public class RolesEntity {
     @ManyToMany(mappedBy = "roles")
     private List<UsersEntity> users;
 */
-    public RolesEntity(){
+    public RoleEntity(){
 
     }
 
-    public RolesEntity(int roleId, String roleName){
+    public RoleEntity(int roleId, String roleName){
         this.roleId = roleId;
         this.roleName = roleName;
     }

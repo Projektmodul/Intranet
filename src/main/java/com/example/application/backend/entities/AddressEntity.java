@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @Entity(name = "addresses")//name of the database table
-public class AddressesEntity {
+public class AddressEntity {
 
     @Id //specifies the primary key of the table
     @GeneratedValue(strategy = GenerationType.IDENTITY) // specifies how the primary key gets generated
@@ -35,11 +35,11 @@ public class AddressesEntity {
    /* @OneToMany(mappedBy = "address")
     private List<UsersEntity> users;
 */
-    public AddressesEntity() {
+    public AddressEntity() {
 
     }
 
-    public AddressesEntity(int addressId, String streetName, int streetNumber, int postcode, String city) {
+    public AddressEntity(int addressId, String streetName, int streetNumber, int postcode, String city) {
         this.addressId = addressId;
         this.streetName = streetName;
         this.streetNumber = streetNumber;

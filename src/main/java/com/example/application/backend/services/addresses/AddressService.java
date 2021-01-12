@@ -1,19 +1,18 @@
 package com.example.application.backend.services.addresses;
 
-import com.example.application.backend.entities.AddressesEntity;
+import com.example.application.backend.entities.AddressEntity;
 import com.example.application.backend.repositories.AddressRepository;
 
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddressesService {
+public class AddressService {
 
     private final AddressRepository addressRepository;
 
     @Autowired
-    public AddressesService(AddressRepository addressRepositiory){
+    public AddressService(AddressRepository addressRepositiory){
         this.addressRepository = addressRepositiory;
     }
 
@@ -21,11 +20,11 @@ public class AddressesService {
         return addressRepository;
     }
 
-    public void save (AddressesEntity addressesEntity){
-        getAddressRepository().saveAndFlush(addressesEntity);
+    public void save (AddressEntity addressEntity){
+        getAddressRepository().saveAndFlush(addressEntity);
     }
 
-    public AddressesEntity findById (int addressId) {
+    public AddressEntity findById (int addressId) {
         return getAddressRepository().findByAddressId(addressId);
     }
 }
