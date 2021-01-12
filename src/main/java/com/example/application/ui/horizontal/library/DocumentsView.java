@@ -26,6 +26,12 @@ import java.util.List;
 @PageTitle("Unterlagen")
 public class DocumentsView extends Div {
 
+    private List<DocumentEntity> documentsList;
+
+    private TreeGrid<DocumentEntity> documentsGrid;
+    private VerticalLayout pageContentLayout;
+    private H1 pageTitle;
+
     public DocumentsView() {
         setClassName("pageContentPosition");
 
@@ -81,6 +87,27 @@ public class DocumentsView extends Div {
         initializeTreeGrid();
 
         this.getStyle().set("width","100%");
+    }
+
+    public void initializeTreeGrid(){
+        documentsGrid = new TreeGrid<>();
+
+        documentsGrid.setItems(documentsList);
+
+        documentsGrid.addHierarchyColumn(DocumentEntity::getKeyword).setHeader("Abteilung");
+        documentsGrid.addColumn(DocumentEntity::getFileName).setHeader("Dateiname");
+
+        documentsGrid.addThemeVariants(GridVariant.LUMO_NO_BORDER,
+                GridVariant.LUMO_NO_ROW_BORDERS, GridVariant.LUMO_ROW_STRIPES);
+
+        pageContentLayout.add(documentsGrid);
+    }
+
+    public void initializePageContent(){
+        pageTitle = new H1("Unterlagen");
+        pageContentLayout = new VerticalLayout(pageTitle);
+
+        this.add(pageContentLayout);
     }
 
 }
