@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "help", layout = ContentHolder.class)
+@Route(value = "help", layout = MainView.class)
 @PageTitle("Hilfe")
 public class HelpView extends Div {
 

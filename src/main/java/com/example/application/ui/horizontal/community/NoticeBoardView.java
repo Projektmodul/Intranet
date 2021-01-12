@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "noticeBoard", layout = ContentHolder.class)
+@Route(value = "noticeBoard", layout = MainView.class)
 @PageTitle("Schwarzes Brett")
 public class NoticeBoardView extends Div {
 

@@ -1,5 +1,6 @@
 package com.example.application.ui.horizontal.community;
 
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.html.Anchor;
 import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.html.Div;
@@ -9,7 +10,7 @@ import com.vaadin.flow.router.Route;
 
 
 
-@Route(value = "blog", layout = ContentHolder.class)
+@Route(value = "blog", layout = MainView.class)
 @PageTitle("Blog")
 public class BlogView extends Div {
 

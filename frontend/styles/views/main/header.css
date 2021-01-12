@@ -1,0 +1,53 @@
+/**
+ * Stylesheet for myProfileView
+ *
+ *@added Monika Martius
+ *@Version 1.0
+ *@since 12.01.2021
+ */
+
+.verticalLayout{
+    background: linear-gradient(180deg, #0D5699 0%,
+    rgba(70, 136, 197, 0.78) 70.83%,
+    rgba(130, 171, 208, 0.78) 83.33%,
+    rgba(11, 100, 183, 0) 93.75%);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    text-decoration-color: white;
+    color: white;
+    height: 185px;
+    align-items: center;
+}
+
+#logoImage{
+    width: auto;
+    height: 100px;
+}
+
+#logoButton,
+#logoButton:active,
+#logoButton:hover,
+#logoButton:focus{
+    background-color: transparent;
+    border: none;
+    outline:none;
+    cursor: pointer;
+}
+
+#logout{
+    width: auto;
+    height: 2.8rem;
+}
+
+#logout:hover{
+    cursor: pointer;
+}
+
+#header{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#header::before{
+    content: none;
+}

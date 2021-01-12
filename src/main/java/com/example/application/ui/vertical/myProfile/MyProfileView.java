@@ -4,6 +4,7 @@ import com.example.application.backend.entities.UsersEntity;
 import com.example.application.backend.entities.AddressesEntity;
 
 import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -31,7 +32,7 @@ import com.vaadin.flow.router.Route;
  *  @since 21.12.2020
  */
 @CssImport("./styles/views/main/content.css")
-@Route(value = "myProfile", layout = ContentHolder.class)
+@Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
 
 

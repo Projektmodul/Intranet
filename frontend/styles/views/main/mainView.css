@@ -1,96 +1,11 @@
 /**
  * Stylesheet for myMainView
  *created @ MonikaMartius, Changed @ Vanessa Skowronksy*/
-
-.verticalLayout{
-  background: linear-gradient(180deg, #0D5699 0%,
-              rgba(70, 136, 197, 0.78) 70.83%,
-              rgba(130, 171, 208, 0.78) 83.33%,
-              rgba(11, 100, 183, 0) 93.75%);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  text-decoration-color: white;
-  color: white;
-  height: 185px;
-  align-items: center;
-}
-
-#header{
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#header::before{
-  content: none;
-}
-
-#search{
-  width: 155px;
-  height: 25px;
-  color: #575757;
-  font-size: small;
-}
-
-#alert{
-  width: 56px;
-  height: 55px;
-  left: 45px;
-  top: 1px;
-  color: #575757;
-}
-
-#logoImage{
-  width: auto;
-  height: 100px;
-  justify-content: flex-end;
-}
-
-#logout{
-  width: auto;
-  height: 2.8rem;
-}
-
-#logout:hover{
-  cursor: pointer;
-}
-
-.textView {
-  background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
-}
-
-.tabsView{
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+#mainView{
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
+  justify-content: flex-start;
 }
 
-#logoButton,
-#logoButton:active,
-#logoButton:hover,
-#logoButton:focus{
-  background-color: transparent;
-  border: none;
-  outline:none;
-  cursor: pointer;
-}
-
-#sideBar {
-  width: auto !important;
-}
-
-#alert:hover {
-  cursor: pointer;
-}
-
-.layoutSidebar{
-  position: absolute;
-  width: 100%;
-  height:636px;
-  left: 84.50%;
-}
 /*is needed for the positioning of myProfile*/
 .profileViewRight{
   width: 340px !important;

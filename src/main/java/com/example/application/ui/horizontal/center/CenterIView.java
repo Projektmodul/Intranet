@@ -7,7 +7,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "centerI", layout = ContentHolder.class)
+@Route(value = "centerI", layout = MainView.class)
 @PageTitle("CenterI")
 public class CenterIView extends Div {
 

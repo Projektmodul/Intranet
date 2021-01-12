@@ -20,7 +20,6 @@ public class HorizontalBar extends MenuBar {
 
 
     public HorizontalBar() {
-
         setOpenOnHover(true);
         setId("menuBar");
         setClassName("myMenuBar");

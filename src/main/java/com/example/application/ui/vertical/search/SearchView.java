@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "search", layout = ContentHolder.class)
+@Route(value = "search", layout = MainView.class)
 @PageTitle("Suchen")
 public class SearchView extends Div {
 

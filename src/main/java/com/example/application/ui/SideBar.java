@@ -17,7 +17,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
-@CssImport("./styles/views/main/mainView.css")
+@CssImport("./styles/views/main/sideBar.css")
 
 public class SideBar extends VerticalLayout {
 
@@ -25,10 +25,11 @@ public class SideBar extends VerticalLayout {
     private final NotificationsView notificationsView;
 
     public SideBar(){
-        notificationsView = new NotificationsView();
-        //notificationsView.addNotifications();
+        setClassName("sideBar");
 
-        setId("sideBar");
+        //notificationsView.addNotifications();
+        notificationsView = new NotificationsView();
+
         //insert icon for alertIcon
         Icon alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alert");

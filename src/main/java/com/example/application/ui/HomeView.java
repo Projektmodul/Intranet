@@ -6,8 +6,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 
-@RouteAlias(value = "", layout = ContentHolder.class)
-@Route(value = "home", layout = ContentHolder.class)
+@RouteAlias(value = "", layout = MainView.class)
+@Route(value = "home", layout = MainView.class)
 @PageTitle("BSAG Intranet")
 
 public class HomeView extends Div {
