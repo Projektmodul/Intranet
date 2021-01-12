@@ -34,8 +34,6 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Mein Profil")
 
 public class MyProfileView extends Div {
-    //These are only for demo, could be deleted once the data in the database is ready to be used
-    //private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
 
     private MyProfileViewService myProfileViewService;
     private PageEntity pageEntity;
