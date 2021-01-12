@@ -36,7 +36,7 @@ public class ImageEntity {
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;*/
+    private UserEntity user;*/
 
     public int getImageId() {
         return imageId;
