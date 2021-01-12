@@ -4,6 +4,7 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.entities.AddressEntity;
 
+import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.ContentHolder;
@@ -40,20 +41,34 @@ public class MyProfileView extends Div {
 
     private MyProfileViewService myProfileViewService;
     private UserService userService;
+    private AddressService addressService;
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private AddressEntity addressEntity;
 
-    private TextField updateIban = new TextField();
-    private TextArea updateJobDescription = new TextArea();
+    private TextField updateIban;
+    private TextArea updateJobDescription;
 
+    private TextField updateStreet;
+    private IntegerField updateNumber;
+    private IntegerField updatePostcode;
+    private TextField updateCity;
 
     /*
      * Constructor of the MyProfileVew class where the content is added to the view
      */
-    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService) {
+    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService) {
         this.myProfileViewService = myProfileViewService;
         this.userService = userService;
+        this.addressService = addressService;
+
+        updateIban = new TextField();
+        updateJobDescription = new TextArea();
+
+        updateStreet = new TextField();
+        updateNumber = new IntegerField();
+        updatePostcode = new IntegerField();
+        updateCity = new TextField();
 
         setId("myProfile-view");
         setClassName("pageContentPosition");
@@ -258,7 +273,6 @@ public class MyProfileView extends Div {
         HorizontalLayout addressNumber = new HorizontalLayout();
         HorizontalLayout postcodeCity = new HorizontalLayout();
 
-        TextField updateStreet = new TextField();
         updateStreet.setValue(addressEntity.getStreetName());
         updateStreet.setLabel("Straße");
 
@@ -266,7 +280,7 @@ public class MyProfileView extends Div {
         updateNumber.setValue(addressEntity.getStreetNumber());
         updateNumber.setLabel("Hausnummer");
 
-        IntegerField updatePostcode = new IntegerField();
+
         updatePostcode.setValue(addressEntity.getPostcode());
         updatePostcode.setLabel("PLZ");
 

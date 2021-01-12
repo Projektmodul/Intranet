@@ -36,11 +36,8 @@ public class UserService {
     }*/
 
     public void update(UserEntity userEntity, TextField updateIban, TextArea updateJobDescription){
-        System.out.println(userEntity.getIban());
         userEntity.setIban(updateIban.getValue());
         userEntity.setJobDescription(updateJobDescription.getValue());
-        System.out.println(userEntity.getIban());
-        //usersEntity.setAddress();
         getUserRepository().saveAndFlush(userEntity);
         UI.getCurrent().getPage().reload();
     }
