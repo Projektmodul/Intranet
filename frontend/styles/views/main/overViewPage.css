@@ -1,0 +1,120 @@
+/*
+    @author Litharshiga Sivarasa
+    @version
+    @since 10-01-2021
+*/
+
+/* changing the background color*/
+.pageContentPositionOurCompany{
+    width: 100%;
+    max-width: 1264px;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
+}
+
+/* changing the background color*/
+.pageContentPositionCenter{
+    width: 100%;
+    max-width: 1264px;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
+}
+
+/* changing the background color*/
+.pageContentPositionProject{
+    width: 100%;
+    max-width: 1264px;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+/* changing the background color*/
+.pageContentPositionLibrary{
+    width: 100%;
+    max-width: 1264px;
+    align-items: center;
+    background:linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+/* changing the background color*/
+.pageContentPositionServices{
+    width: 100%;
+    max-width: 1264px;
+    align-items: center;
+    background:linear-gradient(180deg, rgba(255, 86, 33, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+/* changing the background color*/
+.pageContentPositionCommunity{
+    width: 100%;
+    max-width: 1264px;
+    align-items: center;
+    background:linear-gradient(180deg, rgba(240, 209, 44, 0.5) 0%, rgba(196, 196, 196, 0) 90.98%);;
+}
+
+/* setting the style of all h1 from the overview pages*/
+.overviewHStyle{
+    margin-left: 15px;
+    font-family: Gothic A1;
+    font-style: normal;
+    font-size: 40px;
+    margin-bottom: 120px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+/* changing the font color*/
+#headlineCenter{
+    color: #0D5699;
+}
+
+/* changing the font color*/
+#headlineProject{
+    color: #581092;
+}
+
+/* changing the font color*/
+#headlineLibrary{
+      color: #2F7C78;
+}
+
+/* changing the font color*/
+#headlineServices{
+    color: orangered;
+}
+
+/* changing the font color*/
+#headlineCommunity{
+    color: #ffea00;
+}
+
+/* changing the font color*/
+#headlineOurCompany{
+    color: #A00505;
+}
+
+/* define the font style */
+.firstQuote{
+    margin-left: 15px;
+    font-family: Gothic A1;
+    font-style: italic;
+    font-size: 40px;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+    line-height: 10px;
+    color: #FFFFFF;
+}
+
+/* define the font style */
+.secondQuote{
+    margin-left: 55px;
+    font-family: Gothic A1;
+    font-style: normal;
+    font-size: 70px;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+    color: #FFFFFF;
+}
