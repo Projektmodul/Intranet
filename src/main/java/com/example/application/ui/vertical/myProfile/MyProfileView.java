@@ -219,7 +219,9 @@ public class MyProfileView extends Div {
         saveCancel.setId("saveCancelDiv");
 
         Button saveButton = new Button("Save", e -> {
-            userService.update(pageEntity.getUser(), updateIban, updateJobDescription);
+            addressService.update(addressEntity, updateStreet, updateNumber,
+                     updatePostcode, updateCity);
+            userService.update(userEntity, updateIban, updateJobDescription);
             contentDialog.close();
         });
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
@@ -276,7 +278,7 @@ public class MyProfileView extends Div {
         updateStreet.setValue(addressEntity.getStreetName());
         updateStreet.setLabel("Straße");
 
-        IntegerField updateNumber = new IntegerField();
+
         updateNumber.setValue(addressEntity.getStreetNumber());
         updateNumber.setLabel("Hausnummer");
 
@@ -284,7 +286,7 @@ public class MyProfileView extends Div {
         updatePostcode.setValue(addressEntity.getPostcode());
         updatePostcode.setLabel("PLZ");
 
-        TextField updateCity = new TextField();
+
         updateCity.setValue(addressEntity.getCity());
         updateCity.setLabel("Stadt");
 
