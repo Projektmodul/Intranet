@@ -27,7 +27,7 @@ import com.vaadin.flow.router.Route;
  *  The user is able to change his profile information
  *
  *  @author Jessica Reistel and Laura Neuendorf
- *  @version 2.0
+ *  @version 3.0
  *  @since 21.12.2020
  *  @lastUpdated 12.01.2021
  */
@@ -38,6 +38,7 @@ import com.vaadin.flow.router.Route;
 public class MyProfileView extends Div {
 
     private MyProfileViewService myProfileViewService;
+    private UserService userService;
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private AddressEntity addressEntity;
@@ -47,8 +48,9 @@ public class MyProfileView extends Div {
     /*
      * Constructor of the MyProfileVew class where the content is added to the view
      */
-    public MyProfileView(MyProfileViewService myProfileViewService) {
+    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService) {
         this.myProfileViewService = myProfileViewService;
+        this.userService = userService;
 
         setId("myProfile-view");
         setClassName("pageContentPosition");
