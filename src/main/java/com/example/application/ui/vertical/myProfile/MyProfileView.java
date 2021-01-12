@@ -5,6 +5,7 @@ import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.entities.AddressEntity;
 
 import com.example.application.backend.services.myProfile.MyProfileViewService;
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.ContentHolder;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -28,6 +29,7 @@ import com.vaadin.flow.router.Route;
  *  @author Jessica Reistel and Laura Neuendorf
  *  @version 2.0
  *  @since 21.12.2020
+ *  @lastUpdated 12.01.2021
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = ContentHolder.class)
@@ -196,7 +198,10 @@ public class MyProfileView extends Div {
         Div saveCancel = new Div();
         saveCancel.setId("saveCancelDiv");
 
-        Button saveButton = new Button("Save", e -> contentDialog.close());
+        Button saveButton = new Button("Save", e -> {
+            userService.update(pageEntity.getUser());
+            contentDialog.close();
+        });
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
         saveButton.addClassName("myProfileButton");
         cancelButton.addClassName("myProfileButton");

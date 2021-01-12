@@ -86,7 +86,7 @@ public class UserEntity {
 
     }
 
-    public UserEntity(int userId, String firstName, String surname, AddressEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
+    /*public UserEntity(int userId, String firstName, String surname, AddressEntity address, String iban, char center, int roomNumber, int telephoneNumber, String email, String jobDescription) {
         this.userId = userId;
         this.firstName = firstName;
         this.surname = surname;
@@ -97,7 +97,7 @@ public class UserEntity {
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.jobDescription = jobDescription;
-    }
+    }*/
 
     public String getUserId() {
         return "" + userId;
