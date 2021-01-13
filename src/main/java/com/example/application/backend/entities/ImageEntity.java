@@ -20,6 +20,7 @@ public class ImageEntity {
     @Column(name ="image_id")
     private int imageId;
 
+    @Column(name ="file_name")
     private String fileName;
     private String path;
 
@@ -35,7 +36,7 @@ public class ImageEntity {
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;*/
+    private UserEntity user;*/
 
     public int getImageId() {
         return imageId;
