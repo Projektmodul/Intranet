@@ -24,12 +24,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements UserDetailsService{
-    
+
+    @Autowired
     private UserRepository userRepository;
 
     public UserService(){}
-    
-    @Autowired
+
+
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
@@ -62,9 +63,9 @@ public class UserService implements UserDetailsService{
         if (customer == null) {
             throw new UsernameNotFoundException(username);
         }
-        UserDetails user = User.withUsername(customer.getUsername())
+        return User.withUsername(customer.getUsername())
                 .password(customer.getPassword())
                 .authorities("USER").build();
-        return user;
+
     }
 }

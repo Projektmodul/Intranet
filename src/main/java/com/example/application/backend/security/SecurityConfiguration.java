@@ -1,7 +1,7 @@
 package com.example.application.backend.security;
 
 import com.example.application.backend.repositories.UserRepository;
-import com.example.application.backend.services.users.UsersService;
+import com.example.application.backend.services.users.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -60,7 +60,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UsersService();
+        return new UserService();
     }
 
     /**
