@@ -4,8 +4,11 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.entities.AddressEntity;
 
+import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.ContentHolder;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -26,29 +29,46 @@ import com.vaadin.flow.router.Route;
  *  The user is able to change his profile information
  *
  *  @author Jessica Reistel and Laura Neuendorf
- *  @version 2.0
+ *  @version 3.0
  *  @since 21.12.2020
+ *  @lastUpdated 12.01.2021
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = ContentHolder.class)
 @PageTitle("Mein Profil")
 
 public class MyProfileView extends Div {
-    //These are only for demo, could be deleted once the data in the database is ready to be used
-    //private AddressesEntity addressesEntity = new AddressesEntity(1,"Beispielstraße", 123, 28359, "Bremen");
 
     private MyProfileViewService myProfileViewService;
+    private UserService userService;
+    private AddressService addressService;
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private AddressEntity addressEntity;
 
+    private TextField updateIban;
+    private TextArea updateJobDescription;
 
+    private TextField updateStreet;
+    private IntegerField updateNumber;
+    private IntegerField updatePostcode;
+    private TextField updateCity;
 
     /*
      * Constructor of the MyProfileVew class where the content is added to the view
      */
-    public MyProfileView(MyProfileViewService myProfileViewService) {
+    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService) {
         this.myProfileViewService = myProfileViewService;
+        this.userService = userService;
+        this.addressService = addressService;
+
+        updateIban = new TextField();
+        updateJobDescription = new TextArea();
+
+        updateStreet = new TextField();
+        updateNumber = new IntegerField();
+        updatePostcode = new IntegerField();
+        updateCity = new TextField();
 
         setId("myProfile-view");
         setClassName("pageContentPosition");
@@ -198,7 +218,12 @@ public class MyProfileView extends Div {
         Div saveCancel = new Div();
         saveCancel.setId("saveCancelDiv");
 
-        Button saveButton = new Button("Save", e -> contentDialog.close());
+        Button saveButton = new Button("Save", e -> {
+            addressService.update(addressEntity, updateStreet, updateNumber,
+                     updatePostcode, updateCity);
+            userService.update(userEntity, updateIban, updateJobDescription);
+            contentDialog.close();
+        });
         Button cancelButton = new Button("Cancel", e -> contentDialog.close());
         saveButton.addClassName("myProfileButton");
         cancelButton.addClassName("myProfileButton");
@@ -221,11 +246,11 @@ public class MyProfileView extends Div {
     private VerticalLayout initUpdateVerticalLayoutLeft () {
         VerticalLayout updateLeft = new VerticalLayout();
 
-        TextField updateIban = new TextField();
+
         updateIban.setValue(userEntity.getIban());
         updateIban.setLabel("Kontodaten");
 
-        TextArea updateJobDescription = new TextArea();
+
         updateJobDescription.setValue(userEntity.getJobDescription());
         updateJobDescription.setLabel("Tätigkeitsbeschreibung");
 
@@ -250,19 +275,18 @@ public class MyProfileView extends Div {
         HorizontalLayout addressNumber = new HorizontalLayout();
         HorizontalLayout postcodeCity = new HorizontalLayout();
 
-        TextField updateStreet = new TextField();
         updateStreet.setValue(addressEntity.getStreetName());
         updateStreet.setLabel("Straße");
 
-        IntegerField updateNumber = new IntegerField();
+
         updateNumber.setValue(addressEntity.getStreetNumber());
         updateNumber.setLabel("Hausnummer");
 
-        IntegerField updatePostcode = new IntegerField();
+
         updatePostcode.setValue(addressEntity.getPostcode());
         updatePostcode.setLabel("PLZ");
 
-        TextField updateCity = new TextField();
+
         updateCity.setValue(addressEntity.getCity());
         updateCity.setLabel("Stadt");
 
