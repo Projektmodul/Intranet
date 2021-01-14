@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "sport", layout = ContentHolder.class)
+@Route(value = "sport", layout = MainView.class)
 @PageTitle("Sport&Freizeit")
 public class SportView extends Div {
 

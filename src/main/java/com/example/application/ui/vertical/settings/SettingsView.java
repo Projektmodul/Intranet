@@ -12,7 +12,7 @@ import com.example.application.ui.MainView;
 public class SettingsView extends Div {
 
     public SettingsView() {
-        setId("settings-view");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
         add(new Text("Content placeholder"));
     }

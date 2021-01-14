@@ -48,6 +48,7 @@ public class CanteenView extends Div {
     private Dialog imageDialog;
 
     public CanteenView() {
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
 
         initializeLeftContainer();

@@ -70,7 +70,7 @@ public class MyProfileView extends Div {
         updatePostcode = new IntegerField();
         updateCity = new TextField();
 
-        setId("myProfile-view");
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
 
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
