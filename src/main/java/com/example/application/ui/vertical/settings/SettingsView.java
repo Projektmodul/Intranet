@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "settings", layout = ContentHolder.class)
+@Route(value = "settings", layout = MainView.class)
 @PageTitle("Einstellungen")
 public class SettingsView extends Div {
 

@@ -39,12 +39,12 @@ public class MainView extends VerticalLayout implements RouterLayout {
         SideBar sidebar = new SideBar();
 
         // MAIN CONTAINER
-        HorizontalLayout content = new HorizontalLayout();
-        content.add(childWrapper,sidebar);
-        content.setClassName("layout");
+        HorizontalLayout mainContainerLayout = new HorizontalLayout();
+        mainContainerLayout.add(childWrapper,sidebar);
+        mainContainerLayout.setClassName("layout");
 
         VerticalLayout contentPosition = new VerticalLayout();
-        contentPosition.add(content);
+        contentPosition.add(mainContainerLayout);
         contentPosition.setClassName("contentLayout");
 
         add(header,contentPosition);

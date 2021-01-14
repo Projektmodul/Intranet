@@ -5,16 +5,3 @@
   display: flex;
   justify-content: flex-start;
 }
-
-/*is needed for the positioning of myProfile*/
-.profileViewRight{
-  width: 340px !important;
-  height: 478px !important;
-  left: 50%;
-}
-
-.profileViewLeft{
-  width: 500px !important;
-  height: 478px;
-  left: 7%;
-}

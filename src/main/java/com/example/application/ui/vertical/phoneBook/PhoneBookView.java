@@ -1,13 +1,14 @@
 package com.example.application.ui.vertical.phoneBook;
 
 import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "phoneBook", layout = ContentHolder.class)
+@Route(value = "phoneBook", layout = MainView.class)
 @PageTitle("Telefonbuch")
 
 public class PhoneBookView extends Div {

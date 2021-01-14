@@ -8,6 +8,7 @@ import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -31,10 +32,10 @@ import com.vaadin.flow.router.Route;
  *  @author Jessica Reistel and Laura Neuendorf
  *  @version 3.0
  *  @since 21.12.2020
- *  @lastUpdated 12.01.2021
+ *  @lastUpdated 14.01.2021
  */
 @CssImport("./styles/views/main/content.css")
-@Route(value = "myProfile", layout = ContentHolder.class)
+@Route(value = "myProfile", layout = MainView.class)
 @PageTitle("Mein Profil")
 
 public class MyProfileView extends Div {
