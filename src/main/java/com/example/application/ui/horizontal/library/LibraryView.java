@@ -37,11 +37,9 @@ public class LibraryView extends Div {
         Label secondQuote = new Label("entdecken");
         secondQuote.setClassName("secondQuote");
 
-
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
-        layout.setHeight("450px");
-        layout.setAlignItems(FlexComponent.Alignment.BASELINE);
+        layout.addClassName("justifyContentCenter");
 
         Component component1 = createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#2F7C78", "Unterlagen", "documents");
 
@@ -54,6 +52,7 @@ public class LibraryView extends Div {
         Component component5 = createComponent(new Icon(VaadinIcon.QUESTION), "#2F7C78", "FAQ", "fAQ");
 
         layout.add(component1, component2, component3, component4, component5);
+
 
         add(headLineLibrary,firstQuote,secondQuote, layout);
 

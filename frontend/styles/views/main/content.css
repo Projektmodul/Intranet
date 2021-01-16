@@ -54,11 +54,15 @@
     color: #FFFFFF;
 }
 
+.justifyContentCenter {
+    justify-content: center;
+}
+
 
 /* Colorschemes */
 
 .homeColorscheme {
-    background: linear-gradient(180deg, rgba(0, 133, 255, 0.44) 0%, rgba(12, 127, 233, 0.355) 43.12%, rgba(14, 89, 203, 0) 100%);
+    background: linear-gradient(180deg, rgba(0, 133, 255, 0.5) 0%, rgba(14, 89, 203, 0) 120%);
 }
 
 .homeColorscheme h1 {
@@ -66,14 +70,14 @@
 }
 
 .ourCompanyColorscheme{
-    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
 }
 .ourCompanyColorscheme h1{
     color: #A00505;
 }
 
 .projectsColorscheme {
-    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
 }
 
 .projectsColorscheme h1 {
@@ -82,7 +86,7 @@
 
 
 .libraryColorscheme {
-    background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
 }
 
 .libraryColorscheme h1{
@@ -90,7 +94,7 @@
 }
 
 .servicesColorscheme {
-    background: linear-gradient(180deg, rgba(255, 96, 33, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    background: linear-gradient(180deg, rgba(255, 96, 33, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
 }
 
 .servicesColorscheme h1{
@@ -98,7 +102,7 @@
 }
 
 .communityColorscheme {
-    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
 }
 
 .communityColorscheme h1{
@@ -106,7 +110,7 @@
 }
 
 .centerColorscheme {
-    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 150%);
 }
 
 .centerColorscheme h1 {
