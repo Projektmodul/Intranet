@@ -2,6 +2,7 @@ package com.example.application.ui.horizontal.library;
 
 import com.example.application.backend.entities.DocumentEntity;
 import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -22,7 +23,7 @@ import java.util.List;
  * @lastUpdated 12.01.2021
  */
 
-@Route(value = "documents", layout = ContentHolder.class)
+@Route(value = "documents", layout = MainView.class)
 @PageTitle("Unterlagen")
 public class DocumentsView extends Div {
 

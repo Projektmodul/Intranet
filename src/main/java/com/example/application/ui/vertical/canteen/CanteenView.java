@@ -1,6 +1,7 @@
 package com.example.application.ui.vertical.canteen;
 
 import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -25,10 +26,10 @@ import com.vaadin.flow.router.Route;
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 1.0
  * @since   14.12.2020
- * @lastUpdated 12.01.2021
+ * @lastUpdated 14.01.2021
  */
 
-@Route(value = "canteen", layout = ContentHolder.class)
+@Route(value = "canteen", layout = MainView.class)
 @PageTitle("Betriebsrestaurant")
 @CssImport("./styles/views/main/canteen.css")
 public class CanteenView extends Div {
@@ -48,6 +49,7 @@ public class CanteenView extends Div {
     private Dialog imageDialog;
 
     public CanteenView() {
+        setId("contentViewBlue");
         setClassName("pageContentPosition");
 
         initializeLeftContainer();

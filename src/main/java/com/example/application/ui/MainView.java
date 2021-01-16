@@ -1,18 +1,12 @@
 /*created @ de Boer, Marieke Menna & Monika Martius */
 package com.example.application.ui;
 
+import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.NativeButton;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
 
@@ -27,34 +21,40 @@ import com.vaadin.flow.server.PWA;
 
 public class MainView extends VerticalLayout implements RouterLayout {
 
+    private VerticalLayout childWrapper = new VerticalLayout();
+
     public MainView() {
-        /*
-         * Header
-         * */
-        setId("MainView");
-         //create the object navBar from class HorizontalBar
-        HorizontalBar navBar = new HorizontalBar();
 
-        Image logoImage = new Image("images/bsag.png", "My Project logo");
-        logoImage.setId("logoImage");
+        setSizeFull();
+        setId("mainView");
 
-        NativeButton logoButton = new NativeButton("");
-        logoButton.addClickListener( e-> logoButton.getUI().ifPresent(ui -> ui.navigate("home")));
+        //HEADER
+        Header header = new Header();
 
-        logoButton.add(logoImage);
-        logoButton.setId("logoButton");
+        // WORKSPACE
+        childWrapper.addClassName("workspace");
+        childWrapper.setSizeFull();
 
-        Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
-        logoutIcon.setId("logout");
-        logoutIcon.addClickListener(e-> logoutIcon.getUI().ifPresent(ui -> ui.getPage().setLocation("/logout")));
+        //SIDEBAR
+        SideBar sidebar = new SideBar();
 
-        HorizontalLayout header = new HorizontalLayout();
-        header.add(logoButton,logoutIcon);
-        header.setId("header");
+        // MAIN CONTAINER
+        HorizontalLayout mainContainerLayout = new HorizontalLayout();
+        mainContainerLayout.add(childWrapper,sidebar);
+        mainContainerLayout.setClassName("layout");
 
-        add(header, navBar);
-        addClassName("vertical-layout");
+        VerticalLayout contentPosition = new VerticalLayout();
+        contentPosition.add(mainContainerLayout);
+        contentPosition.setClassName("contentLayout");
+
+        add(header,contentPosition);
 
     }
 
+    @Override
+    public void showRouterLayoutContent(HasElement content) {
+        // The "content" is the the view you are navigating to
+        // The code below sets the childWrapper to hold the view
+        childWrapper.getElement().appendChild(content.getElement());
+    }
 }

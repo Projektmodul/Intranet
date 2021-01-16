@@ -1,9 +1,74 @@
+/**
+ * Stylesheet for myContentView
+ *
+ *@added Monika Martius
+ *@Version 1.0
+ *@since 07.01.2021
+ */
 
+#contentViewBlue{
+    background: linear-gradient(180deg, rgba(0, 133, 255, 0.44) 0%, rgba(12, 127, 233, 0.355) 43.12%, rgba(14, 89, 203, 0) 100%);
+    color: #0D5699;
+}
 
-#myProfile-view {
+#ourCompanyView{
+    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 105.33%);
+    color: #A00505;
+}
+
+#projektView{
+    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    color: #581092;
+}
+
+#librarView{
+    background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    color: #255b57;
+}
+
+#serviceView{
+    background: linear-gradient(180deg, rgba(255, 96, 33, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    color: #9b3a23;
+}
+
+#communityView{
+    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+    color: #7c6d30;
+}
+
+.layoutData{
     width: 100%;
+    text-align: center;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    /*border: 1px solid #9E9E9E;*/
+}
+
+.layout {
+    width: auto;
+    height: 636px;
+}
+
+.contentLayout{
+    align-items: center;
+    width: 100%;
+}
+
+#contentHolder::before{
+    content: none;
+}
+
+.pageContentPosition {
+    width: 1032px;
     height: 100%;
-    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
+    margin-top: 1.5em;
+    margin-left: 0;
+    font-size: 24px;
+    font-family: "Gothic A1", serif;
+    line-height: 30px;
+    left: 4%;
 }
 
 /**

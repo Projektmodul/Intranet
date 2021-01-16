@@ -20,7 +20,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "library", layout = ContentHolder.class)
+@Route(value = "library", layout = MainView.class)
 @PageTitle("Bibliothek")
 @CssImport("./styles/views/main/overViewPage.css")
 public class LibraryView extends Div {

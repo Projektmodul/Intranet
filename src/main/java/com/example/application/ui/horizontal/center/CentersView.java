@@ -20,7 +20,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "centers", layout = ContentHolder.class)
+@Route(value = "centers", layout = MainView.class)
 @PageTitle("Centers")
 @CssImport("./styles/views/main/overViewPage.css")
 public class CentersView extends Div {

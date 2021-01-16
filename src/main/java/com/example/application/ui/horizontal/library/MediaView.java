@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "media", layout = ContentHolder.class)
+@Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")
 public class MediaView extends Div {
 

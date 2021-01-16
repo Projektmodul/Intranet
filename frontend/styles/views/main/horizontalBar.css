@@ -1,4 +1,9 @@
-/*created @ de Boer, Marieke Menna & MonikaMartius */
+/**
+ * Stylesheet for header
+ *@added Monika Martius & Marieke Menna
+ *@Version 1.0
+ *@since 12.01.2021
+ */
 
 .icons{
     color: #FFFFFF;
@@ -6,22 +11,26 @@
     height: 65px;
 }
 
+.menuButtons{
+    background-color: #982f2f !important;
+}
+
 .image{
     width: auto;
     height: 50px;
 }
-#menuBar{
+#menuBar {
     background: #4B4A4A;
     opacity: 0.7;
     box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
-    max-width: 1264px;
-    width: 100%;
-}
-#menuBar::part(container) {
-    justify-content: space-evenly !important;
+    width:90%;
+    height: 45px;
 }
 
+#menuBar::part(container){
+    justify-content: space-evenly;
+}
 
 .spanStyle{
     color: #FFFFFF;
@@ -37,8 +46,3 @@
     height: 140px;
     align-items: center;
 }
-
-
-
-
-

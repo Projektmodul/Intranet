@@ -7,7 +7,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.ui.MainView;
 
-@Route(value = "archive", layout = ContentHolder.class)
+@Route(value = "archive", layout = MainView.class)
 @PageTitle("Archiv")
 public class ArchiveView extends Div {
 
