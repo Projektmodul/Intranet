@@ -2,9 +2,8 @@
 
 package com.example.application.ui.horizontal.ourCompany;
 
-import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -18,22 +17,15 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.example.application.ui.MainView;
-import com.vaadin.flow.router.RouteAlias;
 
 @Route(value = "ourCompany", layout = MainView.class)
 @PageTitle("Unser Unternehmen")
-@CssImport("./styles/views/main/overViewPage.css")
 public class OurCompanyView extends Div {
 
     public OurCompanyView() {
-        setId("ourCompanyViewLayout");
-        setClassName("pageContentPositionOurCompany");
-
-
-        H1 headLineOurCompany = new H1("Unsere Unternehmen");
-        headLineOurCompany.setId("headlineOurCompany");
-        headLineOurCompany.setClassName("overviewHStyle");
+        setClassName("pageContentPosition");
+        addClassName("ourCompanyColorscheme");
+        H1 headLineOurCompany = new H1("Unser Unternehmen");
 
         Label firstQuote = new Label("Wir sind täglich");
         firstQuote.setClassName("firstQuote");
@@ -60,7 +52,7 @@ public class OurCompanyView extends Div {
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);

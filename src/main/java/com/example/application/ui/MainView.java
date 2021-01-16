@@ -16,6 +16,7 @@ import com.vaadin.flow.server.PWA;
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")
+@CssImport("./styles/views/main/content.css")
 @PWA(name = "BSAG Intranet", shortName = "BSAG Intranet", enableInstallPrompt = false)
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")

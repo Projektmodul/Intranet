@@ -2,14 +2,12 @@ package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.ourCompany.WelcomeViewService;
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Route(value = "welcome", layout = MainView.class)
 @PageTitle("Willkommen")
@@ -23,8 +21,8 @@ public class WelcomeView extends Div {
     public WelcomeView(WelcomeViewService welcomeViewService) {
         this.welcomeViewService = welcomeViewService;
 
-        setId("welcome-view");
         setClassName("pageContentPosition");
+        addClassName("ourCompanyColorscheme");
 
         setData();
 
