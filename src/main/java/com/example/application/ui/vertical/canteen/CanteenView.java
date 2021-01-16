@@ -31,7 +31,6 @@ import com.vaadin.flow.router.Route;
 
 @Route(value = "canteen", layout = MainView.class)
 @PageTitle("Betriebsrestaurant")
-@CssImport("./styles/views/main/canteen.css")
 public class CanteenView extends Div {
 
     private Component leftComponent;
@@ -51,6 +50,7 @@ public class CanteenView extends Div {
     public CanteenView() {
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
+        setId("canteen");
 
         initializeLeftContainer();
         initializeRightContainer();
@@ -122,7 +122,7 @@ public class CanteenView extends Div {
         Icon closeIcon = new Icon(VaadinIcon.CLOSE);
         closeIcon.addClickListener(e -> imageDialog.close());
         imageDialog.add(closeIcon);
-        closeIcon.setId("closeIcon");
+        closeIcon.setClassName("closeIcon");
     }
 
 }
