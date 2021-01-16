@@ -10,11 +10,17 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
-
 import java.util.ArrayList;
 
 
-
+/**
+ *  HorizontalBar View shows ...
+ *
+ *  @author Monika Martius, Vanessa Skowronsky
+ *  @version 3.0
+ *  @since 17.12.2020
+ *  @lastUpdated 17.01.2021
+ */
 public class HorizontalBar extends MenuBar {
 
 
@@ -74,7 +80,7 @@ public class HorizontalBar extends MenuBar {
          *          */
         VerticalLayout layoutDocuments = createSubMenu(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#2F7C78", "Unterlagen", "documents");
 
-        VerticalLayout layoutWiki = createSubMenu(new Icon(VaadinIcon.VIMEO), "#2F7C78", "Wiki", "wiki");
+        VerticalLayout layoutWiki = createSubMenu(new Icon(VaadinIcon.BOOK), "#2F7C78", "Wiki", "wiki");
 
         VerticalLayout layoutArchive = createSubMenu(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
 

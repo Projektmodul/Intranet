@@ -21,7 +21,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- * This is a View for all menus.
+ * Canteen View shows  a View for all menus.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 1.0

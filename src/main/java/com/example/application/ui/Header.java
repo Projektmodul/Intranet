@@ -8,7 +8,14 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-
+/**
+ *  Header shows ...
+ *
+ *  @author Monika Martius, Vanessa Skowronsky
+ *  @version 2.0
+ *  @since 12.01.2021
+ *  @lastUpdated 17.01.2021
+ */
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 

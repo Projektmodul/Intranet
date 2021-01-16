@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is a grid-view for all documents.
+ * Documents View shows a grid-view for all documents.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 1.0
- * @since   14.12.2020
- * @lastUpdated 12.01.2021
+ * @since   12.01.2021
+ * @lastUpdated 17.01.2021
  */
 
 @Route(value = "documents", layout = MainView.class)

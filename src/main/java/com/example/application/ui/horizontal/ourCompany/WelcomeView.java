@@ -9,6 +9,14 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+/**
+ *  Welcome View shows ...
+ *
+ *  @author Sabrine Gamdou
+ *  @version 2.0
+ *  @since 15.12.2020
+ *  @lastUpdated 11.01.2021
+ */
 @Route(value = "welcome", layout = MainView.class)
 @PageTitle("Willkommen")
 public class WelcomeView extends Div {
