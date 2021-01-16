@@ -7,7 +7,7 @@
  */
 
 .pageContentPosition {
-    width: 1032px;
+    width: 1032px !important;
     height: 100%;
     margin-top: 1.5em;
     line-height: 30px;
@@ -39,11 +39,9 @@
     align-items: normal;
     text-align: center;
     line-height: initial;
-
     color: #FFFFFF;
 }
 
-/* define the font style */
 .secondQuote{
     margin-left: 55px;
     font-family: Gothic A1, serif;
@@ -52,10 +50,12 @@
     display: flex;
     align-items: normal;
     text-align: center;
-    color: #FFFFFF;
     line-height: initial;
+    color: #FFFFFF;
 }
 
+
+/* Colorschemes */
 
 .homeColorscheme {
     background: linear-gradient(180deg, rgba(0, 133, 255, 0.44) 0%, rgba(12, 127, 233, 0.355) 43.12%, rgba(14, 89, 203, 0) 100%);
@@ -105,6 +105,14 @@
     color: #7c6d30;
 }
 
+.centerColorscheme {
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+.centerColorscheme h1 {
+    color: #0D5699;
+}
+
 .layoutData{
     width: 100%;
     text-align: center;
@@ -112,7 +120,6 @@
     flex-direction: row;
     display: flex;
     flex-wrap: wrap;
-    /*border: 1px solid #9E9E9E;*/
 }
 
 .layout {
@@ -120,20 +127,15 @@
     height: 636px;
 }
 
-/**
- * Stylesheet for myProfileView
- *
- *@author Jessica Reistel and Laura Neuendorf
- *@Version 1.0
- *@since 21.12.2020
- */
+
+/* myProfile Classes and IDs */
 
 /* Positioning the Save and Cancel button and styling it*/
-#saveCancelDiv{
+#myProfile #saveCancelDiv{
     text-align: center;
 }
 
-.myProfileButton{
+#myProfile.myProfileButton{
     background-color: darkgrey;
     color: white;
     margin-left: 10px;
@@ -195,12 +197,12 @@ cursor: pointer;
     align-content: center;
 }
 
- .closeIcon {
+#canteen.closeIcon {
     position: absolute;
     right: 30px;
 
 }
 
-.closeIcon:hover{
+#canteen.closeIcon:hover{
     cursor: pointer;
 }
