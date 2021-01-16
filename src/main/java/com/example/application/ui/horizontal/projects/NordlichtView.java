@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class NordlichtView extends Div {
 
     public NordlichtView() {
-        setId("nordlicht-view");
         setClassName("pageContentPosition");
+        addClassName("projectsColorscheme");
         add(new Text("Nordlicht"));
     }
 
