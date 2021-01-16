@@ -25,12 +25,10 @@ import com.example.application.ui.MainView;
 public class ProjectsView extends Div {
 
     public ProjectsView() {
-        setId("projectsViewLayout");
-        setClassName("pageContentPositionProject");
+        setClassName("pageContentPosition");
+        addClassName("projectsColorscheme");
 
         H1 headLineProject = new H1("Projekte");
-        headLineProject.setId("headlineProject");
-        headLineProject.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Dynamisch in die");
         firstQuote.setClassName("firstQuote");
