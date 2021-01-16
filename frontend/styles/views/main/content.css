@@ -38,7 +38,8 @@
     display: flex;
     align-items: normal;
     text-align: center;
-    line-height: 10px;
+    line-height: initial;
+
     color: #FFFFFF;
 }
 
@@ -52,6 +53,7 @@
     align-items: normal;
     text-align: center;
     color: #FFFFFF;
+    line-height: initial;
 }
 
 
