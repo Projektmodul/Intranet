@@ -25,8 +25,8 @@ import com.example.application.ui.MainView;
 public class CommunityView extends Div {
 
     public CommunityView() {
-        setId("communityViewLayout");
-        setClassName("pageContentPositionCommunity");
+        setClassName("pageContentPosition");
+        addClassName("communityColorscheme");
 
         H1 headLineCommunity = new H1("Community");
         headLineCommunity.setId("headlineCommunity");

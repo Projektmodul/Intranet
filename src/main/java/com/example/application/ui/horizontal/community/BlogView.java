@@ -15,8 +15,8 @@ import com.vaadin.flow.router.Route;
 public class BlogView extends Div {
 
     public BlogView() {
-        setId("blog-view");
         setClassName("pageContentPosition");
+        addClassName("communityColorscheme");
 
         VerticalLayout verticalLayout = new VerticalLayout();
 
