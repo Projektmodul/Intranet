@@ -16,7 +16,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  * @author  Sabrine Gamdou
  * @version 1.0
  * @since   20-12-2020
- * @lastUpdated 06.01.2021
+ * @lastUpdated 16.01.2021
  */
 
 @CssImport("./styles/views/main/notification.css")
@@ -29,28 +29,18 @@ public class NotificationsView extends Dialog {
 
     public NotificationsView() {
 
-
-
-
         notificationText = new H4("Notifications: ");
-
 
         allNotificationsContainer = new VerticalLayout(notificationText);
 
         this.add(allNotificationsContainer);
         allNotificationsContainer.addClassName("notificationsContainer");
 
-
-
-
         Button closeButton = new Button("Close", event -> this.close());
 
         closeButton.setId("notificationBtn");
         allNotificationsContainer.add(closeButton);
         this.setWidth("25%");
-
-
-
     }
 
 

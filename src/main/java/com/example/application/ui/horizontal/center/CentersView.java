@@ -22,7 +22,6 @@ import com.vaadin.flow.router.Route;
 
 @Route(value = "centers", layout = MainView.class)
 @PageTitle("Centers")
-@CssImport("./styles/views/main/overViewPage.css")
 public class CentersView extends Div {
 
     public CentersView() {
@@ -56,7 +55,7 @@ public class CentersView extends Div {
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);

@@ -10,8 +10,8 @@ import com.vaadin.flow.router.Route;
 public class InProgressView extends Div {
 
     public InProgressView(){
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
         add(new Text("Entschuldigung! Diese Seite befindet sich noch im Aufbau."));
     }
 }

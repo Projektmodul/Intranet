@@ -32,7 +32,7 @@ import com.vaadin.flow.router.Route;
  *  @author Jessica Reistel and Laura Neuendorf
  *  @version 3.0
  *  @since 21.12.2020
- *  @lastUpdated 14.01.2021
+ *  @lastUpdated 16.01.2021
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = MainView.class)
@@ -59,6 +59,9 @@ public class MyProfileView extends Div {
      * Constructor of the MyProfileVew class where the content is added to the view
      */
     public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService) {
+        setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
+
         this.myProfileViewService = myProfileViewService;
         this.userService = userService;
         this.addressService = addressService;
@@ -70,9 +73,6 @@ public class MyProfileView extends Div {
         updateNumber = new IntegerField();
         updatePostcode = new IntegerField();
         updateCity = new TextField();
-
-        setId("contentViewBlue");
-        setClassName("pageContentPosition");
 
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
         userEntity = pageEntity.getUser();

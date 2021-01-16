@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class SettingsView extends Div {
 
     public SettingsView() {
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
         add(new Text("Content placeholder"));
     }
 
