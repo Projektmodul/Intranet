@@ -7,15 +7,9 @@
   height: 100%;
 }
 
-
-#contentHolder{
-
-}
-
 #mainContainerVerticalLayout{
   align-items: center;
 }
-
 
 #header{
   height: 185px;
@@ -27,12 +21,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
 #iconContainer::before{
   content: none;
-}
-
-#logoImage{
-
 }
 
 #logout{
@@ -40,6 +31,10 @@
   width: 3em;
   margin-left: unset;
   margin-right: 5vw;
+}
+
+#logout:hover{
+  cursor: pointer;
 }
 
 #logoImage,
@@ -54,12 +49,6 @@
 }
 
 
-
-#logout:hover{
-  cursor: pointer;
-}
-
-
 /* Colors */
 .colorHome {
   background: linear-gradient(180deg, #0D5699 0%, rgba(70, 136, 197, 0.78) 70.83%, rgba(130, 171, 208, 0.78) 83.33%, rgba(11, 100, 183, 0) 93.75%);
@@ -67,4 +56,45 @@
   text-decoration-color: white;
   color: white;
 }
+
+
+.horizontalBarIcons{
+  color: #FFFFFF;
+  width: 65px;
+  height: 65px;
+}
+
+.image{
+  width: auto;
+  height: 50px;
+}
+#horizontalBar {
+  background: #4B4A4A;
+  opacity: 0.7;
+  box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  width:90%;
+  height: 45px;
+}
+
+#horizontalBar::part(container){
+  justify-content: space-evenly;
+}
+
+.spanStyle{
+  color: #FFFFFF;
+  font-size: 14px;
+  width: 120px;
+  height: 120px;
+  alignment: center;
+  text-align: center;
+}
+
+.submenu{
+  width: 140px;
+  height: 140px;
+  align-items: center;
+}
+
+
 
