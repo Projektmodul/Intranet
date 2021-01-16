@@ -25,8 +25,8 @@ import com.vaadin.flow.router.Route;
 public class CentersView extends Div {
 
     public CentersView() {
-        setId("centersViewLayout");
-        setClassName("pageContentPositionCenter");
+        setClassName("pageContentPosition");
+        addClassName("centerColorscheme");
 
         H1 headLineCenter = new H1("Center");
         headLineCenter.setId("headlineCenter");

@@ -13,7 +13,7 @@ public class CenterIView extends Div {
 
     public CenterIView() {
         setClassName("pageContentPosition");
-        setId("centerI-view");
+        addClassName("centerColorscheme");
         add(new Text("Center I"));
 
     }
