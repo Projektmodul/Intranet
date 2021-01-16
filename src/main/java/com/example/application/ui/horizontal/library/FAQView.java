@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class FAQView extends Div {
 
     public FAQView() {
-        setId("fAQ-view");
         setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
         add(new Text("FAQ"));
     }
 

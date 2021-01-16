@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class ArchiveView extends Div {
 
     public ArchiveView() {
-        setId("archive-view");
         setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
         add(new Text("Archiv"));
     }
 

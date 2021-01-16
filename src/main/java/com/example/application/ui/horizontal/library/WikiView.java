@@ -11,8 +11,8 @@ import com.example.application.ui.MainView;
 @PageTitle("Wiki")
 public class WikiView extends Div {
     public WikiView() {
-        setId("wiki-view");
         setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
         add(new Text("Wiki"));
     }
 }

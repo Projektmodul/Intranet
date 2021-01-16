@@ -26,12 +26,10 @@ import com.example.application.ui.MainView;
 public class LibraryView extends Div {
 
     public LibraryView() {
-        setId("libraryViewLayout");
-        setClassName("pageContentPositionLibrary");
+        setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
 
         H1 headLineLibrary = new H1("Bibliothek");
-        headLineLibrary.setId("headlineLibrary");
-        headLineLibrary.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Gut gelaunt die Welt");
         firstQuote.setClassName("firstQuote");
