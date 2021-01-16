@@ -41,9 +41,7 @@ public class CentersView extends Div {
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
-        layout.setHeight("450px");
-        layout.setWidth("300px");
-        layout.setAlignItems(FlexComponent.Alignment.BASELINE);
+        layout.addClassName("justifyContentCenter");
 
         Component component1 = createComponent(new Icon(VaadinIcon.CLUSTER), "#0A5396", "Center I", "centerI");
 

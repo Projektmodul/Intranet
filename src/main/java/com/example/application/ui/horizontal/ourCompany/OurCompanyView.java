@@ -36,8 +36,7 @@ public class OurCompanyView extends Div {
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
-        layout.setHeight("450px");
-        layout.setAlignItems(FlexComponent.Alignment.BASELINE);
+        layout.addClassName("justifyContentCenter");
 
         Component component1 = createComponent(new Icon(VaadinIcon.HANDSHAKE), "#A00505", "Willkommen", "welcome");
         Component component2 = createComponent(new Icon(VaadinIcon.INFO), "#A00505", "Über uns", "aboutUs");

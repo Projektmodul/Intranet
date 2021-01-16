@@ -29,8 +29,6 @@ public class ServicesView extends Div {
         addClassName("servicesColorscheme");
 
         H1 headLineServices = new H1("Services");
-        headLineServices.setId("headlineServices");
-        headLineServices.setClassName("overviewHStyle");
 
         Label firstQuote = new Label("Mit 100 Prozent");
         firstQuote.setClassName("firstQuote");
@@ -41,8 +39,7 @@ public class ServicesView extends Div {
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
-        layout.setHeight("450px");
-        layout.setAlignItems(FlexComponent.Alignment.BASELINE);
+        layout.addClassName("justifyContentCenter");
 
         Component component1 = createComponent(new Icon(VaadinIcon.CHART_TIMELINE), "#FF5621", "Zeitkonto", "");
 

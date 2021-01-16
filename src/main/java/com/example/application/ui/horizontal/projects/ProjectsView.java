@@ -38,9 +38,7 @@ public class ProjectsView extends Div {
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
-        layout.setHeight("450px");
-        layout.setWidth("300px");
-        layout.setAlignItems(FlexComponent.Alignment.BASELINE);
+        layout.addClassName("justifyContentCenter");
 
         Component component1 = createComponent(new Icon(VaadinIcon.TRAIN), "#581092", "Nordlicht", "nordlicht");
 
