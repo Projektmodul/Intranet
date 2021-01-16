@@ -120,7 +120,6 @@
     height: 636px;
 }
 
-
 /**
  * Stylesheet for myProfileView
  *
@@ -143,30 +142,65 @@
 }
 
 
-/* OverViewPage */
-
-/* changing the background color*/
-.pageContentPositionCenter{
-    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
+/* Canteen Classes and IDs */
+#canteen #leftComponent {
+    flex-basis: 80%;
+    min-width: 45rem;
 }
 
-/* changing the background color*/
-.pageContentPositionProject{
-    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+#canteen #leftComponent #pdfImage:hover {
+    cursor: zoom-in;
 }
 
-/* changing the background color*/
-.pageContentPositionLibrary{
-    background:linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+#canteen #rightComponent {
+    flex-basis: 30%;
+    min-width: 15rem;
 }
 
-/* changing the background color*/
-.pageContentPositionServices{
-    background:linear-gradient(180deg, rgba(255, 86, 33, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+#canteen #pageTitle {
+    flex-grow: 4;
 }
 
-/* changing the background color*/
-.pageContentPositionCommunity{
-    background:linear-gradient(180deg, rgba(240, 209, 44, 0.5) 0%, rgba(196, 196, 196, 0) 90.98%);;
+#canteen #deleteIcon {
+    flex-grow: 1;
+    width: 2rem;
+    height: 2rem;
+}
+#canteen #deleteIcon:hover {
+cursor: pointer;
 }
 
+#canteen #menuDeleteLayout {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+#canteen #splitLayout {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#canteen #pdfImage, #dialogPdfImage {
+    width: 100%;
+    height: auto;
+}
+
+#canteen #imageDialog {
+    width: 62rem;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+
+ .closeIcon {
+    position: absolute;
+    right: 30px;
+
+}
+
+.closeIcon:hover{
+    cursor: pointer;
+}
