@@ -35,6 +35,7 @@ public class DocumentsView extends Div {
 
     public DocumentsView() {
         setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
 
         /*
         * Temporary Dummy-Data, will be deleted after Back-End is implemented
