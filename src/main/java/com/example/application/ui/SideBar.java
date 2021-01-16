@@ -18,6 +18,14 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
 
+/**
+ *  SideBar shows ...
+ *
+ *  @author Lea Schünemann, Vanessa Skowronsky
+ *  @version 2.0
+ *  @since 16.12.2020
+ *  @lastUpdated 17.01.2021
+ */
 public class SideBar extends VerticalLayout {
 
     public Tabs tabs;

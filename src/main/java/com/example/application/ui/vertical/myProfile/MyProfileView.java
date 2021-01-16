@@ -1,20 +1,18 @@
 package com.example.application.ui.vertical.myProfile;
 
+import com.example.application.backend.entities.AddressEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
-import com.example.application.backend.entities.AddressEntity;
-
 import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.*;
-
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;

@@ -12,7 +12,12 @@ import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
 
 /**
- * The main view is a top-level placeholder for other views.
+ *  MainView shows ...
+ *
+ *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
+ *  @version 4.0
+ *  @since 15.12.2020
+ *  @lastUpdated 17.01.2021
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")
