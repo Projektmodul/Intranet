@@ -1,4 +1,5 @@
 /*created @ de Boer, Marieke Menna & Monika Martius */
+
 package com.example.application.ui;
 
 import com.vaadin.flow.component.HasElement;
@@ -21,33 +22,31 @@ import com.vaadin.flow.server.PWA;
 
 public class MainView extends VerticalLayout implements RouterLayout {
 
-    private VerticalLayout childWrapper = new VerticalLayout();
+    private VerticalLayout contentHolder = new VerticalLayout();
 
     public MainView() {
 
-        setSizeFull();
         setId("mainView");
 
-        //HEADER
+        //Header
         Header header = new Header();
 
-        // WORKSPACE
-        childWrapper.addClassName("workspace");
-        childWrapper.setSizeFull();
+        // ContentHolder for routed Views
+        contentHolder.setId("contentHolder");
 
-        //SIDEBAR
+        //Sidebar
         SideBar sidebar = new SideBar();
 
-        // MAIN CONTAINER
-        HorizontalLayout mainContainerLayout = new HorizontalLayout();
-        mainContainerLayout.add(childWrapper,sidebar);
-        mainContainerLayout.setClassName("layout");
+        // Main Container
+        HorizontalLayout mainContainer = new HorizontalLayout();
+        mainContainer.add(contentHolder,sidebar);
+        mainContainer.setId("mainContainer");
 
-        VerticalLayout contentPosition = new VerticalLayout();
-        contentPosition.add(mainContainerLayout);
-        contentPosition.setClassName("contentLayout");
+        VerticalLayout verticalLayoutMainContainer = new VerticalLayout();
+        verticalLayoutMainContainer.add(mainContainer);
+        verticalLayoutMainContainer.setId("verticalLayoutMainContainer");
 
-        add(header,contentPosition);
+        add(header, verticalLayoutMainContainer);
 
     }
 
@@ -55,6 +54,6 @@ public class MainView extends VerticalLayout implements RouterLayout {
     public void showRouterLayoutContent(HasElement content) {
         // The "content" is the the view you are navigating to
         // The code below sets the childWrapper to hold the view
-        childWrapper.getElement().appendChild(content.getElement());
+        contentHolder.getElement().appendChild(content.getElement());
     }
 }
