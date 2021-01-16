@@ -25,8 +25,8 @@ import com.example.application.ui.MainView;
 public class ServicesView extends Div {
 
     public ServicesView() {
-        setId("servicesViewLayout");
-        setClassName("pageContentPositionServices");
+        setClassName("pageContentPosition");
+        addClassName("servicesColorscheme");
 
         H1 headLineServices = new H1("Services");
         headLineServices.setId("headlineServices");
