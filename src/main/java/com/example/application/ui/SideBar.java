@@ -10,7 +10,6 @@ import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.search.SearchView;
 import com.example.application.ui.vertical.settings.SettingsView;
 import com.example.application.ui.vertical.timetable.TimetableView;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,7 +17,6 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
-@CssImport("./styles/views/main/mainView.css")
 
 public class SideBar extends VerticalLayout {
 
@@ -29,12 +27,11 @@ public class SideBar extends VerticalLayout {
 
     public SideBar(){
         notificationsView = new NotificationsView();
-        //notificationsView.addNotifications();
 
         setId("sideBar");
         //insert icon for alertIcon
         alertIcon = new Icon(VaadinIcon.BELL);
-        alertIcon.setId("alert");
+        alertIcon.setId("alertBell");
 
         //insert field for search
         TextField searchField = new TextField();
@@ -68,7 +65,7 @@ public class SideBar extends VerticalLayout {
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
         tabs.setSelectedTab(null);
-        tabs.setClassName("tabsView");
+        tabs.setId("tabsView");
 
         add(alertIcon,searchField,tabs);
 
