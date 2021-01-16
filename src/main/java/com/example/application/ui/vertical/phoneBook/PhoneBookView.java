@@ -14,8 +14,8 @@ import com.vaadin.flow.router.Route;
 public class PhoneBookView extends Div {
 
     public PhoneBookView() {
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
 
         VerticalLayout verticalLayout = new VerticalLayout();
         verticalLayout.add(new Anchor("https://www.11880.com", "externes Telefonbuch"));

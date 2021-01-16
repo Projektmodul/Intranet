@@ -22,7 +22,6 @@ import com.example.application.ui.MainView;
 
 @Route(value = "community", layout = MainView.class)
 @PageTitle("Community")
-@CssImport("./styles/views/main/overViewPage.css")
 public class CommunityView extends Div {
 
     public CommunityView() {
@@ -60,7 +59,7 @@ public class CommunityView extends Div {
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);

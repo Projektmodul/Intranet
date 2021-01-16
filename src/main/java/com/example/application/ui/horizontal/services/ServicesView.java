@@ -22,7 +22,6 @@ import com.example.application.ui.MainView;
 
 @Route(value = "services", layout = MainView.class)
 @PageTitle("Services")
-@CssImport("./styles/views/main/overViewPage.css")
 public class ServicesView extends Div {
 
     public ServicesView() {
@@ -61,7 +60,7 @@ public class ServicesView extends Div {
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);

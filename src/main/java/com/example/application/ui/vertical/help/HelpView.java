@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class HelpView extends Div {
 
     public HelpView() {
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
         add(new Text("Content placeholder"));
         //test test
     }

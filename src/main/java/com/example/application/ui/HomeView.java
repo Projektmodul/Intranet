@@ -2,6 +2,7 @@ package com.example.application.ui;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
@@ -13,8 +14,9 @@ import com.vaadin.flow.router.RouteAlias;
 public class HomeView extends Div {
 
     public HomeView() {
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
-        add(new Text("HomeView"));
+        addClassName("homeColorscheme");
+
+        add(new H1("Herzlich Willkommen"));
     }
 }

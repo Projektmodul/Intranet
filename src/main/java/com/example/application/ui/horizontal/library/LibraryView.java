@@ -22,7 +22,7 @@ import com.example.application.ui.MainView;
 
 @Route(value = "library", layout = MainView.class)
 @PageTitle("Bibliothek")
-@CssImport("./styles/views/main/overViewPage.css")
+
 public class LibraryView extends Div {
 
     public LibraryView() {
@@ -63,7 +63,7 @@ public class LibraryView extends Div {
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);

@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class SearchView extends Div {
 
     public SearchView() {
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
         add(new Text("Content placeholder"));
     }
 

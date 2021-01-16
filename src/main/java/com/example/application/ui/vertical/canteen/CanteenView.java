@@ -26,7 +26,7 @@ import com.vaadin.flow.router.Route;
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 1.0
  * @since   14.12.2020
- * @lastUpdated 14.01.2021
+ * @lastUpdated 16.01.2021
  */
 
 @Route(value = "canteen", layout = MainView.class)
@@ -49,8 +49,8 @@ public class CanteenView extends Div {
     private Dialog imageDialog;
 
     public CanteenView() {
-        setId("contentViewBlue");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
 
         initializeLeftContainer();
         initializeRightContainer();
