@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class AboutUsView extends Div {
 
     public AboutUsView() {
-        setId("aboutUs-view");
         setClassName("pageContentPosition");
+        addClassName("ourCompanyColorscheme");
         add(new Text("Über Uns"));
     }
 

@@ -6,22 +6,38 @@
  *@since 07.01.2021
  */
 
-#contentViewBlue{
+#contentHolder h1 {
+    margin-left: 15px;
+    font-family: Gothic A1, serif;
+    font-style: normal;
+    font-size: 40px;
+    margin-bottom: 120px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.homeColorscheme {
     background: linear-gradient(180deg, rgba(0, 133, 255, 0.44) 0%, rgba(12, 127, 233, 0.355) 43.12%, rgba(14, 89, 203, 0) 100%);
+}
+
+.homeColorscheme h1 {
     color: #0D5699;
 }
 
-#ourCompanyView{
-    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 105.33%);
+.ourCompanyColorscheme{
+    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+.ourCompanyColorscheme h1{
     color: #A00505;
 }
 
-#projektView{
+#projectsView{
     background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
     color: #581092;
 }
 
-#librarView{
+#libraryView{
     background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
     color: #255b57;
 }
@@ -64,11 +80,8 @@
     width: 1032px;
     height: 100%;
     margin-top: 1.5em;
-    margin-left: 0;
-    font-size: 24px;
-    font-family: "Gothic A1", serif;
     line-height: 30px;
-    left: 4%;
+    align-items: center;
 }
 
 /**
@@ -90,4 +103,83 @@
     margin-left: 10px;
     margin-right: 10px;
     border: 1px solid black;
+}
+
+
+/* OverViewPage */
+
+/* changing the background color*/
+.pageContentPositionCenter{
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 81.8%);
+}
+
+/* changing the background color*/
+.pageContentPositionProject{
+    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+/* changing the background color*/
+.pageContentPositionLibrary{
+    background:linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+/* changing the background color*/
+.pageContentPositionServices{
+    background:linear-gradient(180deg, rgba(255, 86, 33, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+}
+
+/* changing the background color*/
+.pageContentPositionCommunity{
+    background:linear-gradient(180deg, rgba(240, 209, 44, 0.5) 0%, rgba(196, 196, 196, 0) 90.98%);;
+}
+
+
+/* changing the font color*/
+#headlineCenter{
+    color: #0D5699;
+}
+
+/* changing the font color*/
+#headlineProject{
+    color: #581092;
+}
+
+/* changing the font color*/
+#headlineLibrary{
+    color: #2F7C78;
+}
+
+/* changing the font color*/
+#headlineServices{
+    color: orangered;
+}
+
+/* changing the font color*/
+#headlineCommunity{
+    color: #ffea00;
+}
+
+/* define the font style */
+.firstQuote{
+    margin-left: 15px;
+    font-family: Gothic A1, Serif, serif;
+    font-style: italic;
+    font-size: 40px;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+    line-height: 10px;
+    color: #FFFFFF;
+}
+
+/* define the font style */
+.secondQuote{
+    margin-left: 55px;
+    font-family: Gothic A1, serif;
+    font-style: normal;
+    font-size: 70px;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+    color: #FFFFFF;
 }

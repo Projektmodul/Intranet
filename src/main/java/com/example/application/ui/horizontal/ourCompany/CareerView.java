@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class CareerView extends Div {
 
     public CareerView() {
-        setId("career-view");
         setClassName("pageContentPosition");
+        addClassName("ourCompanyColorscheme");
         add(new Text("Stellenangebote"));
     }
 
