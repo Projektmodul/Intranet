@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class IdeasManagementView extends Div {
 
     public IdeasManagementView() {
-        setId("ideasManagement-view");
         setClassName("pageContentPosition");
+        addClassName("communityColorscheme");
         add(new Text("Ideenmanagement"));
     }
 

@@ -12,8 +12,8 @@ import com.example.application.ui.MainView;
 public class NoticeBoardView extends Div {
 
     public NoticeBoardView() {
-        setId("noticeBoard-view");
         setClassName("pageContentPosition");
+        addClassName("communityColorscheme");
         add(new Text("Schwarzes Brett"));
     }
 
