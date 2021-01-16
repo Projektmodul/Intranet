@@ -42,11 +42,11 @@ public class MainView extends VerticalLayout implements RouterLayout {
         mainContainer.add(contentHolder,sidebar);
         mainContainer.setId("mainContainer");
 
-        VerticalLayout verticalLayoutMainContainer = new VerticalLayout();
-        verticalLayoutMainContainer.add(mainContainer);
-        verticalLayoutMainContainer.setId("verticalLayoutMainContainer");
+        VerticalLayout mainContainerVerticalLayout = new VerticalLayout();
+        mainContainerVerticalLayout.add(mainContainer);
+        mainContainerVerticalLayout.setId("mainContainerVerticalLayout");
 
-        add(header, verticalLayoutMainContainer);
+        add(header, mainContainerVerticalLayout);
 
     }
 

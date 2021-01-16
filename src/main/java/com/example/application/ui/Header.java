@@ -17,26 +17,34 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 public class Header extends VerticalLayout {
 
     public Header(){
-        setClassName("verticalLayout");
+        setId("header");
+        setBackgroundColor("home");
 
         HorizontalBar navBar = new HorizontalBar();
 
         Image logoImage = new Image("images/bsag.png", "My Project logo");
         logoImage.setId("logoImage");
+        logoImage.addClickListener(e-> logoImage.getUI().ifPresent(ui -> ui.navigate("home")));
 
-        NativeButton logoButton = new NativeButton("");
-        logoButton.addClickListener( e-> logoButton.getUI().ifPresent(ui -> ui.navigate("home")));
-
-        logoButton.add(logoImage);
-        logoButton.setId("logoButton");
 
         Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
         logoutIcon.addClickListener(e-> logoutIcon.getUI().ifPresent(ui -> ui.getPage().setLocation("/logout")));
         logoutIcon.setId("logout");
 
-        HorizontalLayout header = new HorizontalLayout();
-        header.add(logoButton,logoutIcon);
-        header.setId("header");
-        add(header,navBar);
+        HorizontalLayout iconContainer = new HorizontalLayout();
+        iconContainer.add(logoImage,logoutIcon);
+        iconContainer.setId("iconContainer");
+        add(iconContainer,navBar);
+    }
+
+
+
+
+    public void setBackgroundColor(String colorName) {
+
+        switch (colorName) {
+            case "home": setClassName("colorHome"); break;
+            default : break;
+        }
     }
 }
