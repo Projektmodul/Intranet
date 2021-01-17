@@ -21,11 +21,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class Header extends VerticalLayout {
 
+    private HorizontalBar horizontalBar;
+
     public Header(){
         setId("header");
         setBackgroundColor("home");
 
-        HorizontalBar navBar = new HorizontalBar();
+        horizontalBar = new HorizontalBar();
 
         Image logoImage = new Image("images/bsag.png", "My Project logo");
         logoImage.setId("logoImage");
@@ -39,10 +41,12 @@ public class Header extends VerticalLayout {
         HorizontalLayout iconContainer = new HorizontalLayout();
         iconContainer.add(logoImage,logoutIcon);
         iconContainer.setId("iconContainer");
-        add(iconContainer,navBar);
+        add(iconContainer, horizontalBar);
     }
 
-
+    public HorizontalBar getHorizontalBar() {
+        return horizontalBar;
+    }
 
 
     public void setBackgroundColor(String colorName) {

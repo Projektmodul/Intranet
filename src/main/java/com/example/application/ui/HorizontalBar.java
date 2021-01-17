@@ -23,11 +23,15 @@ import java.util.ArrayList;
  */
 public class HorizontalBar extends MenuBar {
 
+    private HorizontalBarClickedInitiator initiator;
 
     public HorizontalBar() {
         setId("horizontalBar");
         setOpenOnHover(true);
         setId("horizontalBar");
+
+       initiator = new HorizontalBarClickedInitiator();
+
 
         Icon home = new Icon(VaadinIcon.HOME);
         home.setSize("35px");
@@ -143,7 +147,10 @@ public class HorizontalBar extends MenuBar {
         VerticalLayout layout = new VerticalLayout(span, tab);
         layout.setClassName("submenu");
         layout.getStyle().set("background-color", backgroundColor);
-        layout.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
+        layout.addClickListener(e -> {
+            initiator.horizontalBarClicked();
+            layout.getUI().ifPresent(ui -> ui.navigate(route));
+        });
 
         return layout;
 
@@ -161,9 +168,16 @@ public class HorizontalBar extends MenuBar {
         Label label = new Label(labelText);
         label.getStyle().set("color", "white");
         MenuItem menuItem = addItem(label);
-        menuItem.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
+        menuItem.addClickListener(e -> {
+            initiator.horizontalBarClicked();
+            layout.getUI().ifPresent(ui -> ui.navigate(route));
+        });
         menuItem.getSubMenu().addItem(layout);
 
+    }
+
+    public HorizontalBarClickedInitiator getInitiator() {
+        return initiator;
     }
 
 

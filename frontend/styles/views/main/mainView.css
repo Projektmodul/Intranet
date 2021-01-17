@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+#mainContainer{
+  width: 90%;
+}
+
 
 /* Header */
 #header{

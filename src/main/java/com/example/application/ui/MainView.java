@@ -27,7 +27,7 @@ import com.vaadin.flow.server.PWA;
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
-public class MainView extends VerticalLayout implements RouterLayout {
+public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener {
 
     private VerticalLayout contentHolder = new VerticalLayout();
 
@@ -43,6 +43,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
         //Header
         Header header = new Header();
+        header.getHorizontalBar().getInitiator().addListener(this);
 
         // ContentHolder for routed Views
         contentHolder.setId("contentHolder");
@@ -77,5 +78,10 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
     public SideBar getSidebar() {
         return sidebar;
+    }
+
+    @Override
+    public void horizontalBarClicked() {
+        sidebar.setSideBarToNull();
     }
 }
