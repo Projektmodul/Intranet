@@ -47,24 +47,23 @@ public class SideBar extends VerticalLayout {
         searchField.setPlaceholder("Suchbegriff eingeben...");
 
         tabs = new Tabs();
-        Tab[] tabArray = new Tab[13];
+        Tab[] tabArray = new Tab[12];
         for (int i = 0; i<tabArray.length;i++) {
             tabArray[i] = new Tab("");
         }
 
-        tabArray[0].add(new RouterLink("Suche",SearchView.class));
-        tabArray[1].add(new RouterLink("Mein Profil", MyProfileView.class));
-        tabArray[2].add(new RouterLink("Telefonbuch", PhoneBookView.class));
-        tabArray[3].add(new RouterLink("Einstellungen", SettingsView.class));
-        tabArray[4].add(new RouterLink("Hilfe", HelpView.class));
-        tabArray[5].add(new RouterLink("Meine Kontakte", InProgressView.class));
-        tabArray[6].add(new RouterLink("Mailing", MailingView.class));
-        tabArray[7].add(new RouterLink("Kalender", InProgressView.class));
-        tabArray[8].add(new RouterLink("Fahrplan", TimetableView.class));
-        tabArray[9].add(new RouterLink("Apps", InProgressView.class));
-        tabArray[10].add(new RouterLink("Favoriten", InProgressView.class));
-        tabArray[11].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
-        tabArray[12].add(new RouterLink("Zuletzt besucht", InProgressView.class));
+        tabArray[0].add(new RouterLink("Mein Profil", MyProfileView.class));
+        tabArray[1].add(new RouterLink("Telefonbuch", PhoneBookView.class));
+        tabArray[2].add(new RouterLink("Einstellungen", SettingsView.class));
+        tabArray[3].add(new RouterLink("Hilfe", HelpView.class));
+        tabArray[4].add(new RouterLink("Meine Kontakte", InProgressView.class));
+        tabArray[5].add(new RouterLink("Mailing", MailingView.class));
+        tabArray[6].add(new RouterLink("Kalender", InProgressView.class));
+        tabArray[7].add(new RouterLink("Fahrplan", TimetableView.class));
+        tabArray[8].add(new RouterLink("Apps", InProgressView.class));
+        tabArray[9].add(new RouterLink("Favoriten", InProgressView.class));
+        tabArray[10].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
+        tabArray[11].add(new RouterLink("Zuletzt besucht", InProgressView.class));
 
         for (Tab tab : tabArray) {
             tabs.add(tab);
