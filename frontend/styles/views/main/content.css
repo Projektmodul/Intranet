@@ -6,6 +6,7 @@
  *@since 16.01.2021
  */
 
+/* CSS-Befehle, die mehrere Views betreffen */
 .pageContentPosition {
     width: 1032px !important;
     height: 100%;
@@ -72,6 +73,7 @@
 .ourCompanyColorscheme{
     background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
 }
+
 .ourCompanyColorscheme h1{
     color: #A00505;
 }
@@ -83,7 +85,6 @@
 .projectsColorscheme h1 {
     color: #581092;
 }
-
 
 .libraryColorscheme {
     background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
@@ -116,7 +117,7 @@
 .centerColorscheme h1 {
     color: #0D5699;
 }
-
+/* -------------------------------------------------------------- */
 /*
 
 .layoutData{
@@ -134,25 +135,95 @@
 }
 
 */
+/* horizontal/center/CenterIView */
 
+/* -------------------------------------------------------------- */
 
-/* myProfile Classes and IDs */
+/* horizontal/center/CentersView */
 
-/* Positioning the Save and Cancel button and styling it*/
-#myProfile #saveCancelDiv{
-    text-align: center;
-}
+/* -------------------------------------------------------------- */
 
-#myProfile.myProfileButton{
-    background-color: darkgrey;
-    color: white;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 1px solid black;
-}
+/* horizontal/community/BlogView */
 
+/* -------------------------------------------------------------- */
 
-/* Canteen Classes and IDs */
+/* horizontal/community/CommunityView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/community/IdeaManagementView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/community/NoticeView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/ArchiveView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/DocumentsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/FAQView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/libraryView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/MediaView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/WikiView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/AboutUsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/CareerView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/NewsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/OurCompanyView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/SportView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/WelcomeView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/projects/NordlichtView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/projects/ProjectsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/services/ServicesView */
+
+/* -------------------------------------------------------------- */
+
+/* login/LoginView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/canteen/CanteenView */
 #canteen #leftComponent {
     flex-basis: 80%;
     min-width: 45rem;
@@ -177,7 +248,7 @@
     height: 2rem;
 }
 #canteen #deleteIcon:hover {
-cursor: pointer;
+    cursor: pointer;
 }
 
 #canteen #menuDeleteLayout {
@@ -214,3 +285,54 @@ cursor: pointer;
 #canteen.closeIcon:hover{
     cursor: pointer;
 }
+/* -------------------------------------------------------------- */
+
+/* vertical/help/HelpView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/mailing/MailingView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/myProfile/MyProfileView */
+#myProfile #saveCancelDiv{
+    text-align: center;
+}
+
+#myProfile.myProfileButton{
+    background-color: darkgrey;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+/* -------------------------------------------------------------- */
+
+/* vertical/notifications/NotificationsView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/phoneBook/PhoneBookView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/search/SearchView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/settings/Settingsiew */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/timetable/TimetableView */
+
+/* -------------------------------------------------------------- */
+
+/* ui/HomeView */
+
+/* -------------------------------------------------------------- */
+
+/* ui/InProgressView */
+
+/* -------------------------------------------------------------- */
