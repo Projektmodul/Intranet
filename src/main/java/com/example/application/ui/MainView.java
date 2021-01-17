@@ -2,6 +2,7 @@
 
 package com.example.application.ui;
 
+import com.example.application.ui.presenters.NotificationPresenter;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -30,7 +31,13 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
     private VerticalLayout contentHolder = new VerticalLayout();
 
-    public MainView() {
+    private  SideBar sidebar;
+
+    //bidirectional communication between ContentHolder and NotificationPresenter
+    private final NotificationPresenter notificationPresenter;
+
+    public MainView(NotificationPresenter notificationPresenter) {
+        this.notificationPresenter = notificationPresenter;
 
         setId("mainView");
 
@@ -41,7 +48,7 @@ public class MainView extends VerticalLayout implements RouterLayout {
         contentHolder.setId("contentHolder");
 
         //Sidebar
-        SideBar sidebar = new SideBar();
+        sidebar = new SideBar();
 
         // Main Container
         HorizontalLayout mainContainer = new HorizontalLayout();
@@ -54,6 +61,11 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
         add(header, mainContainerVerticalLayout);
 
+        //Initialize the contentHolder in the notificationPresenter
+        notificationPresenter.setMainView(this);
+        notificationPresenter.setEventOfNotificationViewOnSideBar();
+
+
     }
 
     @Override
@@ -61,5 +73,9 @@ public class MainView extends VerticalLayout implements RouterLayout {
         // The "content" is the the view you are navigating to
         // The code below sets the childWrapper to hold the view
         contentHolder.getElement().appendChild(content.getElement());
+    }
+
+    public SideBar getSidebar() {
+        return sidebar;
     }
 }
