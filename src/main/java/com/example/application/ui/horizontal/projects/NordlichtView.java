@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class NordlichtView extends Div {
 
     public NordlichtView() {
+        setId("nordlicht");
         setClassName("pageContentPosition");
         addClassName("projectsColorscheme");
         add(new Text("Nordlicht"));

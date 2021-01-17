@@ -34,6 +34,7 @@ public class DocumentsView extends Div {
     private H1 pageTitle;
 
     public DocumentsView() {
+        setId("documents");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 

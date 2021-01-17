@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class NewsView extends Div {
 
     public NewsView() {
+        setId("news");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
         add(new Text("Nachrichten"));

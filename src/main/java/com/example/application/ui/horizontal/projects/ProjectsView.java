@@ -29,6 +29,7 @@ import com.vaadin.flow.router.Route;
 public class ProjectsView extends Div {
 
     public ProjectsView() {
+        setId("projects");
         setClassName("pageContentPosition");
         addClassName("projectsColorscheme");
 

@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class HelpView extends Div {
 
     public HelpView() {
+        setId("help");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
         add(new Text("Content placeholder"));

@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class NoticeBoardView extends Div {
 
     public NoticeBoardView() {
+        setId("noticeBoard");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
         add(new Text("Schwarzes Brett"));

@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class SettingsView extends Div {
 
     public SettingsView() {
+        setId("settings");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
         add(new Text("Content placeholder"));

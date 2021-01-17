@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class MediaView extends Div {
 
     public MediaView() {
+        setId("media");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
         add(new Text("Medien"));
