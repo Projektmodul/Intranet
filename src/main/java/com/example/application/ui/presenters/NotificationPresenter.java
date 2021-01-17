@@ -1,10 +1,9 @@
 package com.example.application.ui.presenters;
 
-import com.example.application.backend.services.notifications.NotificationService;
-import com.example.application.ui.ContentHolder;
 import com.example.application.backend.services.notifications.NotificationDataProvider;
+import com.example.application.backend.services.notifications.NotificationService;
+import com.example.application.ui.MainView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -25,8 +24,7 @@ import org.springframework.context.annotation.Scope;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class NotificationPresenter {
 
-    //bidirectional communication between ContentHolder and NotificationPresenter
-    private ContentHolder contentHolder;
+    private MainView mainView;
 
     private final NotificationService notificationService;
     private final NotificationsView notificationsView;
@@ -36,7 +34,7 @@ public class NotificationPresenter {
     NotificationPresenter(NotificationService notificationService){
         this.notificationService = notificationService;
 
-        this.contentHolder = new ContentHolder(this);
+        this.mainView = new MainView(this);
 
         notificationsView = new NotificationsView();
         NotificationDataProvider notificationDataProvider = new NotificationDataProvider();
@@ -51,11 +49,11 @@ public class NotificationPresenter {
 
     //The presenter sets the clickEvent of the notification dialog
     public void setEventOfNotificationViewOnSideBar(){
-        this.contentHolder.getSideBar().setEventOfNotificationView(this.notificationsView);
+        this.mainView.getSidebar().setEventOfNotificationView(this.notificationsView);
     }
 
-    public void setContentHolder(ContentHolder contentHolder) {
-        this.contentHolder = contentHolder;
+    public void setMainView(MainView mainView) {
+        this.mainView = mainView;
     }
 
 }
