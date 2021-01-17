@@ -41,7 +41,7 @@ public class AboutUsView extends Div {
     }
 
     private void setData(){
-        PageEntity pageEntity = aboutUsViewService.findPageById(5);
+        PageEntity pageEntity = aboutUsViewService.findPageById(4);
 
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Span(pageEntity.getContent());
