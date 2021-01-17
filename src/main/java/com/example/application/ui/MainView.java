@@ -1,4 +1,5 @@
 /*created @ de Boer, Marieke Menna & Monika Martius */
+
 package com.example.application.ui;
 
 import com.vaadin.flow.component.HasElement;
@@ -11,43 +12,47 @@ import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
 
 /**
- * The main view is a top-level placeholder for other views.
+ *  MainView shows ...
+ *
+ *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
+ *  @version 4.0
+ *  @since 15.12.2020
+ *  @lastUpdated 17.01.2021
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")
+@CssImport("./styles/views/main/content.css")
 @PWA(name = "BSAG Intranet", shortName = "BSAG Intranet", enableInstallPrompt = false)
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
 public class MainView extends VerticalLayout implements RouterLayout {
 
-    private VerticalLayout childWrapper = new VerticalLayout();
+    private VerticalLayout contentHolder = new VerticalLayout();
 
     public MainView() {
 
-        setSizeFull();
         setId("mainView");
 
-        //HEADER
+        //Header
         Header header = new Header();
 
-        // WORKSPACE
-        childWrapper.addClassName("workspace");
-        childWrapper.setSizeFull();
+        // ContentHolder for routed Views
+        contentHolder.setId("contentHolder");
 
-        //SIDEBAR
+        //Sidebar
         SideBar sidebar = new SideBar();
 
-        // MAIN CONTAINER
-        HorizontalLayout mainContainerLayout = new HorizontalLayout();
-        mainContainerLayout.add(childWrapper,sidebar);
-        mainContainerLayout.setClassName("layout");
+        // Main Container
+        HorizontalLayout mainContainer = new HorizontalLayout();
+        mainContainer.add(contentHolder,sidebar);
+        mainContainer.setId("mainContainer");
 
-        VerticalLayout contentPosition = new VerticalLayout();
-        contentPosition.add(mainContainerLayout);
-        contentPosition.setClassName("contentLayout");
+        VerticalLayout mainContainerVerticalLayout = new VerticalLayout();
+        mainContainerVerticalLayout.add(mainContainer);
+        mainContainerVerticalLayout.setId("mainContainerVerticalLayout");
 
-        add(header,contentPosition);
+        add(header, mainContainerVerticalLayout);
 
     }
 
@@ -55,6 +60,6 @@ public class MainView extends VerticalLayout implements RouterLayout {
     public void showRouterLayoutContent(HasElement content) {
         // The "content" is the the view you are navigating to
         // The code below sets the childWrapper to hold the view
-        childWrapper.getElement().appendChild(content.getElement());
+        contentHolder.getElement().appendChild(content.getElement());
     }
 }

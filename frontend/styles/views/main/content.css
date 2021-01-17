@@ -1,40 +1,124 @@
 /**
- * Stylesheet for myContentView
+ * Stylesheet for ContentHolder-Content
  *
- *@added Monika Martius
- *@Version 1.0
- *@since 07.01.2021
+ *@added Monika Martius, edited Vanessa Skowronsky
+ *@Version 2.0
+ *@since 16.01.2021
  */
 
-#contentViewBlue{
-    background: linear-gradient(180deg, rgba(0, 133, 255, 0.44) 0%, rgba(12, 127, 233, 0.355) 43.12%, rgba(14, 89, 203, 0) 100%);
+/* CSS-Befehle, die mehrere Views betreffen */
+.pageContentPosition {
+    width: 1032px !important;
+    height: 100%;
+    margin-top: 1.5em;
+    line-height: 30px;
+    align-items: center;
+}
+
+#contentHolder h1 {
+    margin-left: 15px;
+    font-family: Gothic A1, serif;
+    font-style: normal;
+    font-size: 40px;
+    margin-bottom: 120px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+#contentHolder::before{
+    content: none;
+}
+
+/* define the font style */
+.firstQuote{
+    margin-left: 15px;
+    font-family: Gothic A1, Serif, serif;
+    font-style: italic;
+    font-size: 40px;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+    line-height: initial;
+    color: #FFFFFF;
+}
+
+.secondQuote{
+    margin-left: 55px;
+    font-family: Gothic A1, serif;
+    font-style: normal;
+    font-size: 70px;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+    line-height: initial;
+    color: #FFFFFF;
+}
+
+.justifyContentCenter {
+    justify-content: center;
+}
+
+
+/* Colorschemes */
+
+.homeColorscheme {
+    background: linear-gradient(180deg, rgba(0, 133, 255, 0.5) 0%, rgba(14, 89, 203, 0) 120%);
+}
+
+.homeColorscheme h1 {
     color: #0D5699;
 }
 
-#ourCompanyView{
-    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 105.33%);
+.ourCompanyColorscheme{
+    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
+}
+
+.ourCompanyColorscheme h1{
     color: #A00505;
 }
 
-#projektView{
-    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+.projectsColorscheme {
+    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
+}
+
+.projectsColorscheme h1 {
     color: #581092;
 }
 
-#librarView{
-    background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+.libraryColorscheme {
+    background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
+}
+
+.libraryColorscheme h1{
     color: #255b57;
 }
 
-#serviceView{
-    background: linear-gradient(180deg, rgba(255, 96, 33, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+.servicesColorscheme {
+    background: linear-gradient(180deg, rgba(255, 96, 33, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
+}
+
+.servicesColorscheme h1{
     color: #9b3a23;
 }
 
-#communityView{
-    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 100%);
+.communityColorscheme {
+    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
+}
+
+.communityColorscheme h1{
     color: #7c6d30;
 }
+
+.centerColorscheme {
+    background: linear-gradient(180deg, rgba(131, 140, 216, 0.5) 0%, rgba(196, 196, 196, 0) 150%);
+}
+
+.centerColorscheme h1 {
+    color: #0D5699;
+}
+/* -------------------------------------------------------------- */
+/*
 
 .layoutData{
     width: 100%;
@@ -43,7 +127,6 @@
     flex-direction: row;
     display: flex;
     flex-wrap: wrap;
-    /*border: 1px solid #9E9E9E;*/
 }
 
 .layout {
@@ -51,43 +134,205 @@
     height: 636px;
 }
 
-.contentLayout{
-    align-items: center;
+*/
+/* horizontal/center/CenterIView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/center/CentersView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/community/BlogView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/community/CommunityView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/community/IdeaManagementView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/community/NoticeView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/ArchiveView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/DocumentsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/FAQView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/libraryView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/MediaView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/library/WikiView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/AboutUsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/CareerView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/NewsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/OurCompanyView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/SportView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/ourCompany/WelcomeView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/projects/NordlichtView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/projects/ProjectsView */
+
+/* -------------------------------------------------------------- */
+
+/* horizontal/services/ServicesView */
+
+/* -------------------------------------------------------------- */
+
+/* login/LoginView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/canteen/CanteenView */
+#canteen #leftComponent {
+    flex-basis: 80%;
+    min-width: 45rem;
+}
+
+#canteen #leftComponent #pdfImage:hover {
+    cursor: zoom-in;
+}
+
+#canteen #rightComponent {
+    flex-basis: 30%;
+    min-width: 15rem;
+}
+
+#canteen #pageTitle {
+    flex-grow: 4;
+}
+
+#canteen #deleteIcon {
+    flex-grow: 1;
+    width: 2rem;
+    height: 2rem;
+}
+#canteen #deleteIcon:hover {
+    cursor: pointer;
+}
+
+#canteen #menuDeleteLayout {
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
 }
 
-#contentHolder::before{
-    content: none;
+#canteen #splitLayout {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.pageContentPosition {
-    width: 1032px;
-    height: 100%;
-    margin-top: 1.5em;
-    margin-left: 0;
-    font-size: 24px;
-    font-family: "Gothic A1", serif;
-    line-height: 30px;
-    left: 4%;
+#canteen #pdfImage, #dialogPdfImage {
+    width: 100%;
+    height: auto;
 }
 
-/**
- * Stylesheet for myProfileView
- *
- *@author Jessica Reistel and Laura Neuendorf
- *@Version 1.0
- *@since 21.12.2020
- */
+#canteen #imageDialog {
+    width: 62rem;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
 
-/* Positioning the Save and Cancel button and styling it*/
-#saveCancelDiv{
+#canteen.closeIcon {
+    position: absolute;
+    right: 30px;
+
+}
+
+#canteen.closeIcon:hover{
+    cursor: pointer;
+}
+/* -------------------------------------------------------------- */
+
+/* vertical/help/HelpView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/mailing/MailingView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/myProfile/MyProfileView */
+#myProfile #saveCancelDiv{
     text-align: center;
 }
 
-.myProfileButton{
+#myProfile.myProfileButton{
     background-color: darkgrey;
     color: white;
     margin-left: 10px;
     margin-right: 10px;
     border: 1px solid black;
 }
+/* -------------------------------------------------------------- */
+
+/* vertical/notifications/NotificationsView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/phoneBook/PhoneBookView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/search/SearchView */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/settings/Settingsiew */
+
+/* -------------------------------------------------------------- */
+
+/* vertical/timetable/TimetableView */
+
+/* -------------------------------------------------------------- */
+
+/* ui/HomeView */
+
+/* -------------------------------------------------------------- */
+
+/* ui/InProgressView */
+
+/* -------------------------------------------------------------- */

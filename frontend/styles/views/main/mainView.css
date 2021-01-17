@@ -1,7 +1,136 @@
 /**
- * Stylesheet for myMainView
- *created @ MonikaMartius, Changed @ Vanessa Skowronksy*/
+ * Stylesheet for mainView, header, horizontalBar and sideBar
+ *created @ MonikaMartius, Edited @ Vanessa Skowronksy*/
+
+
 #mainView{
-  display: flex;
-  justify-content: flex-start;
+  height: 100%;
 }
+
+#mainContainerVerticalLayout{
+  align-items: center;
+}
+
+
+/* Header */
+#header{
+  height: 185px;
+  align-items: center;
+}
+
+#iconContainer {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#iconContainer::before{
+  content: none;
+}
+
+#logout{
+  height: auto;
+  width: 3em;
+  margin-left: unset;
+  margin-right: 5vw;
+}
+
+#logout:hover{
+  cursor: pointer;
+}
+
+#logoImage,
+#logoImage:active,
+#logoImage:hover,
+#logoImage:focus{
+  width: auto;
+  height: 100px;
+  border: none;
+  outline:none;
+  cursor: pointer;
+}
+
+
+/* Colors */
+.colorHome {
+  background: linear-gradient(180deg, #0D5699 0%, rgba(70, 136, 197, 0.78) 70.83%, rgba(130, 171, 208, 0.78) 83.33%, rgba(11, 100, 183, 0) 93.75%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  text-decoration-color: white;
+  color: white;
+}
+
+
+/* Horizontal Bar */
+#horizontalBar {
+  background: #4B4A4A;
+  opacity: 0.7;
+  box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  width:90%;
+  height: 45px;
+}
+
+#horizontalBar::part(container){
+  justify-content: space-evenly;
+}
+
+.horizontalBarIcons{
+  color: #FFFFFF;
+  width: 65px;
+  height: 65px;
+}
+
+.spanStyle{
+  color: #FFFFFF;
+  font-size: 14px;
+  width: 120px;
+  height: 120px;
+  alignment: center;
+  text-align: center;
+}
+
+.submenu{
+  width: 140px !important;
+  height: 140px;
+  align-items: center;
+}
+
+/* Sidebar */
+
+#sideBar {
+  width: 205px !important;
+  height: 631px !important;
+}
+
+#search{
+  width: 155px;
+  height: 25px;
+  color: #575757;
+  font-size: small;
+}
+
+#alertBell{
+  width: 55px;
+  height: 55px;
+  left: 45px;
+  top: 1px;
+  color: #575757;
+}
+
+#alertBell:hover {
+  cursor: pointer;
+}
+
+#tabsView{
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+}
+
+
+
+
+

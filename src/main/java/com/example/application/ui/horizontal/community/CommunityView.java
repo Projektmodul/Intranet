@@ -2,32 +2,36 @@
 
 package com.example.application.ui.horizontal.community;
 
-import com.example.application.ui.ContentHolder;
+import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.example.application.ui.MainView;
 
+/**
+ *  Community View shows ...
+ *
+ *  @author Litahshi Sivarasa
+ *  @version 2.0
+ *  @since 15.12.2020
+ *  @lastUpdated 17.01.2021
+ */
 @Route(value = "community", layout = MainView.class)
 @PageTitle("Community")
-@CssImport("./styles/views/main/overViewPage.css")
 public class CommunityView extends Div {
 
     public CommunityView() {
-        setId("communityViewLayout");
-        setClassName("pageContentPositionCommunity");
+        setId("community");
+        setClassName("pageContentPosition");
+        addClassName("communityColorscheme");
 
         H1 headLineCommunity = new H1("Community");
         headLineCommunity.setId("headlineCommunity");
@@ -42,9 +46,7 @@ public class CommunityView extends Div {
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
-        layout.setHeight("450px");
-        layout.setWidth("800px");
-        layout.setAlignItems(FlexComponent.Alignment.BASELINE);
+        layout.addClassName("justifyContentCenter");
 
         Component component1 = createComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "blog");
 
@@ -60,7 +62,7 @@ public class CommunityView extends Div {
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);

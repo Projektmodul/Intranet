@@ -1,20 +1,18 @@
 package com.example.application.ui.vertical.myProfile;
 
+import com.example.application.backend.entities.AddressEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
-import com.example.application.backend.entities.AddressEntity;
-
 import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.*;
-
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -32,7 +30,7 @@ import com.vaadin.flow.router.Route;
  *  @author Jessica Reistel and Laura Neuendorf
  *  @version 3.0
  *  @since 21.12.2020
- *  @lastUpdated 14.01.2021
+ *  @lastUpdated 16.01.2021
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = MainView.class)
@@ -59,6 +57,11 @@ public class MyProfileView extends Div {
      * Constructor of the MyProfileVew class where the content is added to the view
      */
     public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService) {
+        setId("myProfile");
+        setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
+
+
         this.myProfileViewService = myProfileViewService;
         this.userService = userService;
         this.addressService = addressService;
@@ -70,9 +73,6 @@ public class MyProfileView extends Div {
         updateNumber = new IntegerField();
         updatePostcode = new IntegerField();
         updateCity = new TextField();
-
-        setId("contentViewBlue");
-        setClassName("pageContentPosition");
 
         pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
         userEntity = pageEntity.getUser();

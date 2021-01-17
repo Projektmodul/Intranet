@@ -2,7 +2,6 @@
 package com.example.application.ui;
 
 import com.vaadin.flow.component.contextmenu.MenuItem;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -13,16 +12,22 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import java.util.ArrayList;
 
-@CssImport("./styles/views/main/horizontalBar.css")
 
-
+/**
+ *  HorizontalBar View shows ...
+ *
+ *  @author Monika Martius, Vanessa Skowronsky
+ *  @version 3.0
+ *  @since 17.12.2020
+ *  @lastUpdated 17.01.2021
+ */
 public class HorizontalBar extends MenuBar {
 
 
     public HorizontalBar() {
-
+        setId("horizontalBar");
         setOpenOnHover(true);
-        setId("menuBar");
+        setId("horizontalBar");
 
         Icon home = new Icon(VaadinIcon.HOME);
         home.setSize("35px");
@@ -75,7 +80,7 @@ public class HorizontalBar extends MenuBar {
          *          */
         VerticalLayout layoutDocuments = createSubMenu(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#2F7C78", "Unterlagen", "documents");
 
-        VerticalLayout layoutWiki = createSubMenu(new Icon(VaadinIcon.VIMEO), "#2F7C78", "Wiki", "wiki");
+        VerticalLayout layoutWiki = createSubMenu(new Icon(VaadinIcon.BOOK), "#2F7C78", "Wiki", "wiki");
 
         VerticalLayout layoutArchive = createSubMenu(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
 
@@ -127,9 +132,9 @@ public class HorizontalBar extends MenuBar {
         createMenuItem(subMenuListCommunity, "Community", "community");
     }
 
-    private VerticalLayout createSubMenu(Icon icon, String backgroundcolor, String spanText, String route) {
+    private VerticalLayout createSubMenu(Icon icon, String backgroundColor, String spanText, String route) {
 
-        icon.setClassName("icons");
+        icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);
@@ -137,7 +142,7 @@ public class HorizontalBar extends MenuBar {
 
         VerticalLayout layout = new VerticalLayout(span, tab);
         layout.setClassName("submenu");
-        layout.getStyle().set("background-color", backgroundcolor);
+        layout.getStyle().set("background-color", backgroundColor);
         layout.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
 
         return layout;

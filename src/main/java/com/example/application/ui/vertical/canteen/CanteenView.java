@@ -1,10 +1,8 @@
 package com.example.application.ui.vertical.canteen;
 
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -21,17 +19,16 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- * This is a View for all menus.
+ * Canteen View shows  a View for all menus.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 1.0
  * @since   14.12.2020
- * @lastUpdated 14.01.2021
+ * @lastUpdated 16.01.2021
  */
 
 @Route(value = "canteen", layout = MainView.class)
 @PageTitle("Betriebsrestaurant")
-@CssImport("./styles/views/main/canteen.css")
 public class CanteenView extends Div {
 
     private Component leftComponent;
@@ -49,8 +46,10 @@ public class CanteenView extends Div {
     private Dialog imageDialog;
 
     public CanteenView() {
-        setId("contentViewBlue");
+        setId("canteen");
         setClassName("pageContentPosition");
+        addClassName("homeColorscheme");
+
 
         initializeLeftContainer();
         initializeRightContainer();
@@ -122,7 +121,7 @@ public class CanteenView extends Div {
         Icon closeIcon = new Icon(VaadinIcon.CLOSE);
         closeIcon.addClickListener(e -> imageDialog.close());
         imageDialog.add(closeIcon);
-        closeIcon.setId("closeIcon");
+        closeIcon.setClassName("closeIcon");
     }
 
 }
