@@ -1,10 +1,8 @@
 package com.example.application.ui.vertical.canteen;
 
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -48,9 +46,10 @@ public class CanteenView extends Div {
     private Dialog imageDialog;
 
     public CanteenView() {
+        setId("canteen");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
-        setId("canteen");
+
 
         initializeLeftContainer();
         initializeRightContainer();
