@@ -8,7 +8,7 @@
 
 /* CSS-Befehle, die mehrere Views betreffen */
 .pageContentPosition {
-    width: 1032px !important;
+    width: 100% !important;
     height: 100%;
     margin-top: 1.5em;
     line-height: 30px;

@@ -81,4 +81,8 @@ public class SideBar extends VerticalLayout {
     public void setEventOfNotificationView(NotificationsView notificationsView){
         alertIcon.addClickListener(e-> notificationsView.open());
     }
+
+    public void setSideBarToNull(){
+        tabs.setSelectedTab(null);
+    }
 }
