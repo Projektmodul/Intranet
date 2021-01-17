@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class AboutUsView extends Div {
 
     public AboutUsView() {
+        setId("aboutUs");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
         add(new Text("Über Uns"));

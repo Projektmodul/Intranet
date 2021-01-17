@@ -27,6 +27,7 @@ import com.vaadin.flow.router.Route;
 public class OurCompanyView extends Div {
 
     public OurCompanyView() {
+        setId("ourCompany");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
         H1 headLineOurCompany = new H1("Unser Unternehmen");

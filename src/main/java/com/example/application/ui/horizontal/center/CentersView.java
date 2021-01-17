@@ -29,6 +29,7 @@ import com.vaadin.flow.router.Route;
 public class CentersView extends Div {
 
     public CentersView() {
+        setId("centers");
         setClassName("pageContentPosition");
         addClassName("centerColorscheme");
 

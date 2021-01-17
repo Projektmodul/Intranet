@@ -18,6 +18,7 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Wiki")
 public class WikiView extends Div {
     public WikiView() {
+        setId("wiki");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
         add(new Text("Wiki"));

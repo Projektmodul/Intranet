@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class SportView extends Div {
 
     public SportView() {
+        setId("sport");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
         add(new Text("Sport & Freizeit"));

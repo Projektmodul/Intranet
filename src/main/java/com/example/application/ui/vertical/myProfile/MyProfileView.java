@@ -57,9 +57,10 @@ public class MyProfileView extends Div {
      * Constructor of the MyProfileVew class where the content is added to the view
      */
     public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService) {
+        setId("myProfile");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
-        setId("myProfile");
+
 
         this.myProfileViewService = myProfileViewService;
         this.userService = userService;

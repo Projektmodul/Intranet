@@ -29,6 +29,7 @@ public class WelcomeView extends Div {
     public WelcomeView(WelcomeViewService welcomeViewService) {
         this.welcomeViewService = welcomeViewService;
 
+        setId("welcome");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 

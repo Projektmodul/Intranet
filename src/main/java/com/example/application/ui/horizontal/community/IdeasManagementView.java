@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class IdeasManagementView extends Div {
 
     public IdeasManagementView() {
+        setId("ideasManagement");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
         add(new Text("Ideenmanagement"));

@@ -30,6 +30,7 @@ import com.vaadin.flow.router.Route;
 public class LibraryView extends Div {
 
     public LibraryView() {
+        setId("library");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 

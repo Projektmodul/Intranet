@@ -22,6 +22,7 @@ import com.vaadin.flow.router.Route;
 public class BlogView extends Div {
 
     public BlogView() {
+        setId("blog");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 

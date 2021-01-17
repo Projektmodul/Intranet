@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class SearchView extends Div {
 
     public SearchView() {
+        setId("search");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
         add(new Text("Content placeholder"));

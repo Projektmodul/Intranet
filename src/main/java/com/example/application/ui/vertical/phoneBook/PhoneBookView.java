@@ -21,6 +21,7 @@ import com.vaadin.flow.router.Route;
 public class PhoneBookView extends Div {
 
     public PhoneBookView() {
+        setId("phoneBook");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 

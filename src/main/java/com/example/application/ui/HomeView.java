@@ -21,6 +21,7 @@ import com.vaadin.flow.router.RouteAlias;
 public class HomeView extends Div {
 
     public HomeView() {
+        setId("home");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 

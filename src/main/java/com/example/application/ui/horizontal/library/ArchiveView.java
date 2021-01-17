@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class ArchiveView extends Div {
 
     public ArchiveView() {
+        setId("archive");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
         add(new Text("Archiv"));

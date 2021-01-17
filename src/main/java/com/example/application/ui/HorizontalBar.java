@@ -25,7 +25,7 @@ public class HorizontalBar extends MenuBar {
 
 
     public HorizontalBar() {
-
+        setId("horizontalBar");
         setOpenOnHover(true);
         setId("horizontalBar");
 

@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class CareerView extends Div {
 
     public CareerView() {
+        setId("career");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
         add(new Text("Stellenangebote"));

@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class FAQView extends Div {
 
     public FAQView() {
+        setId("fAQ");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
         add(new Text("FAQ"));

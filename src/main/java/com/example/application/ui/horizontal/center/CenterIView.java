@@ -19,6 +19,7 @@ import com.vaadin.flow.router.Route;
 public class CenterIView extends Div {
 
     public CenterIView() {
+        setId("centerI");
         setClassName("pageContentPosition");
         addClassName("centerColorscheme");
         add(new Text("Center I"));

@@ -28,6 +28,7 @@ public class NotificationsView extends Dialog {
 
 
     public NotificationsView() {
+        setId("notifications");
 
         notificationText = new H4("Notifications: ");
 

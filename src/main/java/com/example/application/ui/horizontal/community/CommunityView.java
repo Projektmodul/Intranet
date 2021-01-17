@@ -29,6 +29,7 @@ import com.vaadin.flow.router.Route;
 public class CommunityView extends Div {
 
     public CommunityView() {
+        setId("community");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 
