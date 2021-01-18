@@ -7,9 +7,9 @@ import javax.persistence.*;
  * This is a basic document class.
  *
  * @author  Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   05.01.2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 18.01.2021
  */
 
 @Entity(name = "documents")
@@ -27,20 +27,37 @@ public class DocumentEntity {
 
     private String keyword;
 
-   /* @OneToOne(mappedBy = "document")
-    private JobOfferEntity jobOffer;
-
-   *//* @ManyToOne
+    /* @OneToOne(mappedBy = "document")
+     private JobOfferEntity jobOffer;
+    */
+    @ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;*//*
+    private PageEntity page;
+
+
+    public DocumentEntity() {
+
+    }
+
+    public DocumentEntity(String fileName, String path, String keyword,
+                          PageEntity page, NotificationEntity notification,
+                          UserEntity user) {
+        this.fileName = fileName;
+        this.path = path;
+        this.keyword = keyword;
+        this.page = page;
+        this.notification = notification;
+        this.user = user;
+    }
+
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UserEntity user;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="notification_id")
-    private NotificationEntity notification;*/
+    private NotificationEntity notification;
 
     public int getDocumentId() {
         return documentId;
@@ -74,18 +91,18 @@ public class DocumentEntity {
         this.keyword = keyword;
     }
 
-   /* public JobOfferEntity getJobOffer() {
-        return jobOffer;
-    }
+    /* public JobOfferEntity getJobOffer() {
+         return jobOffer;
+     }
 
-    public void setJobOffer(JobOfferEntity jobOffer) {
-        this.jobOffer = jobOffer;
-    }
+     public void setJobOffer(JobOfferEntity jobOffer) {
+         this.jobOffer = jobOffer;
+     }
 
-  *//*  public PageEntity getPage() {
+   */  public PageEntity getPage() {
         return page;
     }
-
+/*
     public void setPage(PageEntity page) {
         this.page = page;
     }*//*

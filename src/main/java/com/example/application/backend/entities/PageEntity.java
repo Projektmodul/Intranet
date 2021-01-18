@@ -2,6 +2,7 @@ package com.example.application.backend.entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * This is a basic page class.
@@ -26,13 +27,13 @@ public class PageEntity {
     private String content;
 
     private String type;
-/*
-    @OneToMany(mappedBy = "page")
-    private List<LinkEntity> links;
-
-    @OneToMany(mappedBy = "page")
+    /*
+        @OneToMany(mappedBy = "page")
+        private List<LinkEntity> links;
+    */
+    @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
     private List<DocumentEntity> documents;
-
+/*
     @OneToMany(mappedBy = "page")
     private List<ImageEntity> images;
 
@@ -93,14 +94,14 @@ public class PageEntity {
         this.user = user;
     }
 
-  /*  public List<LinkEntity> getLinks() {
-        return links;
-    }
+    /*  public List<LinkEntity> getLinks() {
+          return links;
+      }
 
-    public void setLinks(List<LinkEntity> links) {
-        this.links = links;
-    }
-
+      public void setLinks(List<LinkEntity> links) {
+          this.links = links;
+      }
+  */
     public List<DocumentEntity> getDocuments() {
         return documents;
     }
@@ -108,7 +109,7 @@ public class PageEntity {
     public void setDocuments(List<DocumentEntity> documents) {
         this.documents = documents;
     }
-
+/*
     public List<NewsEntity> getNews() {
         return news;
     }

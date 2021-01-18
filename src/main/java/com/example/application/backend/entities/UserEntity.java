@@ -66,6 +66,9 @@ public class UserEntity {
     */
     @OneToMany(mappedBy = "user")
     private List<PageEntity> pages;
+
+    @OneToMany(mappedBy = "user")
+    private List<NotificationEntity> notifications;
     /*
 
     @OneToMany(mappedBy = "user")
