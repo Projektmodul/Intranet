@@ -153,7 +153,43 @@
 
 /* horizontal/community/IdeaManagementView */
 
-/* -------------------------------------------------------------- */
+#ideasManagement #tableIdea{
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 120px;
+    display: grid;
+    width: 500px;
+    height: 190px;
+}
+
+#ideasManagement.ideaButton{
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+#ideasManagement #buttonIdea{
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+#ideasManagement #ideaHead{
+    margin-left: 30px;
+    color: darkgoldenrod;
+}
+
+#ideasManagement .quote{
+    margin-left: 45px;
+    color:  #4B4A4A;
+    font-family: Gothic A1, Serif, serif;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+}
+
+/* position: fixed;
+    margin-top: 100px;
+    margin-left: -155px;-------------------------------------------------------------- */
 
 /* horizontal/community/NoticeView */
 
