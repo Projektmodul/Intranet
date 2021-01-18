@@ -14,29 +14,34 @@ import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import java.io.IOException;
 import java.io.InputStream;
 
-/*
+/**
  * Implemented functions:
- *  X - PDF is persistent on the page
- *  X - Successful upload means => save file in the database. This happens, only once the user confirms with a click on a
- *       save button.
- *    X   Then the page reloads, showing the pdf file in its place, and with the upload initialized
- *  X - Save button:
- *     X  - confirm saving the file on the server
- *     X  - this creates a DocumentEntity, with a path to the file on the server
- *     X  - this entity is then saved to the database with the service
- *     X  - the entity is then saved as the parent page's (ex. HelpView-Page) DocumentEntity
- * X  - The stream, byte[] etc. functions are in a separate class : PdfFileConverter.
- * X  - Download function already (unintentionally) implemented (see download button in the viewer)
- * X  - Save file in user repository ???
+ *  *  X - PDF is persistent on the page
+ *  *  X - Successful upload means => save file in the database. This happens, only once the user confirms with a click on a
+ *  *       save button.
+ *  *    X   Then the page reloads, showing the pdf file in its place, and with the upload initialized
+ *  *  X - Save button:
+ *  *     X  - confirm saving the file on the server
+ *  *     X  - this creates a DocumentEntity, with a path to the file on the server
+ *  *     X  - this entity is then saved to the database with the service
+ *  *     X  - the entity is then saved as the parent page's (ex. HelpView-Page) DocumentEntity
+ *  * X  - The stream, byte[] etc. functions are in a separate class : PdfFileConverter.
+ *  * X  - Download function already (unintentionally) implemented (see download button in the viewer)
+ *  * X  - Save file in user repository ???
+ *  *
+ *  *   - Useful for the pages:
+ *  *       - DocumentsView ???
+ *  *       - CareerView
+ *  *       - WelcomeView
+ *  *       - CanteenView
+ *  *       - SearchView
  *
- *   - Useful for the pages:
- *       - DocumentsView ???
- *       - CareerView
- *       - WelcomeView
- *       - CanteenView
- *       - SearchView
- *
- * */
+ * @author  Sabrine Gamdou
+ * @version 1.0
+ * @since   18.01.2021
+ * @lastUpdated  18.01.2021
+ */
+
 
 @CssImport("./styles/views/main/content.css")
 public class PdfViewerManager extends Div {

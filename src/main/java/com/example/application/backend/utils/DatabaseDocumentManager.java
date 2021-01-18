@@ -7,6 +7,18 @@ import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.documents.DocumentService;
 import com.example.application.backend.services.notifications.NotificationService;
 
+
+/**
+ * This class is for creating, deleting or updating a file/document added in the database.
+ * It also creates notification once the document is added.
+ *
+ * @author  Sabrine Gamdou
+ * @version 1.0
+ * @since   18.01.2021
+ * @lastUpdated  18.01.2021
+ */
+
+
 public class DatabaseDocumentManager {
 
     private NotificationService notificationService;

@@ -16,6 +16,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * This class has the necessary functions to read a byte stream, convert it from/to file.
+ *
+ * @author  Sabrine Gamdou
+ * @version 1.0
+ * @since   18.01.2021
+ * @lastUpdated  18.01.2021
+ */
+
+
 public class PdfFileConverter {
 
 
