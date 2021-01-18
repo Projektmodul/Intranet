@@ -36,7 +36,6 @@ public class PdfFileConverter implements Convertible<DocumentEntity> {
 
     private DatabaseDocumentManager databaseDocumentManager;
 
-    private DocumentService documentService;
     /*PDF files path on the web server to save the files to*/
     private final String RESOURCES_DIR = "C:\\Users\\Sabrine\\IdeaProjects\\Intranet\\Intranet\\src\\main\\resources\\" +
             "META-INF\\resources\\otherFiles\\";
@@ -156,7 +155,7 @@ public class PdfFileConverter implements Convertible<DocumentEntity> {
         return false;
     }
 
-    private String changeGlobalFileName(String pdfFileName){
+     public String changeGlobalFileName(String pdfFileName){
         return new Date().getTime() + "-" + pdfFileName;
     }
 

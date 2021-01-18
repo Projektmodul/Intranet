@@ -82,7 +82,6 @@ public class PdfViewerManager extends Div {
     private void initializeUploadOutputContainer() {
         uploadOutput = new Div();
         uploadOutput.setId("uploadOutputContainer");
-
     }
 
     public void getPdfFileFromUploader() {
@@ -105,7 +104,6 @@ public class PdfViewerManager extends Div {
             Paragraph failureMessage = new Paragraph();
             showOutput("Failed to upload the file", failureMessage, uploadOutput);
         });
-
 
     }
 
