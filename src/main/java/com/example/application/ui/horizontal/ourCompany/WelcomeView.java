@@ -81,7 +81,7 @@ public class WelcomeView extends Div {
 
         pdfViewerManager.getPdfFileConverter().getDatabaseDocumentManager().setNotificationCategorie("Unternehmensneuigkeit");
         pdfViewerManager.getPdfFileConverter().getDatabaseDocumentManager().setDocumentType("Organigramm");
-       // pdfViewerManager.initializeUpload(); //optional
+
         pdfViewerManager.showPagePdfs();
 
         this.add(pdfViewerManager);
