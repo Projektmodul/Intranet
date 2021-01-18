@@ -336,3 +336,29 @@
 /* ui/InProgressView */
 
 /* -------------------------------------------------------------- */
+
+/* backend/utils/PdfViewerManager */
+
+#pdfViewer,
+#uploadContainer{
+    flex:1;
+}
+
+#uploadOutputContainer{
+    display: flex;
+    flex-wrap: wrap;
+    height: 60vh;
+    width: 50vw;
+}
+
+.uploadButtons{
+    background-color: darkgrey;
+    color: white;
+}
+
+.uploadButtons:hover {
+    background-color:#4B4A4A;
+    cursor:pointer;
+}
+
+/* -------------------------------------------------------------- */
