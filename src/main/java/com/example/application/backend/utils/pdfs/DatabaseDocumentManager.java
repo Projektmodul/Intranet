@@ -1,4 +1,4 @@
-package com.example.application.backend.utils;
+package com.example.application.backend.utils.pdfs;
 
 import com.example.application.backend.entities.DocumentEntity;
 import com.example.application.backend.entities.NotificationEntity;
@@ -36,7 +36,12 @@ public class DatabaseDocumentManager {
     }
 
     public void deletePdfDataFromDatabase(DocumentEntity documentEntity){
-        this.documentService.delete(documentEntity);
+        try{
+            this.documentService.delete(documentEntity);
+        }catch(NullPointerException e)
+        {
+            System.out.println("No such file exists.");
+        }
     }
 
     public DocumentEntity initializeDocumentForDatabase(String fileName, String path,

@@ -1,12 +1,11 @@
-package com.example.application.backend.utils;
+package com.example.application.backend.utils.pdfs;
 
+import com.example.application.backend.entities.DocumentEntity;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasComponents;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.html.NativeButton;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
@@ -67,6 +66,7 @@ public class PdfViewerManager extends Div {
         pdfFile = new PdfDocumentViewer();
 
         this.setId("pdfViewerContainer");
+
         initializeUploadOutputContainer();
 
     }
@@ -91,7 +91,6 @@ public class PdfViewerManager extends Div {
             InputStream inputStream = memoryBuffer.getInputStream();
             pdfFile = createPdfFileFromUploader(e.getMIMEType(),
                     e.getFileName(), inputStream);
-            showConfirmationButtons();
             this.add(uploadOutput);
             showOutput(e.getFileName(), pdfFile, uploadOutput);
             uploadOutput.setVisible(true);
@@ -140,38 +139,8 @@ public class PdfViewerManager extends Div {
         H4 filenameLabel = new H4(text);
 
         outputContainer.add(filenameLabel);
+        outputContainer.add(pdfFileConverter.setDeleteButton());
         outputContainer.add(content);
-    }
-
-    public void showPagePdfs() {
-        for (Component viewer : pdfFileConverter.createAllDocumentViewers()) {
-            //empty string should be changed
-            Div pdfOutput = new Div();
-            pdfOutput.setId("uploadOutputContainer");
-            showOutput("PDF-Datei", viewer, pdfOutput);
-            this.add(pdfOutput);
-        }
-    }
-
-    private void showConfirmationButtons() {
-
-        NativeButton cancelButton = new NativeButton("Nicht speichern");
-
-        cancelButton.setClassName("uploadButtons");
-
-        cancelButton.setEnabled(true);
-
-        cancelButton.addClickListener(e -> {
-            if (pdfFileConverter.deleteFile()) {
-                cancelButton.setVisible(false);
-                uploadOutput = new Div();
-                initializeUpload();
-                UI.getCurrent().getPage().reload();
-            }
-        });
-
-        uploadOutput.add(cancelButton);
-
     }
 
     public PdfFileConverter getPdfFileConverter() {
@@ -181,8 +150,5 @@ public class PdfViewerManager extends Div {
     public void setPdfFileConverter(PdfFileConverter pdfFileConverter) {
         this.pdfFileConverter = pdfFileConverter;
     }
-
-
-
 
 }

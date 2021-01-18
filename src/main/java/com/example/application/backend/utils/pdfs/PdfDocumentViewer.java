@@ -1,4 +1,4 @@
-package com.example.application.backend.utils;
+package com.example.application.backend.utils.pdfs;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;

@@ -8,7 +8,8 @@ import com.example.application.backend.services.notifications.NotificationServic
 import com.example.application.backend.services.ourCompany.WelcomeViewService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
-import com.example.application.backend.utils.PdfViewerManager;
+import com.example.application.backend.utils.pdfs.PdfFileServerViewer;
+import com.example.application.backend.utils.pdfs.PdfViewerManager;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -31,6 +32,7 @@ public class WelcomeView extends Div {
     private  WelcomeViewService welcomeViewService;
 
     private PdfViewerManager pdfViewerManager;
+    PdfFileServerViewer pdfFileServerViewer;
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
@@ -62,10 +64,14 @@ public class WelcomeView extends Div {
         userEntity = pageEntity.getUser();
 
         initializePageDocuments();
+
+
+
     }
 
     private void setData(){
         pageEntity = welcomeViewService.findPageById(1);
+        readList();
 
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Span(pageEntity.getContent());
@@ -76,15 +82,43 @@ public class WelcomeView extends Div {
     private void initializePageDocuments(){
         pdfViewerManager = new PdfViewerManager();
 
+
+
         pdfViewerManager.getPdfFileConverter().initializeView(this.documentService,this.pageEntity,
-                this.userEntity,this.documentEntity,this.notificationService);
+                this.userEntity,this.notificationService);
 
-        pdfViewerManager.getPdfFileConverter().getDatabaseDocumentManager().setNotificationCategorie("Unternehmensneuigkeit");
-        pdfViewerManager.getPdfFileConverter().getDatabaseDocumentManager().setDocumentType("Organigramm");
+        checkIfDocumentExists();
 
-        pdfViewerManager.showPagePdfs();
 
+        pdfViewerManager.initializeUpload();
         this.add(pdfViewerManager);
+    }
+
+    public void readList(){
+        for(DocumentEntity d : pageEntity.getDocuments()){
+            System.out.println(d.toString());
+        }
+    }
+
+    public void checkIfDocumentExists(){
+        System.out.println("SIZE:  "+pageEntity.getDocuments().size());
+        if(pageEntity.getDocuments().size() != 0 && pageEntity.getDocuments().get(0) != null){
+            documentEntity = pageEntity.getDocuments().get(0);
+            System.out.println(documentEntity.getPath());
+            pdfViewerManager.getPdfFileConverter().setGlobalFileName(documentEntity.getPath());
+            pdfViewerManager.getPdfFileConverter().initializeDocumentEntity(documentEntity);
+          //  pdfViewerManager.createPdfFileFromServer();
+
+            pdfViewerManager.getPdfFileConverter().getDatabaseDocumentManager().setNotificationCategorie("Unternehmensneuigkeit");
+            pdfViewerManager.getPdfFileConverter().getDatabaseDocumentManager().setDocumentType("Organigramm");
+
+            pdfFileServerViewer = new PdfFileServerViewer(this.documentEntity);
+            pdfFileServerViewer.getPdfFromServer();
+            this.add(pdfFileServerViewer);
+            //pdfViewerManager.getPdfFromServer();
+            //pdfViewerManager.showPagePdfs();
+
+        }
     }
 
 }

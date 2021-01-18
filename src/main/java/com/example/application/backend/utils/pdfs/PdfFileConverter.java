@@ -1,11 +1,15 @@
-package com.example.application.backend.utils;
+package com.example.application.backend.utils.pdfs;
 
 import com.example.application.backend.entities.DocumentEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.documents.DocumentService;
 import com.example.application.backend.services.notifications.NotificationService;
+import com.example.application.backend.utils.interfaces.Convertible;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.NativeButton;
 import com.vaadin.flow.server.StreamResource;
 
 import java.io.*;
@@ -27,14 +31,15 @@ import java.util.List;
  */
 
 
-public class PdfFileConverter {
+public class PdfFileConverter implements Convertible<DocumentEntity> {
 
 
     private DatabaseDocumentManager databaseDocumentManager;
 
     private DocumentService documentService;
     /*PDF files path on the web server to save the files to*/
-    private final String RESOURCES_DIR = "~/uploads";
+    private final String RESOURCES_DIR = "C:\\Users\\Sabrine\\IdeaProjects\\Intranet\\Intranet\\src\\main\\resources\\" +
+            "META-INF\\resources\\otherFiles\\";
 
     private String globalFileName;
 
@@ -76,28 +81,19 @@ public class PdfFileConverter {
         }
     }
 
-    public List<Component> createAllDocumentViewers(){
+    /*public List<Component> createAllDocumentViewers(){
         List<Component> viewersList = new ArrayList<>();
         for(DocumentEntity documentEntity : page.getDocuments()){
             viewersList.add(createViewerForFileFromServer(documentEntity));
         }
         return viewersList;
-    }
+    }*/
 
-    public Component createViewerForFileFromServer(DocumentEntity documentEntity){
-        return new PdfDocumentViewer(new StreamResource(documentEntity.getFileName(), () -> {
 
-            try {
-                return new FileInputStream(documentEntity.getPath());
-            } catch (Exception e) {
-                return new ByteArrayInputStream(new byte[]{});
-            }
-        }));
-    }
     /*Generates a file from the byte array and a given name
      * name always an extra timestamp, to avoid overwriting existing files with the same names*/
 
-    private boolean generatePdfFile(byte[] fileContent, String fileName) throws IOException {
+    public boolean generateFileFromByteStream(byte[] fileContent, String fileName) throws IOException {
         String newFilePath = RESOURCES_DIR + changeGlobalFileName(fileName);
         this.globalFileName = newFilePath;
         File file = new File(newFilePath);
@@ -132,11 +128,12 @@ public class PdfFileConverter {
 
     public boolean deleteFile(){
         try{
-            System.out.println("Deletion successful.");
             databaseDocumentManager.deletePdfDataFromDatabase(pdfDocument);
+            System.out.println("VARIABLE: "+ globalFileName);
             return Files.deleteIfExists(
                     Paths.get(globalFileName));
-        }catch(NoSuchFileException e)
+        }
+        catch(NoSuchFileException e)
         {
             System.out.println("No such file exists.");
             return false;
@@ -146,13 +143,12 @@ public class PdfFileConverter {
             System.out.println("Invalid File.");
             return false;
         }
-
     }
 
     public boolean saveFile(){
         try {
             System.out.println("Saving successful.");
-            return generatePdfFile(fileAsBytes, fileName);
+            return generateFileFromByteStream(fileAsBytes, fileName);
         } catch (IOException e) {
             System.out.println("Could not save file.");
             e.printStackTrace();
@@ -165,18 +161,43 @@ public class PdfFileConverter {
     }
 
     public void initializeView(DocumentService documentService, PageEntity pageEntity,
-                               UserEntity userEntity, DocumentEntity documentEntity,
+                               UserEntity userEntity,
                                NotificationService notificationService){
 
         databaseDocumentManager.setDocumentService(documentService);
         setPage(pageEntity);
         databaseDocumentManager.setUser(userEntity);
-        setPdfDocument(documentEntity);
+
         databaseDocumentManager.setNotificationService(notificationService);
 
     }
 
+    public void initializeDocumentEntity(DocumentEntity documentEntity){
+        setPdfDocument(documentEntity);
+    }
 
+    public NativeButton setDeleteButton(){
+        NativeButton cancelButton = new NativeButton("Datei löschen");
+
+        //cancelButton.setClassName("uploadButtons");
+/*
+        cancelButton.setEnabled(true);
+        cancelButton.setVisible(true);*/
+
+        cancelButton.addClickListener(e -> {
+            if (deleteFile()) {
+                cancelButton.setEnabled(false);
+                cancelButton.setVisible(false);
+            }else{
+                cancelButton.setEnabled(true);
+                cancelButton.setVisible(true);
+            }
+            UI.getCurrent().getPage().reload();
+        });
+
+        return cancelButton;
+
+    }
 
     public PageEntity getPage() {
         return page;
@@ -202,5 +223,12 @@ public class PdfFileConverter {
         this.databaseDocumentManager = databaseDocumentManager;
     }
 
+    public String getGlobalFileName() {
+        return globalFileName;
+    }
+
+    public void setGlobalFileName(String globalFileName) {
+        this.globalFileName = globalFileName;
+    }
 
 }
