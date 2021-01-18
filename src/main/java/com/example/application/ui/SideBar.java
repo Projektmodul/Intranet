@@ -3,13 +3,11 @@ package com.example.application.ui;
 
 import com.example.application.ui.vertical.canteen.CanteenView;
 import com.example.application.ui.vertical.help.HelpView;
-import com.example.application.ui.vertical.mailing.MailingView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.phoneBook.PhoneBookView;
-import com.example.application.ui.vertical.search.SearchView;
 import com.example.application.ui.vertical.settings.SettingsView;
-import com.example.application.ui.vertical.timetable.TimetableView;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -46,6 +44,14 @@ public class SideBar extends VerticalLayout {
         searchField.setId("search");
         searchField.setPlaceholder("Suchbegriff eingeben...");
 
+        //external links
+        Anchor anchorTimetable = new Anchor("https://fahrplaner.vbn.de", "Fahrplan");
+        anchorTimetable.setTarget("_blank");
+
+        Anchor anchorMailing = new Anchor("https://email.bsag.de", "Mailing");
+        anchorMailing.setTarget("_blank");
+
+
         tabs = new Tabs();
         Tab[] tabArray = new Tab[12];
         for (int i = 0; i<tabArray.length;i++) {
@@ -57,9 +63,9 @@ public class SideBar extends VerticalLayout {
         tabArray[2].add(new RouterLink("Einstellungen", SettingsView.class));
         tabArray[3].add(new RouterLink("Hilfe", HelpView.class));
         tabArray[4].add(new RouterLink("Meine Kontakte", InProgressView.class));
-        tabArray[5].add(new RouterLink("Mailing", MailingView.class));
+        tabArray[5].add(anchorMailing);
         tabArray[6].add(new RouterLink("Kalender", InProgressView.class));
-        tabArray[7].add(new RouterLink("Fahrplan", TimetableView.class));
+        tabArray[7].add(anchorTimetable);
         tabArray[8].add(new RouterLink("Apps", InProgressView.class));
         tabArray[9].add(new RouterLink("Favoriten", InProgressView.class));
         tabArray[10].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
