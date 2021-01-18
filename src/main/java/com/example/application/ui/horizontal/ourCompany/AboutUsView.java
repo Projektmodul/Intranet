@@ -3,9 +3,9 @@ package com.example.application.ui.horizontal.ourCompany;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.ourCompany.AboutUsViewService;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -27,7 +27,7 @@ public class AboutUsView extends Div {
     private AboutUsViewService aboutUsViewService;
 
     private H1 pageTitle;
-    private Span pageContent;
+    private Paragraph pageContent;
 
     public AboutUsView(AboutUsViewService aboutUsViewService) {
         this.aboutUsViewService = aboutUsViewService;
@@ -44,7 +44,8 @@ public class AboutUsView extends Div {
         PageEntity pageEntity = aboutUsViewService.findPageById(4);
 
         pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Span(pageEntity.getContent());
+        pageContent = new Paragraph(pageEntity.getContent());
+        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
         this.add(pageTitle, pageContent);
     }
