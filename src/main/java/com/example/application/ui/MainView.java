@@ -1,5 +1,3 @@
-/*created @ de Boer, Marieke Menna & Monika Martius */
-
 package com.example.application.ui;
 
 import com.example.application.ui.presenters.NotificationPresenter;
@@ -11,6 +9,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
+
+import java.util.Arrays;
 
 /**
  *  MainView shows ...
@@ -30,7 +30,7 @@ import com.vaadin.flow.server.PWA;
 public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener {
 
     private VerticalLayout contentHolder = new VerticalLayout();
-
+    private Header header;
     private  SideBar sidebar;
 
     //bidirectional communication between ContentHolder and NotificationPresenter
@@ -42,7 +42,7 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         setId("mainView");
 
         //Header
-        Header header = new Header();
+        header = new Header();
         header.getHorizontalBar().getInitiator().addListener(this);
 
         // ContentHolder for routed Views
@@ -74,6 +74,28 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         // The "content" is the the view you are navigating to
         // The code below sets the childWrapper to hold the view
         contentHolder.getElement().appendChild(content.getElement());
+        String text = content.toString();
+        System.out.println(content);
+        String color = contentSplit(text);
+        header.setBackgroundColor(color);
+
+    }
+
+    public String contentSplit(String contentText){
+        String[] split = contentText.split("\\.");
+        int length = split.length;
+        if(length > 5){
+            String text = split[5];
+            System.out.println(text + " >5");
+            return text;
+
+        }else{
+            String text = split[4];
+            String[] split1 = text.split("@");
+            text = split1[0];
+            System.out.println(text + " <5");
+            return text;
+        }
     }
 
     public SideBar getSidebar() {
