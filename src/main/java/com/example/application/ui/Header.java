@@ -7,14 +7,13 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-
 /**
  *  Header shows ...
  *
  *  @author Monika Martius, Vanessa Skowronsky
  *  @version 2.0
  *  @since 12.01.2021
- *  @lastUpdated 17.01.2021
+ *  @lastUpdated 18.01.2021
  */
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
@@ -25,7 +24,6 @@ public class Header extends VerticalLayout {
 
     public Header(){
         setId("header");
-        setBackgroundColor("home");
 
         horizontalBar = new HorizontalBar();
 
@@ -52,7 +50,22 @@ public class Header extends VerticalLayout {
     public void setBackgroundColor(String colorName) {
 
         switch (colorName) {
-            case "home": setClassName("colorHome"); break;
+            case "HomeView":
+            case "search":
+            case "myProfile":
+            case "phoneBook":
+            case "settings":
+            case "help":
+            case "InProgressView":
+            case "mailing":
+            case "canteen":
+                            setClassName("colorHome"); break;
+            case "ourCompany": setClassName("colorCompany"); break;
+            case "center": setClassName("colorCenter"); break;
+            case "projects": setClassName("colorProjects"); break;
+            case "library": setClassName("colorLibrary"); break;
+            case "services": setClassName("colorServices"); break;
+            case "community": setClassName("colorCommunity"); break;
             default : break;
         }
     }

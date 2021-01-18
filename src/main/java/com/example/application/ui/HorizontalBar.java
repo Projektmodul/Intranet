@@ -1,4 +1,9 @@
-//created @ Monika Martius
+/**
+ *  @author Monika Martius
+ *  @version 2.0
+ *  @since 12.12.2021
+ *  @lastUpdated 28.12.2020
+ */
 package com.example.application.ui;
 
 import com.vaadin.flow.component.contextmenu.MenuItem;
@@ -31,6 +36,8 @@ public class HorizontalBar extends MenuBar {
         setId("horizontalBar");
 
        initiator = new HorizontalBarClickedInitiator();
+
+
 
 
         Icon home = new Icon(VaadinIcon.HOME);
