@@ -1,5 +1,6 @@
 package com.example.application.ui.login;
 
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -19,11 +20,14 @@ import com.vaadin.flow.router.Route;
 
 
 @Route("login")
-@PageTitle("Login | Vaadin CRM")
+@PageTitle("Login | BSAG Intranet")
+@CssImport("./styles/views/main/login.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     private LoginForm login = new LoginForm();
+
     public LoginView(){
         setId("login");
+        this.getElement().getStyle().set("background-image", "url(images/nordlicht-bremer-rathaus.jpg)");
         setSizeFull();
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
