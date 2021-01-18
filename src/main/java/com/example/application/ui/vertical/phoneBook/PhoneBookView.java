@@ -26,10 +26,16 @@ public class PhoneBookView extends Div {
         addClassName("homeColorscheme");
 
         VerticalLayout verticalLayout = new VerticalLayout();
-        verticalLayout.add(new Anchor("https://www.11880.com", "externes Telefonbuch"));
-        verticalLayout.add(new Anchor("https://fldsr274.bsag.local:8443/php-bin/WebClient.php?lang=de", "internes Telefonbuch"));
 
+        Anchor linkExtern = new Anchor("https://www.11880.com", "externes Telefonbuch");
+        linkExtern.setTarget("https://www.11880.com");
+        Anchor linkIntern = new Anchor("https://fldsr274.bsag.local:8443/php-bin/WebClient.php?lang=de", "internes Telefonbuch");
+        linkIntern.setTarget("https://fldsr274.bsag.local:8443/php-bin/WebClient.php?lang=de");
+
+        verticalLayout.add(linkExtern);
+        verticalLayout.add(linkIntern);
         add(verticalLayout);
+
     }
 
 }
