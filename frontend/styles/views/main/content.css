@@ -347,8 +347,7 @@
 #uploadOutputContainer{
     display: flex;
     flex-wrap: wrap;
-    height: 60vh;
-    width: 50vw;
+    height: 50rem;
 }
 
 .uploadButtons{
