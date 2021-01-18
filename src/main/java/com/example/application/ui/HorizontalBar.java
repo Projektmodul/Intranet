@@ -1,4 +1,9 @@
-//created @ Monika Martius
+/**
+ *  @author Monika Martius
+ *  @version 2.0
+ *  @since 12.12.2021
+ *  @lastUpdated 28.12.2020
+ */
 package com.example.application.ui;
 
 import com.vaadin.flow.component.contextmenu.MenuItem;
@@ -22,6 +27,8 @@ import java.util.ArrayList;
  *  @lastUpdated 17.01.2021
  */
 public class HorizontalBar extends MenuBar {
+
+    String headerColor;
 
 
     public HorizontalBar() {

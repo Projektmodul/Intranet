@@ -1,4 +1,9 @@
-/*created @ de Boer, Marieke Menna & Monika Martius */
+/**
+ *  @author Monika Martius, de Boer, Marieke Menna
+ *  @version 2.0
+ *  @since 12.12.2020
+ *  @lastUpdated 18.01.2020
+ */
 
 package com.example.application.ui;
 
@@ -10,6 +15,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
+
+import java.util.Arrays;
 
 /**
  *  MainView shows ...
@@ -30,12 +37,11 @@ public class MainView extends VerticalLayout implements RouterLayout {
 
     private VerticalLayout contentHolder = new VerticalLayout();
 
+    //Header
+    Header header = new Header();
     public MainView() {
 
         setId("mainView");
-
-        //Header
-        Header header = new Header();
 
         // ContentHolder for routed Views
         contentHolder.setId("contentHolder");
@@ -61,5 +67,26 @@ public class MainView extends VerticalLayout implements RouterLayout {
         // The "content" is the the view you are navigating to
         // The code below sets the childWrapper to hold the view
         contentHolder.getElement().appendChild(content.getElement());
+        String text = content.toString();
+        String color = contentSplit(text);
+        header.setBackgroundColor(color);
+
+    }
+
+    public String contentSplit(String contentText){
+        String[] split = contentText.split("\\.");
+        int length = split.length;
+        if(length > 5){
+            String text = split[5];
+            System.out.println(text + " >5");
+            return text;
+
+        }else{
+            String text = split[4];
+            String[] split1 = text.split("@");
+            text = split1[0];
+            System.out.println(text + " <5");
+            return text;
+        }
     }
 }
