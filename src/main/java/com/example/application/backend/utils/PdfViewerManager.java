@@ -39,7 +39,7 @@ import java.io.InputStream;
  * */
 
 @CssImport("./styles/views/main/content.css")
-public class PdfViewerManager extends Div{
+public class PdfViewerManager extends Div {
 
 
     private PdfFileConverter pdfFileConverter;
@@ -55,7 +55,7 @@ public class PdfViewerManager extends Div{
 
 
 
-    public PdfViewerManager(){
+    public PdfViewerManager() {
 
         this.pdfFileConverter = new PdfFileConverter();
 
@@ -66,7 +66,7 @@ public class PdfViewerManager extends Div{
 
     }
 
-    public void initializeUpload(){
+    public void initializeUpload() {
         memoryBuffer = new MemoryBuffer();
         upload = new Upload(memoryBuffer);
         getPdfFileFromUploader();
@@ -74,13 +74,13 @@ public class PdfViewerManager extends Div{
         this.add(upload);
     }
 
-    private void initializeUploadOutputContainer(){
+    private void initializeUploadOutputContainer() {
         uploadOutput = new Div();
         uploadOutput.setId("uploadOutputContainer");
 
     }
 
-    public void getPdfFileFromUploader(){
+    public void getPdfFileFromUploader() {
 
         upload.addSucceededListener(e -> {
             InputStream inputStream = memoryBuffer.getInputStream();
@@ -102,8 +102,7 @@ public class PdfViewerManager extends Div{
             showOutput("Failed to upload the file", failureMessage, uploadOutput);
         });
 
-        //add the components to the view
-        //need to make deliver/return separate components that could be added to the views.
+
     }
 
     /*mimeType is for the accepted types of files: .pdf
@@ -114,8 +113,8 @@ public class PdfViewerManager extends Div{
      * converts the inputStream with the method getArrayFormInputStream
      * */
     private Component createPdfFileFromUploader(String mimeType, String fileName,
-                                                InputStream stream){
-        try{
+                                                InputStream stream) {
+        try {
             if (mimeType.startsWith("application")) {
 
                 return pdfFileConverter.createFileFromStream(stream,
@@ -139,8 +138,8 @@ public class PdfViewerManager extends Div{
         outputContainer.add(content);
     }
 
-    public void showPagePdfs(){
-        for(Component viewer : pdfFileConverter.createAllDocumentViewers()){
+    public void showPagePdfs() {
+        for (Component viewer : pdfFileConverter.createAllDocumentViewers()) {
             //empty string should be changed
             Div pdfOutput = new Div();
             pdfOutput.setId("uploadOutputContainer");
@@ -149,7 +148,7 @@ public class PdfViewerManager extends Div{
         }
     }
 
-    private void showConfirmationButtons(){
+    private void showConfirmationButtons() {
 
         NativeButton cancelButton = new NativeButton("Nicht speichern");
 
@@ -157,8 +156,8 @@ public class PdfViewerManager extends Div{
 
         cancelButton.setEnabled(true);
 
-        cancelButton.addClickListener( e-> {
-            if(pdfFileConverter.deleteFile()) {
+        cancelButton.addClickListener(e -> {
+            if (pdfFileConverter.deleteFile()) {
                 cancelButton.setVisible(false);
                 uploadOutput = new Div();
                 initializeUpload();
@@ -178,68 +177,7 @@ public class PdfViewerManager extends Div{
         this.pdfFileConverter = pdfFileConverter;
     }
 
-//    FileSystemResource findInFileSystem(String location) {
-//        try {
-//            return new FileSystemResource(Paths.get(location));
-//        } catch (Exception e) {
-//            // Handle access or file not found problems.
-//            throw new RuntimeException();
-//        }
-//    }
-//This is for showing the pdf on the GUI, for example on the canteen view.
-    //Path is from the database
-//    public static String getPDF() throws IOException {
-//
-//        File file = new File("give complete path of file which must be read");
-//        FileInputStream stream = new FileInputStream(file);
-//        byte[] buffer = new byte[8192];
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        int bytesRead;enter code here
-//        while ((bytesRead = stream.read(buffer)) != -1) {
-//            baos.write(buffer, 0, bytesRead);
-//        }
-//        System.out.println("it came back"+baos);
-//        byte[] buffer1= baos.toByteArray();
-//        String fileName = "give your filename with location";
-//
-//        //stream.close();
-//
-//
-//        FileOutputStream outputStream =
-//                new FileOutputStream(fileName);
-//
-//        outputStream.write(buffer1);
-//
-//        return fileName;
-//
-//    }
 
-    //If the file is an image, this could be helpful later
-//    else if (mimeType.startsWith("image")) {
-//        Image image = new Image();
-//        try {
-//
-//            byte[] bytes = IOUtils.toByteArray(stream);
-//            image.getElement().setAttribute("src", new StreamResource(
-//                    fileName, () -> new ByteArrayInputStream(bytes)));
-//            try (ImageInputStream in = ImageIO.createImageInputStream(
-//                    new ByteArrayInputStream(bytes))) {
-//                final Iterator<ImageReader> readers = ImageIO
-//                        .getImageReaders(in);
-//                if (readers.hasNext()) {
-//                    ImageReader reader = readers.next();
-//                    try {
-//                        reader.setInput(in);
-//                        image.setWidth(reader.getWidth(0) + "px");
-//                        image.setHeight(reader.getHeight(0) + "px");
-//                    } finally {
-//                        reader.dispose();
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return image;
+
+
 }
