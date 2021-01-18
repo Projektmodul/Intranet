@@ -34,8 +34,7 @@ public class PdfFileConverter {
 
     private DocumentService documentService;
     /*PDF files path on the web server to save the files to*/
-    private final String RESOURCES_DIR = "C:\\Users\\Sabrine\\IdeaProjects\\Intranet\\Intranet\\src\\main\\resources" +
-            "\\META-INF\\resources\\otherFiles\\";
+    private final String RESOURCES_DIR = "~/uploads";
 
     private String globalFileName;
 
