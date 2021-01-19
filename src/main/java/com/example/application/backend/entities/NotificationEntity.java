@@ -99,8 +99,8 @@ public class NotificationEntity {
         return new Date(date.getTime());
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setDate() {
+        this.date = new Timestamp(System.currentTimeMillis());
     }
 
     public DocumentEntity getDocument() {
