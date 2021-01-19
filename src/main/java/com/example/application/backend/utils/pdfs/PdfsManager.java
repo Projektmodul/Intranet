@@ -15,7 +15,7 @@ import java.util.List;
  * This class manages the pdfs list and the pdfManagers.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
@@ -35,6 +35,7 @@ public class PdfsManager extends Div {
     private PageEntity pageEntity;
     private UserEntity userEntity;
 
+    private boolean isOnePdf;
 
     public PdfsManager(List<DocumentEntity> documentEntities, NotificationService notificationService,
                        DocumentService documentService){
@@ -54,17 +55,31 @@ public class PdfsManager extends Div {
         pdfManager.setAllDocumentEntitiesData(keyword,pageEntity,userEntity);
         for(DocumentEntity documentEntity : documentEntities){
             pdfManager.setDocumentEntity(documentEntity);
-
+            pdfManager.setOnePdf(isOnePdf);
             pdfs.add(pdfManager.createPDF());
             pdfManager.setCancelButtonEvent();
             System.out.println("CREATED PDF");
             System.out.println("PATH: "+documentEntity.getPath());
+        }
+
+        System.out.println("Image List Size: " + documentEntities.size());
+        if(documentEntities.size() > 1){
+            System.out.println("isOneImage: " + isOnePdf);
+            pdfManager.setOnePdf(isOnePdf);
+        }else if(documentEntities.size() == 0){
+            System.out.println("isOneImage: " + isOnePdf);
+            pdfManager.setOnePdf(true);
+        }
+        else{
+            System.out.println("isOneImage: " + isOnePdf);
+            pdfManager.setOnePdf(isOnePdf);
         }
         readList();
 
         pdfManager.setUploaderEvents();
         this.add(pdfManager.getUploaderContainer());
     }
+
 
     //will be set by the view :: gets the list of the page.
     public void setDocumentEntities(List<DocumentEntity> documentEntities) {
@@ -79,7 +94,9 @@ public class PdfsManager extends Div {
         setUserEntity(userEntity);
     }
 
-
+    public void setOnePdf(boolean isOnePdf){
+        this.isOnePdf = !isOnePdf;
+    }
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
