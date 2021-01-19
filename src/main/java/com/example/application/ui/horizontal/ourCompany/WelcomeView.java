@@ -1,15 +1,14 @@
 package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.services.ourCompany.WelcomeViewService;
+
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.Html;
-import com.vaadin.flow.component.Text;
+
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Span;
+
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -19,7 +18,7 @@ import com.vaadin.flow.router.Route;
  *  @author Sabrine Gamdou, Jessica Reistel, Laura Neuendorf
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 18.01.2021
+ *  @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 @Route(value = "welcome", layout = MainView.class)
 @PageTitle("Willkommen")
