@@ -107,7 +107,7 @@
 }
 
 .communityColorscheme h1{
-    color: #7c6d30;
+    color: #948b21;
 }
 
 .centerColorscheme {
@@ -156,6 +156,25 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/community/NoticeView */
+#leftLayout {
+    max-width: 50rem;
+    width: 100%;
+}
+
+#rightLayout {
+    max-width: 25rem;
+    width: 100%;
+}
+
+.editDeleteIcon {
+    max-width: 50rem;
+    width: 100%;
+}
+
+#layoutBox {
+    max-width: 43rem;
+    width: 100%;
+}
 
 /* -------------------------------------------------------------- */
 
