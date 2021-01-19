@@ -33,6 +33,18 @@ public class IdeaEntity {
     @JoinColumn(name ="page_id")
     private PageEntity page;*/
 
+    public IdeaEntity() {
+
+    }
+
+    public IdeaEntity(int ideaId, String title, String description, String rating) {
+        this.ideaId = ideaId;
+        this.title = title;
+        this.description = description;
+        this.rating = rating;
+    }
+
+
     public int getIdeaId() {
         return ideaId;
     }

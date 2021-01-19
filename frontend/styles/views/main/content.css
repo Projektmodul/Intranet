@@ -195,7 +195,7 @@
 }
 
 #ideasManagement #ideaHead{
-    margin-left: 30px;
+
     color: darkgoldenrod;
     margin-block-start: inherit;
     margin-bottom: revert;
@@ -263,6 +263,54 @@
 
 /* horizontal/ourCompany/CareerView */
 
+/*#career #careerHeadL{
+    margin-block-start: inherit;
+    margin-bottom: revert;
+    color: #A00505;
+}
+
+#career .quoteCareer{
+    display: flex;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    color:  #4B4A4A;
+    font-family: Gothic A1, Serif;
+    align-items: normal;
+    text-align: center;
+}
+
+#career .iconDiv{
+    margin-left: 30px;
+}
+
+#career .latestOffer{
+    display: flex;
+    font-size:20px;
+    margin-left: 30px;
+    margin-top: 60px;
+    color:  #4B4A4A;
+    font-family: Gothic A1, Serif;
+    align-items: normal;
+    text-align: center;
+}
+
+#career #tableCareer{
+    margin-left: 30px;
+    display: grid;
+    width: 600px;
+    height: 230px;
+}
+
+#career .pageContent{
+    display: flex;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    color:  #4B4A4A;
+    font-family: Gothic A1, Serif;
+    align-items: normal;
+
+
+}*/
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
