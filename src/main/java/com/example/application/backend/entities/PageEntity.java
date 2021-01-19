@@ -34,12 +34,15 @@ public class PageEntity {
     @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
     private List<DocumentEntity> documents;
 
+/*
 
     @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
     private List<ImageEntity> images;
+*/
 
-    @OneToMany(mappedBy = "page")
-    private List<IdeaEntity> ideas;
+  /*  @OneToMany(mappedBy = "page")
+    private List<IdeaEntity> ideas;*/
+
 /*
     @OneToMany(mappedBy = "page")
     private List<NoticeBoardOfferEntity> noticeBoardOffers;
@@ -104,13 +107,15 @@ public class PageEntity {
         this.documents = documents;
     }
 
-    public List<ImageEntity> getImages() {
+
+    /*public List<ImageEntity> getImages() {
         return images;
     }
 
     public void setImages(List<ImageEntity> images) {
         this.images = images;
-    }
+    }*/
+    
   /*  public List<LinkEntity> getLinks() {
         return links;
     }
