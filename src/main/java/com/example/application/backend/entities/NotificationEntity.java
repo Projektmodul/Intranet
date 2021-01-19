@@ -31,6 +31,29 @@ public class NotificationEntity {
     @Column(name ="created_at")
     private Timestamp date;
 
+    @OneToOne(mappedBy = "notification", fetch = FetchType.LAZY)
+    private DocumentEntity document;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private UserEntity user;
+
+
+    public NotificationEntity(){
+
+    }
+
+    public NotificationEntity(String title, String description,
+                              String category, boolean status,
+                              UserEntity user) {
+
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.status = status;
+        this.user = user;
+    }
+
     public int getNotificationId() {
         return notificationId;
     }
@@ -78,6 +101,22 @@ public class NotificationEntity {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public DocumentEntity getDocument() {
+        return document;
+    }
+
+    public void setDocument(DocumentEntity document) {
+        this.document = document;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
 }
