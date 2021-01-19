@@ -176,6 +176,17 @@
     width: 100%;
 }
 
+#layoutSetID {
+    font-family: "Gothic A1", serif;
+    max-width:170px;
+    width: 100%;
+}
+
+#styleTextArea {
+    font-family: "Gothic A1", serif;
+    min-height: 200px;
+    min-width: 300px;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/library/ArchiveView */

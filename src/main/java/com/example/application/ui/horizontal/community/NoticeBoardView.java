@@ -106,14 +106,11 @@ public class NoticeBoardView extends Div {
         initializeUploadButton();
         initializeRadioButton();
         TextArea textArea = new TextArea("Beschreibung");
-        textArea.getStyle().set("font-family", "Gothic A1, serif");
-        textArea.getStyle().set("minHeight", "200px");
-        textArea.getStyle().set("minWidth", "300px");
+        textArea.setId("styleTextArea");
         textArea.setPlaceholder("Anzeige aufgeben ...");
         toAdd = new Button();
-        toAdd.getStyle().set("font-family", "Gothic A1, serif");
         toAdd.setText("Hinzufügen");
-        toAdd.setWidth("170px");
+        toAdd.setId("layoutSetID");
         rightComponent = new VerticalLayout(textArea,uploadButton,radioOffer,toAdd);
         rightComponent.setId("rightLayout");
     }
@@ -134,8 +131,6 @@ public class NoticeBoardView extends Div {
     public void initializeRadioButton(){
         radioOffer = new RadioButtonGroup();
         radioOffer.setLabel("Was möchten Sie?");
-        radioOffer.getStyle().set("color", "948B21");
-        radioOffer.getStyle().set("font-family", "Gothic A1, serif");
         radioOffer.setItems("Bieten", "Suchen");
     }
 }
