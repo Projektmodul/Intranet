@@ -2,7 +2,7 @@ package com.example.application.ui.horizontal.community;
 
 public class Objects implements Cloneable {
     private int id;
-    private String cate;
+    private String scope;
     private Status status;
     private double price;
     private String email;
@@ -11,10 +11,10 @@ public class Objects implements Cloneable {
 
     }
 
-    public Objects(int id, String cate, Status status, double price, String email) {
+    public Objects(int id, String scope, Status status, double price, String email) {
         super();
         this.id = id;
-        this.cate = cate;
+        this.scope = scope;
         this.status = status;
         this.price = price;
         this.email = email;
@@ -29,11 +29,11 @@ public class Objects implements Cloneable {
     }
 
     public String getCategory() {
-        return cate;
+        return scope;
     }
 
-    public void setCategory(String cate) {
-        this.cate = cate;
+    public void setCategory(String scope) {
+        this.scope = scope;
     }
 
     public Status getStatus() {
@@ -79,7 +79,7 @@ public class Objects implements Cloneable {
 
     @Override
     public String toString() {
-        return cate;
+        return scope;
     }
 
     @Override
