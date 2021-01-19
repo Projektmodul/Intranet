@@ -8,9 +8,9 @@ import java.util.List;
  * This is a basic page class.
  *
  * @author  Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   05-01-2021
- * @lastUpdated 05.01.2021
+ * @lastUpdated 19.01.2021
  */
 
 @Entity(name = "pages")
