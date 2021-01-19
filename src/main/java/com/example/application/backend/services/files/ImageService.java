@@ -1,6 +1,6 @@
 package com.example.application.backend.services.files;
 
-import com.example.application.backend.entities.DocumentEntity;
+
 import com.example.application.backend.entities.ImageEntity;
 import com.example.application.backend.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
