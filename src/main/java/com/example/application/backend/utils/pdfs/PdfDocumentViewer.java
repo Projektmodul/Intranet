@@ -7,10 +7,10 @@ import com.vaadin.flow.server.StreamResource;
 /**
  * This is a pdf viewer component.
  *
- * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou
  * @version 3.0
  * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Sabrine Gamdou
+ * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 @Tag("object")

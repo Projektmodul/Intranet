@@ -16,7 +16,7 @@ import java.io.InputStream;
  * This is class represents a pdf gui component, linking a documentEntity with
  * with a delete button and a pdfViewer component.
  *
- * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
+ * @author Anastasiya Jackwerth, Sabrine Gamdou
  * @version 3.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
