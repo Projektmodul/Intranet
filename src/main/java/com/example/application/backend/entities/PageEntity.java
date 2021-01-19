@@ -42,6 +42,7 @@ public class PageEntity {
 
   /*  @OneToMany(mappedBy = "page")
     private List<IdeaEntity> ideas;*/
+
 /*
     @OneToMany(mappedBy = "page")
     private List<NoticeBoardOfferEntity> noticeBoardOffers;
@@ -106,6 +107,7 @@ public class PageEntity {
         this.documents = documents;
     }
 
+
     /*public List<ImageEntity> getImages() {
         return images;
     }
@@ -113,6 +115,7 @@ public class PageEntity {
     public void setImages(List<ImageEntity> images) {
         this.images = images;
     }*/
+    
   /*  public List<LinkEntity> getLinks() {
         return links;
     }

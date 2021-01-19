@@ -100,7 +100,8 @@ public class DocumentEntity {
     }
 
   */
-   public PageEntity getPage() {
+
+    public PageEntity getPage() {
         return page;
     }
 
