@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  * @author  Sabrine Gamdou
  * @version 2.0
  * @since   20-12-2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 19.01.2021
  */
 
 @Entity(name ="notifications")
