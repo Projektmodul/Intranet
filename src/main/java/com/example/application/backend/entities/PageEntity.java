@@ -2,6 +2,7 @@ package com.example.application.backend.entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * This is a basic page class.
@@ -29,16 +30,17 @@ public class PageEntity {
 /*
     @OneToMany(mappedBy = "page")
     private List<LinkEntity> links;
-
-    @OneToMany(mappedBy = "page")
+*/
+    @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
     private List<DocumentEntity> documents;
 
-    @OneToMany(mappedBy = "page")
+
+    @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
     private List<ImageEntity> images;
 
     @OneToMany(mappedBy = "page")
     private List<IdeaEntity> ideas;
-
+/*
     @OneToMany(mappedBy = "page")
     private List<NoticeBoardOfferEntity> noticeBoardOffers;
 
@@ -93,13 +95,6 @@ public class PageEntity {
         this.user = user;
     }
 
-  /*  public List<LinkEntity> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<LinkEntity> links) {
-        this.links = links;
-    }
 
     public List<DocumentEntity> getDocuments() {
         return documents;
@@ -109,6 +104,25 @@ public class PageEntity {
         this.documents = documents;
     }
 
+    public List<ImageEntity> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ImageEntity> images) {
+        this.images = images;
+    }
+  /*  public List<LinkEntity> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<LinkEntity> links) {
+        this.links = links;
+    }
+
+
+
+
+
     public List<NewsEntity> getNews() {
         return news;
     }
@@ -117,13 +131,9 @@ public class PageEntity {
         this.news = news;
     }
 
-    public List<ImageEntity> getImages() {
-        return images;
-    }
 
-    public void setImages(List<ImageEntity> images) {
-        this.images = images;
-    }
+
+
 
     public List<IdeaEntity> getIdeas() { return ideas; }
 
