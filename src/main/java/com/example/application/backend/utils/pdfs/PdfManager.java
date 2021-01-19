@@ -22,7 +22,7 @@ import java.util.Date;
  * pdfCreationManager and the pdfDeletionManager to create and delete documents.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
@@ -48,6 +48,7 @@ public class PdfManager {
 
     private Div errorContainer;
 
+    private boolean isOnePdf;
 
     private String keyword;
     private PageEntity pageEntity;
@@ -91,10 +92,12 @@ public class PdfManager {
         Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
         upload.setDropLabel(label);
 
+        upload.setVisible(isOnePdf);
+        System.out.println("isOneImage: " + isOnePdf);
         upload.addSucceededListener(e -> {
             inputStream = buffer.getInputStream();
             createDocumentEntity(changeGlobalFileName(e.getFileName()));
-            //pdf.setInputStream(inputStream);
+
             pdfCreationManager = new PdfCreationManager(inputStream, documentEntity, documentService);
             pdfCreationManager.setMimeType(e.getMIMEType());
             pdfCreationManager.save();
@@ -144,6 +147,9 @@ public class PdfManager {
         return notificationEntity;
     }
 
+    public void setOnePdf(boolean isOnePdf){
+        this.isOnePdf = isOnePdf;
+    }
 
     public String createPath(String fileName){
         return RESOURCES_DIR + fileName;
