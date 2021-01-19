@@ -28,7 +28,10 @@ public class BlogView extends Div {
 
         VerticalLayout verticalLayout = new VerticalLayout();
 
-        verticalLayout.add(new Anchor("https://blog.bsag.de/", "Blog"));
+        Anchor linkBlog = new Anchor("https://blog.bsag.de/", "Blog");
+        linkBlog.setTarget("https://blog.bsag.de/");
+
+        verticalLayout.add(linkBlog);
         add(verticalLayout);
 
     }
