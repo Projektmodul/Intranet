@@ -5,7 +5,7 @@ import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.server.StreamResource;
 /**
- * This is a basic address class.
+ * This is a pdf viewer component.
  *
  * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
  * @version 3.0
