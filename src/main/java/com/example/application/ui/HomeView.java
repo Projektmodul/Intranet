@@ -7,6 +7,12 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *  Home View shows ...
@@ -29,6 +35,7 @@ public class HomeView extends Div {
 
         this.userService = userService;
 
+
         setId("home");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
@@ -37,4 +44,10 @@ public class HomeView extends Div {
 
         add(new H1("Herzlich Willkommen " + userEntity.getFirstName() + " " + userEntity.getSurname() + " !"));
     }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserService();
+    }
+
 }
