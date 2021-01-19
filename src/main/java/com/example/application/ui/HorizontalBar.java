@@ -17,14 +17,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import java.util.ArrayList;
 
-
 /**
- *  HorizontalBar View shows ...
+ *  HorizontalBarView is shows a menubar with submenu items that open after hovering over them.
+ *  All icons are clickable and route to the clicked page.
  *
  *  @author Monika Martius, Vanessa Skowronsky
- *  @version 3.0
+ *  @version 4.0
  *  @since 17.12.2020
- *  @lastUpdated 17.01.2021
+ *  @lastUpdated 19.01.2021
  */
 public class HorizontalBar extends MenuBar {
 
@@ -36,9 +36,6 @@ public class HorizontalBar extends MenuBar {
         setId("horizontalBar");
 
        initiator = new HorizontalBarClickedInitiator();
-
-
-
 
         Icon home = new Icon(VaadinIcon.HOME);
         home.setSize("35px");
