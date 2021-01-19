@@ -47,8 +47,7 @@ public class ImageManager {
     private PageEntity pageEntity;
     private UserEntity userEntity;
 
-    private final String RESOURCES_DIR = "C:\\Users\\Sabrine\\IdeaProjects\\Intranet\\Intranet\\src\\main\\resources" +
-            "\\META-INF\\resources\\imgs\\";
+    private final String RESOURCES_DIR = "~/uploads";
 
     public ImageManager(ImageService imageService){
         this.imageService = imageService;
