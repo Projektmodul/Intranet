@@ -14,7 +14,7 @@ import java.util.List;
  * This class manages the images list and the imageManagers.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
@@ -34,6 +34,10 @@ public class ImagesManager extends Div {
     private PageEntity pageEntity;
     private UserEntity userEntity;
 
+    private boolean isOneImage;
+
+    private Div imagesUploader;
+
 
     public ImagesManager(List<ImageEntity> imageEntities, ImageService imageService){
 
@@ -51,16 +55,33 @@ public class ImagesManager extends Div {
         imageManager.setAllImageEntitiesData(pageEntity,userEntity);
         for(ImageEntity imageEntity : imageEntities){
             imageManager.setImageEntity(imageEntity);
-
+            imageManager.setOneImage(isOneImage);
             images.add(imageManager.createPDF());
             imageManager.setCancelButtonEvent();
             System.out.println("CREATED IMAGE");
             System.out.println("PATH: "+ imageEntity.getPath());
         }
+        System.out.println("Image List Size: " + imageEntities.size());
+        if(imageEntities.size() > 1){
+            System.out.println("isOneImage: " + isOneImage);
+            imageManager.setOneImage(isOneImage);
+        }else if(imageEntities.size() == 0){
+            System.out.println("isOneImage: " + isOneImage);
+            imageManager.setOneImage(true);
+        }
+        else{
+            System.out.println("isOneImage: " + isOneImage);
+            imageManager.setOneImage(isOneImage);
+        }
         readList();
 
+
+    }
+
+    public void initializeUploadContainer(){
+        imagesUploader = new Div();
         imageManager.setUploaderEvents();
-        this.add(imageManager.getUploaderContainer());
+        imagesUploader.add(imageManager.getUploaderContainer());
     }
 
     //will be set by the view :: gets the list of the page.
@@ -75,7 +96,10 @@ public class ImagesManager extends Div {
         setUserEntity(userEntity);
     }
 
+    public void setOneImage(boolean isOneImage){
+        this.isOneImage = !isOneImage;
 
+    }
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
@@ -98,6 +122,14 @@ public class ImagesManager extends Div {
         for(ImageEntity d : pageEntity.getImages()){
             System.out.println(d.toString());
         }
+    }
+
+    public Div getImagesUploader() {
+        return imagesUploader;
+    }
+
+    public void setImagesUploader(Div imagesUploader) {
+        this.imagesUploader = imagesUploader;
     }
 
 
