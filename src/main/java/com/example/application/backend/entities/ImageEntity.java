@@ -98,7 +98,7 @@ public class ImageEntity {
         this.user = user;
     }
 
-   /* public PageEntity getPage() {
+   public PageEntity getPage() {
         return page;
     }
 
@@ -106,5 +106,5 @@ public class ImageEntity {
         this.page = page;
     }
 
-*/
+
 }
