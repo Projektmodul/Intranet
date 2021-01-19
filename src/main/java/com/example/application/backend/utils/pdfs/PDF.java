@@ -13,11 +13,10 @@ import java.io.InputStream;
 
 
 /**
- * This is class represents a pdf gui component, linking a documentEntity with
- * with a delete button and a pdfViewer component.
+ * This is class that creates the file in the database and the server.
  *
  * @author Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
+ * @version 1.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
