@@ -29,14 +29,26 @@ public class ImageEntity {
 
     @OneToOne(mappedBy = "image")
     private NoticeBoardOfferEntity noticeBoardOffer;
-*//*
+*/
     @ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;*//*
+    private PageEntity page;
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UserEntity user;*/
+    private UserEntity user;
+
+    public ImageEntity(){
+
+    }
+
+    public ImageEntity(String fileName, String path, PageEntity page, UserEntity user) {
+
+        this.fileName = fileName;
+        this.path = path;
+        this.page = page;
+        this.user = user;
+    }
 
     public int getImageId() {
         return imageId;
@@ -77,14 +89,14 @@ public class ImageEntity {
     public void setNoticeBoardOffer(NoticeBoardOfferEntity noticeBoardOffer) {
         this.noticeBoardOffer = noticeBoardOffer;
     }
-
-    public UsersEntity getUser() {
+*/
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
-    }*/
+    }
 
    /* public PageEntity getPage() {
         return page;
@@ -92,7 +104,7 @@ public class ImageEntity {
 
     public void setPage(PageEntity page) {
         this.page = page;
-    }*/
+    }
 
-
+*/
 }
