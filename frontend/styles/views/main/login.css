@@ -1,3 +1,15 @@
-#login{
+#login {
+    background: no-repeat center center fixed;
+    background-size: cover;
+}
 
+#login #logoImage{
+    width: 30%;
+    height: auto;
+    align-self: flex-end;
+    margin-top: 100px;
+}
+
+#login #loginForm{
+    margin-top: 150px;
 }
