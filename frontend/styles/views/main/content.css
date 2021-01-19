@@ -103,7 +103,7 @@
 }
 
 .communityColorscheme {
-    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
+    background: linear-gradient(180deg, rgb(245, 236, 93) 0%, rgba(196, 196, 196, 0) 120%);
 }
 
 .communityColorscheme h1{
@@ -156,36 +156,46 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/community/NoticeView */
-#leftLayout {
+#noticeBoard #leftLayout {
     max-width: 50rem;
     width: 100%;
 }
 
-#rightLayout {
+#noticeBoard #rightLayout {
     max-width: 25rem;
     width: 100%;
 }
 
-.editDeleteIcon {
+#noticeBoard .editDeleteIcon {
     max-width: 50rem;
     width: 100%;
+    max-height: 150px;
+    height: 100%;
 }
 
-#layoutBox {
+#noticeBoard #layoutBox {
     max-width: 43rem;
     width: 100%;
+    max-height: 150px;
+    height: 100%;
+
 }
 
-#layoutSetID {
+#noticeBoard #layoutSetID {
     font-family: "Gothic A1", serif;
     max-width:170px;
     width: 100%;
 }
 
-#styleTextArea {
+#noticeBoard #styleTextArea {
     font-family: "Gothic A1", serif;
     min-height: 200px;
     min-width: 300px;
+}
+
+#noticeBoard #tableNoticeBoard {
+    max-height: 270px;
+    height:100%;
 }
 /* -------------------------------------------------------------- */
 

@@ -1,5 +1,8 @@
+
+
 package com.example.application.ui.horizontal.community;
 
+import com.example.application.backend.entities.NoticeBoardOfferEntity;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
@@ -19,13 +22,13 @@ import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  *  @author Monika Martius
  *  @version 1.0
- *  @since 19.01.2021
+ *  @since 15.12.2020
  *  @lastUpdated 19.01.2021
  */
 @Route(value = "noticeBoard", layout = MainView.class)
@@ -44,7 +47,6 @@ public class NoticeBoardView extends Div {
     private HorizontalLayout layoutSplit;
     private RadioButtonGroup radioOffer;
     private Button toAdd;
-    private List<Objects> objectList = new ArrayList<>();
 
     private Component leftComponent;
     private Component rightComponent;
@@ -81,24 +83,24 @@ public class NoticeBoardView extends Div {
         editDeleteIcon.setClassName("editDeleteIcon");
         pageContent = new Span("Wir wünschen Ihnen viel Spaß beim Suchen, Finden, Anbieten und Stöbern!");
 
-        objectList.add(new Objects(100, "Wohnung", Status.SUCHE, 450, "liliad@gmail.com"));
-        objectList.add(new Objects(101, "Wohnung", Status.BIETE, 300, "miamaia@gmail.com"));
-        objectList.add(new Objects(102, "Katze", Status.SUCHE, 0, "ldfsdfdfd@gmail.com"));
-        objectList.add(new Objects(103, "Auto", Status.SUCHE, 3000, "nnfdgfg@gmail.com"));
-        objectList.add(new Objects(104, "Wohnung", Status.SUCHE, 450, "liliad@gmail.com"));
-        objectList.add(new Objects(105, "Wohnung", Status.BIETE, 300, "miamaia@gmail.com"));
-        objectList.add(new Objects(106, "Katze", Status.SUCHE, 0, "ldfsdfdfd@gmail.com"));
-        objectList.add(new Objects(107, "Auto", Status.BIETE, 500, "nnfdgfg@gmail.com"));
-        objectList.add(new Objects(108, "Wohnung", Status.SUCHE, 450, "liliad@gmail.com"));
-        objectList.add(new Objects(109, "Wohnung", Status.BIETE, 300, "miamaia@gmail.com"));
-        objectList.add(new Objects(110, "Katze", Status.BIETE, 10, "ldfsdfdfd@gmail.com"));
-        objectList.add(new Objects(111, "Auto", Status.SUCHE, 3000, "nnfdgfg@gmail.com"));
+        List<NoticeBoardOfferEntity> objectList = Arrays.asList(
+        new NoticeBoardOfferEntity(100, "Wohnung", "Biete", "liliad@gmail.com"),
+        new NoticeBoardOfferEntity(101, "Wohnung", "Suche", "miamaia@gmail.com"),
+        new NoticeBoardOfferEntity(102, "Katze", "Suche", "ldfsdfdfd@gmail.com"),
+        new NoticeBoardOfferEntity(103, "Auto", "Biete", "nnfdgfg@gmail.com"),
+        new NoticeBoardOfferEntity(104, "Wohnung",  "Suche", "liliad@gmail.com"),
+        new NoticeBoardOfferEntity(105, "Wohnung",  "Suche", "miamaia@gmail.com"));
 
-        Grid<Objects> grid = new Grid<>(Objects.class);
+        Grid<NoticeBoardOfferEntity> grid = new Grid<>();
         grid.setItems(objectList);
-        grid.removeColumnByKey("id");
 
-        leftComponent = new VerticalLayout(editDeleteIcon,grid,pageContent);
+        //grid.removeColumnByKey("noticeBoardOfferId");
+        grid.addColumn(NoticeBoardOfferEntity::getTitle).setHeader("Kategorie");
+        grid.addColumn(NoticeBoardOfferEntity::getDescription).setHeader("Suche/Biete");
+        grid.addColumn(NoticeBoardOfferEntity::getCategory).setHeader("E-Mail");
+        grid.setId("tableNoticeBoard");
+
+        leftComponent = new VerticalLayout(editDeleteIcon,pageContent,grid);
         leftComponent.setId("leftLayout");
     }
 

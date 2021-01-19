@@ -23,6 +23,17 @@ public class NoticeBoardOfferEntity {
     private String description;
     private String category;
 
+    public NoticeBoardOfferEntity(){
+
+    }
+
+    public NoticeBoardOfferEntity(int noticeBoardOfferId, String title, String description, String category){
+        this.noticeBoardOfferId = noticeBoardOfferId;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+    }
+
    /* @OneToOne
     @JoinColumn(name="image_id")
     private ImageEntity image;
