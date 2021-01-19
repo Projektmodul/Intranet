@@ -30,9 +30,9 @@ import com.vaadin.flow.router.Route;
  *  The user is able to change his profile information
  *
  *  @author Jessica Reistel and Laura Neuendorf
- *  @version 3.0
+ *  @version 4.0
  *  @since 21.12.2020
- *  @lastUpdated 16.01.2021
+ *  @lastUpdated 19.01.2021 by Anastasiya Jackwerth and Sabrine Gamdou
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = MainView.class)
