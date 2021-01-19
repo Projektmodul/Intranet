@@ -23,10 +23,10 @@ import java.util.List;
 /**
  *  IdeaManagement View shows ...
  *
- *  @author
+ *  @author Litharshiga Sivarasa
  *  @version 1.0
  *  @since 15.12.2020
- *  @lastUpdated
+ *  @lastUpdated 19.01.2021
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
