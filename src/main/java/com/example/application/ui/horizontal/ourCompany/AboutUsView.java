@@ -16,9 +16,9 @@ import com.vaadin.flow.router.Route;
  *  AboutUs View shows ...
  *
  *  @author Laura Neuendorf, Jessica Reistel
- *  @version 3.0
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 17.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 @Route(value = "aboutUs", layout = MainView.class)
