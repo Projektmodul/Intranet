@@ -2,6 +2,7 @@ package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.ourCompany.AboutUsViewService;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
@@ -24,13 +25,13 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Über Uns")
 public class AboutUsView extends Div {
 
-    private AboutUsViewService aboutUsViewService;
+    private PageService pageService;
 
     private H1 pageTitle;
     private Paragraph pageContent;
 
-    public AboutUsView(AboutUsViewService aboutUsViewService) {
-        this.aboutUsViewService = aboutUsViewService;
+    public AboutUsView(PageService pageService) {
+        this.pageService = pageService;
 
         setId("aboutUs");
         setClassName("pageContentPosition");
@@ -41,7 +42,7 @@ public class AboutUsView extends Div {
     }
 
     private void setData(){
-        PageEntity pageEntity = aboutUsViewService.findPageById(4);
+        PageEntity pageEntity = pageService.findPageById(4);
 
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Paragraph(pageEntity.getContent());
