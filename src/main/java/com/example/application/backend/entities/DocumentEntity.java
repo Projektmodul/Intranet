@@ -27,20 +27,37 @@ public class DocumentEntity {
 
     private String keyword;
 
-   /* @OneToOne(mappedBy = "document")
-    private JobOfferEntity jobOffer;
-
-   *//* @ManyToOne
+    @ManyToOne
     @JoinColumn(name ="page_id")
-    private PageEntity page;*//*
+    private PageEntity page;
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UsersEntity user;
+    private UserEntity user;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="notification_id")
-    private NotificationEntity notification;*/
+    private NotificationEntity notification;
+
+   /* @OneToOne(mappedBy = "document")
+    private JobOfferEntity jobOffer;
+
+   */
+   public DocumentEntity() {
+
+   }
+
+    public DocumentEntity(String fileName, String path, String keyword,
+                          PageEntity page, NotificationEntity notification,
+                          UserEntity user) {
+        this.fileName = fileName;
+        this.path = path;
+        this.keyword = keyword;
+        this.page = page;
+        this.notification = notification;
+        this.user = user;
+    }
+
 
     public int getDocumentId() {
         return documentId;
@@ -82,19 +99,21 @@ public class DocumentEntity {
         this.jobOffer = jobOffer;
     }
 
-  *//*  public PageEntity getPage() {
+  */
+      public PageEntity getPage() {
         return page;
     }
 
     public void setPage(PageEntity page) {
         this.page = page;
-    }*//*
+    }
 
-    public UsersEntity getUser() {
+
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
@@ -105,6 +124,6 @@ public class DocumentEntity {
     public void setNotification(NotificationEntity notification) {
         this.notification = notification;
     }
-*/
+
 
 }
