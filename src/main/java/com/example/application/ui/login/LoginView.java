@@ -2,6 +2,7 @@ package com.example.application.ui.login;
 
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -28,11 +29,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     public LoginView(){
         setId("login");
         this.getElement().getStyle().set("background-image", "url(images/nordlicht-bremer-rathaus.jpg)");
+        Image logoImage = new Image("images/bsag.png", "Intranetlogo");
+        logoImage.setId("logoImage");
+
         setSizeFull();
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         login.setAction("login");
-        add(new H1("BSAG Intranet"), login);
+        login.setId("loginForm");
+        add(login, logoImage);
     }
 
     /**
