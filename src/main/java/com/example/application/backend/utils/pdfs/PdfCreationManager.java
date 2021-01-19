@@ -6,11 +6,11 @@ import com.example.application.backend.services.files.DocumentService;
 import java.io.*;
 
 /**
- * This is class represents a pdf gui component, linking a documentEntity
- * with a delete button and a pdfViewer component.
+ * This is class that takes care of creating the document on the
+ * database and on the server.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
+ * @version 1.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
