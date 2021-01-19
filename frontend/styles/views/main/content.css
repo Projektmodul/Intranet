@@ -152,7 +152,48 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/community/IdeaManagementView */
+#ideasManagement #tableIdea{
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 20px;
+    display: grid;
+    width: 500px;
+    height: 190px;
+}
 
+#ideasManagement #buttonIdea{
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+#ideasManagement .overViewTableH{
+
+    display: flex;
+    font-size:20px;
+    margin-left: 40px;
+    margin-top: 110px;
+    color:  #4B4A4A;
+    font-family: Gothic A1, Serif;
+    align-items: normal;
+    text-align: center;
+}
+
+#ideasManagement #ideaHead{
+    margin-left: 30px;
+    color: darkgoldenrod;
+    margin-block-start: inherit;
+    margin-bottom: revert;
+}
+
+#ideasManagement .quote{
+    margin-left: 45px;
+    color:  #4B4A4A;
+    font-family: Gothic A1, Serif, serif;
+    display: flex;
+    align-items: normal;
+    text-align: center;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/community/NoticeView */
