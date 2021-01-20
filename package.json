@@ -5,6 +5,7 @@
     "@polymer/iron-icon": "3.0.1",
     "@polymer/iron-list": "3.1.0",
     "@polymer/polymer": "3.2.0",
+    "@vaadin-component-factory/vcf-toggle-button": "1.0.3",
     "@vaadin/vaadin-accordion": "1.2.0",
     "@vaadin/vaadin-app-layout": "2.2.0",
     "@vaadin/vaadin-board": "2.2.0",
@@ -46,8 +47,7 @@
     "@vaadin/vaadin-upload": "4.4.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "lit-element": "^2.2.1",
-    "open": "^7.2.1",
-    "@vaadin-component-factory/vcf-toggle-button": "1.0.3"
+    "open": "^7.2.1"
   },
   "devDependencies": {
     "chokidar": "^3.4.0",
