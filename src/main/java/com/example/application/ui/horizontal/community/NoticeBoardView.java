@@ -3,12 +3,15 @@
 package com.example.application.ui.horizontal.community;
 
 import com.example.application.backend.entities.NoticeBoardOfferEntity;
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -36,9 +39,9 @@ import java.util.List;
 
 public class NoticeBoardView extends Div {
 
-
-    //private noticeBoardService noticeBoardService;
-
+    //private NoticeBoardService noticeBoardService;
+    private PageService pageService;
+    private PageEntity pageEntity;
     private H1 pageTitle;
     private Icon deleteIcon;
     private Icon editIcon;
@@ -52,10 +55,11 @@ public class NoticeBoardView extends Div {
     private Component rightComponent;
     //private CardListNoticeBoard card;
 
-    public NoticeBoardView() {
+    public NoticeBoardView(PageService pageService) {
         setId("noticeBoard");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
+        pageEntity = pageService.findPageById(5);
 
         initializeLeftContainer();
         initializeRightContainer();
@@ -64,9 +68,7 @@ public class NoticeBoardView extends Div {
 
     public void initializeLeftContainer() {
 
-        pageTitle = new H1("Schwarzes Brett");
-        pageTitle.setId("pageTitle");
-
+        pageTitle = new H1(pageEntity.getTitle());
         Div box = new Div();
         box.add(pageTitle);
         box.setId("layoutBox");
@@ -81,7 +83,7 @@ public class NoticeBoardView extends Div {
         editDeleteIcon.add(box, editIcon, deleteIcon);
         editDeleteIcon.setAlignItems(FlexComponent.Alignment.END);
         editDeleteIcon.setClassName("editDeleteIcon");
-        pageContent = new Span("Wir wünschen Ihnen viel Spaß beim Suchen, Finden, Anbieten und Stöbern!");
+        pageContent = new Span(pageEntity.getContent());
 
         List<NoticeBoardOfferEntity> objectList = Arrays.asList(
         new NoticeBoardOfferEntity(100, "Wohnung", "Biete", "liliad@gmail.com"),
