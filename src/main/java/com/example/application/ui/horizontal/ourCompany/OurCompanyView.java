@@ -1,11 +1,10 @@
 package com.example.application.ui.horizontal.ourCompany;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -25,19 +24,22 @@ import com.vaadin.flow.router.Route;
 @Route(value = "ourCompany", layout = MainView.class)
 @PageTitle("Unser Unternehmen")
 public class OurCompanyView extends Div {
+    private PageService pageService;
+    private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
 
-    public OurCompanyView() {
+    public OurCompanyView(PageService pageService) {
         setId("ourCompany");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
-        H1 headLineOurCompany = new H1("Unser Unternehmen");
 
-        Label firstQuote = new Label("Wir sind täglich");
-        firstQuote.setClassName("firstQuote");
+        pageEntity = pageService.findPageById(6);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
 
         Label secondQuote = new Label("für sie da");
         secondQuote.setClassName("secondQuote");
-
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
@@ -50,8 +52,7 @@ public class OurCompanyView extends Div {
         Component component5 = createComponent(new Icon(VaadinIcon.DOLLAR), "#A00505", "Stellenangebote", "career");
         layout.add(component1, component2, component3, component4, component5);
 
-        add(headLineOurCompany,firstQuote, secondQuote, layout);
-
+        add(pageTitle,pageText, secondQuote, layout);
     }
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {

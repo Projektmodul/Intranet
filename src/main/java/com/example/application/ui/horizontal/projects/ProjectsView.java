@@ -2,12 +2,11 @@
 
 package com.example.application.ui.horizontal.projects;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -27,16 +26,19 @@ import com.vaadin.flow.router.Route;
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
 public class ProjectsView extends Div {
+    private PageService pageService;
+    private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
 
-    public ProjectsView() {
+    public ProjectsView(PageService pageService) {
         setId("projects");
         setClassName("pageContentPosition");
         addClassName("projectsColorscheme");
 
-        H1 headLineProject = new H1("Projekte");
-
-        Label firstQuote = new Label("Dynamisch in die");
-        firstQuote.setClassName("firstQuote");
+        pageEntity = pageService.findPageById(8);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
 
         Label secondQuote = new Label("Überseestadt");
         secondQuote.setClassName("secondQuote");
@@ -49,8 +51,7 @@ public class ProjectsView extends Div {
 
         layout.add(component1);
 
-        add(headLineProject, firstQuote, secondQuote, layout);
-
+        add(pageTitle, pageText, secondQuote, layout);
     }
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
