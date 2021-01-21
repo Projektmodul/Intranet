@@ -38,7 +38,7 @@ public class LibraryView extends Div {
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
-        pageEntity = pageService.findPageById(9);
+        pageEntity = pageService.findPageById(13);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
