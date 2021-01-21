@@ -50,24 +50,24 @@ public class AboutUsView extends Div {
         pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
-        /**PureTimeline timeline = new PureTimeline();
-        PureTimelineItem item1 = new PureTimelineItem("1978", new H1("Test1"));
-        PureTimelineItem item2 = new PureTimelineItem(new H1("Test2"));
-        timeline.add(item1, item2);**/
-
         this.add(pageTitle, pageContent);
     }
 
     private void setTimeline(){
         PureTimeline timeline = new PureTimeline();
-        PureTimelineItem item1 = new PureTimelineItem("1976", new H1("Betrieb der Aktiengesellschaft Bremer Pferdebahn wurde aufgenommen"));
-        PureTimelineItem item2 = new PureTimelineItem("1889", new H1("Erste elektrische Versuchsstrecke wurde geplant"));
-        PureTimelineItem item3 = new PureTimelineItem("1892", new H1("Bremer Pferdebahn nannte sich um in Bremer Straßenbahn und begann mit dem elektrischen Betrieb"));
-        PureTimelineItem item4 = new PureTimelineItem("1910", new H1("Der erste Oberleitungsbus wurde in Betrieb genommen"));
-        PureTimelineItem item5 = new PureTimelineItem("1924", new H1("Die erste Linie des Diesel-Omnibusnetzes der Bremer Vorortbahnen GmbG entstand"));
-        PureTimelineItem item6 = new PureTimelineItem("1953", new H1("Straßenbahn übernimmt den Linienbusverkehr der BVG"));
-        PureTimelineItem item7 = new PureTimelineItem("1961", new H1("Letzte Oberleitungs-Buslinie wird eingestellt"));
+        PureTimelineItem item1 = new PureTimelineItem("1976", new Paragraph("Betrieb der Aktiengesellschaft Bremer Pferdebahn wurde aufgenommen"));
+        PureTimelineItem item2 = new PureTimelineItem("1889", new Paragraph("Erste elektrische Versuchsstrecke wurde geplant"));
+        PureTimelineItem item3 = new PureTimelineItem("1892", new Paragraph("Bremer Pferdebahn nannte sich um in Bremer Straßenbahn und begann mit dem elektrischen Betrieb"));
+        PureTimelineItem item4 = new PureTimelineItem("1910", new Paragraph("Der erste Oberleitungsbus wurde in Betrieb genommen"));
+        PureTimelineItem item5 = new PureTimelineItem("1924", new Paragraph("Die erste Linie des Diesel-Omnibusnetzes der Bremer Vorortbahnen GmbH entstand"));
+        PureTimelineItem item6 = new PureTimelineItem("1953", new Paragraph("Straßenbahn übernimmt den Linienbusverkehr der BVG"));
+        PureTimelineItem item7 = new PureTimelineItem("1961", new Paragraph("Letzte Oberleitungs-Buslinie wird eingestellt"));
         timeline.add(item1, item2, item2, item3, item4, item5, item6, item7);
+
+        timeline.setId("timeline");
+        item1.setId("item1");
+        item7.setId("item7");
+
         this.add(timeline);
     }
 

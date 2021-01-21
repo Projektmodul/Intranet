@@ -184,6 +184,24 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/AboutUsView */
+#aboutUs #timeline {
+    width: 80%;
+}
+
+#aboutUs #timeline::before {
+    height: 100%;
+    transform: translate(0%, 0%);
+}
+
+#aboutUs #item1 {
+    padding-top: 50px;
+
+}
+
+#aboutUs #item7 {
+    padding-bottom: 20px;
+
+}
 
 /* -------------------------------------------------------------- */
 
