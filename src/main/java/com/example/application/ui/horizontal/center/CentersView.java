@@ -2,12 +2,11 @@
 
 package com.example.application.ui.horizontal.center;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -28,21 +27,22 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Centers")
 public class CentersView extends Div {
 
-    public CentersView() {
+    private PageService pageService;
+    private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
+
+    public CentersView(PageService pageService) {
         setId("centers");
         setClassName("pageContentPosition");
         addClassName("centerColorscheme");
 
-        H1 headLineCenter = new H1("Center");
-        headLineCenter.setId("headlineCenter");
-        headLineCenter.setClassName("overviewHStyle");
-
-        Label firstQuote = new Label("Wir halten");
-        firstQuote.setClassName("firstQuote");
+        pageEntity = pageService.findPageById(7);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
 
         Label secondQuote = new Label("zusammen");
         secondQuote.setClassName("secondQuote");
-
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
@@ -52,8 +52,7 @@ public class CentersView extends Div {
 
         layout.add(component1);
 
-        add(headLineCenter,firstQuote, secondQuote, layout);
-
+        add(pageTitle,pageText, secondQuote, layout);
     }
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
@@ -70,9 +69,6 @@ public class CentersView extends Div {
         layout.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
         return  layout;
     }
-
-
-
 }
 
 

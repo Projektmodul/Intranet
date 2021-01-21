@@ -6,11 +6,11 @@ import java.util.List;
 
 /**
  * This is a basic user class.
- *
- * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
- * @version 4.0
- * @since   21-12-2020
- * @lastUpdated 19.01.2021
+ *	 *
+ * @author  Jessica Reistel, Laura Neuendorf, Sabrine Gamdou, Monika Martius
+ * @version 4.0	 * @version 5.0
+ * @since   21-12-2020	 * @since   21-12-2020
+ * @lastUpdated 19.01.2021	 * @lastUpdated 20.01.2021
  */
 
 @Entity(name= "users")
