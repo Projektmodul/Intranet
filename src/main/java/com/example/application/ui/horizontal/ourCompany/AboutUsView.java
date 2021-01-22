@@ -14,7 +14,8 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
+import de.nils_bauer.PureTimeline;
+import de.nils_bauer.PureTimelineItem;
 
 
 /**
@@ -55,6 +56,7 @@ public class AboutUsView extends Div {
         addClassName("ourCompanyColorscheme");
 
         setData();
+        setTimeline();
 
         userEntity = pageEntity.getUser();
 
@@ -70,6 +72,24 @@ public class AboutUsView extends Div {
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
         this.add(pageTitle, pageContent);
+    }
+
+    private void setTimeline(){
+        PureTimeline timelineBSAG = new PureTimeline();
+        PureTimelineItem item1876 = new PureTimelineItem("1876", new Paragraph("Betrieb der Aktiengesellschaft Bremer Pferdebahn wurde aufgenommen"));
+        PureTimelineItem item1889 = new PureTimelineItem("1889", new Paragraph("Erste elektrische Versuchsstrecke wurde geplant"));
+        PureTimelineItem item1892 = new PureTimelineItem("1892", new Paragraph("Bremer Pferdebahn nannte sich um in Bremer Straßenbahn und begann mit dem elektrischen Betrieb"));
+        PureTimelineItem item1910 = new PureTimelineItem("1910", new Paragraph("Der erste Oberleitungsbus wurde in Betrieb genommen"));
+        PureTimelineItem item1924 = new PureTimelineItem("1924", new Paragraph("Die erste Linie des Diesel-Omnibusnetzes der Bremer Vorortbahnen GmbH entstand"));
+        PureTimelineItem item1953 = new PureTimelineItem("1953", new Paragraph("Straßenbahn übernimmt den Linienbusverkehr der BVG"));
+        PureTimelineItem item1961 = new PureTimelineItem("1961", new Paragraph("Letzte Oberleitungs-Buslinie wird eingestellt"));
+        timelineBSAG.add(item1876, item1889, item1889, item1892, item1910, item1924, item1953, item1961);
+
+        timelineBSAG.setId("timelineBSAG");
+        item1876.setId("item1876");
+        item1961.setId("item1961");
+
+        this.add(timelineBSAG);
     }
 
     private void initializeImagesManager(){
