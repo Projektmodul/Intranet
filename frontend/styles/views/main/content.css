@@ -42,6 +42,32 @@
     color: #FFFFFF;
 }
 
+#contentHolder h3{
+    margin-left: 15px;
+    font-family: Gothic A1, serif;
+    font-style: normal;
+    align-items: normal;
+    line-height: initial;
+    color: #FFFFFF;
+}
+
+div#container {
+    margin-left: 15px;
+    /*display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;*/
+}
+
+#pageContentWelcome {
+    flex: auto;
+    max-height: 425px;
+    height: 100%;
+    max-width: 1180px;
+    width:100%;
+    margin-left: 15px;
+}
+
 .secondQuote{
     margin-left: 55px;
     font-family: Gothic A1, serif;

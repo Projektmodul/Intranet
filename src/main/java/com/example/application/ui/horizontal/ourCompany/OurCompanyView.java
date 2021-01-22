@@ -34,7 +34,7 @@ public class OurCompanyView extends Div {
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
-        pageEntity = pageService.findPageById(6);
+        pageEntity = pageService.findPageById(3);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 

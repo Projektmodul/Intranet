@@ -1,10 +1,13 @@
 package com.example.application.ui.vertical.settings;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.ToggleButton;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -21,16 +24,36 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Route(value = "settings", layout = MainView.class)
 @PageTitle("Einstellungen")
 public class SettingsView extends Div {
+    private PageService pageService;
+    private H1 pageTitle;
+    private H3 pageText;
+    private PageEntity pageEntity;
+    private Span hell;
+    private Span dark;
 
-    public SettingsView() {
+    public SettingsView(PageService pageService) {
         setId("settings");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
-        add(new Text("Stellen Sie hier ein helles oder dunkles Farbschema ein:"));
+
+        pageEntity = pageService.findPageById(24);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H3(pageEntity.getContent());
 
         ToggleButton toggleButton = new ToggleButton();
         toggleButton.addClickListener(event -> toggleDarkMode());
-        add(toggleButton);
+
+        hell = new Span("hell");
+        dark = new Span("dunkel");
+
+        HorizontalLayout toogleLayout = new HorizontalLayout();
+        toogleLayout.add(hell,toggleButton,dark);
+
+        Div container = new Div();
+        container.add(toogleLayout);
+        container.setId("container");
+
+        add(pageTitle,pageText,container);
     }
 
     private void toggleDarkMode(){

@@ -37,7 +37,7 @@ public class CentersView extends Div {
         setClassName("pageContentPosition");
         addClassName("centerColorscheme");
 
-        pageEntity = pageService.findPageById(7);
+        pageEntity = pageService.findPageById(9);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 

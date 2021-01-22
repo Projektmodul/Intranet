@@ -42,10 +42,12 @@ public class AboutUsView extends Div {
     }
 
     private void setData(){
-        PageEntity pageEntity = pageService.findPageById(4);
+        PageEntity pageEntity = pageService.findPageById(5);
 
         pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Paragraph(pageEntity.getContent());
+        pageContent = new Paragraph();
+        pageContent.setId("pageContentWelcome");
+        pageContent.setText((pageEntity.getContent()));
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
         this.add(pageTitle, pageContent);

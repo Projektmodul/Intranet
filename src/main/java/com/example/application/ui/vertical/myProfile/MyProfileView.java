@@ -74,7 +74,7 @@ public class MyProfileView extends Div {
         updatePostcode = new IntegerField();
         updateCity = new TextField();
 
-        pageEntity = myProfileViewService.findPageById(2); //Only for demo, need to be setted by logged in user
+        pageEntity = myProfileViewService.findPageById(22); //Only for demo, need to be setted by logged in user
         userEntity = pageEntity.getUser();
         addressEntity = userEntity.getAddress();
 

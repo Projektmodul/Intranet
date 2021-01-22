@@ -1,11 +1,14 @@
 package com.example.application.ui.horizontal.community;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -34,12 +37,16 @@ import java.util.List;
 public class NoticeBoardView extends Div {
 
 
+
+
     //private noticeBoardService noticeBoardService;
 
-    private H1 pageTitle;
+    private PageService pageService;
     private Icon deleteIcon;
     private Icon editIcon;
-    private Span pageContent;
+    private H1 pageTitle;
+    private Span pageText;
+    private PageEntity pageEntity;
     private Upload uploadButton;
     private HorizontalLayout layoutSplit;
     private RadioButtonGroup radioOffer;
@@ -50,10 +57,14 @@ public class NoticeBoardView extends Div {
     private Component rightComponent;
     //private CardListNoticeBoard card;
 
-    public NoticeBoardView() {
+    public NoticeBoardView(PageService pageService) {
         setId("noticeBoard");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
+
+        pageEntity = pageService.findPageById(20);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new Span(pageEntity.getContent());
 
         initializeLeftContainer();
         initializeRightContainer();
@@ -61,9 +72,6 @@ public class NoticeBoardView extends Div {
     }
 
     public void initializeLeftContainer() {
-
-        pageTitle = new H1("Schwarzes Brett");
-        pageTitle.setId("pageTitle");
 
         Div box = new Div();
         box.add(pageTitle);
@@ -79,7 +87,6 @@ public class NoticeBoardView extends Div {
         editDeleteIcon.add(box, editIcon, deleteIcon);
         editDeleteIcon.setAlignItems(FlexComponent.Alignment.END);
         editDeleteIcon.setClassName("editDeleteIcon");
-        pageContent = new Span("Wir wünschen Ihnen viel Spaß beim Suchen, Finden, Anbieten und Stöbern!");
 
         objectList.add(new Objects(100, "Wohnung", Status.SUCHE, 450, "liliad@gmail.com"));
         objectList.add(new Objects(101, "Wohnung", Status.BIETE, 300, "miamaia@gmail.com"));
@@ -98,7 +105,7 @@ public class NoticeBoardView extends Div {
         grid.setItems(objectList);
         grid.removeColumnByKey("id");
 
-        leftComponent = new VerticalLayout(editDeleteIcon,grid,pageContent);
+        leftComponent = new VerticalLayout(editDeleteIcon,pageText,grid);
         leftComponent.setId("leftLayout");
     }
 

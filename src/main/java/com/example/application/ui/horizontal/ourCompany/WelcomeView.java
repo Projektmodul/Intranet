@@ -9,6 +9,8 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 
+import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -28,7 +30,7 @@ public class WelcomeView extends Div {
 
     private H1 pageTitle;
     private Paragraph pageContent;
-    
+
     public WelcomeView(PageService pageService) {
         this.pageService = pageService;
 
@@ -41,11 +43,13 @@ public class WelcomeView extends Div {
     }
 
     private void setData(){
-        PageEntity pageEntity = pageService.findPageById(1);
+        PageEntity pageEntity = pageService.findPageById(4);
 
         pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Paragraph(pageEntity.getContent());
-        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
+        pageContent = new Paragraph();
+        pageContent.setId("pageContentWelcome");
+        pageContent.setText(pageEntity.getContent());
+        /*pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());*/
 
         this.add(pageTitle,pageContent);
     }

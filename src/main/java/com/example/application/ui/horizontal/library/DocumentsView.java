@@ -1,11 +1,14 @@
 package com.example.application.ui.horizontal.library;
 
 import com.example.application.backend.entities.DocumentEntity;
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.treegrid.TreeGrid;
 import com.vaadin.flow.router.PageTitle;
@@ -27,16 +30,25 @@ import java.util.List;
 @PageTitle("Unterlagen")
 public class DocumentsView extends Div {
 
+    private PageService pageService;
+    private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
     private List<DocumentEntity> documentsList;
 
     private TreeGrid<DocumentEntity> documentsGrid;
     private VerticalLayout pageContentLayout;
-    private H1 pageTitle;
 
-    public DocumentsView() {
+    public DocumentsView(PageService pageService) {
         setId("documents");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
+
+        pageEntity = pageService.findPageById(14);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
+
+
 
         /*
         * Temporary Dummy-Data, will be deleted after Back-End is implemented
@@ -107,7 +119,7 @@ public class DocumentsView extends Div {
     }
 
     public void initializePageContent(){
-        pageTitle = new H1("Unterlagen");
+
         pageContentLayout = new VerticalLayout(pageTitle);
 
         this.add(pageContentLayout);

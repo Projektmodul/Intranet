@@ -2,6 +2,7 @@ package com.example.application.ui.presenters;
 
 import com.example.application.backend.services.notifications.NotificationDataProvider;
 import com.example.application.backend.services.notifications.NotificationService;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.vaadin.flow.spring.annotation.SpringComponent;

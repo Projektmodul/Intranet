@@ -1,13 +1,12 @@
 package com.example.application.ui.vertical.canteen;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -35,9 +34,11 @@ public class CanteenView extends Div {
     private Component rightComponent;
 
     private H1 pageTitle;
-    private Span pageContent;
     private Image pdfImage;
     private Icon deleteIcon;
+    private PageEntity pageEntity;
+    private PageService pageService;
+    private Span pageContent;
 
     private Upload uploadButton;
 
@@ -45,11 +46,14 @@ public class CanteenView extends Div {
 
     private Dialog imageDialog;
 
-    public CanteenView() {
+    public CanteenView(PageService pageService) {
         setId("canteen");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
+        pageEntity = pageService.findPageById(26);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageContent = new Span(pageEntity.getContent());
 
         initializeLeftContainer();
         initializeRightContainer();
@@ -58,8 +62,8 @@ public class CanteenView extends Div {
     }
 
     public void initializeLeftContainer(){
-        pageTitle = new H1("Speiseplan");
-        pageTitle.setId("pageTitle");
+        /*pageTitle = new H1("Speiseplan");
+        pageTitle.setId("pageTitle");*/
 
         deleteIcon = new Icon(VaadinIcon.TRASH);
         deleteIcon.setId("deleteIcon");
@@ -72,9 +76,9 @@ public class CanteenView extends Div {
         pdfImage.setId("pdfImage");
         /*-------------------------------------------------------------------*/
 
-        pageContent = new Span("Werfen Sie doch schon vorab einen Blick in unsere Speisekarte.");
+        /*pageContent = new Span("Werfen Sie doch schon vorab einen Blick in unsere Speisekarte.");*/
 
-        leftComponent = new VerticalLayout(menuDeleteLayout,pdfImage,pageContent);
+        leftComponent = new VerticalLayout(menuDeleteLayout,pageContent,pdfImage);
         leftComponent.setId("leftComponent");
     }
 
