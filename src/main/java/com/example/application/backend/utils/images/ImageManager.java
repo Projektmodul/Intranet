@@ -18,7 +18,7 @@ import java.util.Date;
  * imageCreationManager and the imageDeletionManager to create and delete images.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   21-12-2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
@@ -42,6 +42,7 @@ public class ImageManager {
 
     private Div errorContainer;
 
+    private boolean isOneImage;
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
@@ -50,11 +51,13 @@ public class ImageManager {
 
     public ImageManager(ImageService imageService){
         this.imageService = imageService;
-
+        isOneImage = true;
         initializeUploader();
     }
     public Image createPDF(){
         image = new Image(imageEntity, inputStream);
+        image.setHeight("auto");
+        image.setWidth("auto");
         return image;
     }
 
@@ -65,6 +68,7 @@ public class ImageManager {
 
         errorContainer = new Div();
         uploaderContainer.add(errorContainer,upload);
+
     }
 
     public void setUploaderEvents(){
@@ -76,6 +80,8 @@ public class ImageManager {
         Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
         upload.setDropLabel(label);
 
+        upload.setVisible(isOneImage);
+        System.out.println("isOneImage: " + isOneImage);
         upload.addSucceededListener(e -> {
             inputStream = buffer.getInputStream();
             createImageEntity(changeGlobalFileName(e.getFileName()));
@@ -84,6 +90,7 @@ public class ImageManager {
             imageCreationManager.setMimeType(e.getMIMEType());
             imageCreationManager.save();
             UI.getCurrent().getPage().reload();
+
         });
 
         upload.addFileRejectedListener(e -> errorContainer.add(new Span(e.getErrorMessage())));
@@ -96,6 +103,7 @@ public class ImageManager {
         image.getDeleteButton().addClickListener(e -> {
             imageDeletionManager.delete();
             UI.getCurrent().getPage().reload();
+            upload.setVisible(!isOneImage);
         });
     }
 
@@ -117,6 +125,9 @@ public class ImageManager {
         setUserEntity(userEntity);
     }
 
+    public void setOneImage(boolean isOneImage){
+        this.isOneImage = isOneImage;
+    }
 
     public String createPath(String fileName){
         return RESOURCES_DIR + fileName;
