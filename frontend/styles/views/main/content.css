@@ -184,21 +184,21 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/AboutUsView */
-#aboutUs #timeline {
+#aboutUs #timelineBSAG {
     width: 80%;
 }
 
-#aboutUs #timeline::before {
+#aboutUs #timelineBSAG::before {
     height: 100%;
     transform: translate(0%, 0%);
 }
 
-#aboutUs #item1 {
+#aboutUs #item1876 {
     padding-top: 50px;
 
 }
 
-#aboutUs #item7 {
+#aboutUs #item1961 {
     padding-bottom: 20px;
 
 }
