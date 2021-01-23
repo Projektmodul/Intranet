@@ -18,9 +18,9 @@ import java.util.Date;
  * imageCreationManager and the imageDeletionManager to create and delete images.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 2.0
- * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @version 3.0
+ * @since   19.01.2021
+ * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 public class ImageManager {
