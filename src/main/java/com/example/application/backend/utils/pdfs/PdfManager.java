@@ -22,9 +22,9 @@ import java.util.Date;
  * pdfCreationManager and the pdfDeletionManager to create and delete documents.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 2.0
- * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @version 3.0
+ * @since   21.12.2020
+ * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 public class PdfManager {
 
@@ -63,14 +63,14 @@ public class PdfManager {
                       DocumentService documentService){
         this.notificationService = notificationService;
         this.documentService = documentService;
-
-
+        this.isOnePdf = true;
 
         initializeUploader();
     }
 
     public PDF createPDF(){
         pdf = new PDF(documentEntity, inputStream);
+        pdf.setHeight("55rem");
         return pdf;
     }
 
@@ -93,7 +93,7 @@ public class PdfManager {
         upload.setDropLabel(label);
 
         upload.setVisible(isOnePdf);
-        System.out.println("isOneImage: " + isOnePdf);
+        System.out.println("isOnePdf: " + isOnePdf);
         upload.addSucceededListener(e -> {
             inputStream = buffer.getInputStream();
             createDocumentEntity(changeGlobalFileName(e.getFileName()));
@@ -109,10 +109,11 @@ public class PdfManager {
         upload.addFailedListener(e -> errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen")));
     }
 
-    public void setCancelButtonEvent(){
+    public void setDeleteButtonEvent(){
         pdf.getDeleteButton().addClickListener(e -> {
             pdfDeletionManager.delete();
             UI.getCurrent().getPage().reload();
+            upload.setVisible(!isOnePdf);
         });
     }
 
