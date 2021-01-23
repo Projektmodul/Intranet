@@ -3,8 +3,8 @@ package com.example.application.backend.utils.images;
 import com.example.application.backend.entities.ImageEntity;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.html.NativeButton;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.server.StreamResource;
 
 import java.io.ByteArrayInputStream;
@@ -17,23 +17,22 @@ import java.io.InputStream;
  * the files input stream.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 1.0
- * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @version 2.0
+ * @since   21.12.2020
+ * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 public class Image extends Div {
     private ImageEntity imageEntity;
 
-    private NativeButton deleteButton;
+    private Icon deleteButton;
     private Component imageViewer;
-    private StreamResource stream;
+    private StreamResource stream; //Is it used?
 
 
     private InputStream inputStream;
 
-    private Div filenameAndButtonContainer;
-    private H4 imageFileName;
+
 
     public Image(ImageEntity imageEntity, InputStream inputStream){
         this.imageEntity = imageEntity;
@@ -44,17 +43,9 @@ public class Image extends Div {
     }
 
     public void initializePDF(){
-        imageFileName = new H4(imageEntity.getFileName());
-        deleteButton = new NativeButton("Datei löschen");
-
-        filenameAndButtonContainer = new Div();
-
-
+        deleteButton = new Icon(VaadinIcon.TRASH);
         initializeImageViewer();
-
-        filenameAndButtonContainer.add(imageFileName, deleteButton);
-        this.add(filenameAndButtonContainer, imageViewer);
-
+        this.add(deleteButton, imageViewer);
     }
 
     public void initializeImageViewer(){
@@ -72,7 +63,7 @@ public class Image extends Div {
     }
 
 
-    public NativeButton getDeleteButton() {
+    public Icon getDeleteButton() {
         return deleteButton;
     }
 
