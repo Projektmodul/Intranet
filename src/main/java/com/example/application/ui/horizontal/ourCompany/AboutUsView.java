@@ -22,9 +22,9 @@ import de.nils_bauer.PureTimelineItem;
  *  AboutUs View shows ...
  *
  *  @author Laura Neuendorf, Jessica Reistel
- *  @version 5.0
+ *  @version 6.0
  *  @since 15.12.2020
- *  @lastUpdated 20.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou, Laura Neuendorf
+ *  @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou, Laura Neuendorf
  */
 
 @Route(value = "aboutUs", layout = MainView.class)
@@ -46,6 +46,8 @@ public class AboutUsView extends Div {
     private H1 pageTitle;
     private Paragraph pageContent;
 
+    private Div imagesUploader;
+
     public AboutUsView(PageService pageService, UserService userService, ImageService imageService) {
         this.pageService = pageService;
         this.userService = userService;
@@ -62,6 +64,8 @@ public class AboutUsView extends Div {
 
         initializeImagesManager();
         initializeBigContainer();
+        initializeUploadContainer();
+        imagesManager.setOneImage(true);
     }
 
     private void setData(){
@@ -98,19 +102,25 @@ public class AboutUsView extends Div {
         imagesManager.setAllImageEntitiesData(pageEntity, userEntity);
 
         imagesManager.initializeAllImages();
-        this.add(imagesManager);
     }
 
     private void initializeImages(){
         imagesContainer = new Div();
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
+        bigContainer.add(imagesManager);
     }
 
     private void initializeBigContainer(){
         bigContainer = new Div();
         initializeImages();
+    }
+
+    private void initializeUploadContainer(){
+        imagesManager.initializeUploadContainer();
+        imagesUploader = imagesManager.getImagesUploader();
         this.add(bigContainer);
+        this.add(imagesUploader);
     }
 
 }
