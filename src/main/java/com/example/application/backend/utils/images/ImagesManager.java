@@ -57,7 +57,7 @@ public class ImagesManager extends Div {
             imageManager.setImageEntity(imageEntity);
             imageManager.setOneImage(isOneImage);
             images.add(imageManager.createPDF());
-            imageManager.setCancelButtonEvent();
+            imageManager.setDeleteButtonEvent();
             System.out.println("CREATED IMAGE");
             System.out.println("PATH: "+ imageEntity.getPath());
         }
