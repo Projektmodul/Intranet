@@ -3,8 +3,8 @@ package com.example.application.backend.utils.pdfs;
 import com.example.application.backend.entities.DocumentEntity;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.html.NativeButton;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.server.StreamResource;
 
 import java.io.ByteArrayInputStream;
@@ -25,15 +25,14 @@ public class PDF extends Div {
 
     private DocumentEntity documentEntity;
 
-    private NativeButton deleteButton;
+    private Icon deleteButton;
     private Component pdfDocumentViewer;
     private StreamResource stream;
 
 
     private InputStream inputStream;
 
-    private Div filenameAndButtonContainer;
-    private H4 pdfFileName;
+
 
     public PDF(DocumentEntity documentEntity, InputStream inputStream){
         this.documentEntity = documentEntity;
@@ -44,17 +43,9 @@ public class PDF extends Div {
     }
 
     public void initializePDF(){
-        pdfFileName = new H4(documentEntity.getFileName());
-        deleteButton = new NativeButton("Datei löschen");
-
-        filenameAndButtonContainer = new Div();
-
-
+        deleteButton = new Icon(VaadinIcon.TRASH);
         initializePdfViewer();
-
-        filenameAndButtonContainer.add(pdfFileName, deleteButton);
-        this.add(filenameAndButtonContainer, pdfDocumentViewer);
-
+        this.add(deleteButton, pdfDocumentViewer);
     }
 
     public void initializePdfViewer(){
@@ -72,7 +63,7 @@ public class PDF extends Div {
     }
 
 
-    public NativeButton getDeleteButton() {
+    public Icon getDeleteButton() {
         return deleteButton;
     }
 
