@@ -3,6 +3,7 @@ package com.example.application.ui.vertical.myProfile;
 import com.example.application.backend.entities.AddressEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
@@ -44,6 +45,8 @@ public class MyProfileView extends Div {
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private AddressEntity addressEntity;
+    private GetUserController getUserController;
+    private String username;
 
     private TextField updateIban;
     private TextArea updateJobDescription;
@@ -61,10 +64,11 @@ public class MyProfileView extends Div {
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-
         this.myProfileViewService = myProfileViewService;
         this.userService = userService;
         this.addressService = addressService;
+
+        getUserController = new GetUserController();
 
         updateIban = new TextField();
         updateJobDescription = new TextArea();
@@ -75,7 +79,9 @@ public class MyProfileView extends Div {
         updateCity = new TextField();
 
         pageEntity = myProfileViewService.findPageById(22); //Only for demo, need to be setted by logged in user
-        userEntity = pageEntity.getUser();
+
+        username = getUserController.getUsername();
+        userEntity = userService.findByUsername(username);
         addressEntity = userEntity.getAddress();
 
         VerticalLayout content = new VerticalLayout();
