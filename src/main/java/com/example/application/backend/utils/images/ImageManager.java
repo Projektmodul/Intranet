@@ -18,7 +18,7 @@ import java.util.Date;
  * imageCreationManager and the imageDeletionManager to create and delete images.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   19.01.2021
  * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
@@ -56,8 +56,6 @@ public class ImageManager {
     }
     public Image createPDF(){
         image = new Image(imageEntity, inputStream);
-        image.setHeight("auto");
-        image.setWidth("auto");
         return image;
     }
 
@@ -99,7 +97,7 @@ public class ImageManager {
 
     }
 
-    public void setCancelButtonEvent(){
+    public void setDeleteButtonEvent(){
         image.getDeleteButton().addClickListener(e -> {
             imageDeletionManager.delete();
             UI.getCurrent().getPage().reload();
