@@ -15,9 +15,9 @@ import java.util.List;
  * This class manages the pdfs list and the pdfManagers.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 2.0
- * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @version 3.0
+ * @since   21.12.2020
+ * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 public class PdfsManager extends Div {
@@ -36,6 +36,8 @@ public class PdfsManager extends Div {
     private UserEntity userEntity;
 
     private boolean isOnePdf;
+
+    private Div pdfsUploader;
 
     public PdfsManager(List<DocumentEntity> documentEntities, NotificationService notificationService,
                        DocumentService documentService){
@@ -57,27 +59,26 @@ public class PdfsManager extends Div {
             pdfManager.setDocumentEntity(documentEntity);
             pdfManager.setOnePdf(isOnePdf);
             pdfs.add(pdfManager.createPDF());
-            pdfManager.setCancelButtonEvent();
+            pdfManager.setDeleteButtonEvent();
             System.out.println("CREATED PDF");
             System.out.println("PATH: "+documentEntity.getPath());
         }
 
-        System.out.println("Image List Size: " + documentEntities.size());
+        System.out.println("Pdfs List Size: " + documentEntities.size());
         if(documentEntities.size() > 1){
-            System.out.println("isOneImage: " + isOnePdf);
+            System.out.println("isOnePdf: " + isOnePdf);
             pdfManager.setOnePdf(isOnePdf);
         }else if(documentEntities.size() == 0){
-            System.out.println("isOneImage: " + isOnePdf);
+            System.out.println("isOnePdf: " + isOnePdf);
             pdfManager.setOnePdf(true);
         }
         else{
-            System.out.println("isOneImage: " + isOnePdf);
+            System.out.println("isOnePdf: " + isOnePdf);
             pdfManager.setOnePdf(isOnePdf);
         }
         readList();
 
-        pdfManager.setUploaderEvents();
-        this.add(pdfManager.getUploaderContainer());
+
     }
 
 
@@ -126,6 +127,14 @@ public class PdfsManager extends Div {
         }
     }
 
+    public void initializeUploadContainer(){
+        pdfsUploader = new Div();
+        pdfManager.setUploaderEvents();
+        pdfsUploader.add(pdfManager.getUploaderContainer());
+    }
 
+    public Div getPdfsUploader() {
+        return pdfsUploader;
+    }
 }
 
