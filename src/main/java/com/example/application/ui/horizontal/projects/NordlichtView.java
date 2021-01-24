@@ -1,28 +1,67 @@
 package com.example.application.ui.horizontal.projects;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.utils.images.Image;
 import com.example.application.ui.MainView;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Nordlicht View shows ...
+ *  FAQ View shows ...
  *
- *  @author
+ *  @author Monika Martius
  *  @version 1.0
  *  @since 15.12.2020
- *  @lastUpdated
+ *  @lastUpdated 22.01.2021
  */
 @Route(value = "nordlicht", layout = MainView.class)
 @PageTitle("Nordlicht")
 public class NordlichtView extends Div {
 
-    public NordlichtView() {
+    private PageService pageService;
+    private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
+    private Image nordlichtOne;
+    private Image nordlichtTwo;
+
+    private HorizontalLayout layoutSplit;
+    private Component leftComponent;
+    private Component rightComponent;
+
+    public NordlichtView(PageService pageService) {
+        this.pageService = pageService;
         setId("nordlicht");
         setClassName("pageContentPosition");
         addClassName("projectsColorscheme");
-        add(new Text("Nordlicht"));
+
+        initializeLeftContainer();
+        initializeRightContainer();
+        initializeSplitLayout();
     }
 
+    private void initializeSplitLayout() {
+
+    }
+
+    private void initializeRightContainer() {
+
+    }
+
+    private void initializeLeftContainer() {
+        pageEntity = pageService.findPageById(12);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
+
+        Div box = new Div();
+        this.add(pageTitle);
+        box.setId("pageTitle");
+    }
 }

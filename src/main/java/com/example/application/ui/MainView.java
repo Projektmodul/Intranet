@@ -83,15 +83,12 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         String[] split = contentText.split("\\.");
         int length = split.length;
         if(length > 5){
-            String text = split[5];
-            System.out.println(text + " >5");
-            return text;
+            return split[5];
 
         }else{
             String text = split[4];
             String[] split1 = text.split("@");
             text = split1[0];
-            System.out.println(text + " <5");
             return text;
         }
     }

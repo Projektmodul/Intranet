@@ -1,10 +1,13 @@
 package com.example.application.ui.horizontal.library;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -21,18 +24,25 @@ import com.vaadin.flow.router.Route;
 @Route(value = "archive", layout = MainView.class)
 @PageTitle("Archiv")
 public class ArchiveView extends Div {
+    private PageService pageService;
+    private H1 pageTitle;
+    private Span pageText;
+    private PageEntity pageEntity;
 
-    public ArchiveView() {
+    public ArchiveView(PageService pageService) {
         setId("archive");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
-        add(new H1("Archiv"));
+        pageEntity = pageService.findPageById(15);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new Span(pageEntity.getContent());
+
+        add(pageTitle);
         VerticalLayout archiveLayout = new VerticalLayout();
-        archiveLayout.add(new Span("Für ältere Dokumente, die Sie nicht bei Unterlagen finden, überpüfen Sie bitte das Dokumentenmanagementsystem."));
+        archiveLayout.add(pageText);
         archiveLayout.add(new Button("Zum Dokumentenmanagementsystem"));
 
         add(archiveLayout);
     }
-
 }
