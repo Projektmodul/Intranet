@@ -8,6 +8,10 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.GridDocument;
 import com.example.application.backend.utils.pdfs.PdfsManager;
+import com.example.application.backend.entities.DocumentEntity;
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
+import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
@@ -15,6 +19,9 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.treegrid.TreeGrid;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -31,14 +38,16 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Unterlagen")
 public class DocumentsView extends Div {
 
+    private PageService pageService;
     private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
+
+    private TreeGrid<DocumentEntity> documentsGrid;
+    private VerticalLayout pageContentLayout;
 
     private PdfsManager pdfsManager;
-
-    private PageEntity pageEntity;
     private UserEntity userEntity;
-
-    private PageService pageService;
     private UserService userService;
     private DocumentService documentService;
     private NotificationService notificationService;
@@ -59,8 +68,22 @@ public class DocumentsView extends Div {
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
+        pageEntity = pageService.findPageById(14);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
+
+
+
+        /*
+         * Temporary Dummy-Data, will be deleted after Back-End is implemented
+         * ------------------------------------------------------------------------
+         * */
+
+        DocumentEntity documentManagement = new DocumentEntity();
+        documentManagement.setFileName("Verwaltung-Dokument");
+        documentManagement.setKeyword("Verwaltung");
         setData();
-        userEntity = pageEntity.getUser();
+        //userEntity = pageEntity.getUser();
 
         initializeRadioButtonsForKeyword();
         initializePdfsManager();
@@ -68,7 +91,6 @@ public class DocumentsView extends Div {
         initializeGrid();
 
         this.getStyle().set("width","100%");
-
     }
 
     public void setData(){

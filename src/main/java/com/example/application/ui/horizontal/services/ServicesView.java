@@ -2,12 +2,11 @@
 
 package com.example.application.ui.horizontal.services;
 
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -28,15 +27,19 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Services")
 public class ServicesView extends Div {
 
-    public ServicesView() {
+    private PageService pageService;
+    private H1 pageTitle;
+    private H2 pageText;
+    private PageEntity pageEntity;
+
+    public ServicesView(PageService pageService) {
         setId("services");
         setClassName("pageContentPosition");
         addClassName("servicesColorscheme");
 
-        H1 headLineServices = new H1("Services");
-
-        Label firstQuote = new Label("Mit 100 Prozent");
-        firstQuote.setClassName("firstQuote");
+        pageEntity = pageService.findPageById(18);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageText = new H2(pageEntity.getContent());
 
         Label secondQuote = new Label("Ökostrom");
         secondQuote.setClassName("secondQuote");
@@ -56,7 +59,7 @@ public class ServicesView extends Div {
 
         layout.add(component1, component2, component3, component4);
 
-        add(headLineServices,firstQuote,secondQuote, layout);
+        add(pageTitle,pageText,secondQuote, layout);
 
     }
 
@@ -74,8 +77,4 @@ public class ServicesView extends Div {
         layout.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
         return  layout;
     }
-
-
 }
-
-
