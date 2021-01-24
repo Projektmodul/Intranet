@@ -5,17 +5,17 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.addresses.AddressService;
+import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
-import com.example.application.backend.utils.images.Image;
-import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -43,7 +43,9 @@ public class MyProfileView extends Div {
 
     private MyProfileViewService myProfileViewService;
     private UserService userService;
+    private ImageService imageService;
     private AddressService addressService;
+
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private AddressEntity addressEntity;
@@ -272,7 +274,7 @@ public class MyProfileView extends Div {
 
         Button saveButton = new Button("Speichern", e -> {
             addressService.update(addressEntity, updateStreet, updateNumber,
-                    updatePostcode, updateCity);
+                     updatePostcode, updateCity);
             userService.update(userEntity, updateIban, updateJobDescription);
             contentDialog.close();
         });
@@ -285,7 +287,8 @@ public class MyProfileView extends Div {
 
         update.addComponentAsFirst(initUpdateVerticalLayoutLeft());
         update.addComponentAtIndex(1, initUpdateVerticalLayoutRight());
-        contentDialog.add(new H1("Profil bearbeiten"), update, imagesUploader, saveCancel);
+        contentDialog.add(new H1("Profil bearbeiten"),update,  imagesUploader,saveCancel);
+
 
         return contentDialog;
     }
@@ -351,4 +354,5 @@ public class MyProfileView extends Div {
 
         return updateRight;
     }
+
 }

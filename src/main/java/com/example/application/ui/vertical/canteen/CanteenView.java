@@ -1,18 +1,19 @@
 package com.example.application.ui.vertical.canteen;
 
 import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.entities.UserEntity;
-import com.example.application.backend.services.files.DocumentService;
-import com.example.application.backend.services.notifications.NotificationService;
 import com.example.application.backend.services.pages.PageService;
-import com.example.application.backend.services.users.UserService;
-import com.example.application.backend.utils.pdfs.PDF;
-import com.example.application.backend.utils.pdfs.PdfsManager;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.splitlayout.SplitLayout;
+import com.vaadin.flow.component.upload.Upload;
+import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -20,97 +21,110 @@ import com.vaadin.flow.router.Route;
  * Canteen View shows  a View for all menus.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 2.0
+ * @version 1.0
  * @since   14.12.2020
- * @lastUpdated 23.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
+ * @lastUpdated 16.01.2021
  */
 
 @Route(value = "canteen", layout = MainView.class)
 @PageTitle("Betriebsrestaurant")
 public class CanteenView extends Div {
 
+    private Component leftComponent;
+    private Component rightComponent;
+
     private H1 pageTitle;
-    private Paragraph pageContent;
-
-    private PdfsManager pdfsManager;
-
+    private Image pdfImage;
+    private Icon deleteIcon;
     private PageEntity pageEntity;
-    private UserEntity userEntity;
-
     private PageService pageService;
-    private UserService userService;
-    private DocumentService documentService;
-    private NotificationService notificationService;
+    private Span pageContent;
 
-    private Div bigContainer;
-    private Div pdfsContainer;
-    private Div pdfsUploader;
+    private Upload uploadButton;
 
+    private SplitLayout splitLayout;
 
-    public CanteenView(PageService pageService, UserService userService, DocumentService documentService,
-                       NotificationService notificationService) {
-        this.pageService = pageService;
-        this.userService = userService;
-        this.documentService = documentService;
-        this.notificationService = notificationService;
+    private Dialog imageDialog;
 
+    public CanteenView(PageService pageService) {
         setId("canteen");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        setData();
-        userEntity = pageEntity.getUser();
+        pageEntity = pageService.findPageById(26);
+        pageTitle = new H1(pageEntity.getTitle());
+        pageContent = new Span(pageEntity.getContent());
 
-
-        initializePdfsManager();
-        initializeBigContainer();
-        initializeUploadContainer();
-
-        pdfsManager.setOnePdf(true);
-
+        initializeLeftContainer();
+        initializeRightContainer();
+        initializeImageDialog();
+        initializeSplitLayout();
     }
 
-    public void setData(){
-       pageEntity = pageService.findPageById(26);
+    public void initializeLeftContainer(){
+        /*pageTitle = new H1("Speiseplan");
+        pageTitle.setId("pageTitle");*/
 
-        pageTitle = new H1(pageEntity.getTitle());
-        pageTitle.setId("pageTitle");
+        deleteIcon = new Icon(VaadinIcon.TRASH);
+        deleteIcon.setId("deleteIcon");
 
-        pageContent = new Paragraph(pageEntity.getContent());
-        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
-        HorizontalLayout menuDeleteLayout = new HorizontalLayout(pageTitle);
+        HorizontalLayout menuDeleteLayout = new HorizontalLayout(pageTitle,deleteIcon);
         menuDeleteLayout.setId("menuDeleteLayout");
 
-        this.add(pageTitle, pageContent, menuDeleteLayout);
+        /*For frontend this is enough, later for backend this will be changed */
+        pdfImage = new Image("images/speiseplanBeispiel.png","Speiseplan-PDF");
+        pdfImage.setId("pdfImage");
+        /*-------------------------------------------------------------------*/
+
+        /*pageContent = new Span("Werfen Sie doch schon vorab einen Blick in unsere Speisekarte.");*/
+
+        leftComponent = new VerticalLayout(menuDeleteLayout,pageContent,pdfImage);
+        leftComponent.setId("leftComponent");
     }
 
-    public void initializePdfsManager(){
-        pdfsManager = new PdfsManager(pageEntity.getDocuments(),notificationService,documentService);
-        pdfsManager.setDocumentEntities(pageEntity.getDocuments());
-        pdfsManager.setAllDocumentEntitiesData("Speiseplan",pageEntity,pageEntity.getUser());
+    public void initializeRightContainer(){
+        initializeUploadButton();
+        rightComponent = new VerticalLayout(uploadButton);
+        rightComponent.setId("rightComponent");
+    }
 
-        pdfsManager.initializeAllPdfs();
+    public void initializeSplitLayout(){
+        splitLayout = new SplitLayout(leftComponent,rightComponent);
+        splitLayout.setId("splitLayout");
+        this.add(splitLayout);
+    }
+
+    public void initializeUploadButton(){
+        MemoryBuffer buffer = new MemoryBuffer();
+        uploadButton = new Upload(buffer);
+
+        uploadButton.setUploadButton(new Button("Speiseplan hochladen"));
+        uploadButton.setDropLabel(new Span("PDF-Dokument hier reinziehen"));
 
     }
 
-    private void initializePDFs(){
-        pdfsContainer = new Div();
-        for(PDF pdf : pdfsManager.getPdfs()) pdfsContainer.add(pdf);
-        bigContainer.add(pdfsContainer);
-        bigContainer.add(pdfsManager);
+    public void initializeImageDialog(){
+        Image dialogImage = new Image("images/speiseplanBeispiel.png","Speiseplan-PDF");
+        dialogImage.setId("dialogPdfImage");
+
+        imageDialog = new Dialog();
+        initializeCloseIcon();
+        imageDialog.add(dialogImage);
+
+        imageDialog.setId("imageDialog");
+        add(imageDialog);
+
+        setDialogClickEvent();
     }
 
-    public void initializeBigContainer(){
-        bigContainer = new Div();
-        initializePDFs();
-        this.add(bigContainer);
+    public void setDialogClickEvent(){
+        pdfImage.addClickListener(e-> imageDialog.open());
     }
 
-    public void initializeUploadContainer(){
-        pdfsManager.initializeUploadContainer();
-        pdfsUploader = pdfsManager.getPdfsUploader();
-        this.add(bigContainer);
-        this.add(pdfsUploader);
+    public void initializeCloseIcon(){
+        Icon closeIcon = new Icon(VaadinIcon.CLOSE);
+        closeIcon.addClickListener(e -> imageDialog.close());
+        imageDialog.add(closeIcon);
+        closeIcon.setClassName("closeIcon");
     }
 }
