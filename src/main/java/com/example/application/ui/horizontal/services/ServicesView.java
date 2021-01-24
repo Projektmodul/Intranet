@@ -49,13 +49,13 @@ public class ServicesView extends Div {
         layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
-        Component component1 = createComponent(new Icon(VaadinIcon.CHART_TIMELINE), "#FF5621", "Zeitkonto", "");
+        Component component1 = createComponent(new Icon(VaadinIcon.CHART_TIMELINE), "#FF5621", "Zeitkonto", "inProgress");
 
-        Component component2 = createComponent(new Icon(VaadinIcon.PYRAMID_CHART), "#FF5621", "LSA-Meldungen", "");
+        Component component2 = createComponent(new Icon(VaadinIcon.PYRAMID_CHART), "#FF5621", "LSA-Meldungen", "inProgress");
 
-        Component component3 = createComponent(new Icon(VaadinIcon.CAR), "#FF5621", "Fahrdienst", "");
+        Component component3 = createComponent(new Icon(VaadinIcon.CAR), "#FF5621", "Fahrdienst", "inProgress");
 
-        Component component4 = createComponent(new Icon(VaadinIcon.FLIGHT_TAKEOFF), "#FF5621", "Dienstreisen", "businessTrip");
+        Component component4 = createComponent(new Icon(VaadinIcon.FLIGHT_TAKEOFF), "#FF5621", "Dienstreisen", "inProgress");
 
         layout.add(component1, component2, component3, component4);
 
