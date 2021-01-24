@@ -7,12 +7,15 @@
  */
 
 /* CSS-Befehle, die mehrere Views betreffen */
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+
 .pageContentPosition {
     width: 100% !important;
     height: 100%;
     margin-top: 0;
     line-height: 30px;
     align-items: center;
+    font-family: 'Gothic A1', sans-serif;
 }
 #contentHolder{
     padding: 0;
@@ -26,6 +29,7 @@
 
 #contentHolder h1 {
     margin-left: 15px;
+
     margin-top: 35px;
     margin-bottom: 10px;
     font-family: Gothic A1, serif;
@@ -43,8 +47,10 @@
 /* define the font style */
 .firstQuote{
     margin-left: 15px;
+
     margin-top: 80px;
     font-family: Gothic A1, Serif, serif;
+
     font-style: italic;
     font-size: 40px;
     display: flex;
@@ -55,10 +61,10 @@
 }
 
 .secondQuote{
-    margin-left: 55px;
-    font-family: Gothic A1, serif;
+    margin-left: 80px;
+    font-family: 'Gothic A1', sans-serif;
     font-style: normal;
-    font-size: 70px;
+    font-size: 65px;
     display: flex;
     align-items: normal;
     text-align: center;
