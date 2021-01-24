@@ -1,6 +1,6 @@
 /**
  * Stylesheet for mainView, header, horizontalBar and sideBar
- *created @ MonikaMartius, Edited @ Vanessa Skowronksy*/
+ */
 
 
 #mainView{
@@ -9,10 +9,12 @@
 
 #mainContainerVerticalLayout{
   align-items: center;
+  margin-top: 2px;
 }
 
 #mainContainer{
   width: 90%;
+  margin: 0;
 }
 
 
