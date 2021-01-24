@@ -22,7 +22,7 @@ import com.vaadin.flow.router.Route;
  * Documents View shows a grid-view for all documents.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 2.0
+ * @version 3.0
  * @since   12.01.2021
  * @lastUpdated 24.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
  */
@@ -72,10 +72,11 @@ public class DocumentsView extends Div {
     }
 
     public void setData(){
-        pageEntity = pageService.findPageById(16);
+        pageEntity = pageService.findPageById(14);
 
         pageTitle = new H1(pageEntity.getTitle());
         pageTitle.setId("pageTitle");
+        add(pageTitle);
     }
 
     public void initializeRadioButtonsForKeyword(){
