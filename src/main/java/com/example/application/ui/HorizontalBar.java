@@ -86,7 +86,7 @@ public class HorizontalBar extends MenuBar {
          *          */
         VerticalLayout layoutDocuments = createSubMenu(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#2F7C78", "Unterlagen", "documents");
 
-        VerticalLayout layoutWiki = createSubMenu(new Icon(VaadinIcon.BOOK), "#2F7C78", "Wiki", "wiki");
+        VerticalLayout layoutWiki = createSubMenuLink(new Icon(VaadinIcon.BOOK), "#2F7C78", "Wiki", "https://de.wikipedia.org/wiki/Bremer_Stra%C3%9Fenbahn_AG");
 
         VerticalLayout layoutArchive = createSubMenu(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
 
