@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 
 @Entity(name ="notice_board_offers")
-public class NoticeBoardOfferEntity {
+public class NoticeBoardOfferEntity implements Cloneable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,7 @@ public class NoticeBoardOfferEntity {
     private String title;
     private String description;
     private String category;
+    private String price;
 
    /* @OneToOne
     @JoinColumn(name="image_id")
@@ -67,7 +68,15 @@ public class NoticeBoardOfferEntity {
         this.category = category;
     }
 
-   /* public ImageEntity getImage() {
+    public String getPrice() {return price;}
+
+    public void setPrice(String price) { this.price = price; }
+/*
+    public int getImageId() { return imageId; }
+
+    public void setImageId(int imageId) { this.imageId = imageId; }
+
+     public ImageEntity getImage() {
         return image;
     }
 
@@ -81,5 +90,44 @@ public class NoticeBoardOfferEntity {
 
     public void setUser(UsersEntity user) {
         this.user = user;
-    }*/
+
+    @Override
+    public NoticeBoardOfferEntity clone() {
+        try {
+                return (NoticeBoardOfferEntity)super.clone();
+        } catch (CloneNotSupportedException e) {
+                return null;
+            }
+    }  }*/
+
+    @Override
+    public int hashCode() {
+        return noticeBoardOfferId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NoticeBoardOfferEntity)) {
+            return false;
+        }
+        NoticeBoardOfferEntity other = (NoticeBoardOfferEntity) obj;
+        return noticeBoardOfferId == other.noticeBoardOfferId;
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
+
+    @Override
+    public NoticeBoardOfferEntity clone() { //NOSONAR
+        try {
+            return (NoticeBoardOfferEntity) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(
+                    "The Person object could not be cloned.", e);
+        }
+    }
 }
