@@ -14,10 +14,10 @@ import java.util.List;
 /**
  * This class manages the pdfs list and the pdfManagers.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
- * @since   21.12.2020
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @author Anastasiya Jackwerth, Sabrine Gamdou
+ * @version 4.0
+ * @since 19.01.2021
+ * @lastUpdated 24.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 public class PdfsManager extends Div {
@@ -30,7 +30,7 @@ public class PdfsManager extends Div {
 
     private PdfManager pdfManager;
 
-    //Variables to create a new documentEntity, should be set by the View
+
     private String keyword;
     private PageEntity pageEntity;
     private UserEntity userEntity;
@@ -40,7 +40,7 @@ public class PdfsManager extends Div {
     private Div pdfsUploader;
 
     public PdfsManager(List<DocumentEntity> documentEntities, NotificationService notificationService,
-                       DocumentService documentService){
+                       DocumentService documentService) {
 
         this.notificationService = notificationService;
         this.documentService = documentService;
@@ -52,31 +52,30 @@ public class PdfsManager extends Div {
     }
 
     //will be called by the view after setting list
-    public void initializeAllPdfs(){
+    public void initializeAllPdfs() {
         pdfManager = new PdfManager(notificationService, documentService);
-        pdfManager.setAllDocumentEntitiesData(keyword,pageEntity,userEntity);
-        for(DocumentEntity documentEntity : documentEntities){
+        pdfManager.setAllDocumentEntitiesData(keyword, pageEntity, userEntity);
+        for (DocumentEntity documentEntity : documentEntities) {
             pdfManager.setDocumentEntity(documentEntity);
             pdfManager.setOnePdf(isOnePdf);
             pdfs.add(pdfManager.createPDF());
             pdfManager.setDeleteButtonEvent();
             System.out.println("CREATED PDF");
-            System.out.println("PATH: "+documentEntity.getPath());
+            System.out.println("PATH: " + documentEntity.getPath());
         }
 
         System.out.println("Pdfs List Size: " + documentEntities.size());
-        if(documentEntities.size() > 1){
+        if (documentEntities.size() > 1) {
             System.out.println("isOnePdf: " + isOnePdf);
             pdfManager.setOnePdf(isOnePdf);
-        }else if(documentEntities.size() == 0){
+        } else if (documentEntities.size() == 0) {
             System.out.println("isOnePdf: " + isOnePdf);
             pdfManager.setOnePdf(true);
-        }
-        else{
+        } else {
             System.out.println("isOnePdf: " + isOnePdf);
             pdfManager.setOnePdf(isOnePdf);
         }
-        readList();
+
 
 
     }
@@ -89,13 +88,19 @@ public class PdfsManager extends Div {
 
     //Set by the view: global data for all documentEntities
     public void setAllDocumentEntitiesData(String keyword, PageEntity pageEntity,
-                                           UserEntity userEntity){
+                                           UserEntity userEntity) {
         setKeyword(keyword);
         setPageEntity(pageEntity);
         setUserEntity(userEntity);
     }
 
-    public void setOnePdf(boolean isOnePdf){
+    public void initializeUploadContainer() {
+        pdfsUploader = new Div();
+        pdfManager.setUploaderEvents();
+        pdfsUploader.add(pdfManager.getUploaderContainer());
+    }
+
+    public void setOnePdf(boolean isOnePdf) {
         this.isOnePdf = !isOnePdf;
     }
 
@@ -121,20 +126,13 @@ public class PdfsManager extends Div {
         this.pdfs = pdfs;
     }
 
-    public void readList(){
-        for(DocumentEntity d : pageEntity.getDocuments()){
-            System.out.println(d.toString());
-        }
-    }
-
-    public void initializeUploadContainer(){
-        pdfsUploader = new Div();
-        pdfManager.setUploaderEvents();
-        pdfsUploader.add(pdfManager.getUploaderContainer());
-    }
-
     public Div getPdfsUploader() {
         return pdfsUploader;
     }
+
+    public PdfManager getPdfManager() {
+        return pdfManager;
+    }
+
 }
 
