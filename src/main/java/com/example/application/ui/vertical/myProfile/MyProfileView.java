@@ -5,15 +5,17 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.addresses.AddressService;
+import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
+import com.example.application.backend.utils.images.Image;
+import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -29,9 +31,9 @@ import com.vaadin.flow.router.Route;
  *  The user is able to change his profile information
  *
  *  @author Jessica Reistel and Laura Neuendorf
- *  @version 3.0
+ *  @version 5.0
  *  @since 21.12.2020
- *  @lastUpdated 16.01.2021
+ *  @lastUpdated 24.01.2021 by Vanessa Skowronsky
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = MainView.class)
@@ -56,10 +58,17 @@ public class MyProfileView extends Div {
     private IntegerField updatePostcode;
     private TextField updateCity;
 
+    private ImageService imageService;
+    private ImagesManager imagesManager;
+
+    private Div bigContainer;
+    private Div imagesContainer;
+    private Div imagesUploader;
+
     /*
      * Constructor of the MyProfileVew class where the content is added to the view
      */
-    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService) {
+    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService, ImageService imageService) {
         setId("myProfile");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
@@ -67,6 +76,8 @@ public class MyProfileView extends Div {
         this.myProfileViewService = myProfileViewService;
         this.userService = userService;
         this.addressService = addressService;
+
+        this.imageService = imageService;
 
         getUserController = new GetUserController();
 
@@ -78,18 +89,52 @@ public class MyProfileView extends Div {
         updatePostcode = new IntegerField();
         updateCity = new TextField();
 
-        pageEntity = myProfileViewService.findPageById(22); //Only for demo, need to be setted by logged in user
+        pageEntity = myProfileViewService.findPageById(22);
 
         username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         addressEntity = userEntity.getAddress();
 
         VerticalLayout content = new VerticalLayout();
+
+        initializeImagesManager();
+        initializeBigContainer();
+        initializeUploadContainer();
+
+        //True means only one image could be added.
+        imagesManager.setOneImage(true);
+
         content.addComponentAsFirst(new H1(pageEntity.getTitle()));
         content.setSizeFull();
         content.addComponentAtIndex(1, initData());
 
         add(content);
+    }
+
+    // initializes the entity lists + containers.
+    private  void initializeImagesManager(){
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager.setImagesEntities(pageEntity.getImages());
+        imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
+
+        imagesManager.initializeAllImages();
+    }
+
+    private void initializeImages(){
+        imagesContainer = new Div();
+        for(Image image : imagesManager.getImages()) imagesContainer.add(image);
+        bigContainer.add(imagesContainer);
+        bigContainer.add(imagesManager);
+    }
+
+    private void initializeBigContainer(){
+        bigContainer = new Div();
+        initializeImages();
+    }
+
+    private void initializeUploadContainer(){
+        imagesManager.initializeUploadContainer();
+        imagesUploader = imagesManager.getImagesUploader();
     }
 
     /*
@@ -190,10 +235,10 @@ public class MyProfileView extends Div {
     private VerticalLayout initVerticalLayoutRight () {
         VerticalLayout right = new VerticalLayout();
 
-        Image profilepicture = new Image("images/user.png", "My Profile Picture");
-        profilepicture.setHeight("auto");
-        profilepicture.setWidth("15rem");
-        profilepicture.addClassName("user");
+        /*Image profilepicture = new Image("images/user.png", "My Profile Picture");*/
+        bigContainer.setHeight("auto");
+        bigContainer.setWidth("15rem");
+        bigContainer.addClassName("user");
 
         TextArea jobDescription = new TextArea();
         jobDescription.setValue(userEntity.getJobDescription());
@@ -205,7 +250,7 @@ public class MyProfileView extends Div {
         updateProfile.setIconAfterText(true);
 
 
-        right.addComponentAsFirst(profilepicture);
+        right.addComponentAsFirst(bigContainer);
         right.addComponentAtIndex(1, jobDescription);
         right.addComponentAtIndex(2, updateProfile);
 
@@ -225,23 +270,22 @@ public class MyProfileView extends Div {
         Div saveCancel = new Div();
         saveCancel.setId("saveCancelDiv");
 
-        Button saveButton = new Button("Save", e -> {
+        Button saveButton = new Button("Speichern", e -> {
             addressService.update(addressEntity, updateStreet, updateNumber,
                     updatePostcode, updateCity);
             userService.update(userEntity, updateIban, updateJobDescription);
             contentDialog.close();
         });
-        Button cancelButton = new Button("Cancel", e -> contentDialog.close());
+        Button cancelButton = new Button("Abbrechen", e -> contentDialog.close());
         saveButton.addClassName("myProfileButton");
         cancelButton.addClassName("myProfileButton");
         saveCancel.add(saveButton, cancelButton);
 
         HorizontalLayout update = new HorizontalLayout();
 
-
         update.addComponentAsFirst(initUpdateVerticalLayoutLeft());
         update.addComponentAtIndex(1, initUpdateVerticalLayoutRight());
-        contentDialog.add(new H1("Profil bearbeiten"), update, saveCancel);
+        contentDialog.add(new H1("Profil bearbeiten"), update, imagesUploader, saveCancel);
 
         return contentDialog;
     }
@@ -267,7 +311,7 @@ public class MyProfileView extends Div {
 
         updateLeft.addComponentAsFirst(updateIban);
         updateLeft.addComponentAtIndex(1, updateJobDescription);
-        updateLeft.addComponentAtIndex(2, updateProfilpicture);
+        //updateLeft.addComponentAtIndex(2, updateProfilpicture);
 
         return updateLeft;
     }
