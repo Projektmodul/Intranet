@@ -1,6 +1,8 @@
 package com.example.application.ui;
-
+import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -8,19 +10,16 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
 
 /**
  *  Home View shows ...
  *
- *  @author Vanessa Skowronsky, Jessica Reistel, Laura Neuendorf
+ *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel
  *  @version 3.0
  *  @since 04.01.2021
- *  @lastUpdated 18.01.2021
+ *  @lastUpdated 20.01.2021
  */
 @RouteAlias(value = "", layout = MainView.class)
 @Route(value = "home", layout = MainView.class)
@@ -30,24 +29,34 @@ public class HomeView extends Div {
 
     private UserService userService;
     private UserEntity userEntity;
+    private PageService pageService;
+    private H1 pageTitle;
+    private PageEntity pageEntity;
+    private GetUserController getUserController;
+    private String username;
 
-    public HomeView(UserService userService) {
-
+    public HomeView(UserService userService, PageService pageService) {
         this.userService = userService;
-
+        this.pageService = pageService;
+        getUserController = new GetUserController();
 
         setId("home");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        userEntity = userService.findById(1);
+        setData();
+    }
 
-        add(new H1("Herzlich Willkommen " + userEntity.getFirstName() + " " + userEntity.getSurname() + " !"));
+    private void setData(){
+        username = getUserController.getUsername();
+        userEntity = userService.findByUsername(username);
+        PageEntity pageEntity = pageService.findPageById(1);
+        pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
+        this.add(pageTitle);
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserService();
     }
-
 }

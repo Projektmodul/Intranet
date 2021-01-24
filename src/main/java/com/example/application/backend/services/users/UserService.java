@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
  * DESCRIPTION
  *
  * @author  Jessica Reistel and Laura Neuendorf,
- *          Lea Schünemann, Marieke Menna de Boer
- * @version 3.0
+ *          Lea Schünemann, Marieke Menna de Boer, Monika Martius
+ * @version 4.0
  * @since   11.01.2021
- * @lastUpdated 13.01.2021
+ * @lastUpdated 20.01.2021
  */
 
 @Service
@@ -46,6 +46,8 @@ public class UserService implements UserDetailsService{
     public UserEntity findById (int userId) {
         return getUserRepository().findByUserId(userId);
     }
+
+    public UserEntity findByUsername (String username) {return getUserRepository().findByUsername(username);}
 
     public void update(UserEntity userEntity, TextField updateIban, TextArea updateJobDescription){
         userEntity.setIban(updateIban.getValue());
