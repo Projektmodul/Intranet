@@ -37,7 +37,7 @@ public class CommunityView extends Div {
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 
-        pageEntity = pageService.findPageById(11);
+        pageEntity = pageService.findPageById(19);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
