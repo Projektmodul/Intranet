@@ -25,7 +25,7 @@ import com.vaadin.flow.router.Route;
  *  @author Sabrine Gamdou, Jessica Reistel, Laura Neuendorf
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 24.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 @Route(value = "welcome", layout = MainView.class)
 @PageTitle("Willkommen")
