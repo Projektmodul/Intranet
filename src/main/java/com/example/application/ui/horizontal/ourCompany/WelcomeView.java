@@ -2,7 +2,12 @@ package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
 
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.services.users.UserService;
+import com.example.application.backend.utils.images.Image;
+import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
 
 import com.vaadin.flow.component.html.Div;
@@ -26,19 +31,40 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Willkommen")
 public class WelcomeView extends Div {
 
+    private ImagesManager imagesManager;
+
+    private PageEntity pageEntity;
+    private UserEntity userEntity;
+
     private PageService pageService;
+    private UserService userService;
+    private ImageService imageService;
+
+    private Div bigContainer;
+    private Div imagesContainer;
 
     private H1 pageTitle;
     private Paragraph pageContent;
 
-    public WelcomeView(PageService pageService) {
+    private Div imagesUploader;
+
+    public WelcomeView(PageService pageService, UserService userService, ImageService imageService) {
         this.pageService = pageService;
+        this.userService = userService;
+        this.imageService = imageService;
 
         setId("welcome");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
         setData();
+
+        userEntity = pageEntity.getUser();
+
+        initializeImagesManager();
+        initializeBigContainer();
+        initializeUploadContainer();
+        imagesManager.setOneImage(true);
 
     }
 
@@ -53,4 +79,32 @@ public class WelcomeView extends Div {
 
         this.add(pageTitle,pageContent);
     }
+
+    private void initializeImagesManager(){
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager.setImagesEntities(pageEntity.getImages());
+        imagesManager.setAllImageEntitiesData(pageEntity, userEntity);
+
+        imagesManager.initializeAllImages();
+    }
+
+    private void initializeImages(){
+        imagesContainer = new Div();
+        for(Image image : imagesManager.getImages()) imagesContainer.add(image);
+        bigContainer.add(imagesContainer);
+        bigContainer.add(imagesManager);
+    }
+
+    private void initializeBigContainer(){
+        bigContainer = new Div();
+        initializeImages();
+    }
+
+    private void initializeUploadContainer(){
+        imagesManager.initializeUploadContainer();
+        imagesUploader = imagesManager.getImagesUploader();
+        this.add(bigContainer);
+        this.add(imagesUploader);
+    }
+
 }
