@@ -10,17 +10,27 @@
 .pageContentPosition {
     width: 100% !important;
     height: 100%;
-    margin-top: 1.5em;
+    margin-top: 0;
     line-height: 30px;
     align-items: center;
+}
+#contentHolder{
+    padding: 0;
+}
+
+#contentHolder p{
+    font-size: 17px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 #contentHolder h1 {
     margin-left: 15px;
+    margin-top: 35px;
+    margin-bottom: 10px;
     font-family: Gothic A1, serif;
     font-style: normal;
     font-size: 40px;
-    margin-bottom: 120px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -33,6 +43,7 @@
 /* define the font style */
 .firstQuote{
     margin-left: 15px;
+    margin-top: 80px;
     font-family: Gothic A1, Serif, serif;
     font-style: italic;
     font-size: 40px;

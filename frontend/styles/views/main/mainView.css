@@ -13,6 +13,7 @@
 
 #mainContainer{
   width: 90%;
+  margin: 0;
 }
 
 
@@ -145,6 +146,7 @@
 #sideBar {
   width: 205px !important;
   height: 631px !important;
+  padding: 0;
 }
 
 #search{
