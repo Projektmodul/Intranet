@@ -2,6 +2,7 @@
 package com.example.application.ui;
 
 import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -10,6 +11,7 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
+
 import java.util.ArrayList;
 
 /**
@@ -24,13 +26,14 @@ import java.util.ArrayList;
 public class HorizontalBar extends MenuBar {
 
     private HorizontalBarClickedInitiator initiator;
+    private Anchor anchorSubMenuLink;
 
     public HorizontalBar() {
         setId("horizontalBar");
         setOpenOnHover(true);
-        setId("horizontalBar");
 
-       initiator = new HorizontalBarClickedInitiator();
+        initiator = new HorizontalBarClickedInitiator();
+
 
         Icon home = new Icon(VaadinIcon.HOME);
         home.setSize("35px");
@@ -122,11 +125,12 @@ public class HorizontalBar extends MenuBar {
         /*
          * Community
          *          */
-        VerticalLayout layoutBlog = createSubMenu(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "blog");
+        VerticalLayout layoutBlog = createSubMenuLink(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "https://blog.bsag.de/");
 
         VerticalLayout layoutNoticeBoard = createSubMenu(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#F0D12C", "Schwarzes Brett", "noticeBoard");
 
         VerticalLayout layoutIdeaManagement = createSubMenu(new Icon(VaadinIcon.HANDS_UP), "#F0D12C", "Ideenmanagement", "ideasManagement");
+
 
         ArrayList<VerticalLayout> subMenuListCommunity = new ArrayList<>();
         subMenuListCommunity.add(layoutBlog);
@@ -135,49 +139,78 @@ public class HorizontalBar extends MenuBar {
         createMenuItem(subMenuListCommunity, "Community", "community");
     }
 
+    private VerticalLayout createSubMenuLink(Icon icon, String backgroundColor,String spanText, String href){
+
+        icon.setClassName("horizontalBarIcons");
+
+        Span span = new Span(spanText);
+        span.setClassName("spanStyle");
+
+        VerticalLayout layout = new VerticalLayout(span, icon);
+
+        layout.setClassName("submenu");
+        layout.getStyle().set("background-color", backgroundColor);
+
+
+        anchorSubMenuLink = new Anchor(href,layout);
+        anchorSubMenuLink.setTarget("_blank");
+        anchorSubMenuLink.setClassName("submenuLink");
+        anchorSubMenuLink.getStyle().set("color", backgroundColor);
+
+        VerticalLayout subMenuLinkContainer = new VerticalLayout(anchorSubMenuLink);
+        subMenuLinkContainer.setClassName("submenuLink");
+
+        return subMenuLinkContainer;
+    }
+
     private VerticalLayout createSubMenu(Icon icon, String backgroundColor, String spanText, String route) {
 
         icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
+
         Span span = new Span(spanText);
         span.setClassName("spanStyle");
 
         VerticalLayout layout = new VerticalLayout(span, tab);
-        layout.setClassName("submenu");
-        layout.getStyle().set("background-color", backgroundColor);
+
         layout.addClickListener(e -> {
             initiator.horizontalBarClicked();
             layout.getUI().ifPresent(ui -> ui.navigate(route));
         });
 
-        return layout;
+            layout.setClassName("submenu");
+            layout.getStyle().set("background-color", backgroundColor);
 
-    }
+            return layout;
 
-    private void createMenuItem(ArrayList<VerticalLayout> layoutList, String labelText, String route) {
-
-        HorizontalLayout layout = new HorizontalLayout();
-
-        for (VerticalLayout l : layoutList) {
-            layout.add(l);
         }
-        layout.setSpacing(true);
 
-        Label label = new Label(labelText);
-        label.getStyle().set("color", "white");
-        MenuItem menuItem = addItem(label);
-        menuItem.addClickListener(e -> {
-            initiator.horizontalBarClicked();
-            layout.getUI().ifPresent(ui -> ui.navigate(route));
-        });
-        menuItem.getSubMenu().addItem(layout);
+
+        private void createMenuItem (ArrayList < VerticalLayout > layoutList, String labelText, String route){
+
+            HorizontalLayout layout = new HorizontalLayout();
+
+            for (VerticalLayout l : layoutList) {
+                layout.add(l);
+            }
+            layout.setSpacing(true);
+
+            Label label = new Label(labelText);
+            label.getStyle().set("color", "white");
+            MenuItem menuItem = addItem(label);
+            menuItem.addClickListener(e -> {
+                initiator.horizontalBarClicked();
+                layout.getUI().ifPresent(ui -> ui.navigate(route));
+            });
+            menuItem.getSubMenu().addItem(layout);
+
+        }
+
+        public HorizontalBarClickedInitiator getInitiator () {
+            return initiator;
+        }
+
 
     }
 
-    public HorizontalBarClickedInitiator getInitiator() {
-        return initiator;
-    }
-
-
-}
