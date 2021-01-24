@@ -147,6 +147,7 @@
 #sideBar {
   width: 205px !important;
   height: 631px !important;
+  padding: 0;
 }
 
 #search{
