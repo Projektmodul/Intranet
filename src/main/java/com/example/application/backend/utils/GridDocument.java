@@ -67,8 +67,7 @@ public class GridDocument {
                 GridDocument gridDocument = new GridDocument(documentEntity.getFileName(),
                         documentEntity.getKeyword(),
                         createDownloadLink(documentEntity.getPath(),
-                                documentEntity.getFileName().replaceAll("[^A-Za-z]", ""
-                                )));
+                                documentEntity.getFileName()));
                 gridDocuments.add(gridDocument);
             }
             return gridDocuments;
