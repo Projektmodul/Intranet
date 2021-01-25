@@ -3,6 +3,7 @@ package com.example.application.ui.horizontal.ourCompany;
 import com.example.application.backend.entities.PageEntity;
 
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
@@ -36,7 +37,9 @@ public class AboutUsView extends Div {
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private GetUserController getUserController;
 
+    private String username;
     private H1 pageTitle;
     private Paragraph pageContent;
     private ImageService imageService;
@@ -54,9 +57,13 @@ public class AboutUsView extends Div {
         this.pageService = pageService;
         this.imageService = imageService;
         this.userService = userService;
+        getUserController = new GetUserController();
 
         setData();
         setTimeline();
+
+        username = getUserController.getUsername();
+        userEntity = userService.findByUsername(username);
 
         initializeImagesManager();
         initializeBigContainer();
