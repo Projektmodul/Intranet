@@ -1,8 +1,10 @@
 package com.example.application.ui.horizontal.community;
 
 import com.example.application.backend.entities.IdeaEntity;
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.ideas.IdeaService;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
@@ -23,29 +25,38 @@ import java.util.List;
 /**
  *  IdeaManagement View shows ...
  *
- *  @author Litharshiga Sivarasa
+ *  @author Litharshiga Sivarasa, Jessica Reistel
  *  @version 1.0
  *  @since 15.12.2020
- *  @lastUpdated 19.01.2021
+ *  @lastUpdated 25.01.2021
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
 public class IdeasManagementView extends Div {
 
-    private IdeaEntity ideaEntity = new IdeaEntity(1," "," "," ");
+    private PageService pageService;
+    private IdeaService ideaService;
+    private PageEntity pageEntity;
+    private IdeaEntity ideaEntity;
+    private IdeaEntity ideaEntity1;
+    private IdeaEntity ideaEntity2;
 
-    public IdeasManagementView() {
+    public IdeasManagementView(PageService pageService, IdeaService ideaService) {
+        this.pageService = pageService;
+        this.ideaService = ideaService;
+
         setId("ideasManagement");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 
-        H1 ideaH = new H1("Ideenmanagement");
-        ideaH.setId("ideaHead");
+        pageEntity = pageService.findPageById(21);
 
-        List<IdeaEntity> ideaList = Arrays.asList(
-                new IdeaEntity(1,"Überschrift 1","Idee 1","in Bearbeitung"),
-                new IdeaEntity(2,"Überschrift 2","Idee 2","prämiert"),
-                new IdeaEntity(3,"Überschrift 3","Idee 3","nicht prämiert"));
+        H1 title = new H1(pageEntity.getTitle());
+
+        ideaEntity = ideaService.findById(1);
+        ideaEntity1 = ideaService.findById(2);
+        ideaEntity2 = ideaService.findById(3);
+        List<IdeaEntity> ideaList = Arrays.asList(ideaEntity, ideaEntity1, ideaEntity2);
 
 
         /*
@@ -61,18 +72,18 @@ public class IdeasManagementView extends Div {
         grid.setSelectionMode(Grid.SelectionMode.NONE);
         grid.setId("tableIdea");
 
-        H4 overViewTable = new H4("Liste der Verbesserungsvorschläge");
-        overViewTable.setClassName("overViewTableH");
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
 
         Button buttonIdea = new Button("Idee einreichen", new Icon(VaadinIcon.LIGHTBULB));
         buttonIdea.addClickListener(e -> initContentDialog().open());
         buttonIdea.setIconAfterText(true);
-        buttonIdea.setId("buttonIdea");
 
-        Label ideas = new Label("Ihre Ideen und Vorschläge sind herzlich willkommen.");
+        Label ideas = new Label(pageEntity.getContent());
         ideas.setClassName("quote");
 
-        add(ideaH, buttonIdea,ideas,overViewTable, grid);
+        horizontalLayout.add(ideas, buttonIdea);
+
+        add(title, horizontalLayout, grid);
     }
 
     /*
