@@ -263,7 +263,8 @@
 
 /* horizontal/ourCompany/CareerView */
 
-/*#career #careerHeadL{
+
+#career #careerHeadL{
     margin-block-start: inherit;
     margin-bottom: revert;
     color: #A00505;
@@ -310,7 +311,16 @@
     align-items: normal;
 
 
-}*/
+}
+#career #addButton{
+    margin-right: 13px;
+    display: flex;
+}
+
+#career #addClearDiv{
+    margin-left: 200px;
+    display: flex;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
