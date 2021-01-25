@@ -133,7 +133,7 @@
     color: #0D5699;
 }
 
-#anchorComponent{
+.anchorComponent{
     padding-right: 0;
     margin-top: 0;
     margin-left: 15px;
@@ -161,10 +161,6 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/center/CentersView */
-
-/* -------------------------------------------------------------- */
-
-/* horizontal/community/BlogView */
 
 /* -------------------------------------------------------------- */
 
@@ -241,10 +237,6 @@
 
 /* -------------------------------------------------------------- */
 
-/* horizontal/library/WikiView */
-
-/* -------------------------------------------------------------- */
-
 /* horizontal/ourCompany/AboutUsView */
 #aboutUs #timelineBSAG {
     width: 80%;
@@ -268,7 +260,6 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/CareerView */
-
 
 #career #careerHeadL{
     margin-block-start: inherit;
