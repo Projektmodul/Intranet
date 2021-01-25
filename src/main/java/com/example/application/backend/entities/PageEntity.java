@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * This is a basic page class.
  *
- * @author  Sabrine Gamdou, Laura Neuendorf, Monika Martius and Jessica Reistel
+ * @author  Sabrine Gamdou
  * @version 3.0
  * @since   05-01-2021
- * @lastUpdated 25.01.2021
+ * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
  */
 
 @Entity(name = "pages")
