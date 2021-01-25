@@ -3,6 +3,7 @@ package com.example.application.ui.horizontal.ourCompany;
 import com.example.application.backend.entities.PageEntity;
 
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
@@ -14,8 +15,6 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 
-import com.vaadin.flow.component.textfield.TextArea;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -35,11 +34,13 @@ public class WelcomeView extends Div {
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private GetUserController getUserController;
 
     private PageService pageService;
     private UserService userService;
     private ImageService imageService;
 
+    private String username;
     private Div bigContainer;
     private Div imagesContainer;
 
@@ -49,27 +50,28 @@ public class WelcomeView extends Div {
     private Div imagesUploader;
 
     public WelcomeView(PageService pageService, UserService userService, ImageService imageService) {
-        this.pageService = pageService;
-        this.userService = userService;
-        this.imageService = imageService;
-
         setId("welcome");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
+        this.pageService = pageService;
+        this.userService = userService;
+        this.imageService = imageService;
+        getUserController = new GetUserController();
+
         setData();
 
-        userEntity = pageEntity.getUser();
+        username = getUserController.getUsername();
+        userEntity = userService.findByUsername(username);
 
         initializeImagesManager();
         initializeBigContainer();
         initializeUploadContainer();
         imagesManager.setOneImage(true);
-
     }
 
     private void setData(){
-        PageEntity pageEntity = pageService.findPageById(4);
+        pageEntity = pageService.findPageById(4);
 
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Paragraph();
