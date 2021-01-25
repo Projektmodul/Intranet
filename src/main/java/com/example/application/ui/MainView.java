@@ -1,5 +1,6 @@
 package com.example.application.ui;
 
+import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.dependency.CssImport;

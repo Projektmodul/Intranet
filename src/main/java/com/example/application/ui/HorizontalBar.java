@@ -1,6 +1,7 @@
 
 package com.example.application.ui;
 
+import com.example.application.ui.auxiliary.HorizontalBarClickedInitiator;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Label;

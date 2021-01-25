@@ -1,4 +1,4 @@
-package com.example.application.ui;
+package com.example.application.ui.auxiliary;
 /**
  *  Header shows ...
  *
