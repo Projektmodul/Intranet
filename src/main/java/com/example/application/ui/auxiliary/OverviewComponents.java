@@ -35,7 +35,7 @@ public class OverviewComponents {
         Anchor anchorComponent = new Anchor(href,layout);
 
         anchorComponent.setTarget("_blank");
-        anchorComponent.setId("anchorComponent");
+        anchorComponent.setClassName("anchorComponent");
         anchorComponent.getStyle().set("color", backgroundColor);
 
         return anchorComponent;
