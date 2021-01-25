@@ -3,6 +3,7 @@ package com.example.application.backend.services.ideas;
 import com.example.application.backend.entities.IdeaEntity;
 import com.example.application.backend.repositories.IdeaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,5 +29,16 @@ public class IdeaService {
 
     public IdeaEntity findById(int ideaId){
         return getIdeaRepository().findByIdeaId(ideaId);
+    }
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    public int findMaxId() {
+        String sql = "SELECT max(idea_id) from ideas";
+        try {
+            return jdbcTemplate.queryForObject(sql,Integer.class);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }
