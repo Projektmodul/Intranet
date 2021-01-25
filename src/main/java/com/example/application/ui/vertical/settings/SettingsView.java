@@ -3,6 +3,8 @@ package com.example.application.ui.vertical.settings;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.componentfactory.ToggleButton;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
@@ -40,6 +42,9 @@ public class SettingsView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H3(pageEntity.getContent());
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
         ToggleButton toggleButton = new ToggleButton();
         toggleButton.addClickListener(event -> toggleDarkMode());
 
@@ -53,7 +58,7 @@ public class SettingsView extends Div {
         container.add(toogleLayout);
         container.setId("container");
 
-        add(pageTitle,pageText,container);
+        add(breadcrumbs, pageTitle ,pageText ,container);
     }
 
     private void toggleDarkMode(){

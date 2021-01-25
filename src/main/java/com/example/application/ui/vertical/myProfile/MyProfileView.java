@@ -5,7 +5,6 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.addresses.AddressService;
-import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
@@ -109,6 +108,7 @@ public class MyProfileView extends Div {
         content.addComponentAsFirst(new H1(pageEntity.getTitle()));
         content.setSizeFull();
         content.addComponentAtIndex(1, initData());
+
 
         add(content);
     }

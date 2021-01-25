@@ -5,6 +5,12 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.example.application.ui.horizontal.library.FAQView;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -31,16 +37,19 @@ public class HelpView extends Div {
     private HorizontalLayout links;
 
     public HelpView(PageService pageService, LinkService linkService) {
-        this.pageService = pageService;
-        this.linkService = linkService;
-
         setId("help");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
+        this.pageService = pageService;
+        this.linkService = linkService;
+
         setContent();
 
-        add(pageTitle, pageContent, links);
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
+        add(breadcrumbs, pageTitle, pageContent, links);
     }
 
     private void setContent(){
@@ -48,6 +57,8 @@ public class HelpView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
+
+
 
         LinkEntity linkEntity = linkService.findById(3);
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
