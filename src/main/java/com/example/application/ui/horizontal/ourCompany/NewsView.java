@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.ourCompany;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -27,7 +29,6 @@ public class NewsView extends Div {
     private PageEntity pageEntity;
 
     public NewsView(PageService pageService) {
-
         setId("news");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
@@ -36,6 +37,9 @@ public class NewsView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
-        add(pageTitle,pageText);
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
+
+        add(breadcrumbs, pageTitle,pageText);
     }
 }
