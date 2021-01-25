@@ -43,7 +43,7 @@ public class DocumentsView extends Div {
     private H2 pageText;
     private PageEntity pageEntity;
 
-    private TreeGrid<DocumentEntity> documentsGrid;
+    //private TreeGrid<DocumentEntity> documentsGrid;
     private VerticalLayout pageContentLayout;
 
     private PdfsManager pdfsManager;
