@@ -51,10 +51,7 @@ public class IdeasManagementView extends Div {
 
         Paragraph content = new Paragraph(pageEntity.getContent());
 
-        HorizontalLayout horizontalLayout = new HorizontalLayout();
-        horizontalLayout.add(content, buttonIdea);
-
-        add(title, horizontalLayout, initializeGrid());
+        add(title, buttonIdea, content, initializeGrid());
     }
 
     /**
@@ -79,7 +76,7 @@ public class IdeasManagementView extends Div {
         grid.addColumn(IdeaEntity::getDescription, "Idee").setHeader("Idee");
         grid.addColumn(IdeaEntity::getRating, "Status").setHeader("Status");
         grid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
-        grid.setId("tableIdea");
+        grid.setId("gridFullPage");
 
         return grid;
     }
