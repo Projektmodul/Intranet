@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.library;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -28,13 +30,16 @@ public class MediaView extends Div {
     private PageEntity pageEntity;
 
     public MediaView(PageService pageService) {
-        pageEntity = pageService.findPageById(16);
-
-        pageTitle = new H1(pageEntity.getTitle());
-
         setId("media");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
-        add(pageTitle);
+
+        pageEntity = pageService.findPageById(16);
+        pageTitle = new H1(pageEntity.getTitle());
+
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+
+        add(breadcrumbs, pageTitle);
     }
 }
