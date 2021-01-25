@@ -18,10 +18,10 @@ import com.vaadin.flow.router.Route;
 /**
  *  Community View shows ...
  *
- *  @author Litahshi Sivarasa
+ *  @author Litahshi Sivarasa, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 25.01.2021
+ *  @lastUpdated 25.01.2021 by Vanessa Skowronsky
  */
 @Route(value = "community", layout = MainView.class)
 @PageTitle("Community")
@@ -45,16 +45,16 @@ public class CommunityView extends Div {
         secondQuote.setClassName("secondQuote");
 
         HorizontalLayout layout = new HorizontalLayout();
-        layout.setPadding(true);
+        //layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
         Component componentBlog = createLinkedComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "https://blog.bsag.de/");
 
-        Component component2 = createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#F0D12C", "Schwarzes Brett", "noticeBoard");
+        Component componentNoticeBoard = createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#F0D12C", "Schwarzes Brett", "noticeBoard");
 
-        Component component3 = createComponent(new Icon(VaadinIcon.HANDS_UP), "#F0D12C", "Ideenmanagement", "ideasManagement");
+        Component componentIdeaManagement = createComponent(new Icon(VaadinIcon.HANDS_UP), "#F0D12C", "Ideenmanagement", "ideasManagement");
 
-        layout.add(componentBlog, component2, component3);
+        layout.add(componentBlog, componentNoticeBoard, componentIdeaManagement);
 
         add(pageTitle,pageText,secondQuote, layout);
 
@@ -77,10 +77,7 @@ public class CommunityView extends Div {
         anchorComponent.setClassName("submenuLink");
         anchorComponent.getStyle().set("color", backgroundColor);
 
-        VerticalLayout anchorContainer = new VerticalLayout(anchorComponent);
-        anchorContainer.setClassName("submenuLink");
-
-        return anchorContainer;
+        return anchorComponent;
     }
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
