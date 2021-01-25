@@ -59,7 +59,7 @@ public class AboutUsView extends Div {
         setTimeline();
         setData();
 
-        userEntity = pageEntity.getUser();
+        //userEntity = pageEntity.getUser();
 
         initializeImagesManager();
         initializeBigContainer();
