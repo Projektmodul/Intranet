@@ -35,7 +35,7 @@ public class NotificationEntity {
     private DocumentEntity document;
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="username")
     private UserEntity user;
 
 

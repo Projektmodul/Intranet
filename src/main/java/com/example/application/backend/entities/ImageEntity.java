@@ -35,7 +35,7 @@ public class ImageEntity {
     private PageEntity page;
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="username")
     private UserEntity user;
 
     public ImageEntity(){
