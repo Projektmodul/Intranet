@@ -8,10 +8,10 @@ import java.sql.Timestamp;
  * This is a basic notification class. Title, description and date are the attributes, they are
  * added to a Details component for display.
  *
- * @author  Sabrine Gamdou
- * @version 2.0
+ * @author  Sabrine Gamdou, Laura Neuendorf, Monika Martius, Jessica Reistel
+ * @version 3.0
  * @since   20-12-2020
- * @lastUpdated 19.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Entity(name ="notifications")

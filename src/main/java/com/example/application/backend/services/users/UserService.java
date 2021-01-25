@@ -30,7 +30,6 @@ public class UserService implements UserDetailsService{
 
     public UserService(){}
 
-
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
@@ -41,10 +40,6 @@ public class UserService implements UserDetailsService{
 
     public void save (UserEntity userEntity){
         getUserRepository().saveAndFlush(userEntity);
-    }
-
-    public UserEntity findById (int userId) {
-        return getUserRepository().findByUserId(userId);
     }
 
     public UserEntity findByUsername (String username) {return getUserRepository().findByUsername(username);}

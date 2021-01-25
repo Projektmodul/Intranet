@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * This is a basic page class.
  *
- * @author  Sabrine Gamdou
- * @version 2.0
+ * @author  Sabrine Gamdou, Laura Neuendorf, Monika Martius and Jessica Reistel
+ * @version 3.0
  * @since   05-01-2021
- * @lastUpdated 19.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Entity(name = "pages")
@@ -60,7 +60,7 @@ public class PageEntity {
     private List<NewsEntity> news;*/
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="username")
     private UserEntity user;
 
 
