@@ -40,18 +40,20 @@ public class AboutUsView extends Div {
     private H1 pageTitle;
     private Paragraph pageContent;
     private ImageService imageService;
+    private UserService userService;
 
     private Div bigContainer;
     private Div imagesContainer;
     private Div imagesUploader;
 
-    public AboutUsView(PageService pageService, ImageService imageService) {
+    public AboutUsView(PageService pageService, UserService userService, ImageService imageService) {
         setId("aboutUs");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
         this.pageService = pageService;
         this.imageService = imageService;
+        this.userService = userService;
 
         setData();
         setTimeline();
