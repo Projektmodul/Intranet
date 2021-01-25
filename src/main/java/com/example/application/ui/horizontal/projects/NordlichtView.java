@@ -32,12 +32,9 @@ import com.vaadin.flow.router.Route;
 public class NordlichtView extends Div {
 
     private ImagesManager imagesManager;
-    private ImagesManager imagesManagerTwo;
     private PageEntity pageEntity;
     private final ImageService imageService;
     private final UserEntity userEntity;
-    private PageService pageService;
-    private Div bigContainerTwo;
     private Div bigContainer;
 
     private Component leftComponent;
@@ -49,8 +46,8 @@ public class NordlichtView extends Div {
         addClassName("projectsColorscheme");
 
         this.imageService = imageService;
-        this.pageService = pageService;
 
+        pageEntity = pageService.findPageById(12);
 
         GetUserController getUserController = new GetUserController();
         String username = getUserController.getUsername();
@@ -58,17 +55,16 @@ public class NordlichtView extends Div {
 
         initializeImagesManager();
         initializeBigContainer();
+        initializeBigContainer();
         initializeUploadContainer();
         imagesManager.setOneImage(false);
         setData();
-
         initializeLeftContainer();
         initializeRightContainer();
         initializeSplitLayout();
     }
 
     private void setData(){
-        pageEntity = pageService.findPageById(12);
         H1 pageTitle = new H1(pageEntity.getTitle());
         Div box = new Div();
         box.add(pageTitle);
@@ -116,11 +112,6 @@ public class NordlichtView extends Div {
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
         imagesManager.initializeAllImages();
-
-        imagesManagerTwo = new ImagesManager(pageEntity.getImages(), imageService);
-        imagesManagerTwo.setImagesEntities(pageEntity.getImages());
-        imagesManagerTwo.setAllImageEntitiesData(pageEntity, userEntity);
-        imagesManagerTwo.initializeAllImages();
     }
 
     private void initializeImages(){
@@ -128,12 +119,6 @@ public class NordlichtView extends Div {
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
         bigContainer.add(imagesManager);
-/*
-        Div imagesContainerTwo = new Div();
-        for (Image image : imagesManagerTwo.getImages()) imagesContainerTwo.add(image);
-        bigContainerTwo.add(imagesContainerTwo);
-        bigContainerTwo.add(imagesManagerTwo);
- */
     }
 
     private void initializeBigContainer(){
@@ -146,13 +131,6 @@ public class NordlichtView extends Div {
         Div imagesUploader = imagesManager.getImagesUploader();
         this.add(bigContainer);
         this.add(imagesUploader);
-
-        /*
-        imagesManagerTwo.initializeUploadContainer();
-        Div imagesUploaderTwo = imagesManagerTwo.getImagesUploader();
-        this.add(bigContainerTwo);
-        this.add(imagesUploaderTwo);
-         */
     }
 
 }
