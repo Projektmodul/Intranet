@@ -4,6 +4,8 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.entities.JobOfferEntity;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
@@ -58,7 +60,10 @@ public class CareerView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
-        add(pageTitle,pageText);
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
+
+        add(breadcrumbs, pageTitle, pageText);
 
 
         initializeLeftContainer();

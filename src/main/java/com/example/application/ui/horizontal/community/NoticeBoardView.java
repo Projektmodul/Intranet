@@ -9,6 +9,8 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.crud.BinderCrudEditor;
@@ -68,6 +70,7 @@ public class NoticeBoardView extends Div {
     private PageService pageService;
     private Component leftComponent;
     private Component rightComponent;
+    private Breadcrumbs breadcrumbs;
 
     public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService) {
         this.noticeBoardOfferService = noticeBoardOfferService;
@@ -88,6 +91,9 @@ public class NoticeBoardView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new Span(pageEntity.getContent());
 
+        breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+
         initializeTreeGrid();
         initializeLeftContainer();
         initializeRightContainer();
@@ -97,7 +103,7 @@ public class NoticeBoardView extends Div {
     public void initializeLeftContainer() {
 
         Div box = new Div();
-        box.add(pageTitle);
+        box.add(breadcrumbs, pageTitle);
         box.setId("layoutBox");
 
         Div boxIcon = new Div();
