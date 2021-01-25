@@ -7,21 +7,18 @@ import java.util.List;
 /**
  * This is a basic user class.
  *
- * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
- * @version 4.0
+ * @author  Jessica Reistel, Laura Neuendorf, Monika Martius and Sabrine Gamdou
+ * @version 5.0
  * @since   21-12-2020
- * @lastUpdated 19.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Entity(name= "users")
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="user_id")
-    private int userId;
-
     private String username;
+
     private String password;
     private String surname;
 
@@ -84,14 +81,6 @@ public class UserEntity {
     public List<ImageEntity> getImages() {
         return images;
     }*/
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int id) {
-        this.userId = id;
-    }
 
     public String getUsername() {
         return username;
