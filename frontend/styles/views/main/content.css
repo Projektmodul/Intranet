@@ -25,7 +25,7 @@
 #contentHolder h1 {
     margin-left: 15px;
     margin-top: 35px;
-    font-family: Gothic A1, serif;
+    font-family: 'Gothic A1', sans-serif;
     font-style: normal;
     font-size: 40px;
     margin-bottom: 10px;
@@ -48,7 +48,7 @@
 .firstQuote{
     margin-left: 15px;
     margin-top: 80px;
-    font-family: Gothic A1, Serif, serif;
+    font-family: 'Gothic A1', sans-serif;
     font-style: italic;
     font-size: 40px;
     display: flex;
@@ -172,39 +172,30 @@
     margin-left: 30px;
     margin-top: 20px;
     display: grid;
-    width: 500px;
-    height: 190px;
-}
-
-#ideasManagement #buttonIdea{
-    margin-top: 20px;
-    margin-left: 40px;
-    margin-bottom: 10px;
+    height: 250px;
+    width: auto;
 }
 
 #ideasManagement .overViewTableH{
-
     display: flex;
     font-size:20px;
     margin-left: 40px;
     margin-top: 110px;
     color:  #4B4A4A;
-    font-family: Gothic A1, Serif;
+    font-family: 'Gothic A1', sans-serif;
     align-items: normal;
     text-align: center;
 }
 
-#ideasManagement #ideaHead{
-
+#ideasManagement h1{
     color: darkgoldenrod;
-    margin-block-start: inherit;
-    margin-bottom: revert;
 }
 
 #ideasManagement .quote{
     margin-left: 45px;
+    margin-top: 10px;
     color:  #4B4A4A;
-    font-family: Gothic A1, Serif, serif;
+    font-family: 'Gothic A1', sans-serif;
     display: flex;
     align-items: normal;
     text-align: center;
@@ -275,7 +266,7 @@
     margin-left: 30px;
     margin-bottom: 5px;
     color:  #4B4A4A;
-    font-family: Gothic A1, Serif;
+    font-family: 'Gothic A1', sans-serif;
     align-items: normal;
     text-align: center;
 }
@@ -290,7 +281,7 @@
     margin-left: 30px;
     margin-top: 60px;
     color:  #4B4A4A;
-    font-family: Gothic A1, Serif;
+    font-family: 'Gothic A1', sans-serif;
     align-items: normal;
     text-align: center;
 }
@@ -307,7 +298,7 @@
     margin-left: 30px;
     margin-bottom: 5px;
     color:  #4B4A4A;
-    font-family: Gothic A1, Serif;
+    font-family: 'Gothic A1', sans-serif;
     align-items: normal;
 
 
