@@ -19,9 +19,9 @@ import com.vaadin.flow.router.Route;
  *  Community View shows ...
  *
  *  @author Litahshi Sivarasa
- *  @version 2.0
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 17.01.2021
+ *  @lastUpdated 25.01.2021
  */
 @Route(value = "community", layout = MainView.class)
 @PageTitle("Community")
@@ -48,16 +48,39 @@ public class CommunityView extends Div {
         layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
-        Component component1 = createComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "blog");
+        Component componentBlog = createLinkedComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "https://blog.bsag.de/");
 
         Component component2 = createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#F0D12C", "Schwarzes Brett", "noticeBoard");
 
         Component component3 = createComponent(new Icon(VaadinIcon.HANDS_UP), "#F0D12C", "Ideenmanagement", "ideasManagement");
 
-        layout.add(component1, component2, component3);
+        layout.add(componentBlog, component2, component3);
 
         add(pageTitle,pageText,secondQuote, layout);
 
+    }
+
+    private Component createLinkedComponent(Icon icon, String backgroundColor, String spanText, String href){
+        icon.setClassName("horizontalBarIcons");
+
+        Span span = new Span(spanText);
+        span.setClassName("spanStyle");
+
+        VerticalLayout layout = new VerticalLayout(span, icon);
+
+        layout.setClassName("submenu");
+        layout.getStyle().set("background-color", backgroundColor);
+
+        Anchor anchorComponent = new Anchor(href,layout);
+
+        anchorComponent.setTarget("_blank");
+        anchorComponent.setClassName("submenuLink");
+        anchorComponent.getStyle().set("color", backgroundColor);
+
+        VerticalLayout anchorContainer = new VerticalLayout(anchorComponent);
+        anchorContainer.setClassName("submenuLink");
+
+        return anchorContainer;
     }
 
     private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
