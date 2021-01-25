@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * This is a basic address class.
  *
- * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
- * @version 2.0
+ * @author  Jessica Reistel, Laura Neuendorf, Monika Martius and Sabrine Gamdou
+ * @version 3.0
  * @since   21-12-2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Entity(name = "addresses")//name of the database table
@@ -32,8 +32,8 @@ public class AddressEntity {
 
     private String city;
 
-   /* @OneToMany(mappedBy = "address")
-    private List<UsersEntity> users;
+   /* @OneToOne(mappedBy = "address")
+    private UsersEntity users;
 */
     public AddressEntity() {
 
@@ -87,11 +87,11 @@ public class AddressEntity {
         this.city = city;
     }
 
-   /* public List<UsersEntity> getUsers() {
+   /* public UsersEntity getUsers() {
         return users;
     }
 
-    public void setUsers(List<UsersEntity> users) {
+    public void setUsers(UsersEntity users) {
         this.users = users;
     }*/
 

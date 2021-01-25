@@ -6,10 +6,10 @@ import javax.persistence.*;
 /**
  * This is a basic noticeBoardOffer class.
  *
- * @author  Sabrine Gamdou
- * @version 1.0
+ * @author  Sabrine Gamdou, Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @version 2.0
  * @since   05.01.2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Entity(name ="notice_board_offers")
@@ -28,7 +28,7 @@ public class NoticeBoardOfferEntity {
     private ImageEntity image;
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="username")
     private UsersEntity user;*/
 /*
     @ManyToOne

@@ -17,9 +17,9 @@ import org.springframework.stereotype.Service;
  *
  * @author  Jessica Reistel and Laura Neuendorf,
  *          Lea Schünemann, Marieke Menna de Boer, Monika Martius
- * @version 4.0
+ * @version 5.0
  * @since   11.01.2021
- * @lastUpdated 20.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Service

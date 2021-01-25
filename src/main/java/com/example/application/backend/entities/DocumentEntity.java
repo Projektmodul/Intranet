@@ -32,7 +32,7 @@ public class DocumentEntity {
     private PageEntity page;
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="username")
     private UserEntity user;
 
     @OneToOne(fetch = FetchType.LAZY)

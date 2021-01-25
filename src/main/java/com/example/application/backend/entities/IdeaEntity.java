@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * This is a basic idea class.
  *
- * @author  Sabrine Gamdou
- * @version 1.0
+ * @author  Sabrine Gamdou, Jessica Reistel, Monika Martius and laura Neuendorf
+ * @version 2.0
  * @since   05.01.2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 25.01.2021
  */
 
 @Entity(name ="ideas")
