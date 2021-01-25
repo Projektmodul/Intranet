@@ -4,4 +4,5 @@ import com.example.application.backend.entities.IdeaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IdeaRepository extends JpaRepository<IdeaEntity, Integer> {
+    IdeaEntity findByIdeaId(int ideaId);
 }
