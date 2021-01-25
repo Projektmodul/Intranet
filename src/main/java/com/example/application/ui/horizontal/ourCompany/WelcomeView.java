@@ -49,7 +49,7 @@ public class WelcomeView extends Div {
         pageContent = new Paragraph();
         pageContent.setId("pageContentWelcome");
         pageContent.setText(pageEntity.getContent());
-        /*pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());*/
+        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
         this.add(pageTitle,pageContent);
     }
