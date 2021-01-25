@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.library;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
@@ -41,6 +43,9 @@ public class LibraryView extends Div {
         pageEntity = pageService.findPageById(13);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
+
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
         Label secondQuote = new Label("entdecken");
         secondQuote.setClassName("secondQuote");

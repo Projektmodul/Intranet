@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.services;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
@@ -41,9 +43,11 @@ public class ServicesView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
         Label secondQuote = new Label("Ökostrom");
         secondQuote.setClassName("secondQuote");
-
 
         HorizontalLayout layout = new HorizontalLayout();
         layout.setPadding(true);
@@ -59,7 +63,6 @@ public class ServicesView extends Div {
 
         layout.add(componentTimeAccount, component2LSA, componentRailService, componentBusinessTrip);
 
-        add(pageTitle,pageText,secondQuote, layout);
-
+        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
     }
 }

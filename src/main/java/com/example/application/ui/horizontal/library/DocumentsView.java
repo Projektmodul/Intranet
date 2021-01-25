@@ -13,6 +13,8 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -57,23 +59,25 @@ public class DocumentsView extends Div {
 
     private Div pdfsUploader;
     private String keyword;
+    private Breadcrumbs breadcrumbs;
 
     public DocumentsView(PageService pageService, UserService userService, DocumentService documentService,
                          NotificationService notificationService) {
+        setId("documents");
+        setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
+
         this.pageService = pageService;
         this.userService = userService;
         this.documentService = documentService;
         this.notificationService = notificationService;
 
-        setId("documents");
-        setClassName("pageContentPosition");
-        addClassName("libraryColorscheme");
-
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
-
+        breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
 
 
@@ -94,7 +98,7 @@ public class DocumentsView extends Div {
 
         pageTitle = new H1(pageEntity.getTitle());
         pageTitle.setId("pageTitle");
-        add(pageTitle);
+        add(breadcrumbs, pageTitle);
     }
 
     public void initializeRadioButtonsForKeyword(){

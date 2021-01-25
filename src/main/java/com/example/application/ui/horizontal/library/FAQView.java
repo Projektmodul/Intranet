@@ -5,6 +5,8 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.router.PageTitle;
@@ -49,6 +51,10 @@ public class FAQView extends Div {
     public void setData(){
         pageEntity = pageService.findPageById(17);
         pageTitle = new H1(pageEntity.getTitle());
+
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+
         pageContent = new Paragraph();
         pageContent.setText(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
@@ -56,6 +62,6 @@ public class FAQView extends Div {
         LinkEntity linkEntity = linkService.findById(4);
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
 
-        this.add(pageTitle, pageContent, mailLink);
+        this.add(breadcrumbs, pageTitle, pageContent, mailLink);
     }
 }

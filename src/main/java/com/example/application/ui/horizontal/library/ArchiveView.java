@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.library;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
@@ -38,7 +40,10 @@ public class ArchiveView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new Span(pageEntity.getContent());
 
-        add(pageTitle);
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+
+        add(breadcrumbs, pageTitle);
         VerticalLayout archiveLayout = new VerticalLayout();
         archiveLayout.add(pageText);
         archiveLayout.add(new Button("Zum Dokumentenmanagementsystem"));
