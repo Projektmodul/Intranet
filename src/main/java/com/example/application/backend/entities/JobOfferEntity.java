@@ -32,6 +32,19 @@ public class JobOfferEntity {
     @ManyToOne
     @JoinColumn(name ="username")
     private UsersEntity user;*/
+   public JobOfferEntity(){
+
+   }
+
+    public JobOfferEntity(int jobOfferId, String title, String description, String category, String type, String location){
+        this.jobOfferId = jobOfferId;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.type = type;
+        this.location = location;
+    }
+
 
     public int getJobOfferId() {
         return jobOfferId;
