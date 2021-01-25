@@ -47,7 +47,7 @@ public class ImageManager {
     private PageEntity pageEntity;
     private UserEntity userEntity;
 
-    private final String RESOURCES_DIR = "~/uploads";
+    private final String RESOURCES_DIR = "D:\\Hs-Bremen\\5.Semester\\Projekt\\IFI-Projekt\\IFI-Projekt\\src\\main\\resources\\META-INF\\resources\\images";
 
     public ImageManager(ImageService imageService){
         this.imageService = imageService;
