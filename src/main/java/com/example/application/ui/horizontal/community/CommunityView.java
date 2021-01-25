@@ -5,6 +5,7 @@ package com.example.application.ui.horizontal.community;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
@@ -48,11 +49,11 @@ public class CommunityView extends Div {
         //layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
-        Component componentBlog = createLinkedComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "https://blog.bsag.de/");
+        Component componentBlog = OverviewComponents.createLinkedComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "https://blog.bsag.de/");
 
-        Component componentNoticeBoard = createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#F0D12C", "Schwarzes Brett", "noticeBoard");
+        Component componentNoticeBoard = OverviewComponents.createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#F0D12C", "Schwarzes Brett", "noticeBoard");
 
-        Component componentIdeaManagement = createComponent(new Icon(VaadinIcon.HANDS_UP), "#F0D12C", "Ideenmanagement", "ideasManagement");
+        Component componentIdeaManagement = OverviewComponents.createComponent(new Icon(VaadinIcon.HANDS_UP), "#F0D12C", "Ideenmanagement", "ideasManagement");
 
         layout.add(componentBlog, componentNoticeBoard, componentIdeaManagement);
 
@@ -60,40 +61,9 @@ public class CommunityView extends Div {
 
     }
 
-    private Component createLinkedComponent(Icon icon, String backgroundColor, String spanText, String href){
-        icon.setClassName("horizontalBarIcons");
 
-        Span span = new Span(spanText);
-        span.setClassName("spanStyle");
 
-        VerticalLayout layout = new VerticalLayout(span, icon);
 
-        layout.setClassName("submenu");
-        layout.getStyle().set("background-color", backgroundColor);
-
-        Anchor anchorComponent = new Anchor(href,layout);
-
-        anchorComponent.setTarget("_blank");
-        anchorComponent.setClassName("submenuLink");
-        anchorComponent.getStyle().set("color", backgroundColor);
-
-        return anchorComponent;
-    }
-
-    private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
-
-        icon.setClassName("horizontalBarIcons");
-        Tab tab = new Tab(icon);
-
-        Span span = new Span(spanText);
-        span.setClassName("spanStyle");
-
-        VerticalLayout layout = new VerticalLayout(span, tab);
-        layout.setClassName("submenu");
-        layout.getStyle().set("background-color", backgroundcolor);
-        layout.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
-        return  layout;
-    }
 }
 
 
