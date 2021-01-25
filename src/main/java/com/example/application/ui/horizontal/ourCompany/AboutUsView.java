@@ -39,27 +39,22 @@ public class AboutUsView extends Div {
 
     private H1 pageTitle;
     private Paragraph pageContent;
-    private UserService userService;
     private ImageService imageService;
 
     private Div bigContainer;
     private Div imagesContainer;
     private Div imagesUploader;
 
-    public AboutUsView(PageService pageService, UserService userService, ImageService imageService) {
-        this.pageService = pageService;
-        this.userService = userService;
-        this.imageService = imageService;
-
+    public AboutUsView(PageService pageService, ImageService imageService) {
         setId("aboutUs");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
+        this.pageService = pageService;
+        this.imageService = imageService;
 
-        setTimeline();
         setData();
-
-        //userEntity = pageEntity.getUser();
+        setTimeline();
 
         initializeImagesManager();
         initializeBigContainer();
@@ -68,7 +63,7 @@ public class AboutUsView extends Div {
     }
 
     private void setData(){
-        PageEntity pageEntity = pageService.findPageById(5);
+        pageEntity = pageService.findPageById(5);
 
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Paragraph();
