@@ -1,27 +1,27 @@
-/*created @ Litharshiga Sivarasa */
-
 package com.example.application.ui.horizontal.library;
 
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
  *  Library View shows ...
  *
- *  @author Litharshi Sivarasa
+ *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 17.01.2021
+ *  @lastUpdated 25.01.2021 by Vanessa Skowronsky
  */
 @Route(value = "library", layout = MainView.class)
 @PageTitle("Bibliothek")
@@ -49,38 +49,21 @@ public class LibraryView extends Div {
         layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
-        Component component1 = createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#2F7C78", "Unterlagen", "documents");
+        Component componentDocuments = OverviewComponents.createComponent(new Icon(VaadinIcon.CLIPBOARD_TEXT), "#2F7C78", "Unterlagen", "documents");
 
-        Component component2 = createComponent(new Icon(VaadinIcon.BOOK), "#2F7C78", "Wiki", "wiki");
+        Component componentWiki = OverviewComponents.createLinkedComponent(new Icon(VaadinIcon.BOOK), "#2F7C78", "Wiki", "https://de.wikipedia.org/wiki/Bremer_Stra%C3%9Fenbahn_AG");
 
-        Component component3 = createComponent(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
+        Component componentArchive = OverviewComponents.createComponent(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
 
-        Component component4 = createComponent(new Icon(VaadinIcon.FILM), "#2F7C78", "Medien", "media");
+        Component componentMedia = OverviewComponents.createComponent(new Icon(VaadinIcon.FILM), "#2F7C78", "Medien", "media");
 
-        Component component5 = createComponent(new Icon(VaadinIcon.QUESTION), "#2F7C78", "FAQ", "fAQ");
+        Component componentFAQ = OverviewComponents.createComponent(new Icon(VaadinIcon.QUESTION), "#2F7C78", "FAQ", "fAQ");
 
-        layout.add(component1, component2, component3, component4, component5);
+        layout.add(componentDocuments, componentWiki, componentArchive, componentMedia, componentFAQ);
 
 
         add(pageTitle,pageText,secondQuote, layout);
 
     }
-
-    private Component createComponent(Icon icon, String backgroundcolor, String spanText, String route) {
-
-        icon.setClassName("horizontalBarIcons");
-        Tab tab = new Tab(icon);
-
-        Span span = new Span(spanText);
-        span.setClassName("spanStyle");
-
-        VerticalLayout layout = new VerticalLayout(span, tab);
-        layout.setClassName("submenu");
-        layout.getStyle().set("background-color", backgroundcolor);
-        layout.addClickListener(e -> layout.getUI().ifPresent(ui -> ui.navigate(route)));
-        return  layout;
     }
-
-
-}
 

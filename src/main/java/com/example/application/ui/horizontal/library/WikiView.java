@@ -1,10 +1,11 @@
 package com.example.application.ui.horizontal.library;
 
 import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
