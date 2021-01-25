@@ -9,13 +9,14 @@ import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.myProfile.MyProfileViewService;
 import com.example.application.backend.services.users.UserService;
+import com.example.application.backend.utils.images.Image;
+import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -60,7 +61,6 @@ public class MyProfileView extends Div {
     private IntegerField updatePostcode;
     private TextField updateCity;
 
-    private ImageService imageService;
     private ImagesManager imagesManager;
 
     private Div bigContainer;
