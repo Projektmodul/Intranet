@@ -22,7 +22,7 @@ import java.util.ArrayList;
  *  @author Monika Martius, Vanessa Skowronsky
  *  @version 4.0
  *  @since 17.12.2020
- *  @lastUpdated 19.01.2021
+ *  @lastUpdated 26.01.2021 by Vanessa Skowronsky
  */
 public class HorizontalBar extends MenuBar {
 
@@ -138,6 +138,11 @@ public class HorizontalBar extends MenuBar {
         subMenuListCommunity.add(layoutNoticeBoard);
         subMenuListCommunity.add(layoutIdeaManagement);
         createMenuItem(subMenuListCommunity, "Community", "community");
+
+        Icon chat = new Icon(VaadinIcon.CHAT);
+        chat.setSize("35px");
+        chat.setColor("#FFFFFF");
+        addItem(chat);
     }
 
     private VerticalLayout createSubMenuLink(Icon icon, String backgroundColor,String spanText, String href){
