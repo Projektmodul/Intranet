@@ -166,13 +166,32 @@
 #alertBell{
   width: 55px;
   height: 55px;
-  left: 45px;
+  left: 25px;
   top: 1px;
   color: #575757;
 }
 
 #alertBell:hover {
   cursor: pointer;
+}
+
+#alertSpan{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+#notificationAlertSpan{
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
 }
 
 #tabsView{
