@@ -90,6 +90,7 @@ public class SideBar extends VerticalLayout{
         tabs.setFlexGrowForEnclosedTabs(1);
         tabs.setSelectedTab(null);
         tabs.setId("tabsView");
+        tabs.setThemeName("minimal");
 
         initializeAlertIcon();
 
