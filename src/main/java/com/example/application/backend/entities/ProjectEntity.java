@@ -36,13 +36,11 @@ public class ProjectEntity {
     @JoinColumn(name = "image_id_two")
     private ImageEntity imageTwo;
 
-    @OneToOne
-    @JoinColumn(name = "link_id_one")
-    private LinkEntity linkOne;
+    @Column(name = "link_id_one")
+    private int linkOne;
 
-    @OneToOne
-    @JoinColumn(name = "link_id_two")
-    private LinkEntity linkTwo;
+    @Column(name = "link_id_two")
+    private int linkTwo;
 
     @ManyToOne
     @JoinColumn(name ="page_id")
@@ -113,19 +111,19 @@ public class ProjectEntity {
         this.imageTwo = imageTwo;
     }
 
-    public LinkEntity getLinkOne() {
+    public int getLinkOne(){
         return linkOne;
     }
 
-    public void setLinkOne(LinkEntity linkOne) {
+    public void setLinkOne(int linkOne) {
         this.linkOne = linkOne;
     }
 
-     public LinkEntity getLinkTwo() {
+     public int getLinkTwo() {
         return linkTwo;
     }
 
-    public void setLinkTwo(LinkEntity linkTwo) {
+    public void setLinkTwo(int linkTwo) {
         this.linkTwo = linkTwo;
     }
 /*
