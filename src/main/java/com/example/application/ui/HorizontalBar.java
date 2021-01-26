@@ -115,11 +115,14 @@ public class HorizontalBar extends MenuBar {
 
         VerticalLayout layoutBusinessTrip = createSubMenu(new Icon(VaadinIcon.FLIGHT_TAKEOFF), "#FF5621", "Dienstreisen", "inProgress");
 
+        VerticalLayout layoutFormDesigner = createSubMenuLink(new Icon(VaadinIcon.FORM), "#FF5621", "Formular Designer", "https://www.microsoft.com/de-de/microsoft-365/online-surveys-polls-quizzes");
+
         ArrayList<VerticalLayout> subMenuListServices = new ArrayList<>();
         subMenuListServices.add(layoutTime);
         subMenuListServices.add(layoutLSA);
         subMenuListServices.add(layoutDrive);
         subMenuListServices.add(layoutBusinessTrip);
+        subMenuListServices.add(layoutFormDesigner);
         createMenuItem(subMenuListServices, "Services", "services");
 
 
