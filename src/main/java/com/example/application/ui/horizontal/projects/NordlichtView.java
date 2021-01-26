@@ -29,7 +29,6 @@ import com.vaadin.flow.router.Route;
 public class NordlichtView extends Div {
 
     private ImagesManager imagesManager;
-    private ImagesManager imagesManagerTwo;
     private final PageEntity pageEntity;
     private final ImageService imageService;
     private final UserEntity userEntity;
@@ -40,20 +39,21 @@ public class NordlichtView extends Div {
     private Component rightComponent;
 
     public NordlichtView(PageService pageService, UserService userService, ImageService imageService) {
+        setId("nordlicht");
+        setClassName("pageContentPosition");
+        addClassName("projectsColorscheme");
         pageEntity = pageService.findPageById(12);
         this.imageService = imageService;
         GetUserController getUserController = new GetUserController();
         String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
-        setId("nordlicht");
-        setClassName("pageContentPosition");
-        addClassName("projectsColorscheme");
+
+        setData();
         initializeImagesManager();
         initializeBigContainer();
         initializeUploadContainer();
         imagesManager.setOneImage(false);
-        setData();
-        initializeLeftContainer();
+
         initializeRightContainer();
         initializeSplitLayout();
     }
@@ -63,11 +63,12 @@ public class NordlichtView extends Div {
         Div box = new Div();
         box.add(pageTitle);
         box.setId("layoutBox");
-        this.add(box);
+        H2 pageText = new H2(pageEntity.getContent());
+        this.add(box, pageText);
     }
 
     private void initializeSplitLayout() {
-        HorizontalLayout layout = new HorizontalLayout(leftComponent, rightComponent);
+        HorizontalLayout layout = new HorizontalLayout(leftComponent);
         this.add(layout);
     }
 
@@ -92,13 +93,8 @@ public class NordlichtView extends Div {
         boxTwo.setSizeFull();
         contentTextLayout.add(boxOne,boxTwo);
 
-        H2 pageText = new H2(pageEntity.getContent());
-        rightComponent = new VerticalLayout(pageText,contentTextLayout);
-    }
 
-    private void initializeLeftContainer() {
-
-        leftComponent = new VerticalLayout(bigContainer);
+        leftComponent = new VerticalLayout(contentTextLayout);
     }
 
     private  void initializeImagesManager(){
@@ -113,11 +109,11 @@ public class NordlichtView extends Div {
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
         bigContainer.add(imagesManager);
-
     }
 
     private void initializeBigContainer(){
         bigContainer = new Div();
+        bigContainer.setId("layoutBigContainerPicture");
         initializeImages();
     }
 

@@ -309,9 +309,8 @@
     color:  #4B4A4A;
     font-family: Gothic A1, Serif;
     align-items: normal;
-
-
 }
+
 #career #addButton{
     margin-right: 13px;
     display: flex;
@@ -340,7 +339,12 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/projects/NordlichtView */
-
+#nordlicht #layoutBigContainerPicture{
+    max-width: 500px;
+    width: 100%;
+    margin-left: 380px;
+    justify-content: center;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/projects/ProjectsView */
