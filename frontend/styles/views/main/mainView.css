@@ -157,16 +157,16 @@
 }
 
 #search{
-  width: 155px;
+  width: 164px;
   height: 25px;
-  color: #575757;
   font-size: small;
+  margin-top: 2px;
 }
 
 #alertBell{
   width: 55px;
   height: 55px;
-  left: 25px;
+  left: 19px;
   top: 1px;
   color: #575757;
 }
@@ -177,12 +177,13 @@
 
 #alertSpan{
   position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 5px 10px;
+  top: 5px;
+  right: -2px;
+  padding: 0px 8px 1px;
   border-radius: 50%;
   background: red;
-  color: white;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 #notificationAlertSpan{
@@ -195,12 +196,26 @@
 }
 
 #tabsView{
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   box-shadow: 7px 7px 10px 1px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
+  margin-top: 20px;
+  background: #575757;
+}
+
+vaadin-tab{
+  color:white;
+}
+
+vaadin-tab[selected] a[highlight]{
+  background: #A00505;
+  font-weight: bold;
+}
+
+vaadin-tab:hover{
+  background: #A00505;
 }
 
 
