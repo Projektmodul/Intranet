@@ -28,16 +28,18 @@ public class NotificationPresenter {
 
     private final NotificationService notificationService;
     private final NotificationsView notificationsView;
+    private NotificationDataProvider notificationDataProvider;
 
 
     @Autowired
-    NotificationPresenter(NotificationService notificationService){
+    NotificationPresenter(NotificationService notificationService) {
         this.notificationService = notificationService;
 
-        this.mainView = new MainView(this);
+
 
         notificationsView = new NotificationsView();
-        NotificationDataProvider notificationDataProvider = new NotificationDataProvider();
+
+        notificationDataProvider = new NotificationDataProvider();
 
         //The presenter handles the request of retrieving the notifications from the backend
         notificationDataProvider.findNotification(notificationService);
@@ -45,10 +47,16 @@ public class NotificationPresenter {
         //The presenter adds all retrieved notifications to the notificationsView
         notificationDataProvider.addNotifications(notificationsView.getAllNotificationsContainer(), notificationService);
 
+        notificationDataProvider.setClickEventOnSaveButton(notificationsView.getDeleteButton(), notificationService);
+
+        notificationsView.setNotificationsCounter(notificationDataProvider.getNotificationCounter());
+
+        this.mainView = new MainView(this);
+        this.mainView.getSidebar().setNotificationCounter(notificationDataProvider.getNotificationCounter());
     }
 
     //The presenter sets the clickEvent of the notification dialog
-    public void setEventOfNotificationViewOnSideBar(){
+    public void setEventOfNotificationViewOnSideBar() {
         this.mainView.getSidebar().setEventOfNotificationView(this.notificationsView);
     }
 
@@ -56,4 +64,12 @@ public class NotificationPresenter {
         this.mainView = mainView;
     }
 
+    public void setCounterFromDialogToSideBar(){
+        this.mainView.getSidebar().setNotificationCounter(notificationDataProvider.getNotificationCounter());
+        this.mainView.getSidebar().setCounterSpan(Integer.toString(this.mainView.getSidebar().getNotificationCounter()));
+    }
+
+    public NotificationDataProvider getNotificationDataProvider() {
+        return notificationDataProvider;
+    }
 }
