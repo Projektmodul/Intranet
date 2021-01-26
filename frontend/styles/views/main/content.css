@@ -308,6 +308,12 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/projects/NordlichtView */
+#nordlicht #layoutBigContainerPicture{
+    max-width: 500px;
+    width: 100%;
+    margin-left: 380px;
+    justify-content: center;
+}
 
 /* -------------------------------------------------------------- */
 
