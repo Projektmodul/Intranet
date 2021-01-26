@@ -5,10 +5,9 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -19,9 +18,9 @@ import com.vaadin.flow.router.Route;
  *  Projects View shows ...
  *
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
- *  @version 2.0
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 25.01.2021 by Vanessa Skowronsky
+ *  @lastUpdated 26.01.2021 by Monika Martius and Laura Neuendorf
  */
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
@@ -48,11 +47,35 @@ public class ProjectsView extends Div {
         layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
-        Component componentNordlicht = OverviewComponents.createComponent(new Icon(VaadinIcon.TRAIN), "#581092", "Nordlicht", "nordlicht");
+        Icon iconAdd = new Icon(VaadinIcon.ADD_DOCK);
+        iconAdd.addClickListener(e -> initDialogAdd().open());
 
-        layout.add(componentNordlicht);
+        Component componentNordlicht = OverviewComponents.createComponent(new Icon(VaadinIcon.TRAIN), "#581092", "Nordlicht", "nordlicht");
+        Component componentAdd = OverviewComponents.createComponent(iconAdd, "#581092", "Projekt hinzufügen","projects");
+
+        layout.add(componentNordlicht, componentAdd);
 
         add(pageTitle, pageText, secondQuote, layout);
-
     }
+
+    private Dialog initDialogAdd(){
+        Dialog addDialog = new Dialog();
+        addDialog.setCloseOnOutsideClick(false);
+        addDialog.setCloseOnEsc(false);
+
+        Div saveCancel = new Div();
+        saveCancel.setId("saveCancelDiv");
+        Button saveButton = new Button("Projekt einreichen");
+        Button cancelButton = new Button("Abbrechen", e -> addDialog.close());
+        saveButton.addClassName("ideaButton");
+        cancelButton.addClassName("ideaButton");
+        saveCancel.add(saveButton, cancelButton);
+
+
+        addDialog.add(new H3("Projekt einreichen"), saveCancel);
+
+        return addDialog;
+    }
+
+
 }
