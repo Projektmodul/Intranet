@@ -1,6 +1,7 @@
 package com.example.application.ui;
 
 import com.example.application.ui.presenters.NotificationPresenter;
+import com.example.application.ui.vertical.notifications.NotificationCounterChangedListener;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -14,9 +15,9 @@ import com.vaadin.flow.server.PWA;
  *  MainView shows ...
  *
  *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
- *  @version 4.0
+ *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 19.01.2021
+ *  @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")
@@ -25,7 +26,7 @@ import com.vaadin.flow.server.PWA;
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
-public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener {
+public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener, NotificationCounterChangedListener {
 
     private VerticalLayout contentHolder = new VerticalLayout();
     private Header header;
@@ -63,6 +64,8 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         //Initialize the contentHolder in the notificationPresenter
         notificationPresenter.setMainView(this);
         notificationPresenter.setEventOfNotificationViewOnSideBar();
+        notificationPresenter.setCounterFromDialogToSideBar();
+        notificationPresenter.getNotificationDataProvider().getInitiator().addListener(this);
 
 
     }
@@ -100,5 +103,10 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
     @Override
     public void horizontalBarClicked() {
         sidebar.setSideBarToNull();
+    }
+
+    @Override
+    public void notificationCounterChanged() {
+        notificationPresenter.setCounterFromDialogToSideBar();
     }
 }
