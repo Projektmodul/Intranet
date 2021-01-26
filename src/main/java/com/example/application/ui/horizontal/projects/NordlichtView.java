@@ -45,6 +45,7 @@ public class NordlichtView extends Div {
     private LinkService linkService;
 
     private Div bigContainer;
+    private Div imagesUploader;
 
     private int linkOne;
     private int linkTwo;
@@ -80,7 +81,7 @@ public class NordlichtView extends Div {
         initializeImagesManager();
         initializeBigContainer();
         initializeUploadContainer();
-        imagesManager.setOneImage(false);
+
 
         initializeRightContainer();
         initializeSplitLayout();
@@ -126,12 +127,17 @@ public class NordlichtView extends Div {
 
     private  void initializeImagesManager(){
         imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
+        imagesManager.setOneImage(false);
+
         imagesManager.initializeAllImages();
     }
 
     private void initializeImages(){
+        //change this to a horizontal layout to pack the images horizontally
+        //Styling will also be needed.
         Div imagesContainer = new Div();
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
@@ -142,12 +148,13 @@ public class NordlichtView extends Div {
         bigContainer = new Div();
         bigContainer.setId("layoutBigContainerPicture");
         initializeImages();
+        this.add(bigContainer);
     }
 
     private void initializeUploadContainer(){
         imagesManager.initializeUploadContainer();
-        Div imagesUploader = imagesManager.getImagesUploader();
-        this.add(bigContainer);
+        imagesUploader = imagesManager.getImagesUploader();
+
         this.add(imagesUploader);
     }
 }
