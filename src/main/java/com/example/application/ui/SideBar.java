@@ -8,6 +8,8 @@ import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.settings.SettingsView;
 import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -20,24 +22,33 @@ import com.vaadin.flow.router.RouterLink;
  *  SideBar shows ...
  *
  *  @author Lea Schünemann, Vanessa Skowronsky
- *  @version 2.0
+ *  @version 3.0
  *  @since 16.12.2020
- *  @lastUpdated 18.01.2021
+ *  @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
-public class SideBar extends VerticalLayout {
+public class SideBar extends VerticalLayout{
 
     public Tabs tabs;
-    private final NotificationsView notificationsView;
+    private NotificationsView notificationsView;
 
     private final Icon alertIcon;
+    private int notificationCounter;
+    private Span counterSpan;
 
     public SideBar(){
-        notificationsView = new NotificationsView();
+
 
         setId("sideBar");
         //insert icon for alertIcon
         alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alertBell");
+
+        counterSpan = new Span();
+        add(this.counterSpan);
+        this.counterSpan.setId("alertSpan");
+
+        Div notificationsAlertIconSpanContainer = new Div(alertIcon,counterSpan);
+        notificationsAlertIconSpanContainer.setId("notificationAlertSpan");
 
         //insert field for search
         TextField searchField = new TextField();
@@ -80,7 +91,9 @@ public class SideBar extends VerticalLayout {
         tabs.setSelectedTab(null);
         tabs.setId("tabsView");
 
-        add(alertIcon,searchField,tabs);
+        initializeAlertIcon();
+
+        add(notificationsAlertIconSpanContainer,searchField,tabs);
 
     }
 
@@ -90,5 +103,32 @@ public class SideBar extends VerticalLayout {
 
     public void setSideBarToNull(){
         tabs.setSelectedTab(null);
+    }
+
+    public void setNotificationsView(NotificationsView notificationsView) {
+        this.notificationsView = notificationsView;
+    }
+
+    public int getNotificationCounter() {
+        return notificationCounter;
+    }
+
+    public void setNotificationCounter(int notificationCounter) {
+        this.notificationCounter = notificationCounter;
+    }
+
+    public void setCounterSpan(String counter) {
+        this.counterSpan.setText(counter);
+        initializeAlertIcon();
+    }
+
+    public void initializeAlertIcon(){
+        if(notificationCounter == 0){
+            alertIcon.setColor("#575757");
+            this.counterSpan.setVisible(false);
+        }else{
+            alertIcon.setColor("red");
+            this.counterSpan.setVisible(true);
+        }
     }
 }
