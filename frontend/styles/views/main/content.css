@@ -318,7 +318,12 @@
 /* -------------------------------------------------------------- */
 
 /* horizontal/projects/ProjectsView */
-
+#projects #scroll{
+    max-width: 1000px;
+    width: 100%;
+    margin-left: 120px;
+    overflow-x: auto;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/services/ServicesView */
