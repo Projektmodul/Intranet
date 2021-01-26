@@ -29,9 +29,9 @@ import com.vaadin.flow.router.Route;
  * Documents View shows a grid-view for all documents.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 3.0
+ * @version 4.0
  * @since   12.01.2021
- * @lastUpdated 24.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
+ * @lastUpdated 26.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
  */
 
 @Route(value = "documents", layout = MainView.class)
@@ -74,14 +74,9 @@ public class DocumentsView extends Div {
 
 
 
-        /*
-         * Temporary Dummy-Data, will be deleted after Back-End is implemented
-         * ------------------------------------------------------------------------
-         * */
 
-        DocumentEntity documentManagement = new DocumentEntity();
-        documentManagement.setFileName("Verwaltung-Dokument");
-        documentManagement.setKeyword("Verwaltung");
+
+
         setData();
         //userEntity = pageEntity.getUser();
 
@@ -106,16 +101,17 @@ public class DocumentsView extends Div {
 
         radioGroup.setLabel("Abteilung");
         radioGroup.setItems("Allgemein", "Fahrdienst", "Verwaltung", "Werkstatt");
-
+        radioGroup.setValue("Allgemein");
         radioGroup.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
 
         Div messageContainer = new Div();
-        messageContainer.setText("Bitte wählen Sie eine Abteilung aus, bevor Sie ein neues Dokument hinzufügen.");
+        //messageContainer.setText("Bitte wählen Sie eine Abteilung aus, bevor Sie ein neues Dokument hinzufügen.");
+
+        keyword = "Allgemein";
+        messageContainer.setText("Sie haben ausgewählt: Allgemein");
 
         radioGroup.addValueChangeListener(event -> {
-            if (event.getValue() == null){
-                messageContainer.setText("Sie haben keine Abteilung ausgewählt.");
-            }else{
+            if (event.getValue() != null){
                 messageContainer.setText("Sie haben ausgewählt: " + event.getValue());
                 keyword = event.getValue();
                 pdfsManager.getPdfManager().setKeyword(keyword);
