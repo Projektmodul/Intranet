@@ -22,7 +22,7 @@ import java.util.ArrayList;
  *  @author Monika Martius, Vanessa Skowronsky
  *  @version 4.0
  *  @since 17.12.2020
- *  @lastUpdated 19.01.2021
+ *  @lastUpdated 26.01.2021 by Vanessa Skowronsky
  */
 public class HorizontalBar extends MenuBar {
 
