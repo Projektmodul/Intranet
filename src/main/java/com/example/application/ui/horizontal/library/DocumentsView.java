@@ -99,7 +99,7 @@ public class DocumentsView extends Div {
     public void initializeRadioButtonsForKeyword(){
         RadioButtonGroup<String> radioGroup = new RadioButtonGroup<>();
 
-        radioGroup.setLabel("Abteilung");
+        radioGroup.setLabel("Bitte wählen Sie eine Abteilung aus: ");
         radioGroup.setItems("Allgemein", "Fahrdienst", "Verwaltung", "Werkstatt");
         radioGroup.setValue("Allgemein");
         radioGroup.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
