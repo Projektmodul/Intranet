@@ -51,7 +51,7 @@ public class ImageManager {
 
     public ImageManager(ImageService imageService){
         this.imageService = imageService;
-        isOneImage = true;
+
         initializeUploader();
     }
     public Image createPDF(){
@@ -101,7 +101,7 @@ public class ImageManager {
         image.getDeleteButton().addClickListener(e -> {
             imageDeletionManager.delete();
             UI.getCurrent().getPage().reload();
-            upload.setVisible(!isOneImage);
+
         });
     }
 
