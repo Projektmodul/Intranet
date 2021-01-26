@@ -23,7 +23,7 @@ import com.vaadin.flow.router.Route;
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 25.01.2021 by Vanessa Skowronsky
+ *  @lastUpdated 26.01.2021 by Vanessa Skowronsky
  */
 @Route(value = "services", layout = MainView.class)
 @PageTitle("Services")
@@ -55,13 +55,15 @@ public class ServicesView extends Div {
 
         Component componentTimeAccount = OverviewComponents.createComponent(new Icon(VaadinIcon.CHART_TIMELINE), "#FF5621", "Zeitkonto", "inProgress");
 
-        Component component2LSA = OverviewComponents.createComponent(new Icon(VaadinIcon.PYRAMID_CHART), "#FF5621", "LSA-Meldungen", "inProgress");
+        Component componentLSA = OverviewComponents.createComponent(new Icon(VaadinIcon.PYRAMID_CHART), "#FF5621", "LSA-Meldungen", "inProgress");
 
         Component componentRailService = OverviewComponents.createComponent(new Icon(VaadinIcon.CAR), "#FF5621", "Fahrdienst", "inProgress");
 
         Component componentBusinessTrip = OverviewComponents.createComponent(new Icon(VaadinIcon.FLIGHT_TAKEOFF), "#FF5621", "Dienstreisen", "inProgress");
 
-        layout.add(componentTimeAccount, component2LSA, componentRailService, componentBusinessTrip);
+        Component componentFormDesigner = OverviewComponents.createLinkedComponent(new Icon(VaadinIcon.FORM), "#FF5621", "Formular Designer", "https://www.microsoft.com/de-de/microsoft-365/online-surveys-polls-quizzes");
+
+        layout.add(componentTimeAccount, componentLSA, componentRailService, componentBusinessTrip, componentFormDesigner);
 
         add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
     }
