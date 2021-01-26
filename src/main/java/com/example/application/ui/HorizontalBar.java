@@ -1,8 +1,10 @@
-
 package com.example.application.ui;
 
 import com.example.application.ui.auxiliary.HorizontalBarClickedInitiator;
+import com.vaadin.componentfactory.Chat;
+import com.vaadin.componentfactory.model.Message;
 import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
@@ -16,18 +18,19 @@ import com.vaadin.flow.component.tabs.Tab;
 import java.util.ArrayList;
 
 /**
- *  HorizontalBarView is shows a menubar with submenu items that open after hovering over them.
- *  All icons are clickable and route to the clicked page.
+ * HorizontalBarView is shows a menubar with submenu items that open after hovering over them.
+ * All icons are clickable and route to the clicked page.
  *
- *  @author Monika Martius, Vanessa Skowronsky
- *  @version 4.0
- *  @since 17.12.2020
- *  @lastUpdated 26.01.2021 by Vanessa Skowronsky
+ * @author Monika Martius, Vanessa Skowronsky
+ * @version 5.0
+ * @lastUpdated 26.01.2021 by Vanessa Skowronsky
+ * @since 17.12.2020
  */
 public class HorizontalBar extends MenuBar {
 
     private HorizontalBarClickedInitiator initiator;
     private Anchor anchorSubMenuLink;
+    private ArrayList<Message> messageList;
 
     public HorizontalBar() {
         setId("horizontalBar");
@@ -142,10 +145,12 @@ public class HorizontalBar extends MenuBar {
         Icon chat = new Icon(VaadinIcon.CHAT);
         chat.setSize("35px");
         chat.setColor("#FFFFFF");
+        chat.addClickListener(e -> new Dialog(initChat()).open());
         addItem(chat);
+
     }
 
-    private VerticalLayout createSubMenuLink(Icon icon, String backgroundColor,String spanText, String href){
+    private VerticalLayout createSubMenuLink(Icon icon, String backgroundColor, String spanText, String href) {
 
         icon.setClassName("horizontalBarIcons");
 
@@ -158,7 +163,7 @@ public class HorizontalBar extends MenuBar {
         layout.getStyle().set("background-color", backgroundColor);
 
 
-        anchorSubMenuLink = new Anchor(href,layout);
+        anchorSubMenuLink = new Anchor(href, layout);
         anchorSubMenuLink.setTarget("_blank");
         anchorSubMenuLink.setClassName("submenuLink");
         anchorSubMenuLink.getStyle().set("color", backgroundColor);
@@ -185,38 +190,66 @@ public class HorizontalBar extends MenuBar {
             layout.getUI().ifPresent(ui -> ui.navigate(route));
         });
 
-            layout.setClassName("submenu");
-            layout.getStyle().set("background-color", backgroundColor);
+        layout.setClassName("submenu");
+        layout.getStyle().set("background-color", backgroundColor);
 
-            return layout;
-
-        }
-
-
-        private void createMenuItem (ArrayList < VerticalLayout > layoutList, String labelText, String route){
-
-            HorizontalLayout layout = new HorizontalLayout();
-
-            for (VerticalLayout l : layoutList) {
-                layout.add(l);
-            }
-            layout.setSpacing(true);
-
-            Label label = new Label(labelText);
-            label.getStyle().set("color", "white");
-            MenuItem menuItem = addItem(label);
-            menuItem.addClickListener(e -> {
-                initiator.horizontalBarClicked();
-                layout.getUI().ifPresent(ui -> ui.navigate(route));
-            });
-            menuItem.getSubMenu().addItem(layout);
-
-        }
-
-        public HorizontalBarClickedInitiator getInitiator () {
-            return initiator;
-        }
-
+        return layout;
 
     }
+
+    private void createMenuItem(ArrayList<VerticalLayout> layoutList, String labelText, String route) {
+
+        HorizontalLayout layout = new HorizontalLayout();
+
+        for (VerticalLayout l : layoutList) {
+            layout.add(l);
+        }
+        layout.setSpacing(true);
+
+        Label label = new Label(labelText);
+        label.getStyle().set("color", "white");
+        MenuItem menuItem = addItem(label);
+        menuItem.addClickListener(e -> {
+            initiator.horizontalBarClicked();
+            layout.getUI().ifPresent(ui -> ui.navigate(route));
+        });
+        menuItem.getSubMenu().addItem(layout);
+
+    }
+
+    public HorizontalBarClickedInitiator getInitiator() {
+        return initiator;
+    }
+
+    private Chat initChat() {
+        Chat chatComponent = new Chat();
+        chatComponent.setMessages(loadMessages());
+        chatComponent.setDebouncePeriod(200);
+        chatComponent.setLazyLoadTriggerOffset(2500);
+        chatComponent.scrollToBottom();
+
+        chatComponent.addChatNewMessageListener(event -> {
+            event.getSource().addNewMessage(new Message(event.getMessage(), "", "Ria Meier", true));
+            event.getSource().clearInput();
+            event.getSource().scrollToBottom();
+        });
+
+        return chatComponent;
+    }
+
+    private ArrayList<Message> loadMessages() {
+        messageList = new ArrayList<>();
+        Message messageOne = new Message("Guten Morgen!", "", "Peter Lustig", false);
+        Message messageTwo = new Message("Moin!", "", "Ria Meier", true);
+        Message messageThree = new Message("Der neue Speiseplan ist da :-)", "", "Peter Lustig", false);
+
+        messageList.add(messageOne);
+        messageList.add(messageTwo);
+        messageList.add(messageThree);
+
+        return messageList;
+    }
+
+
+}
 
