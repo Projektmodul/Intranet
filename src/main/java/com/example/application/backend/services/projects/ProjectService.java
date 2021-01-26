@@ -5,6 +5,14 @@ import com.example.application.backend.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * DESCRIPTION
+ *
+ * @author  Monika Martius and Laura Neuendorf
+ * @version 1.0
+ * @since   26.01.2021
+ */
+
 @Service
 public class ProjectService {
     private final ProjectRepository projectRepository;
