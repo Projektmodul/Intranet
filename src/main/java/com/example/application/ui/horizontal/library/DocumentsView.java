@@ -16,6 +16,7 @@ import com.example.application.ui.MainView;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -99,7 +100,7 @@ public class DocumentsView extends Div {
     public void initializeRadioButtonsForKeyword(){
         RadioButtonGroup<String> radioGroup = new RadioButtonGroup<>();
 
-        radioGroup.setLabel("Bitte wählen Sie eine Abteilung aus: ");
+        H4 chooseDepartment = new H4("Bitte wählen Sie eine Abteilung aus: ");
         radioGroup.setItems("Allgemein", "Fahrdienst", "Verwaltung", "Werkstatt");
         radioGroup.setValue("Allgemein");
         radioGroup.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
@@ -119,7 +120,7 @@ public class DocumentsView extends Div {
             }
         });
 
-        add(radioGroup, messageContainer);
+        add(chooseDepartment ,radioGroup, messageContainer);
     }
 
     public void initializePdfsManager(){
