@@ -6,12 +6,10 @@ import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -26,8 +24,8 @@ import java.awt.*;
 /**
  *  FAQ View shows ...
  *
- *  @author Monika Martius
- *  @version 1.0
+ *  @author Monika Martius and Laura Neuendorf
+ *  @version 2.0
  *  @since 15.12.2020
  *  @lastUpdated 27.01.2021 by Laura Neuendorf
  */
@@ -177,7 +175,7 @@ public class SportView extends Div {
 
         Div saveCancel = new Div();
 
-        Button saveButton = new Button("Speichern", e -> { });
+        Button saveButton = new Button("Speichern", e -> updateDialog.close());
         Button cancelButton = new Button ("Abbrechen", e -> updateDialog.close());
 
         saveCancel.add(saveButton, cancelButton);
