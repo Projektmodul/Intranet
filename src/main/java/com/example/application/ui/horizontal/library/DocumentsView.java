@@ -8,31 +8,23 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.GridDocument;
 import com.example.application.backend.utils.pdfs.PdfsManager;
-import com.example.application.backend.entities.DocumentEntity;
-import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.services.pages.PageService;
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.treegrid.TreeGrid;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
  * Documents View shows a grid-view for all documents.
  *
- * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 4.0
+ * @author  Sabrine Gamdou, Anastasiya Jackwerth, Jessica Reistel
+ * @version 5.0
  * @since   12.01.2021
- * @lastUpdated 26.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
+ * @lastUpdated 28.01.2021 by Jessica Reistel
  */
 
 @Route(value = "documents", layout = MainView.class)
@@ -41,7 +33,7 @@ public class DocumentsView extends Div {
 
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
+    private Paragraph pageText;
     private PageEntity pageEntity;
 
     //private TreeGrid<DocumentEntity> documentsGrid;
@@ -71,7 +63,7 @@ public class DocumentsView extends Div {
 
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H2(pageEntity.getContent());
+        pageText = new Paragraph(pageEntity.getContent());
 
 
 

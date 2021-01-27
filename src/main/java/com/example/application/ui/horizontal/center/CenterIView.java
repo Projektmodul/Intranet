@@ -8,6 +8,9 @@ import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinService;
@@ -15,8 +18,8 @@ import com.vaadin.flow.server.VaadinService;
 /**
  *  FAQ View shows ...
  *
- *  @author Monika Martius and Laura Neuendorf
- *  @version 2.0
+ *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
+ *  @version 4.0
  *  @since 15.12.2020
  *  @lastUpdated 29.01.2021 by Laura Neuendorf
  */
@@ -24,11 +27,10 @@ import com.vaadin.flow.server.VaadinService;
 @PageTitle("CenterI")
 public class CenterIView extends Div {
     private PageService pageService;
+    private H1 pageTitle;
     private PageEntity pageEntity;
     private LinkService linkService;
     private LinkEntity linkEntity;
-
-    private H1 pageTitle;
     private Paragraph pageContent;
     private HorizontalLayout link;
 
@@ -53,7 +55,7 @@ public class CenterIView extends Div {
         pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
-        LinkEntity linkEntity = linkService.findById(5);
+        linkEntity = linkService.findById(5);
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
 
         link = new HorizontalLayout();

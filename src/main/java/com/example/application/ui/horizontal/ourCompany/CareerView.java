@@ -5,12 +5,9 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.entities.JobOfferEntity;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
@@ -31,17 +28,17 @@ import java.util.List;
 /**
  *  Career View shows ...
  *
- *  @author Monika Martius
- *  @version 1.0
+ *  @author Monika Martius, Jessica Reistel
+ *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 22.01.2021
+ *  @lastUpdated 28.01.2021 by Jessica Reistel
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
 public class CareerView extends Div {
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
+    private Paragraph pageText;
     private PageEntity pageEntity;
     private Component leftComponent;
     private Component rightComponent;
@@ -56,7 +53,7 @@ public class CareerView extends Div {
 
         pageEntity = pageService.findPageById(8);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H2(pageEntity.getContent());
+        pageText = new Paragraph(pageEntity.getContent());
 
         add(pageTitle,pageText);
 

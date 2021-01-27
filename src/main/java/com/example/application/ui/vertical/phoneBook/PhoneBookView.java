@@ -11,10 +11,10 @@ import com.vaadin.flow.router.Route;
 /**
  *  phoneBook View shows ...
  *
- *  @author Rebecca Schirmacher
- *  @version 2.0
+ *  @author Rebecca Schirmacher, Jessica reistel
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 17.01.2021
+ *  @lastUpdated 28.01.2021 by Jessica Reistel
  */
 @Route(value = "phoneBook", layout = MainView.class)
 @PageTitle("Telefonbuch")
@@ -22,7 +22,7 @@ import com.vaadin.flow.router.Route;
 public class PhoneBookView extends Div {
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
+    private Paragraph pageText;
     private Span externTele;
     private Span internTele;
     private PageEntity pageEntity;
@@ -34,7 +34,7 @@ public class PhoneBookView extends Div {
 
         pageEntity = pageService.findPageById(23);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H2(pageEntity.getContent());
+        pageText = new Paragraph(pageEntity.getContent());
 
         externTele = new Span("externes Telefonbuch");
         internTele = new Span("internes Telefonbuch");
