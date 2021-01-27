@@ -6,10 +6,7 @@ import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -17,19 +14,20 @@ import com.vaadin.flow.router.Route;
  *  FAQ View shows ...
  *
  *  @author Monika Martius
- *  @version 1.0
+ *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 22.01.2021
+ *  @lastUpdated 28.01.2021 by Jessica Reistel
  */
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")
 public class MediaView extends Div {
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
+    private Paragraph pageText;
     private PageEntity pageEntity;
 
     public MediaView(PageService pageService) {
+
         setId("media");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");

@@ -10,6 +10,9 @@ import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinService;
@@ -18,9 +21,9 @@ import com.vaadin.flow.server.VaadinService;
  *  Center I View shows ...
  *
  *  @author Monika Martius, Laura Neuendorf
- *  @version 2.0
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 30.01.2021 Vanessa Skowronsky
+ *  @lastUpdated 30.01.2021 Vanessa Skowronsky, Jessica Reistel
  */
 @Route(value = "centerI", layout = MainView.class)
 @PageTitle("CenterI")
