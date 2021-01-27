@@ -24,7 +24,7 @@ import com.vaadin.flow.router.Route;
  * @author  Sabrine Gamdou, Anastasiya Jackwerth, Jessica Reistel
  * @version 5.0
  * @since   12.01.2021
- * @lastUpdated 28.01.2021 by Jessica Reistel
+ * @lastUpdated 27.01.2021 by Jessica Reistel
  */
 
 @Route(value = "documents", layout = MainView.class)
