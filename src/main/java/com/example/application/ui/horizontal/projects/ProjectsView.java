@@ -13,7 +13,7 @@ import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -21,9 +21,9 @@ import com.vaadin.flow.router.Route;
  *  Projects View shows ...
  *
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
- *  @version 3.0
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 26.01.2021 by Monika Martius and Laura Neuendorf
+ *  @lastUpdated 27.01.2021 by Jessica Reistel
  */
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
@@ -31,27 +31,35 @@ public class ProjectsView extends Div {
 
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
-    private PageEntity pageEntity;
+    private H2 firstQuote;
+    private H2 secondQuote;
     private HorizontalLayout layout;
 
     public ProjectsView(PageService pageService) {
+        this.pageService = pageService;
+
         setId("projects");
         setClassName("pageContentPosition");
         addClassName("projectsColorscheme");
 
-        pageEntity = pageService.findPageById(11);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H2(pageEntity.getContent());
-
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        layout = new HorizontalLayout();
+        setContent();
 
-        Label secondQuote = new Label("Überseestadt");
+        add(breadcrumbs,pageTitle, firstQuote, secondQuote, layout);
+    }
+
+    private void setContent(){
+        PageEntity pageEntity = pageService.findPageById(11);
+
+        pageTitle = new H1(pageEntity.getTitle());
+        firstQuote = new H2(pageEntity.getContent());
+        secondQuote = new H2("Überseestadt");
+        firstQuote.setClassName("firstQuote");
         secondQuote.setClassName("secondQuote");
 
+        layout = new HorizontalLayout();
         layout.setPadding(true);
         layout.setId("scroll");
         layout.addClassName("justifyContentCenter");
@@ -64,7 +72,6 @@ public class ProjectsView extends Div {
 
         layout.add(componentAdd, componentNordlicht);
 
-        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
     }
 
     private Dialog initDialogAdd(){
@@ -93,4 +100,6 @@ public class ProjectsView extends Div {
 
         return componentNewProject;
     }
+
+
 }

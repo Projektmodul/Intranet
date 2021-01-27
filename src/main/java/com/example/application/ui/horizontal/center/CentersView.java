@@ -1,5 +1,3 @@
-/*created @ Litharshiga Sivarasa */
-
 package com.example.application.ui.horizontal.center;
 
 import com.example.application.backend.entities.PageEntity;
@@ -12,7 +10,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Label;
+
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -23,9 +21,9 @@ import com.vaadin.flow.router.Route;
  *  Centers View shows ...
  *
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
- *  @version 2.0
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 25.01.2021 by Vanessa Skowronsky
+ *  @lastUpdated 27.01.2021 by Jessica Reistel
  */
 @Route(value = "centers", layout = MainView.class)
 @PageTitle("Centers")
@@ -33,25 +31,35 @@ public class CentersView extends Div {
 
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
-    private PageEntity pageEntity;
+    private H2 firstQuote;
+    private H2 secondQuote;
+    private HorizontalLayout layout;
 
     public CentersView(PageService pageService) {
+        this.pageService = pageService;
+
         setId("centers");
         setClassName("pageContentPosition");
         addClassName("centerColorscheme");
 
-        pageEntity = pageService.findPageById(9);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H2(pageEntity.getContent());
+        setContent();
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        Label secondQuote = new Label("zusammen");
+        add(breadcrumbs,pageTitle, firstQuote, secondQuote, layout);
+    }
+
+    private void setContent(){
+        PageEntity pageEntity = pageService.findPageById(9);
+
+        pageTitle = new H1(pageEntity.getTitle());
+        firstQuote = new H2(pageEntity.getContent());
+        secondQuote = new H2("zusammen");
+        firstQuote.setClassName("firstQuote");
         secondQuote.setClassName("secondQuote");
 
-        HorizontalLayout layout = new HorizontalLayout();
+        layout = new HorizontalLayout();
         layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
@@ -59,6 +67,5 @@ public class CentersView extends Div {
 
         layout.add(componentCenterI);
 
-        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
     }
 }
