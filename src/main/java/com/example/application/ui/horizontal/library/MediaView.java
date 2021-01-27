@@ -16,7 +16,7 @@ import com.vaadin.flow.router.Route;
  *  @author Monika Martius
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 28.01.2021 by Jessica Reistel
+ *  @lastUpdated 27.01.2021 by Jessica Reistel
  */
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")

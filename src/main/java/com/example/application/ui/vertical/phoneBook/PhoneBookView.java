@@ -13,10 +13,10 @@ import com.vaadin.flow.router.Route;
 /**
  *  phoneBook View shows ...
  *
- *  @author Rebecca Schirmacher, Jessica reistel
+ *  @author Rebecca Schirmacher, Jessica Reistel
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 28.01.2021 by Jessica Reistel
+ *  @lastUpdated 27.01.2021 by Jessica Reistel
  */
 @Route(value = "phoneBook", layout = MainView.class)
 @PageTitle("Telefonbuch")
