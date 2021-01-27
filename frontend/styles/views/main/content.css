@@ -1,9 +1,10 @@
 /**
  * Stylesheet for ContentHolder-Content
  *
- *@added Monika Martius, edited Vanessa Skowronsky
- *@Version 2.0
+ *@added Monika Martius, edited Vanessa Skowronsky and Jessica Reistel
+ *@Version 4.0
  *@since 16.01.2021
+ *@updated 27.01.2021 by Jessica Reistel
  */
 
 /* CSS-Befehle, die mehrere Views betreffen */
@@ -44,29 +45,28 @@
     content: none;
 }
 
-.firstQuote{
-    margin-left: 15px;
-    margin-top: 80px;
+h2 {
+    margin: 0;
     font-family: 'Gothic A1', sans-serif;
-    font-style: italic;
-    font-size: 40px;
     display: flex;
     align-items: normal;
     text-align: center;
     line-height: initial;
     color: #FFFFFF;
+    font-weight: 500;
+}
+
+.firstQuote{
+    margin-left: 15px;
+    margin-top: 80px;
+    font-style: italic;
+    font-size: 40px;
 }
 
 .secondQuote{
     margin-left: 80px;
-    font-family: 'Gothic A1', sans-serif;
     font-style: normal;
-    font-size: 65px;
-    display: flex;
-    align-items: normal;
-    text-align: center;
-    line-height: initial;
-    color: #FFFFFF;
+    font-size: 60px;
 }
 
 .justifyContentCenter {
