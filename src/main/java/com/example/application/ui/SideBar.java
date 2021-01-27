@@ -128,7 +128,7 @@ public class SideBar extends VerticalLayout{
             alertIcon.setColor("#575757");
             this.counterSpan.setVisible(false);
         }else{
-            alertIcon.setColor("red");
+            alertIcon.setColor("#e31313");
             this.counterSpan.setVisible(true);
         }
     }
