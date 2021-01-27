@@ -205,16 +205,16 @@
   background: #575757;
 }
 
-vaadin-tab{
+#sideBar vaadin-tab{
   color:white;
 }
 
-vaadin-tab[selected] a[highlight]{
+#sideBar vaadin-tab[selected] a[highlight]{
   background: #A00505;
   font-weight: bold;
 }
 
-vaadin-tab:hover{
+#sideBar vaadin-tab:hover{
   background: #A00505;
 }
 
