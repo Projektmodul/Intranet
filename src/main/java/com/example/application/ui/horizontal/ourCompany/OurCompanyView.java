@@ -38,9 +38,9 @@ public class OurCompanyView extends Div {
     public OurCompanyView(PageService pageService) {
         this.pageService = pageService;
 
-        setId("centers");
+        setId("ourCompany");
         setClassName("pageContentPosition");
-        addClassName("centerColorscheme");
+        addClassName("ourCompanyColorscheme");
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
