@@ -48,6 +48,14 @@ public class SportView extends Div {
     private TextField updateTime;
     private TextField updateActivity;
 
+    private TextField updateWeekdayOne;
+    private TextField updateTimeOne;
+    private TextField updateActivityOne;
+
+    private TextField updateWeekdayTwo;
+    private TextField updateTimeTwo;
+    private TextField updateActivityTwo;
+
     public SportView(PageService pageService, UserService userService) {
         setId("sport");
         setClassName("pageContentPosition");
@@ -56,6 +64,18 @@ public class SportView extends Div {
         this.pageService = pageService;
         this.userService = userService;
         getUserController = new GetUserController();
+
+        updateWeekday = new TextField();
+        updateTime = new TextField();
+        updateActivity = new TextField();
+
+        updateWeekdayOne = new TextField();
+        updateTimeOne = new TextField();
+        updateActivityOne = new TextField();
+
+        updateWeekdayTwo = new TextField();
+        updateTimeTwo = new TextField();
+        updateActivityTwo = new TextField();
 
         setData();
         showActivities();
@@ -120,7 +140,7 @@ public class SportView extends Div {
         timeTwo.setReadOnly(true);
 
         TextField activityTwo = new TextField();
-        activityTwo.setValue("Aerobic");
+        activityTwo.setValue("Handball");
         activityTwo.setReadOnly(true);
 
         Button updateActivity = new Button("Aktivitäten bearbeiten", new Icon(VaadinIcon.PENCIL));
@@ -157,19 +177,57 @@ public class SportView extends Div {
 
         Div saveCancel = new Div();
 
-        Button saveButton = new Button("Speichern");
+        Button saveButton = new Button("Speichern", e -> { });
         Button cancelButton = new Button ("Abbrechen", e -> updateDialog.close());
 
         saveCancel.add(saveButton, cancelButton);
 
-        updateDialog.add(new H1("Vorhandene Aktivitäten bearbeiten"), saveCancel);
+        HorizontalLayout update = new HorizontalLayout();
+        update.addComponentAsFirst(updateLayout());
+
+        updateDialog.add(new H1("Vorhandene Aktivitäten bearbeiten"),update, saveCancel);
 
         return updateDialog;
     }
 
-    private HorizontalLayout updateLayout(){
-        HorizontalLayout update = new HorizontalLayout();
+    private VerticalLayout updateLayout(){
+        VerticalLayout updateData = new VerticalLayout();
 
-        return update;
+        HorizontalLayout updateActivityFirst = new HorizontalLayout();
+        HorizontalLayout updateActivitySecond = new HorizontalLayout();
+        HorizontalLayout updateActivityThird = new HorizontalLayout();
+
+        updateWeekday.setValue("Montag");
+        updateWeekday.setLabel("Wochentag");
+        updateTime.setValue("17:30 Uhr");
+        updateTime.setLabel("Uhrzeit");
+        updateActivity.setValue("Fußball");
+        updateActivity.setLabel("Aktivität");
+
+        updateWeekdayOne.setValue("Mittwoch");
+        updateTimeOne.setValue("17:00 Uhr");
+        updateActivityOne.setValue("Aerobic");
+
+        updateWeekdayTwo.setValue("Freitag");
+        updateTimeTwo.setValue("18:00 Uhr");
+        updateActivityTwo.setValue("Handball");
+
+        updateActivityFirst.addComponentAsFirst(updateWeekday);
+        updateActivityFirst.addComponentAtIndex(1, updateTime);
+        updateActivityFirst.addComponentAtIndex(2, updateActivity);
+
+        updateActivitySecond.addComponentAsFirst(updateWeekdayOne);
+        updateActivitySecond.addComponentAtIndex(1, updateTimeOne);
+        updateActivitySecond.addComponentAtIndex(2, updateActivityOne);
+
+        updateActivityThird.addComponentAsFirst(updateWeekdayTwo);
+        updateActivityThird.addComponentAtIndex(1, updateTimeTwo);
+        updateActivityThird.addComponentAtIndex(2, updateActivityTwo);
+
+        updateData.addComponentAsFirst(updateActivityFirst);
+        updateData.addComponentAtIndex(1, updateActivitySecond);
+        updateData.addComponentAtIndex(2, updateActivityThird);
+
+        return updateData;
     }
 }
