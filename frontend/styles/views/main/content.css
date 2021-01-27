@@ -79,6 +79,11 @@ h2 {
     margin-top: 20px;
 }
 
+vaadin-upload{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 /* Colorschemes */
 
 .homeColorscheme {
@@ -201,7 +206,9 @@ h2 {
 /* -------------------------------------------------------------- */
 
 /* horizontal/library/DocumentsView */
-
+#documents vaadin-radio-group, #documents #messageContainer, #documents h4{
+    margin-left: 15px;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/library/FAQView */
