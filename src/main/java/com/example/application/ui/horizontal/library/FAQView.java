@@ -9,27 +9,29 @@ import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
  *  FAQ View shows ...
  *
- *  @author Monika Martius and Laura Neuendorf
- *  @version 3.0
+ *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 28.01.2021 by Laura Neuendorf
+ *  @lastUpdated 28.01.2021 by Laura Neuendorf, Jessica Reistel
  */
 @Route(value = "fAQ", layout = MainView.class)
 @PageTitle("FAQ")
 public class FAQView extends Div {
     private PageService pageService;
-    private PageEntity pageEntity;
-
-    private LinkService linkService;
-
     private H1 pageTitle;
     private Paragraph pageContent;
+    private PageEntity pageEntity;
+    private LinkService linkService;
+    
 
 
     public FAQView(PageService pageService, LinkService linkService) {

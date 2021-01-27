@@ -19,6 +19,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -27,22 +28,22 @@ import java.awt.*;
 /**
  *  FAQ View shows ...
  *
- *  @author Monika Martius and Laura Neuendorf
- *  @version 2.0
+ *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Laura Neuendorf
+ *  @lastUpdated 28.01.2021 by Jessica Reistel
  */
 @Route(value = "sport", layout = MainView.class)
 @PageTitle("Sport&Freizeit")
 public class SportView extends Div {
     private PageService pageService;
+    private H1 pageTitle;
     private PageEntity pageEntity;
     private UserService userService;
     private UserEntity userEntity;
     private GetUserController getUserController;
 
     private String username;
-    private H1 pageTitle;
     private Paragraph pageContent;
 
     private TextField updateWeekday;

@@ -8,18 +8,18 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.GridDocument;
 import com.example.application.backend.utils.pdfs.PdfsManager;
+
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -27,9 +27,9 @@ import com.vaadin.flow.router.Route;
  * Documents View shows a grid-view for all documents.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 4.0
+ * @version 5.0
  * @since   12.01.2021
- * @lastUpdated 30.01.2021 by Vanessa Skowronsky
+ * @lastUpdated 30.01.2021 by Vanessa Skowronsky,  Jessica Reistel
  */
 
 @Route(value = "documents", layout = MainView.class)
@@ -38,7 +38,7 @@ public class DocumentsView extends Div {
 
     private PageService pageService;
     private H1 pageTitle;
-    private H2 pageText;
+    private Paragraph pageText;
     private PageEntity pageEntity;
 
     //private TreeGrid<DocumentEntity> documentsGrid;
@@ -58,18 +58,18 @@ public class DocumentsView extends Div {
 
     public DocumentsView(PageService pageService, UserService userService, DocumentService documentService,
                          NotificationService notificationService) {
-        setId("documents");
-        setClassName("pageContentPosition");
-        addClassName("libraryColorscheme");
-
         this.pageService = pageService;
         this.userService = userService;
         this.documentService = documentService;
         this.notificationService = notificationService;
 
+        setId("documents");
+        setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
+
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H2(pageEntity.getContent());
+        pageText = new Paragraph(pageEntity.getContent());
 
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
