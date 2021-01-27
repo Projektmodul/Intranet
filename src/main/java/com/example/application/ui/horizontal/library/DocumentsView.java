@@ -106,6 +106,7 @@ public class DocumentsView extends Div {
 
         keyword = "Allgemein";
         messageContainer.setText("Sie haben ausgewählt: Allgemein");
+        messageContainer.setId("messageContainer");
 
         radioGroup.addValueChangeListener(event -> {
             if (event.getValue() != null){
