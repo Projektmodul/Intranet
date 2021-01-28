@@ -14,9 +14,9 @@ import com.vaadin.flow.router.Route;
  *  FAQ View shows ...
  *
  *  @author Monika Martius and Laura Neuendorf
- *  @version 2.0
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Laura Neuendorf
+ *  @lastUpdated 28.01.2021 by Laura Neuendorf
  */
 @Route(value = "fAQ", layout = MainView.class)
 @PageTitle("FAQ")
@@ -42,6 +42,10 @@ public class FAQView extends Div {
 
     }
 
+    /*
+     * This method fetches the data from the database
+     * and displays it on the corresponding page
+     */
     public void setData(){
         pageEntity = pageService.findPageById(17);
         pageTitle = new H1(pageEntity.getTitle());
