@@ -7,6 +7,7 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinService;
@@ -23,12 +24,13 @@ import com.vaadin.flow.server.VaadinService;
 @PageTitle("CenterI")
 public class CenterIView extends Div {
     private PageService pageService;
+    private PageEntity pageEntity;
     private LinkService linkService;
     private LinkEntity linkEntity;
 
     private H1 pageTitle;
     private Paragraph pageContent;
-    private PageEntity pageEntity;
+    private HorizontalLayout link;
 
     public CenterIView(PageService pageService, LinkService linkService) {
         setId("centerI");
@@ -40,8 +42,6 @@ public class CenterIView extends Div {
 
         setData();
         setPicture();
-        //Image organizationChart = new Image("images/organigramm-centerI.png", "OrganigrammCenterI");
-        //add(organizationChart);
     }
 
     /*
@@ -56,12 +56,15 @@ public class CenterIView extends Div {
         LinkEntity linkEntity = linkService.findById(5);
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
 
-        this.add(pageTitle, pageContent, mailLink);
+        link = new HorizontalLayout();
+        link.add(mailLink);
+
+        this.add(pageTitle, pageContent, link);
     }
 
     public void setPicture(){
         Image organizationChart = new Image("images/organigramm-centerI.png", "OrganigrammCenterI");
+        organizationChart.setId("organizationChart");
         this.add(organizationChart);
-
     }
 }
