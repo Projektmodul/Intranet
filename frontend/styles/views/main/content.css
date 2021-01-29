@@ -161,6 +161,14 @@
 
 */
 /* horizontal/center/CenterIView */
+#centerI vaadin-horizontal-layout{
+    margin-left: 15px;
+}
+#centerI #organizationChart{
+    height: 800px;
+    margin-left: 160px;
+    margin-top: 40px;
+}
 
 /* -------------------------------------------------------------- */
 
