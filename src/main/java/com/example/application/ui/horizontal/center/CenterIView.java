@@ -9,6 +9,7 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinService;
 
 /**
  *  FAQ View shows ...
@@ -38,8 +39,14 @@ public class CenterIView extends Div {
         this.linkService = linkService;
 
         setData();
+        setPicture();
+        //Image organizationChart = new Image("images/organigramm-centerI.png", "OrganigrammCenterI");
+        //add(organizationChart);
     }
 
+    /*
+     * This method reads the data from the database and displays it on the corresponding page.
+     */
     public void setData(){
         pageEntity = pageService.findPageById(10);
         pageTitle = new H1(pageEntity.getTitle());
@@ -50,5 +57,11 @@ public class CenterIView extends Div {
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
 
         this.add(pageTitle, pageContent, mailLink);
+    }
+
+    public void setPicture(){
+        Image organizationChart = new Image("images/organigramm-centerI.png", "OrganigrammCenterI");
+        this.add(organizationChart);
+
     }
 }
