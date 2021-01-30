@@ -15,12 +15,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinService;
 
 /**
- *  FAQ View shows ...
+ *  Center I View shows ...
  *
- *  @author Monika Martius and Laura Neuendorf
+ *  @author Monika Martius, Laura Neuendorf
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 29.01.2021 by Laura Neuendorf
+ *  @lastUpdated 30.01.2021 Vanessa Skowronsky
  */
 @Route(value = "centerI", layout = MainView.class)
 @PageTitle("CenterI")

@@ -169,7 +169,6 @@ public class HorizontalBar extends MenuBar {
         icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
 
-
         Span span = new Span(spanText);
         span.setClassName("spanStyle");
 
@@ -184,7 +183,6 @@ public class HorizontalBar extends MenuBar {
             layout.getStyle().set("background-color", backgroundColor);
 
             return layout;
-
         }
 
 
