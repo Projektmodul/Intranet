@@ -8,23 +8,18 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.GridDocument;
 import com.example.application.backend.utils.pdfs.PdfsManager;
-import com.example.application.backend.entities.DocumentEntity;
-import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.services.pages.PageService;
-import com.example.application.ui.ContentHolder;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.treegrid.TreeGrid;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -34,7 +29,7 @@ import com.vaadin.flow.router.Route;
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 4.0
  * @since   12.01.2021
- * @lastUpdated 26.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
+ * @lastUpdated 30.01.2021 by Vanessa Skowronsky
  */
 
 @Route(value = "documents", layout = MainView.class)
@@ -78,9 +73,6 @@ public class DocumentsView extends Div {
 
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
-
-
-
 
         setData();
         //userEntity = pageEntity.getUser();

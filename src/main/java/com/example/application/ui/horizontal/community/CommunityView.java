@@ -65,10 +65,6 @@ public class CommunityView extends Div {
         add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
 
     }
-
-
-
-
 }
 
 
