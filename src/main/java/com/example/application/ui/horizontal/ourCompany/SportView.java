@@ -96,7 +96,7 @@ public class SportView extends Div {
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen")
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
 
         add(breadcrumbs, pageTitle, pageContent);
     }

@@ -31,6 +31,7 @@ import com.vaadin.flow.router.RouterLink;
 public class HelpView extends Div {
 
     private PageService pageService;
+    private PageEntity pageEntity;
     private LinkService linkService;
     private H1 pageTitle;
     private Paragraph pageContent;
@@ -53,12 +54,10 @@ public class HelpView extends Div {
     }
 
     private void setContent(){
-        PageEntity pageEntity = pageService.findPageById(25);
+        pageEntity = pageService.findPageById(25);
         pageTitle = new H1(pageEntity.getTitle());
         pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
-
 
         LinkEntity linkEntity = linkService.findById(3);
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());

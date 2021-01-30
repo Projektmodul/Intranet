@@ -11,6 +11,8 @@ import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -105,9 +107,13 @@ public class MyProfileView extends Div {
         //True means only one image could be added.
         imagesManager.setOneImage(true);
 
-        content.addComponentAsFirst(new H1(pageEntity.getTitle()));
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
+        content.addComponentAsFirst(breadcrumbs);
         content.setSizeFull();
-        content.addComponentAtIndex(1, initData());
+        content.addComponentAtIndex(1, new H1(pageEntity.getTitle()));
+        content.addComponentAtIndex(2, initData());
 
 
         add(content);
