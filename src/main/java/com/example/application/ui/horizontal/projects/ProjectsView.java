@@ -84,7 +84,6 @@ public class ProjectsView extends Div {
 
         return addDialog;
     }
-        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
 
     private Div addProject(){
         Div componentNewProject = new Div();
