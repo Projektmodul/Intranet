@@ -28,6 +28,8 @@ import com.vaadin.flow.router.Route;
 public class LibraryView extends Div {
 
     private PageService pageService;
+    private PageEntity pageEntity;
+
     private H1 pageTitle;
     private H2 firstQuote;
     private H2 secondQuote;
@@ -39,16 +41,18 @@ public class LibraryView extends Div {
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
+        setContent();
+
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        setContent();
+
 
         add(pageTitle, firstQuote, secondQuote, layout);
     }
 
     private void setContent(){
-        PageEntity pageEntity = pageService.findPageById(13);
+        pageEntity = pageService.findPageById(13);
 
         pageTitle = new H1(pageEntity.getTitle());
         firstQuote = new H2(pageEntity.getContent());

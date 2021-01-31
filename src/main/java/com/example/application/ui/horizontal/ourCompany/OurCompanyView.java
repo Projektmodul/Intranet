@@ -30,6 +30,8 @@ import com.vaadin.flow.router.Route;
 public class OurCompanyView extends Div {
 
     private PageService pageService;
+    private PageEntity pageEntity;
+
     private H1 pageTitle;
     private H2 firstQuote;
     private H2 secondQuote;
@@ -42,16 +44,18 @@ public class OurCompanyView extends Div {
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
+        setContent();
+
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        setContent();
+
 
         add(breadcrumbs,pageTitle, firstQuote, secondQuote, layout);
     }
 
     private void setContent(){
-        PageEntity pageEntity = pageService.findPageById(3);
+        pageEntity = pageService.findPageById(3);
 
         pageTitle = new H1(pageEntity.getTitle());
         firstQuote = new H2(pageEntity.getContent());
