@@ -5,6 +5,8 @@ package com.example.application.ui.horizontal.community;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.*;
@@ -42,6 +44,9 @@ public class CommunityView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
         Label secondQuote = new Label("ganz Zentral");
         secondQuote.setClassName("secondQuote");
 
@@ -57,13 +62,9 @@ public class CommunityView extends Div {
 
         layout.add(componentBlog, componentNoticeBoard, componentIdeaManagement);
 
-        add(pageTitle,pageText,secondQuote, layout);
+        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
 
     }
-
-
-
-
 }
 
 

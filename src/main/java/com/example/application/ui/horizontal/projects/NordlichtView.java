@@ -13,6 +13,8 @@ import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -88,8 +90,12 @@ public class NordlichtView extends Div {
 
     private void setData(){
         H1 pageTitle = new H1(pageEntity.getTitle());
+
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Projekte"), new Breadcrumb(pageEntity.getTitle()));
+
         Div box = new Div();
-        box.add(pageTitle);
+        box.add(breadcrumbs, pageTitle);
         box.setId("layoutBox");
         H2 pageText = new H2(pageEntity.getContent());
         this.add(box, pageText);

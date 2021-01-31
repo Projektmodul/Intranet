@@ -10,6 +10,8 @@ import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
@@ -80,7 +82,10 @@ public class AboutUsView extends Div {
         pageContent.setText((pageEntity.getContent()));
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
-        this.add(pageTitle, pageContent);
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
+
+        this.add(breadcrumbs, pageTitle, pageContent);
     }
 
     private void setTimeline(){

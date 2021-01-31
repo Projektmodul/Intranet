@@ -5,6 +5,8 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.ideas.IdeaService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
@@ -27,7 +29,7 @@ import java.util.List;
  *  @author Litharshiga Sivarasa, Jessica Reistel
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 25.01.2021
+ *  @lastUpdated 30.01.2021 by Vanessa Skowronsky
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
@@ -51,7 +53,10 @@ public class IdeasManagementView extends Div {
 
         Paragraph content = new Paragraph(pageEntity.getContent());
 
-        add(title, buttonIdea, content, initializeGrid());
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+
+        add(breadcrumbs, title, buttonIdea, content, initializeGrid());
     }
 
     /**

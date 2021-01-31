@@ -4,6 +4,8 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.auxiliary.OverviewComponents;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -42,6 +44,9 @@ public class ProjectsView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
         layout = new HorizontalLayout();
 
         Label secondQuote = new Label("Überseestadt");
@@ -59,7 +64,7 @@ public class ProjectsView extends Div {
 
         layout.add(componentAdd, componentNordlicht);
 
-        add(pageTitle, pageText, secondQuote, layout);
+        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
     }
 
     private Dialog initDialogAdd(){
@@ -88,6 +93,4 @@ public class ProjectsView extends Div {
 
         return componentNewProject;
     }
-
-
 }

@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.ourCompany;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
@@ -40,6 +42,9 @@ public class OurCompanyView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H2(pageEntity.getContent());
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
         Label secondQuote = new Label("für sie da");
         secondQuote.setClassName("secondQuote");
 
@@ -54,7 +59,7 @@ public class OurCompanyView extends Div {
         Component componentCareer = OverviewComponents.createComponent(new Icon(VaadinIcon.DOLLAR), "#A00505", "Stellenangebote", "career");
         layout.add(componentWelcome, componentAboutUs, componentNews, componentSport, componentCareer);
 
-        add(pageTitle,pageText, secondQuote, layout);
+        add(breadcrumbs, pageTitle, pageText, secondQuote, layout);
     }
 }
 

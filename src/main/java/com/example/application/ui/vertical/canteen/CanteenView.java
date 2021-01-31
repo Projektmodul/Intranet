@@ -8,6 +8,8 @@ import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.pdfs.PDF;
 import com.example.application.backend.utils.pdfs.PdfsManager;
 import com.example.application.ui.MainView;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -78,6 +80,9 @@ public class CanteenView extends Div {
         pageEntity = pageService.findPageById(26);
         pageTitle = new H1(pageEntity.getTitle());
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+
         /*pageContent = new Span("Werfen Sie doch schon vorab einen Blick in unsere Speisekarte.");*/
 
         pageContent = new Paragraph(pageEntity.getContent());
@@ -86,7 +91,7 @@ public class CanteenView extends Div {
         HorizontalLayout menuDeleteLayout = new HorizontalLayout(pageTitle);
         menuDeleteLayout.setId("menuDeleteLayout");
 
-        this.add(pageTitle, pageContent, menuDeleteLayout);
+        this.add(breadcrumbs, pageTitle, pageContent, menuDeleteLayout);
     }
 
     public void initializePdfsManager() {
