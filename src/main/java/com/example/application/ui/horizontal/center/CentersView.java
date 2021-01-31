@@ -30,6 +30,8 @@ import com.vaadin.flow.router.Route;
 public class CentersView extends Div {
 
     private PageService pageService;
+    private PageEntity pageEntity;
+
     private H1 pageTitle;
     private H2 firstQuote;
     private H2 secondQuote;
@@ -51,7 +53,7 @@ public class CentersView extends Div {
     }
 
     private void setContent(){
-        PageEntity pageEntity = pageService.findPageById(9);
+        pageEntity = pageService.findPageById(9);
 
         pageTitle = new H1(pageEntity.getTitle());
         firstQuote = new H2(pageEntity.getContent());
