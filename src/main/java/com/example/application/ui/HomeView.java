@@ -4,6 +4,7 @@ import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
+import com.flowingcode.vaadin.addons.rssitems.RssItems;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.router.PageTitle;
@@ -53,6 +54,9 @@ public class HomeView extends Div {
         PageEntity pageEntity = pageService.findPageById(1);
         pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
         this.add(pageTitle);
+
+        RssItems faz = new RssItems("https://www.faz.net/rss/aktuell/", 6, 100, 100, true, "description");
+        add(faz);
     }
 
     @Bean
