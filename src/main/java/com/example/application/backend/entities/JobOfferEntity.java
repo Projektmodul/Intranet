@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @author  Sabrine Gamdou
  * @version 3.0
  * @since   05.01.2020
- * @lastUpdated 31.01.2021 from Litharshiga Sivarasa
+ * @lastUpdated 31.01.2021 from Litharshi ga Sivarasa
  */
 
 @Entity(name="job_offers")
