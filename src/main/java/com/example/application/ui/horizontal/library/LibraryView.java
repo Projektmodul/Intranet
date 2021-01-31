@@ -20,7 +20,7 @@ import com.vaadin.flow.router.Route;
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 31.01.2021 by Vanessa Skowronsky
  */
 @Route(value = "library", layout = MainView.class)
 @PageTitle("Bibliothek")
@@ -46,9 +46,7 @@ public class LibraryView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-
-
-        add(pageTitle, firstQuote, secondQuote, layout);
+        add(breadcrumbs, pageTitle, firstQuote, secondQuote, layout);
     }
 
     private void setContent(){
