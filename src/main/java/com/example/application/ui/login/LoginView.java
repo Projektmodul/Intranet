@@ -1,9 +1,9 @@
 package com.example.application.ui.login;
 
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginForm;
+import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
@@ -24,20 +24,29 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Login | BSAG Intranet")
 @CssImport("./styles/views/main/login.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
-    private LoginForm login = new LoginForm();
+
+    private LoginForm loginForm;
+    private Image logoImage;
 
     public LoginView(){
         setId("login");
+
+        loginForm = new LoginForm();
+
+        loginForm.setI18n(createGermanTitles());
+
         this.getElement().getStyle().set("background-image", "url(images/nordlicht-bremer-rathaus.jpg)");
-        Image logoImage = new Image("images/bsag.png", "Intranetlogo");
+        logoImage = new Image("images/bsag.png", "Intranetlogo");
         logoImage.setId("logoImage");
 
         setSizeFull();
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
-        login.setAction("login");
-        login.setId("loginForm");
-        add(login, logoImage);
+        loginForm.setAction("login");
+        loginForm.setId("loginForm");
+
+
+        add(loginForm, logoImage);
     }
 
     /**
@@ -55,7 +64,16 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
                 .getQueryParameters()
                 .getParameters()
                 .containsKey("error")) {
-            login.setError(true);
+            loginForm.setError(true);
         }
+    }
+
+    private  LoginI18n createGermanTitles(){
+        final LoginI18n loginI18n = LoginI18n.createDefault();
+
+        loginI18n.getForm().setSubmit("Einloggen");
+        loginI18n.getForm().setForgotPassword("Passwort vergessen");
+
+        return loginI18n;
     }
 }
