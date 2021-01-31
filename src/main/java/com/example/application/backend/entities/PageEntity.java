@@ -38,6 +38,9 @@ public class PageEntity {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<DocumentEntity> documents;
 
+    @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<JobOfferEntity> jobOffers;
 
 
     @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
@@ -109,6 +112,14 @@ public class PageEntity {
 
     public void setDocuments(List<DocumentEntity> documents) {
         this.documents = documents;
+    }
+
+    public List<JobOfferEntity> getJobOffers() {
+        return jobOffers;
+    }
+
+    public void setJobOffers(List<JobOfferEntity> jobOffers) {
+        this.jobOffers = jobOffers;
     }
 
 

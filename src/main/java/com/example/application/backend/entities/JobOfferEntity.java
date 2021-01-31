@@ -7,44 +7,55 @@ import javax.persistence.*;
  * This is a basic jobOffer class.
  *
  * @author  Sabrine Gamdou
- * @version 2.0
+ * @version 3.0
  * @since   05.01.2020
- * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 26.01.2021 from Jessica Reistel, Litharshiga Sivarasa
  */
 
 @Entity(name="job_offers")
-public class JobOfferEntity {
+public class JobOfferEntity implements Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="job_offer_id")
     private int jobOfferId;
+
+    @Column(name ="file_name")
+    private String fileName;
+    private String path;
+    private String keyword;
+
+    @Column(name ="title")
     private String title;
-    private String description;
     private String category;
     private String type;
     private String location;
 
-   /* @OneToOne
+    @ManyToOne
+    @JoinColumn(name ="page_id")
+    private PageEntity page;
+
+   /* @ManyToOne
+    @JoinColumn(name ="username")
+    private UserEntity user;*/
+
+    /* @OneToOne
     @JoinColumn(name="document_id")
     private DocumentEntity document;
 
     @ManyToOne
     @JoinColumn(name ="username")
     private UsersEntity user;*/
-   public JobOfferEntity(){
+    public  JobOfferEntity(){
 
-   }
-
-    public JobOfferEntity(int jobOfferId, String title, String description, String category, String type, String location){
-        this.jobOfferId = jobOfferId;
-        this.title = title;
-        this.description = description;
-        this.category = category;
-        this.type = type;
-        this.location = location;
     }
-
+    public JobOfferEntity(String fileName, String path, String keyword,
+                          PageEntity page,String title,String category, String type, String location) {
+        this.fileName = fileName;
+        this.path = path;
+        this.keyword = keyword;
+        this.page = page;
+    }
 
     public int getJobOfferId() {
         return jobOfferId;
@@ -54,20 +65,13 @@ public class JobOfferEntity {
         this.jobOfferId = jobOfferId;
     }
 
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getCategory() {
@@ -93,6 +97,40 @@ public class JobOfferEntity {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public PageEntity getPage() {
+        return page;
+    }
+
+    public void setPage(PageEntity page) {
+        this.page = page;
+    }
+
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
 
    /* public DocumentEntity getDocument() {
         return document;
