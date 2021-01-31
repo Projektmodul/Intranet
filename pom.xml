@@ -196,6 +196,11 @@
         </dependency>
         <dependency>
             <groupId>com.vaadin.componentfactory</groupId>
+            <artifactId>chat</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin.componentfactory</groupId>
             <artifactId>breadcrumb</artifactId>
             <version>2.0.1</version>
         </dependency>
