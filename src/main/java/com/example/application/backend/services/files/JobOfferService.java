@@ -31,6 +31,6 @@ public class JobOfferService {
             return jdbcTemplate.queryForObject(sql,Integer.class);
         } catch (Exception e) {
             return 0;
-         }
+        }
     }
 }
