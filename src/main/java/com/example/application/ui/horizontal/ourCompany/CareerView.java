@@ -39,7 +39,7 @@ import java.util.List;
  *  @author Monika Martius, Jessica Reistel
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 31.01.2021 by Lithasrhiga Sivarasa
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")

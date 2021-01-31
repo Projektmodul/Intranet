@@ -13,7 +13,7 @@ import java.util.List;
  * @author  Sabrine Gamdou
  * @version 3.0
  * @since   05-01-2021
- * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 25.01.2021 from Lithasrhiga Sivarasa, Jessica Reistel, Monika Martius and Laura Neuendorf
  */
 
 @Entity(name = "pages")
