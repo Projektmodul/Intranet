@@ -71,6 +71,9 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     private  LoginI18n createGermanTitles(){
         final LoginI18n loginI18n = LoginI18n.createDefault();
 
+        loginI18n.getForm().setTitle("Login zum Intranet");
+        loginI18n.getForm().setUsername("Benutzername");
+        loginI18n.getForm().setPassword("Passwort");
         loginI18n.getForm().setSubmit("Einloggen");
         loginI18n.getForm().setForgotPassword("Passwort vergessen");
 
