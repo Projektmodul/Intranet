@@ -24,7 +24,7 @@ public class GridJobOffer {
         this.downloadLink = downloadLink;
         this.category = category;
         this.location = location;
-        this.type = type;
+        this.type =  type;
         this.title = title;
     }
 
