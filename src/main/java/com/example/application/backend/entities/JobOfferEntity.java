@@ -97,7 +97,7 @@ public class JobOfferEntity implements Cloneable {
         return keyword;
     }
 
-    public void setKeyword(String keyword) {
+    public void setK eyword(String keyword) {
         this.keyword = keyword;
     }*/
 
