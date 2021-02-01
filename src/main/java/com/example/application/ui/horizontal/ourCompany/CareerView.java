@@ -37,7 +37,6 @@ import java.util.List;
 public class CareerView extends Div {
     private PageService pageService;
     private H1 pageTitle;
-    private Paragraph pageText;
     private PageEntity pageEntity;
     private Component leftComponent;
     private Component rightComponent;
@@ -52,13 +51,11 @@ public class CareerView extends Div {
 
         pageEntity = pageService.findPageById(8);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Paragraph(pageEntity.getContent());
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
 
-        add(breadcrumbs, pageTitle, pageText);
-
+        add(breadcrumbs, pageTitle);
 
         initializeLeftContainer();
         initializeRightContainer();
