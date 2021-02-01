@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * This class manages the images list and the imageManagers.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou
  * @version 3.0
  * @since   21-12-2020
  * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
