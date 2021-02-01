@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * DESCRIPTION
  *
- * @author  Monika Martius and Jessica Reistel
- * @version 1.0
- * @since   01.02.2021
+ * @author  Sabrine Gamdou
+ * @version 2.0 
+ * @since 05.01.2021 
+ * @lastUpdated 01.02.2021 by Monika Martius and Jessica Reistel
  */
 
 public interface RoleRepository extends JpaRepository<RoleEntity, Integer> {
