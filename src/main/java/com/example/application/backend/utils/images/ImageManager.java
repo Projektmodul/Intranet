@@ -48,7 +48,7 @@ public class ImageManager {
     private UserEntity userEntity;
     private int role;
 
-    private final String RESOURCES_DIR = "src/main/resources/META-INF/resources/images/images1611532597562-Nordlicht_AmTag.jpg";
+    private final String RESOURCES_DIR = "~/uploads";
 
     public ImageManager(ImageService imageService, int role){
         this.imageService = imageService;
