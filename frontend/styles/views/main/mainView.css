@@ -1,7 +1,9 @@
 /**
- * Stylesheet for mainView, header, horizontalBar and sideBar
+ Stylesheet for mainView, header, horizontalBar, sideBar and notifications
+ @version 4.0
+ @since 20-12-2020
+ @lastUpdated 01.02.2021 by Vanessa Skowronsky
  */
-
 
 #mainView{
   height: 100%;
@@ -16,7 +18,6 @@
   width: 90%;
   margin: 0;
 }
-
 
 /* Header */
 #header{
@@ -55,7 +56,6 @@
   outline:none;
   cursor: pointer;
 }
-
 
 /* Colors */
 .colorHome {
@@ -149,7 +149,6 @@
 }
 
 /* Sidebar */
-
 #sideBar {
   width: 205px !important;
   height: 631px !important;
@@ -216,6 +215,56 @@
 
 #sideBar vaadin-tab:hover{
   background: #A00505;
+}
+
+/* Notifications*/
+#notificationBtn, #deleteButton{
+  background: #A00505;
+  color: white;
+  position: absolute;
+  font-size: 14px;
+  cursor: pointer;
+}
+#notificationBtn{
+  bottom: 0.07rem;
+  right: 0.75rem;
+  padding: 7px;
+}
+#deleteButton{
+  right: 6rem;
+  bottom: 0.3rem;
+  padding: 9.8px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+}
+
+/* Close and Delete Button get darker when hovered on */
+#notificationBtn:hover, #deleteButton:hover {
+  background: #730606;
+  color: white;
+  transition: 0.5s;
+}
+
+/* Styling the notifications container */
+.notificationsContainer{
+  background: linear-gradient(180deg, #82b7d0 47.4%, rgba(11, 100, 183, 0) 85%);
+  padding: 1rem;
+  margin: 0;
+  display: block;
+}
+
+/*Make selected notification visible*/
+.layout:active, .layout:focus, .layout:hover{
+  background: linear-gradient(180deg, rgb(70, 153, 197) 0%, rgba(11, 100, 183, 0) 90.8%);
+}
+
+/*Hide the id of the notification*/
+.checkbox{
+  color:transparent;
+  padding-top: 0.3rem;
+  right:1.8rem;
+  position: absolute;
 }
 
 
