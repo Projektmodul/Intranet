@@ -41,7 +41,7 @@ import java.util.List;
  *  Career View shows ...
  *
  *  @author Monika Martius, Jessica Reistel
- *  @version 3.0
+ *  @version 4.0
  *  @since 15.12.2020
  *  @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
  */
