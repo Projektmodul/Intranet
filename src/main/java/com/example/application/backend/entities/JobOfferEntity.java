@@ -31,17 +31,14 @@ public class JobOfferEntity implements Cloneable {
     @JoinColumn(name ="page_id")
     private PageEntity page;
 
-   /* @ManyToOne
+    @ManyToOne
     @JoinColumn(name ="username")
-    private UserEntity user;*/
+    private UserEntity user;
 
     @OneToOne
     @JoinColumn(name="document_id")
     private DocumentEntity document;
 
-    /*@ManyToOne
-    @JoinColumn(name ="username")
-    private UsersEntity user;*/
 
     public int getJobOfferId() {
         return jobOfferId;
@@ -109,12 +106,12 @@ public class JobOfferEntity implements Cloneable {
         this.document = document;
     }
 
-    /*public UsersEntity getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
-*/
+
 }
