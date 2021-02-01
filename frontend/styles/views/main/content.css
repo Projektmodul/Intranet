@@ -23,12 +23,10 @@ html {
     line-height: 30px;
     align-items: center;
     font-family: 'Gothic A1', sans-serif;
-    border-radius: 15px;
 }
 
 #contentHolder{
     padding: 0;
-
 }
 
 vcf-breadcrumbs{
@@ -136,16 +134,6 @@ vaadin-button{
 
 /* Colorschemes */
 
-.darkColorscheme {
-    background:hsl(214, 35%, 21%) !important;
-    color:white;
-}
-
-.lightColorscheme{
-    background: white;
-    color: hsl(214, 35%, 21%) !important;
-}
-/*
 .homeColorscheme {
     background: linear-gradient(180deg, rgba(0, 133, 255, 0.5) 0%, rgba(14, 89, 203, 0) 120%);
 }
@@ -200,7 +188,7 @@ vaadin-button{
 
 .centerColorscheme h1 {
     color: #0D5699;
-}*/
+}
 
 .anchorComponent{
     padding-right: 0;
