@@ -3,6 +3,7 @@ package com.example.application.ui.horizontal.library;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
@@ -18,36 +19,30 @@ import com.vaadin.flow.router.Route;
 /**
  *  Archive View shows a short description and a non-functional button
  *
- *  @author Vanessa Skowronsky
- *  @version 2.0
+ *  @author Vanessa Skowronsky and Laura Neuendorf
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 18.01.2021
+ *  @lastUpdated 01.02.2021
  */
 @Route(value = "archive", layout = MainView.class)
 @PageTitle("Archiv")
 public class ArchiveView extends Div {
     private PageService pageService;
-    private H1 pageTitle;
-    private Span pageText;
-    private PageEntity pageEntity;
 
     public ArchiveView(PageService pageService) {
         setId("archive");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
-        pageEntity = pageService.findPageById(15);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Span(pageEntity.getContent());
+        this.pageService = pageService;
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("Archiv"));
 
-        add(breadcrumbs, pageTitle);
         VerticalLayout archiveLayout = new VerticalLayout();
-        archiveLayout.add(pageText);
         archiveLayout.add(new Button("Zum Dokumentenmanagementsystem"));
 
-        add(archiveLayout);
+        InitData initArchive = new InitData(pageService);
+        this.add(breadcrumbs, initArchive.setData(15), archiveLayout);
     }
 }
