@@ -12,6 +12,7 @@ import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -110,6 +111,7 @@ public class NoticeBoardView extends Div {
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getTitle, "Titel").setHeader("Titel");
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getDescription).setHeader("Beschreibung");
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getPrice, "Preis").setHeader("Preis");
+        noticeBoardGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
     }
 
     public void initializeRightContainer(){
@@ -124,7 +126,7 @@ public class NoticeBoardView extends Div {
         toAdd.setText("Hinzufügen");
         toAdd.setId("layoutSetID");
         rightComponent = new VerticalLayout(radioOffer,textTitle,textArea,price,uploadButton,toAdd);
-        rightComponent.setId("rightLayout");
+        rightComponent.getElement().getStyle().set("width", "50%");
     }
 
     public void initializeSplitLayout(){
