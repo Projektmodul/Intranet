@@ -18,7 +18,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  * @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
-@CssImport("./styles/views/main/notification.css")
 public class NotificationsView extends Dialog {
 
 
