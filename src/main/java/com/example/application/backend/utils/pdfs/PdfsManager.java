@@ -100,6 +100,12 @@ public class PdfsManager extends Div {
         pdfsUploader.add(pdfManager.getUploaderContainer());
     }
 
+    public void initializeUploadContainerForJobOffers(){
+        pdfsUploader = new Div();
+        pdfManager.setUploaderEventForJobOffers();
+        pdfsUploader.add(pdfManager.getUploaderContainer());
+    }
+
     public void setOnePdf(boolean isOnePdf) {
         this.isOnePdf = !isOnePdf;
     }
@@ -134,5 +140,12 @@ public class PdfsManager extends Div {
         return pdfManager;
     }
 
+    public int getDocumentOfJobOfferId(){
+        return this.pdfManager.getDocumentOfJobOfferId();
+    }
+
+    public boolean isPdfUploaded() {
+        return pdfManager.isPdfUploaded();
+    }
 }
 
