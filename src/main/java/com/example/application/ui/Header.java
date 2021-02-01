@@ -1,5 +1,6 @@
 package com.example.application.ui;
 
+import com.example.application.backend.services.users.UserService;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Image;
@@ -11,21 +12,23 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  *  Header shows a background gradient, the Intranet logo, a logout icon and holds the horizontal menubar.
  *
  *  @author Monika Martius, Vanessa Skowronsky
- *  @version 3.0
+ *  @version 4.0
  *  @since 12.01.2021
- *  @lastUpdated 19.01.2021
+ *  @lastUpdated 01.02.2021 by Jessica Reistel
  */
 @JsModule(value="@vaadin/vaadin-icons/vaadin-icons.js")
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
 public class Header extends VerticalLayout {
 
+    private UserService userService;
     private HorizontalBar horizontalBar;
 
-    public Header(){
+    public Header(UserService userService){
+        this.userService = userService;
         setId("header");
 
-        horizontalBar = new HorizontalBar();
+        horizontalBar = new HorizontalBar(this.userService);
 
         Image logoImage = new Image("images/bsag.png", "My Project logo");
         logoImage.setId("logoImage");

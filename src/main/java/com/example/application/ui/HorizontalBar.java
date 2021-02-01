@@ -1,5 +1,8 @@
 package com.example.application.ui;
 
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.auxiliary.HorizontalBarClickedInitiator;
 import com.vaadin.componentfactory.Chat;
 import com.vaadin.componentfactory.model.Message;
@@ -24,17 +27,23 @@ import java.util.ArrayList;
  * A mockup chat functionality is shown.
  *
  * @author Monika Martius, Vanessa Skowronsky
- * @version 6.0
+ * @version 7.0
  * @since 17.12.2020
- * @lastUpdated 01.02.2021 by Vanessa Skowronsky
+ * @lastUpdated 01.02.2021 by Jessica Reistel
  */
 public class HorizontalBar extends MenuBar {
 
     private HorizontalBarClickedInitiator initiator;
     private Anchor anchorSubMenuLink;
     private ArrayList<Message> messageList;
+    private GetUserController getUserController;
+    private UserService userService;
+    private UserEntity userEntity;
 
-    public HorizontalBar() {
+    public HorizontalBar(UserService userService) {
+        this.userService = userService;
+        getUserController = new GetUserController();
+
         setId("horizontalBar");
         setOpenOnHover(true);
 
@@ -52,6 +61,9 @@ public class HorizontalBar extends MenuBar {
         initLibraryMenu();
         initServicesMenu();
         initCommunityMenu();
+
+        String username = getUserController.getUsername();
+        userEntity = this.userService.findByUsername(username);
 
         Icon chat = new Icon(VaadinIcon.CHAT);
         chat.setSize("35px");
@@ -241,7 +253,7 @@ public class HorizontalBar extends MenuBar {
         chatComponent.scrollToBottom();
 
         chatComponent.addChatNewMessageListener(event -> {
-            event.getSource().addNewMessage(new Message(event.getMessage(), "", "Ria Meier", true));
+            event.getSource().addNewMessage(new Message(event.getMessage(), "", userEntity.getFirstName() + " " + userEntity.getSurname(), true));
             event.getSource().clearInput();
             event.getSource().scrollToBottom();
         });
@@ -256,7 +268,7 @@ public class HorizontalBar extends MenuBar {
     private ArrayList<Message> loadMessages() {
         messageList = new ArrayList<>();
         Message messageOne = new Message("Guten Morgen!", "", "Peter Lustig", false);
-        Message messageTwo = new Message("Moin!", "", "Ria Meier", true);
+        Message messageTwo = new Message("Moin!", "", userEntity.getFirstName() + " " + userEntity.getSurname(), true);
         Message messageThree = new Message("Der neue Speiseplan ist da :-)", "", "Peter Lustig", false);
 
         messageList.add(messageOne);
