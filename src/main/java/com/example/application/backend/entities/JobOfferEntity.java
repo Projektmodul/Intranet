@@ -20,10 +20,6 @@ public class JobOfferEntity implements Cloneable {
     @Column(name ="job_offer_id")
     private int jobOfferId;
 
-    @Column(name ="file_name")
-    private String fileName;
-    private String path;
-    private String keyword;
 
     @Column(name ="title")
     private String title;
@@ -39,23 +35,13 @@ public class JobOfferEntity implements Cloneable {
     @JoinColumn(name ="username")
     private UserEntity user;*/
 
-    /* @OneToOne
+    @OneToOne
     @JoinColumn(name="document_id")
     private DocumentEntity document;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name ="username")
     private UsersEntity user;*/
-    public  JobOfferEntity(){
-
-    }
-    public JobOfferEntity(String fileName, String path, String keyword,
-                          PageEntity page,String title,String category, String type, String location) {
-        this.fileName = fileName;
-        this.path = path;
-        this.keyword = keyword;
-        this.page = page;
-    }
 
     public int getJobOfferId() {
         return jobOfferId;
@@ -98,22 +84,6 @@ public class JobOfferEntity implements Cloneable {
         this.location = location;
     }
 
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public PageEntity getPage() {
         return page;
     }
@@ -123,16 +93,15 @@ public class JobOfferEntity implements Cloneable {
     }
 
 
-    public String getKeyword() {
+   /* public String getKeyword() {
         return keyword;
     }
 
     public void setKeyword(String keyword) {
         this.keyword = keyword;
-    }
+    }*/
 
-
-   /* public DocumentEntity getDocument() {
+    public DocumentEntity getDocument() {
         return document;
     }
 
@@ -140,7 +109,7 @@ public class JobOfferEntity implements Cloneable {
         this.document = document;
     }
 
-    public UsersEntity getUser() {
+    /*public UsersEntity getUser() {
         return user;
     }
 
