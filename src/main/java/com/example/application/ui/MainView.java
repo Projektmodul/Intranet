@@ -86,6 +86,15 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         String color = contentSplit(text);
         setBackgroundColor(color);
 
+        if(UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
+            contentHolder.getElement().getChild(0).getClassList().remove("lightColorscheme");
+            contentHolder.getElement().getChild(0).getClassList().add("darkColorscheme");
+        } else {
+            contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
+            contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
+
+        }
+
     }
 
     public String contentSplit(String contentText){
