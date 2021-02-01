@@ -16,7 +16,6 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
 
 import java.util.ArrayList;
 
@@ -201,12 +200,12 @@ public class HorizontalBar extends MenuBar {
      */
     private VerticalLayout createSubMenu(Icon icon, String backgroundColor, String spanText, String route) {
         icon.setClassName("horizontalBarIcons");
-        Tab tab = new Tab(icon);
 
         Span span = new Span(spanText);
         span.setClassName("spanStyle");
 
-        VerticalLayout layout = new VerticalLayout(span, tab);
+        VerticalLayout layout = new VerticalLayout(span, icon);
+
         layout.addClickListener(e -> {
             initiator.horizontalBarClicked();
             layout.getUI().ifPresent(ui -> ui.navigate(route));
