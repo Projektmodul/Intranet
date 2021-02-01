@@ -3,10 +3,17 @@ package com.example.application.backend.services.files;
 import com.example.application.backend.entities.JobOfferEntity;
 import com.example.application.backend.repositories.JobOfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 
+/**
+ * A service class for the JobOfferEntities
+ *
+ * @author  Litharshiga Sivarasa
+ * @version 2.0
+ * @since 31.01.2021
+ * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
+ */
 @Service
 public class JobOfferService {
 
@@ -23,14 +30,8 @@ public class JobOfferService {
         return getJobOfferRepository().findByJobOfferId(jobOfferId);
     }
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    public int findMaxId() {
-        String sql = "SELECT max(job_offer_id) from job_offers";
-        try {
-            return jdbcTemplate.queryForObject(sql,Integer.class);
-        } catch (Exception e) {
-            return 0;
-        }
+    public void save(JobOfferEntity jobOfferEntity){
+        getJobOfferRepository().saveAndFlush(jobOfferEntity);
     }
+
 }
