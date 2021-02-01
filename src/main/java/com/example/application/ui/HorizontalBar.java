@@ -92,7 +92,7 @@ public class HorizontalBar extends MenuBar {
     }
 
     private void initCentersMenu() {
-        VerticalLayout layoutCenterI = createSubMenu(new Icon(VaadinIcon.CLUSTER), "#0A5396", "Center I", "centerI");
+        VerticalLayout layoutCenterI = createSubMenu(new Icon(VaadinIcon.CLUSTER), "#1481de", "Center I", "centerI");
 
         ArrayList<VerticalLayout> subMenuListCenter = new ArrayList<>();
         subMenuListCenter.add(layoutCenterI);

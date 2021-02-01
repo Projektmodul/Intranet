@@ -65,7 +65,7 @@ public class CentersView extends Div {
         layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
-        Component componentCenterI = OverviewComponents.createComponent(new Icon(VaadinIcon.CLUSTER), "#0A5396", "Center I", "centerI");
+        Component componentCenterI = OverviewComponents.createComponent(new Icon(VaadinIcon.CLUSTER), "#1481de", "Center I", "centerI");
 
         layout.add(componentCenterI);
 

@@ -5,6 +5,7 @@ import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
 import com.example.application.ui.vertical.notifications.NotificationCounterChangedListener;
 import com.vaadin.flow.component.HasElement;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -12,6 +13,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
  *  MainView shows ...
