@@ -4,6 +4,7 @@ import com.example.application.backend.entities.DocumentEntity;
 import com.example.application.backend.entities.JobOfferEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.DocumentService;
 import com.example.application.backend.services.files.JobOfferService;
 import com.example.application.backend.services.notifications.NotificationService;
@@ -15,31 +16,34 @@ import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.upload.Upload;
-import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *  Career View shows ...
  *
  *  @author Monika Martius, Jessica Reistel
- *  @version 2.0
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 31.01.2021 by Litharshiga Sivarasa
+ *  @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
@@ -136,43 +140,14 @@ public class CareerView extends Div {
     }
 
     public void initializeRightContainer(){
-        initializeUploadButton();
-        TextField description = new TextField();
-        description.setLabel("Bezeichnung");
-        TextField category = new TextField();
-        category.setLabel("Kategorie");
-        TextField type= new TextField();
-        type.setLabel("Stellenart");
-        TextField location = new TextField();
-        location.setLabel("Arbeitsort");
-        toAdd = new Button();
-        toAdd.setText("Hinzufügen");
-        toAdd.setId("addButton");
-        Div messageContainer = new Div();
-        messageContainer.setText("Bitte geben Sie die Eingaben ein, bevor Sie ein neues Dokument hinzufügen.");
+        initializeCategory();
+        initializeType();
+        initializeDescription();
+        initializeLocation();
 
-        toDelete = new Button("Eingabe Löschen", event -> {
-            description.clear();
-            category.clear();
-            type.clear();
-            location.clear();
-        });
-        description.addValueChangeListener(event -> {
-            if (event.getValue() == null){
-                messageContainer.setText("Sie haben nicht das Bezeichnung eingegeben.");
-            }else{
-                messageContainer.setText("Bezeichnung: " + event.getValue());
-                keyword = event.getValue();
-                pdfsManager.getPdfManager().setKeyword(keyword);
-                System.out.println("Keyword: " + event.getValue());
-            }
-        });
-        Div addClearDiv = new Div();
-        addClearDiv.add(toAdd,toDelete);
-        addClearDiv.setId("addClearDiv");
+        initializeAddAndClearButtons();
 
-
-        rightComponent = new VerticalLayout(uploadButton,description,category,type,location,messageContainer, addClearDiv);
+        rightComponent = new VerticalLayout(errorContainer, pdfsUploader,description,categoryDropBox,typeDropBox,location, addClearDiv);
         rightComponent.setId("rightComponent");
     }
 
