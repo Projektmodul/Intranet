@@ -5,6 +5,7 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
@@ -42,7 +43,16 @@ public class FAQView extends Div {
         this.pageService = pageService;
         this.linkService = linkService;
 
-        setData();
+        LinkEntity linkEntity = linkService.findById(4);
+        Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
+
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("FAQ"));
+
+        InitData initAboutUs = new InitData(pageService);
+        this.add(breadcrumbs, initAboutUs.setData(17), mailLink);
+
+        //setData();
 
     }
 
@@ -50,7 +60,7 @@ public class FAQView extends Div {
      * This method fetches the data from the database
      * and displays it on the corresponding page
      */
-    public void setData(){
+    /*public void setData(){
         pageEntity = pageService.findPageById(17);
         pageTitle = new H1(pageEntity.getTitle());
 
@@ -65,5 +75,5 @@ public class FAQView extends Div {
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
 
         this.add(breadcrumbs, pageTitle, pageContent, mailLink);
-    }
+    }*/
 }

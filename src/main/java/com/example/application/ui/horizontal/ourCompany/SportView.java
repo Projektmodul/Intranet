@@ -7,6 +7,8 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.auxiliary.InitData;
+import com.vaadin.componentfactory.Breadcrumb;
+import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
@@ -72,8 +74,11 @@ public class SportView extends Div {
         updateTimeTwo = new TextField();
         updateActivityTwo = new TextField();
 
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb("Sport und Freizeit"));
+
         InitData initAboutUs = new InitData(pageService);
-        this.add(initAboutUs.setData(7));
+        this.add(breadcrumbs, initAboutUs.setData(7));
 
         showActivities();
 

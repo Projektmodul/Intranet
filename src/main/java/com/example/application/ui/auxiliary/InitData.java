@@ -58,10 +58,10 @@ public class InitData {
         pageContent = new Paragraph();
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
-        Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
+        //Breadcrumbs breadcrumbs = new Breadcrumbs();
+        //breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
 
-        dataSet.add(breadcrumbs, pageTitle, pageContent);
+        dataSet.add(pageTitle, pageContent);
         return dataSet;
     }
 }
