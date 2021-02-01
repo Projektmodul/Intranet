@@ -41,6 +41,7 @@ public class SettingsView extends Div {
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H3(pageEntity.getContent());
 
+
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
@@ -51,7 +52,10 @@ public class SettingsView extends Div {
             toggleButton = new ToggleButton(false);
         }
 
-        toggleButton.addClickListener(event -> toggleDarkMode());
+        toggleButton.addClickListener(event -> {
+            toggleDarkMode();
+            getUI().ifPresent(ui -> ui.navigate("settings"));
+        });
 
         light = new Span("hell");
         dark = new Span("dunkel");
@@ -71,9 +75,13 @@ public class SettingsView extends Div {
 
         if (themeList.contains(Lumo.DARK)) {
             themeList.remove(Lumo.DARK);
+            getStyle().set("background-color", "white");
+            getStyle().set("color", "hsl(214, 35%, 21%)");
         } else {
             themeList.add(Lumo.DARK);
+            getStyle().set("background-color", "hsl(214, 35%, 21%)");
+            getStyle().set("color", "white");
         }
-        getUI().ifPresent(UI::push);
+
     }
 }
