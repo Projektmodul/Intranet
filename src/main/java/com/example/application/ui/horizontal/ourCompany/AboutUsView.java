@@ -25,7 +25,7 @@ import de.nils_bauer.PureTimelineItem;
 /**	/**
  *  AboutUs View shows ...
  *	 *
- *  @author Laura Neuendorf, Jessica Reistel, Anastasiya Jackwerth, Sabrine Gamdou,Monika Martius
+ *  @author Laura Neuendorf, Jessica Reistel
  *  @version 7.0
  *  @since 15.12.2020
  *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
