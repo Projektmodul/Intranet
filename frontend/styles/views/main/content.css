@@ -120,8 +120,8 @@ vaadin-button{
 }
 
 #dataSetLayout{
-    box-sizing: border-box;
-    display: contents;
+   padding-left: 0;
+
 }
 
 /* Colorschemes */
@@ -174,12 +174,9 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* horizontal/center/CenterIView */
-#centerI vaadin-horizontal-layout{
-    margin-left: 15px;
-}
+
 #centerI #organizationChart{
     height: 800px;
-    margin-left: 160px;
     margin-top: 40px;
 }
 /* -------------------------------------------------------------- */
@@ -269,21 +266,15 @@ vaadin-button{
 
 #career .quoteCareer{
     display: flex;
-    margin-left: 30px;
     margin-bottom: 5px;
     font-family: 'Gothic A1', sans-serif;
     align-items: normal;
     text-align: center;
 }
 
-#career .iconDiv{
-    margin-left: 30px;
-}
-
 #career .latestOffer{
     display: flex;
-    font-size:20px;
-    margin-left: 30px;
+    font-size: 20px;
     margin-top: 60px;
     font-family: 'Gothic A1', sans-serif;
     align-items: normal;
@@ -291,7 +282,7 @@ vaadin-button{
 }
 
 #career #tableCareer{
-    margin-left: 30px;
+
     display: grid;
     width: 600px;
     height: 230px;
@@ -299,7 +290,6 @@ vaadin-button{
 
 #career .pageContent{
     display: flex;
-    margin-left: 30px;
     margin-bottom: 5px;
     font-family: 'Gothic A1', sans-serif;
     align-items: normal;
@@ -312,10 +302,6 @@ vaadin-button{
     display: flex;
 }
 
-#career #addClearDiv{
-    margin-left: 200px;
-    display: flex;
-}
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
@@ -475,7 +461,6 @@ vaadin-button{
 
 /* ui/HomeView */
 #home rss-items{
-    margin-left: 15px;
     margin-right: 15px;
 }
 /* -------------------------------------------------------------- */
