@@ -8,10 +8,5 @@
     height: auto;
     position: fixed;
     bottom: 25px;
-    right: 0px;
-
-}
-
-#login #loginForm{
-    margin-top: 150px;
+    right: 0;
 }

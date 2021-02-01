@@ -32,7 +32,7 @@ import java.util.List;
 
 /**
  *  @author Monika Martius, Jessica Reistel
- *  @version 4.0
+ *  @version 5.0
  *  @since 19.01.2021
  *  @lastUpdated 01.02.2021 by Jessica Reistel
  */
@@ -45,7 +45,7 @@ public class NoticeBoardView extends Div {
     private UserService userService;
     private UserEntity userEntity;
     private H1 pageTitle;
-    private Span pageText;
+    private Paragraph pageText;
     private PageEntity pageEntity;
     private Upload uploadButton;
     private HorizontalLayout layoutSplit;
@@ -75,7 +75,7 @@ public class NoticeBoardView extends Div {
             }
         }
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Span(pageEntity.getContent());
+        pageText = new Paragraph(pageEntity.getContent());
 
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
@@ -99,7 +99,8 @@ public class NoticeBoardView extends Div {
         editIcon.setId("editIcon");
         boxIcon.add(editIcon,deleteIcon);
 
-        leftComponent = new VerticalLayout(box, pageText,boxIcon,noticeBoardGrid);
+        this.add(box, pageText);
+        leftComponent = new VerticalLayout(boxIcon,noticeBoardGrid);
         leftComponent.setId("leftLayout");
     }
 
