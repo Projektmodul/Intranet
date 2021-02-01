@@ -58,7 +58,7 @@ public class GridJobOffer {
                 } catch (Exception e) {
                     return new ByteArrayInputStream(new byte[]{});
                 }
-            }), filename);
+            }),  filename);
         }
 
         public static List<GridJobOffer> convertJobOfferEntities(List<JobOfferEntity> jobOfferEntities) {
