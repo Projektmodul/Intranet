@@ -191,4 +191,7 @@ public class PdfManager {
         this.inputStream = inputStream;
     }
 
+    public boolean isPdfUploaded() {
+        return isPdfUploaded;
+    }
 }
