@@ -7,43 +7,37 @@ import javax.persistence.*;
  * This is a basic jobOffer class.
  *
  * @author  Sabrine Gamdou
- * @version 2.0
+ * @version 4.0
  * @since   05.01.2020
- * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
  */
 
 @Entity(name="job_offers")
-public class JobOfferEntity {
+public class JobOfferEntity implements Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="job_offer_id")
     private int jobOfferId;
+
+
+    @Column(name ="title")
     private String title;
-    private String description;
     private String category;
     private String type;
     private String location;
 
-   /* @OneToOne
-    @JoinColumn(name="document_id")
-    private DocumentEntity document;
+    @ManyToOne
+    @JoinColumn(name ="page_id")
+    private PageEntity page;
 
     @ManyToOne
     @JoinColumn(name ="username")
-    private UsersEntity user;*/
-   public JobOfferEntity(){
+    private UserEntity user;
 
-   }
-
-    public JobOfferEntity(int jobOfferId, String title, String description, String category, String type, String location){
-        this.jobOfferId = jobOfferId;
-        this.title = title;
-        this.description = description;
-        this.category = category;
-        this.type = type;
-        this.location = location;
-    }
+    @OneToOne
+    @JoinColumn(name="document_id")
+    private DocumentEntity document;
 
 
     public int getJobOfferId() {
@@ -54,20 +48,13 @@ public class JobOfferEntity {
         this.jobOfferId = jobOfferId;
     }
 
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getCategory() {
@@ -94,7 +81,24 @@ public class JobOfferEntity {
         this.location = location;
     }
 
-   /* public DocumentEntity getDocument() {
+    public PageEntity getPage() {
+        return page;
+    }
+
+    public void setPage(PageEntity page) {
+        this.page = page;
+    }
+
+
+   /* public String getKeyword() {
+        return keyword;
+    }
+
+    public void setK eyword(String keyword) {
+        this.keyword = keyword;
+    }*/
+
+    public DocumentEntity getDocument() {
         return document;
     }
 
@@ -102,12 +106,12 @@ public class JobOfferEntity {
         this.document = document;
     }
 
-    public UsersEntity getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
-*/
+
 }

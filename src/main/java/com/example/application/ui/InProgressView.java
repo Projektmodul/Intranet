@@ -10,12 +10,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  InProgress View shows ...
+ *  InProgress View is used for sides that have no functionality. It is a fallback class with an informative text.
  *
  *  @author Vanessa Skowronsky
  *  @version 1.0
  *  @since 04.01.2021
- *  @lastUpdated 17.01.2021
+ *  @lastUpdated 01.02.2021 by Vanessa Skowronsky
  */
 @Route(value = "inProgress", layout = MainView.class)
 @PageTitle("Im Aufbau")

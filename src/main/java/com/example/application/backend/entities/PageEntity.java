@@ -13,7 +13,7 @@ import java.util.List;
  * @author  Sabrine Gamdou
  * @version 3.0
  * @since   05-01-2021
- * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 25.01.2021 from Litharshiga Sivarasa, Jessica Reistel, Monika Martius and Laura Neuendorf
  */
 
 @Entity(name = "pages")
@@ -38,6 +38,9 @@ public class PageEntity {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<DocumentEntity> documents;
 
+    @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<JobOfferEntity> jobOffers;
 
 
     @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
@@ -109,6 +112,14 @@ public class PageEntity {
 
     public void setDocuments(List<DocumentEntity> documents) {
         this.documents = documents;
+    }
+
+    public List<JobOfferEntity> getJobOffers() {
+        return jobOffers;
+    }
+
+    public void setJobOffers(List<JobOfferEntity> jobOffers) {
+        this.jobOffers = jobOffers;
     }
 
 

@@ -1,9 +1,6 @@
 package com.example.application.ui.vertical.notifications;
 
-
 import com.vaadin.flow.component.button.Button;
-
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.NativeButton;
@@ -18,16 +15,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  * @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
 
-@CssImport("./styles/views/main/notification.css")
 public class NotificationsView extends Dialog {
-
-
     private H4 notificationText ;
     private VerticalLayout allNotificationsContainer;
     private NativeButton deleteButton;
 
     private int notificationsCounter;
-
 
     public NotificationsView() {
         setId("notifications");
