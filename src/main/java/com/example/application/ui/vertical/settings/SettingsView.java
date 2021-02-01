@@ -6,7 +6,6 @@ import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.componentfactory.ToggleButton;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -30,7 +29,7 @@ public class SettingsView extends Div {
     private H1 pageTitle;
     private H3 pageText;
     private PageEntity pageEntity;
-    private Span hell;
+    private Span light;
     private Span dark;
 
     public SettingsView(PageService pageService) {
@@ -45,14 +44,20 @@ public class SettingsView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        ToggleButton toggleButton = new ToggleButton();
+        ToggleButton toggleButton;
+        if (UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
+            toggleButton = new ToggleButton(true);
+        } else {
+            toggleButton = new ToggleButton(false);
+        }
+
         toggleButton.addClickListener(event -> toggleDarkMode());
 
-        hell = new Span("hell");
+        light = new Span("hell");
         dark = new Span("dunkel");
 
         HorizontalLayout toogleLayout = new HorizontalLayout();
-        toogleLayout.add(hell,toggleButton,dark);
+        toogleLayout.add(light,toggleButton,dark);
 
         Div container = new Div();
         container.add(toogleLayout);
@@ -69,5 +74,6 @@ public class SettingsView extends Div {
         } else {
             themeList.add(Lumo.DARK);
         }
+        getUI().ifPresent(UI::push);
     }
 }
