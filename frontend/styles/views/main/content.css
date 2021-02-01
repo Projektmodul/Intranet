@@ -245,7 +245,13 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* horizontal/community/NoticeView */
+#noticeBoard p, #noticeBoard vaadin-radio-group{
+    margin: 0;
+}
 
+#noticeBoard #rightComponent{
+    padding-top: 10px;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/library/ArchiveView */
