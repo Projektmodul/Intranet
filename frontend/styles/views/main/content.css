@@ -125,7 +125,7 @@ vaadin-button{
     font-weight: 600;
     color: #A00505;
     font-size: 17px;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 #dataSetLayout{
@@ -547,7 +547,7 @@ vaadin-button{
 /* vertical/phoneBook/PhoneBookView */
 #phoneBook vaadin-vertical-layout {
     padding: 0;
-    margin-top: 40px;
+    margin: 0;
 }
 /* -------------------------------------------------------------- */
 
