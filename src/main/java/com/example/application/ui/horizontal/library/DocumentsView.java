@@ -26,10 +26,10 @@ import com.vaadin.flow.router.Route;
 /**
  * Documents View shows a grid-view for all documents.
  *
- * @author  Sabrine Gamdou, Anastasiya Jackwerth
+ * @author  Sabrine Gamdou, Anastasiya Jackwerth, Vanessa Skowronsky
  * @version 5.0
  * @since   12.01.2021
- * @lastUpdated 30.01.2021 by Vanessa Skowronsky,  Jessica Reistel
+ * @lastUpdated 01.02.2021 by Jessica Reistel
  */
 
 @Route(value = "documents", layout = MainView.class)
@@ -144,7 +144,7 @@ public class DocumentsView extends Div {
                 pageEntity.getDocuments()
         ));
 
-        documentsGrid.addColumn(GridDocument::getKeyword, "keyword").setHeader("Abteilung");
+        documentsGrid.addColumn(GridDocument::getKeyword, "keyword").setHeader("Abteilung").setFooter("Gesamt: "+ pageEntity.getDocuments().size() + " Dokumente");
         documentsGrid.addColumn(new ComponentRenderer<>(GridDocument::getDownloadLink)).setHeader("Dateiname");
         documentsGrid.setId("gridFullPage");
 
