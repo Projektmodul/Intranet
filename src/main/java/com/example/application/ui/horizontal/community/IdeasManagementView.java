@@ -26,10 +26,10 @@ import java.util.List;
 /**
  *  IdeaManagement View shows all ideas from the database
  *
- *  @author Litharshiga Sivarasa, Jessica Reistel
- *  @version 2.0
+ *  @author Litharshiga Sivarasa, Jessica Reistel, Vanessa Skowronsky
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 30.01.2021 by Vanessa Skowronsky
+ *  @lastUpdated 01.02.2021 by Jessica Reistel
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
@@ -77,7 +77,7 @@ public class IdeasManagementView extends Div {
         Grid<IdeaEntity> grid = new Grid<>();
         grid.setItems(ideaList);
         grid.setSelectionMode(Grid.SelectionMode.NONE);
-        grid.addColumn(IdeaEntity::getTitle, "Titel").setHeader("Titel");
+        grid.addColumn(IdeaEntity::getTitle, "Titel").setHeader("Titel").setFooter("Gesamt: "+ ideaList.size() + " Ideen");
         grid.addColumn(IdeaEntity::getDescription, "Idee").setHeader("Idee");
         grid.addColumn(IdeaEntity::getRating, "Status").setHeader("Status");
         grid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
