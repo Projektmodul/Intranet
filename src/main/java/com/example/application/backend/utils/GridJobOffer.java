@@ -23,12 +23,10 @@ public class GridJobOffer {
     private String location;
     private String type;
     private String category;
-    private DocumentEntity documentEntity;
-    private GridDocument gridDocument;
+    private Anchor downloadLink;
 
-    public GridJobOffer(GridDocument gridDocument, DocumentEntity documentEntity, String title, String location, String type, String category) {
-        this.gridDocument = gridDocument;
-        this.documentEntity = documentEntity;
+    public GridJobOffer(Anchor downloadLink, String title, String location, String type, String category) {
+        this.downloadLink = downloadLink;
         this.category = category;
         this.location = location;
         this.type = type;
@@ -49,8 +47,8 @@ public class GridJobOffer {
     }
 
     public Anchor getDownloadLink() {
-        gridDocument.getDownloadLink().setTarget("_blank");
-        return gridDocument.getDownloadLink();
+        downloadLink.setTarget("_blank");
+        return downloadLink;
     }
 
     /**
@@ -79,10 +77,10 @@ public class GridJobOffer {
         public static List<GridJobOffer> convertJobOfferEntities(List<JobOfferEntity> jobOfferEntities) {
             List<GridJobOffer> gridJobOffers = new ArrayList<>();
             for (JobOfferEntity jobOfferEntity : jobOfferEntities) {
-                GridJobOffer gridJobOffer = new GridJobOffer(documentEntity.getFileName(),jobOfferEntity.getKeyword(),
-                        createDownloadLink(jobOfferEntity.getPath(),jobOfferEntity.getFileName()),
-                        jobOfferEntity.getCategory(),jobOfferEntity.getLocation(),
-                                jobOfferEntity.getType(),jobOfferEntity.getTitle());
+                GridJobOffer gridJobOffer = new GridJobOffer(
+                        createDownloadLink(jobOfferEntity.getDocument().getPath(), jobOfferEntity.getDocument().getFileName()),
+                        jobOfferEntity.getTitle(), jobOfferEntity.getLocation(), jobOfferEntity.getType(),
+                        jobOfferEntity.getCategory());
                 gridJobOffers.add(gridJobOffer);
             }
             return gridJobOffers;
