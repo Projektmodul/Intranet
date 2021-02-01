@@ -125,6 +125,7 @@
   padding-right: 0;
   margin-top: 0;
   margin-left: 0;
+  padding-bottom: 0;
 }
 
 .horizontalBarIcons{
@@ -146,6 +147,7 @@
   width: 140px !important;
   height: 140px;
   align-items: center;
+  cursor: pointer;
 }
 
 /* Sidebar */
