@@ -16,7 +16,7 @@ import java.io.InputStream;
  * This class represents an image component, it receives an imageEntity and
  * the files input stream.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou
  * @version 3.0
  * @since   21.12.2020
  * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
