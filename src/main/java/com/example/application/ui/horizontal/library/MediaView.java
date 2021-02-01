@@ -6,9 +6,7 @@ import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
@@ -21,9 +19,9 @@ import java.util.Map;
  *  Media View shows ...
  *
  *  @author Monika Martius and Laura Neuendorf
- *  @version 3.0
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Laura Neuendorf
+ *  @lastUpdated 01.02.2021 by Laura Neuendorf
  */
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")
@@ -41,11 +39,11 @@ public class MediaView extends Div {
 
         this.pageService = pageService;
 
-        setData();
+        setContent();
         setTabs();
     }
 
-    public void setData(){
+    public void setContent(){
         pageEntity = pageService.findPageById(16);
         pageTitle = new H1(pageEntity.getTitle());
 
