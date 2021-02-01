@@ -273,8 +273,6 @@ public class MyProfileView extends Div {
             contentDialog.close();
         });
         Button cancelButton = new Button("Abbrechen", e -> contentDialog.close());
-        saveButton.addClassName("myProfileButton");
-        cancelButton.addClassName("myProfileButton");
         saveCancel.add(saveButton, cancelButton);
 
         HorizontalLayout update = new HorizontalLayout();
