@@ -1,14 +1,12 @@
 package com.example.application.ui.horizontal.ourCompany;
 
-import com.example.application.backend.entities.PageEntity;
+
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
-import com.vaadin.componentfactory.Breadcrumb;
-import com.vaadin.componentfactory.Breadcrumbs;
-import com.vaadin.flow.component.Text;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
@@ -19,32 +17,27 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.html.Paragraph;
+
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import java.awt.*;
-
 /**
- *  FAQ View shows ...
+ *  Sport View shows ...
  *
  *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
- *  @version 3.0
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 01.02.2021 by Laura Neuendorf
  */
 @Route(value = "sport", layout = MainView.class)
 @PageTitle("Sport&Freizeit")
 public class SportView extends Div {
     private PageService pageService;
-    private H1 pageTitle;
-    private PageEntity pageEntity;
     private UserService userService;
     private UserEntity userEntity;
     private GetUserController getUserController;
 
     private String username;
-    private Paragraph pageContent;
 
     private TextField updateWeekday;
     private TextField updateTime;
@@ -79,27 +72,13 @@ public class SportView extends Div {
         updateTimeTwo = new TextField();
         updateActivityTwo = new TextField();
 
-        setData();
+        InitData initAboutUs = new InitData(pageService);
+        this.add(initAboutUs.setData(7));
+
         showActivities();
 
         username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
-    }
-
-    private void setData(){
-        pageEntity = pageService.findPageById(7);
-
-        pageTitle = new H1(pageEntity.getTitle());
-
-        pageContent = new Paragraph();
-        pageContent.setId("pageContentSportView");
-        pageContent.setText(pageEntity.getContent());
-        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
-        Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
-
-        add(breadcrumbs, pageTitle, pageContent);
     }
 
     private VerticalLayout showActivities(){
