@@ -1,17 +1,23 @@
 package com.example.application.backend.utils;
 
-import com.example.application.backend.entities.DocumentEntity;
 import com.example.application.backend.entities.JobOfferEntity;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.server.StreamResource;
-import sun.jvm.hotspot.debugger.DebuggerUtilities;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * GridJobOffer class is a POJO (plain old java object) that has title, location, type, category and an
+ * anchor downloadLink as attributes.
+ *
+ * @author Sabrine Gamdou, Anastasiya Jackwerth, Litharshiga Sivarasa
+ * @version 2.0
+ * @since 01.02.2021
+ * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
+ */
 public class GridJobOffer {
     private  String title;
     private String location;
@@ -47,6 +53,15 @@ public class GridJobOffer {
         return gridDocument.getDownloadLink();
     }
 
+    /**
+     * JobOfferEntitiesConverter is an embedded static helper class with a static method to convert a jobOfferList to a
+     * gridJobOfferList and a static method to create an anchor link fromm a location.
+     *
+     * @author Sabrine Gamdou, Anastasiya Jackwerth, Litharshiga Sivarasa
+     * @version 2.0
+     * @since 24.01.2021
+     * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
+     */
     public static class JobOfferEntitiesConverter {
         public static Anchor createDownloadLink(String path, String filename) {
 
