@@ -23,16 +23,17 @@ html {
     line-height: 30px;
     align-items: center;
     font-family: 'Gothic A1', sans-serif;
-    border-radius: 15px;
+    border-radius: 16px;
+    padding-left: 16px;
+    padding-top: 16px;
 }
 
 #contentHolder{
     padding: 0;
-
+    margin-right: 16px;
 }
 
 #contentHolder h1 {
-    margin-left: 15px;
     margin-top: 35px;
     font-family: 'Gothic A1', sans-serif;
     font-style: normal;
@@ -126,13 +127,13 @@ vaadin-button{
 /* Colorschemes */
 
 .darkColorscheme {
-    background:hsl(214, 35%, 21%) !important;
+    background:hsl(214, 35%, 21%);
     color:white;
 }
 
 .lightColorscheme{
     background: white;
-    color: hsl(214, 35%, 21%) !important;
+    color: hsl(214, 35%, 21%);
 }
 
 
@@ -361,8 +362,6 @@ vaadin-button{
 /* horizontal/projects/ProjectsView */
 #projects #scroll{
     max-width: 1000px;
-    width: 100%;
-    margin-left: 120px;
     overflow-x: auto;
 }
 /* -------------------------------------------------------------- */
