@@ -99,8 +99,8 @@ public class NoticeBoardView extends Div {
         editIcon.setId("editIcon");
         boxIcon.add(editIcon,deleteIcon);
 
-        this.add(box, pageText);
-        leftComponent = new VerticalLayout(boxIcon,noticeBoardGrid);
+        this.add(box);
+        leftComponent = new VerticalLayout(pageText,boxIcon,noticeBoardGrid);
         leftComponent.setId("leftLayout");
     }
 
@@ -128,6 +128,7 @@ public class NoticeBoardView extends Div {
         toAdd.setId("layoutSetID");
         rightComponent = new VerticalLayout(radioOffer,textTitle,textArea,price,uploadButton,toAdd);
         rightComponent.getElement().getStyle().set("width", "50%");
+        rightComponent.setId("rightComponent");
     }
 
     public void initializeSplitLayout(){
