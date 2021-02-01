@@ -96,6 +96,7 @@ vaadin-upload{
 
 #career vaadin-upload, #noticeBoard vaadin-upload{
     margin: 0;
+    margin-top: 15px;
 }
 
 vaadin-upload button{
