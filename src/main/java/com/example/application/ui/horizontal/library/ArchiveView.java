@@ -16,7 +16,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Archive View shows a short description and a non-functional button
+ *  Archive View shows a short text and a non-functional button
  *
  *  @author Vanessa Skowronsky
  *  @version 2.0
