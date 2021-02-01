@@ -40,6 +40,7 @@ public class DocumentsView extends Div {
 
     private PageService pageService;
     private H1 pageTitle;
+
     private PageEntity pageEntity;
 
     //private TreeGrid<DocumentEntity> documentsGrid;
@@ -70,6 +71,7 @@ public class DocumentsView extends Div {
         this.notificationService = notificationService;
 
 
+
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
         pageTitle.setId("pageTitle");
@@ -95,6 +97,7 @@ public class DocumentsView extends Div {
 
         this.getStyle().set("width","100%");
     }
+
 
 
     public void initializeRadioButtonsForKeyword(){
@@ -154,5 +157,4 @@ public class DocumentsView extends Div {
 
         add(documentsGrid);
     }
-
 }

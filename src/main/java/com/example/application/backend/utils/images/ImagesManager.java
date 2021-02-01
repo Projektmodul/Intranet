@@ -13,10 +13,10 @@ import java.util.List;
 /**
  * This class manages the images list and the imageManagers.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
  * @version 2.0
  * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class ImagesManager extends Div {

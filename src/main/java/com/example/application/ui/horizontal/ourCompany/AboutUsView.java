@@ -25,10 +25,10 @@ import de.nils_bauer.PureTimelineItem;
 /**	/**
  *  AboutUs View shows ...
  *	 *
- *  @author Laura Neuendorf, Jessica Reistel
- *  @version 6.0
+ *  @author Laura Neuendorf, Jessica Reistel, Anastasiya Jackwerth, Sabrine Gamdou,Monika Martius
+ *  @version 7.0
  *  @since 15.12.2020
- *  @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou, Laura Neuendorf
+ *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  *  */
 
 @Route(value = "aboutUs", layout = MainView.class)

@@ -16,10 +16,10 @@ import java.io.InputStream;
  * This class represents an image component, it receives an imageEntity and
  * the files input stream.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 2.0
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
+ * @version 3.0
  * @since   21.12.2020
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class Image extends Div {

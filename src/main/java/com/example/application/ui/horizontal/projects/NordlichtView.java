@@ -22,10 +22,10 @@ import com.vaadin.flow.router.Route;
 /**
  *  Nordlicht View shows ...
  *
- *  @author Monika Martius and Laura Neuendorf
- *  @version 2.0
+ *  @author Monika Martius and Laura Neuendorf, Jessica Reistel
+ *  @version 3.0
  *  @since 24.01.2020
- *  @lastUpdated 26.01.2020
+ *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 @Route(value = "nordlicht", layout = MainView.class)
 @PageTitle("Nordlicht")

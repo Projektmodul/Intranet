@@ -17,10 +17,10 @@ import java.util.Date;
  * This is class manages the upload and image components and uses the
  * imageCreationManager and the imageDeletionManager to create and delete images.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 4.0
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
+ * @version 5.0
  * @since   19.01.2021
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class ImageManager {

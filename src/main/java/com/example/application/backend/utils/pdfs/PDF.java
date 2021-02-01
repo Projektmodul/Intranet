@@ -15,10 +15,10 @@ import java.io.InputStream;
 /**
  * This is class that creates the file in the database and the server.
  *
- * @author Anastasiya Jackwerth, Sabrine Gamdou
+ * @author Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
  * @version 2.0
  * @since   21.12.2020
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class PDF extends Div {
