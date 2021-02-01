@@ -5,6 +5,7 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
@@ -21,9 +22,9 @@ import com.vaadin.flow.server.VaadinService;
  *  Center I View shows ...
  *
  *  @author Monika Martius, Laura Neuendorf
- *  @version 4.0
+ *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 30.01.2021 Vanessa Skowronsky, Jessica Reistel
+ *  @lastUpdated 01.02.2021 Laura Neuendorf
  */
 @Route(value = "centerI", layout = MainView.class)
 @PageTitle("CenterI")
@@ -33,10 +34,6 @@ public class CenterIView extends Div {
     private LinkService linkService;
     private LinkEntity linkEntity;
 
-    private H1 pageTitle;
-    private Paragraph pageContent;
-    private HorizontalLayout link;
-
     public CenterIView(PageService pageService, LinkService linkService) {
         setId("centerI");
         setClassName("pageContentPosition");
@@ -45,29 +42,13 @@ public class CenterIView extends Div {
         this.pageService = pageService;
         this.linkService = linkService;
 
-        setData();
-        setPicture();
-    }
-
-    /*
-     * This method reads the data from the database and displays it on the corresponding page.
-     */
-    public void setData(){
-        pageEntity = pageService.findPageById(10);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Paragraph(pageEntity.getContent());
-        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
         Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Centers"), new Breadcrumb(pageEntity.getTitle()));
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Centers"), new Breadcrumb("Center I"));
 
-        LinkEntity linkEntity = linkService.findById(5);
-        Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
+        InitData initCenterI = new InitData(pageService, linkService);
+        this.add(breadcrumbs, initCenterI.setData(10), initCenterI.setLinkData(5));
 
-        link = new HorizontalLayout();
-        link.add(mailLink);
-
-        this.add(breadcrumbs, pageTitle, pageContent, link);
+        setPicture();
     }
 
     public void setPicture(){
