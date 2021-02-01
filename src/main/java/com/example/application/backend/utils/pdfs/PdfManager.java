@@ -21,10 +21,10 @@ import java.util.Date;
  * This is class manages the upload and pdf components and uses the
  * pdfCreationManager and the pdfDeletionManager to create and delete documents.
  *
- * @author  Anastasiya Jackwerth, Sabrine Gamdou
+ * @author  Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
  * @version 4.0
  * @since   19.01.2021
- * @lastUpdated 24.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 public class PdfManager {
 

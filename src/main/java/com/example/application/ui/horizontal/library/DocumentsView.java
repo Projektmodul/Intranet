@@ -28,10 +28,10 @@ import com.vaadin.flow.router.Route;
 /**
  * Documents View shows a grid-view for all documents.
  *
- * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 5.0
+ * @author  Sabrine Gamdou, Anastasiya Jackwerth, Vanessa Skowronsky, Jessica Reistel, Monika Martius
+ * @version 6.0
  * @since   12.01.2021
- * @lastUpdated 30.01.2021 by Vanessa Skowronsky,  Jessica Reistel
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 @Route(value = "documents", layout = MainView.class)
