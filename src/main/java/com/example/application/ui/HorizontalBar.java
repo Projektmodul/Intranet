@@ -150,6 +150,14 @@ public class HorizontalBar extends MenuBar {
         createMenuItem(subMenuListCommunity, "Community", "community");
     }
 
+    /**
+     * Methods creates a submenu tab which links to an external site and opens it on a different browser tab
+     * @param icon Icon that is shown
+     * @param backgroundColor Background color of the vertical layout
+     * @param spanText Title of the tab
+     * @param href URL where the tab links to
+     * @return Submenu tab as a vertical layout
+     */
     private VerticalLayout createSubMenuLink(Icon icon, String backgroundColor, String spanText, String href) {
         icon.setClassName("horizontalBarIcons");
 
@@ -171,6 +179,14 @@ public class HorizontalBar extends MenuBar {
         return subMenuLinkContainer;
     }
 
+    /**
+     * Methods creates a submenu tab which navigates to the indicated class
+     * @param icon Icon that is shown
+     * @param backgroundColor Background color of the vertical layout
+     * @param spanText Title of the tab
+     * @param route View to navigate to after clicking
+     * @return Submenu tab as a vertical layout
+     */
     private VerticalLayout createSubMenu(Icon icon, String backgroundColor, String spanText, String route) {
         icon.setClassName("horizontalBarIcons");
         Tab tab = new Tab(icon);
@@ -189,8 +205,13 @@ public class HorizontalBar extends MenuBar {
         return layout;
     }
 
+    /**
+     * Method creates a menu item with extended submenu tabs
+     * @param layoutList List of all submenu tabs
+     * @param labelText Title of the menu item
+     * @param route View to navigate to after clicking
+     */
     private void createMenuItem(ArrayList<VerticalLayout> layoutList, String labelText, String route) {
-
         HorizontalLayout layout = new HorizontalLayout();
 
         for (VerticalLayout l : layoutList) {
@@ -208,10 +229,10 @@ public class HorizontalBar extends MenuBar {
         menuItem.getSubMenu().addItem(layout);
     }
 
-    public HorizontalBarClickedInitiator getInitiator() {
-        return initiator;
-    }
-
+    /**
+     * Method initiates a chat component wiht mockup messages for demonstration only
+     * @return Chat component with mockup messages
+     */
     private Chat initChat() {
         Chat chatComponent = new Chat();
         chatComponent.setMessages(loadMessages());
@@ -228,6 +249,10 @@ public class HorizontalBar extends MenuBar {
         return chatComponent;
     }
 
+    /**
+     * Method creates a list with messages for the chat component
+     * @return List with messages
+     */
     private ArrayList<Message> loadMessages() {
         messageList = new ArrayList<>();
         Message messageOne = new Message("Guten Morgen!", "", "Peter Lustig", false);
@@ -239,5 +264,9 @@ public class HorizontalBar extends MenuBar {
         messageList.add(messageThree);
 
         return messageList;
+    }
+
+    public HorizontalBarClickedInitiator getInitiator() {
+        return initiator;
     }
 }
