@@ -1,6 +1,9 @@
 package com.example.application.ui.vertical.canteen;
 
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.RoleEntity;
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.DocumentService;
 import com.example.application.backend.services.notifications.NotificationService;
 import com.example.application.backend.services.pages.PageService;
@@ -55,6 +58,7 @@ public class CanteenView extends Div {
     private Div pdfsContainer;
     private Div pdfsUploader;
     private PdfsManager pdfsManager;
+    private int role;
 
 
     public CanteenView(PageService pageService, UserService userService, NotificationService notificationService, DocumentService documentService) {
@@ -66,7 +70,11 @@ public class CanteenView extends Div {
         this.userService = userService;
         this.documentService = documentService;
         this.notificationService = notificationService;
-
+        GetUserController getUserController = new GetUserController();
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
         setData();
 
         initializePdfsManager();
@@ -95,7 +103,7 @@ public class CanteenView extends Div {
     }
 
     public void initializePdfsManager() {
-        pdfsManager = new PdfsManager(pageEntity.getDocuments(), notificationService, documentService);
+        pdfsManager = new PdfsManager(pageEntity.getDocuments(), notificationService, documentService, role);
         pdfsManager.setDocumentEntities(pageEntity.getDocuments());
         pdfsManager.setAllDocumentEntitiesData("Speiseplan", pageEntity, pageEntity.getUser());
         pdfsManager.initializeAllPdfs();
@@ -118,6 +126,8 @@ public class CanteenView extends Div {
         pdfsManager.initializeUploadContainer();
         pdfsUploader = pdfsManager.getPdfsUploader();
         this.add(bigContainer);
-        this.add(pdfsUploader);
+        if(role == 1 || role == 3) {
+            this.add(pdfsUploader);
+        }
     }
 }

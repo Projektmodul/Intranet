@@ -2,6 +2,7 @@ package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
 
+import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.ImageService;
@@ -46,6 +47,7 @@ public class AboutUsView extends Div {
     private Paragraph pageContent;
     private ImageService imageService;
     private UserService userService;
+    private int role;
 
     private Div bigContainer;
     private Div imagesContainer;
@@ -66,6 +68,8 @@ public class AboutUsView extends Div {
 
         username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
 
         initializeImagesManager();
         initializeBigContainer();
@@ -107,7 +111,7 @@ public class AboutUsView extends Div {
     }
 
     private void initializeImagesManager(){
-        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity, userEntity);
 
@@ -130,6 +134,8 @@ public class AboutUsView extends Div {
         imagesManager.initializeUploadContainer();
         imagesUploader = imagesManager.getImagesUploader();
         this.add(bigContainer);
-        this.add(imagesUploader);
+        if(role == 1) {
+            this.add(imagesUploader);
+        }
     }
 }

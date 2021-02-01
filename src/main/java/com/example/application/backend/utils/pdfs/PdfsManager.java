@@ -34,17 +34,18 @@ public class PdfsManager extends Div {
     private String keyword;
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private int role;
 
     private boolean isOnePdf;
 
     private Div pdfsUploader;
 
     public PdfsManager(List<DocumentEntity> documentEntities, NotificationService notificationService,
-                       DocumentService documentService) {
+                       DocumentService documentService, int role) {
 
         this.notificationService = notificationService;
         this.documentService = documentService;
-
+        this.role = role;
         this.documentEntities = documentEntities;
 
         this.pdfs = new ArrayList<>();
@@ -53,7 +54,7 @@ public class PdfsManager extends Div {
 
     //will be called by the view after setting list
     public void initializeAllPdfs() {
-        pdfManager = new PdfManager(notificationService, documentService);
+        pdfManager = new PdfManager(notificationService, documentService, role);
         pdfManager.setAllDocumentEntitiesData(keyword, pageEntity, userEntity);
         for (DocumentEntity documentEntity : documentEntities) {
             pdfManager.setDocumentEntity(documentEntity);

@@ -31,13 +31,14 @@ public class PDF extends Div {
 
 
     private InputStream inputStream;
+    private int role;
 
 
 
-    public PDF(DocumentEntity documentEntity, InputStream inputStream){
+    public PDF(DocumentEntity documentEntity, InputStream inputStream, int role){
         this.documentEntity = documentEntity;
         this.inputStream = inputStream;
-
+        this.role = role;
         initializePDF();
 
     }
@@ -45,7 +46,10 @@ public class PDF extends Div {
     public void initializePDF(){
         deleteButton = new Icon(VaadinIcon.TRASH);
         initializePdfViewer();
-        this.add(deleteButton, pdfDocumentViewer);
+        if(role == 1 || role == 3) {
+            this.add(deleteButton);
+        }
+        this.add(pdfDocumentViewer);
     }
 
     public void initializePdfViewer(){

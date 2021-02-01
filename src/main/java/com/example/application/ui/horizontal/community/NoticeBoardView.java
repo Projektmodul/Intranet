@@ -1,34 +1,45 @@
 package com.example.application.ui.horizontal.community;
 
+import com.example.application.backend.entities.*;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.entities.NoticeBoardOfferEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.noticeBoard.NoticeBoardOfferService;
 import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.services.roles.RoleService;
 import com.example.application.backend.services.users.UserService;
+
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
+
 import com.vaadin.flow.component.grid.Grid;
+
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
+
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  *  @author Monika Martius, Jessica Reistel
@@ -43,7 +54,6 @@ public class NoticeBoardView extends Div {
     private NoticeBoardOfferEntity noticeBoardOfferEntity;
     private NoticeBoardOfferService noticeBoardOfferService;
     private UserService userService;
-    private UserEntity userEntity;
     private H1 pageTitle;
     private Paragraph pageText;
     private PageEntity pageEntity;
@@ -58,9 +68,10 @@ public class NoticeBoardView extends Div {
     private Component rightComponent;
     private Breadcrumbs breadcrumbs;
 
-    public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService) {
+    public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService,UserService userService) {
         this.noticeBoardOfferService = noticeBoardOfferService;
         this.pageService = pageService;
+        this.userService = userService;
         setId("noticeBoard");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
@@ -80,13 +91,18 @@ public class NoticeBoardView extends Div {
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
-        initializeTreeGrid();
+        initializeGrid();
         initializeLeftContainer();
         initializeRightContainer();
         initializeSplitLayout();
     }
 
     public void initializeLeftContainer() {
+        GetUserController getUserController = new GetUserController();
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        int role = roleEntity.getRoleId();
 
         Div box = new Div();
         box.add(breadcrumbs, pageTitle);
@@ -99,12 +115,16 @@ public class NoticeBoardView extends Div {
         editIcon.setId("editIcon");
         boxIcon.add(editIcon,deleteIcon);
 
+        if (role != 1){
+            boxIcon.setVisible(false);
+        }
+
         this.add(box);
         leftComponent = new VerticalLayout(pageText,boxIcon,noticeBoardGrid);
         leftComponent.setId("leftLayout");
     }
 
-    public void initializeTreeGrid(){
+    public void initializeGrid(){
         noticeBoardGrid = new Grid<>();
         noticeBoardGrid.setItems(noticeBoardList);
         noticeBoardGrid.setSelectionMode(Grid.SelectionMode.NONE);
