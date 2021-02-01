@@ -49,6 +49,7 @@ public class PdfManager {
     private Div errorContainer;
 
     private boolean isOnePdf;
+    private boolean isPdfUploaded = false;
 
     private String keyword;
     private PageEntity pageEntity;
@@ -107,6 +108,44 @@ public class PdfManager {
         upload.addFileRejectedListener(e -> errorContainer.add(new Span(e.getErrorMessage())));
 
         upload.addFailedListener(e -> errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen")));
+    }
+
+    public void setUploaderEventForJobOffers(){
+        upload.setAcceptedFileTypes("application/pdf");
+
+        NativeButton uploadButton = new NativeButton("PDF-Datei hochladen");
+        upload.setUploadButton(uploadButton);
+
+        Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
+        upload.setDropLabel(label);
+
+        upload.setVisible(isOnePdf);
+        System.out.println("isOnePdf: " + isOnePdf);
+        upload.addSucceededListener(e -> {
+            inputStream = buffer.getInputStream();
+            createDocumentEntity(changeGlobalFileName(e.getFileName()));
+            documentEntity.setKeyword(keyword);
+            pdfCreationManager = new PdfCreationManager(inputStream, documentEntity, documentService);
+
+            pdfCreationManager.setMimeType(e.getMIMEType());
+            pdfCreationManager.save();
+            isPdfUploaded = true;
+            //UI.getCurrent().getPage().reload();
+        });
+
+        upload.addFileRejectedListener(e -> {
+            errorContainer.add(new Span(e.getErrorMessage()));
+            isPdfUploaded = false;
+        });
+
+        upload.addFailedListener(e -> {
+            errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen"));
+            isPdfUploaded = false;
+        });
+    }
+
+    public int getDocumentOfJobOfferId(){
+        return documentEntity.getDocumentId();
     }
 
     public void setDeleteButtonEvent(){
