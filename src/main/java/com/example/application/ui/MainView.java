@@ -82,7 +82,7 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         String text = content.toString();
         //System.out.println(content);
         String color = contentSplit(text);
-        header.setBackgroundColor(color);
+        setBackgroundColor(color);
 
     }
 
@@ -112,5 +112,28 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
     @Override
     public void notificationCounterChanged() {
         notificationPresenter.setCounterFromDialogToSideBar();
+    }
+
+    public void setBackgroundColor(String colorName) {
+
+        switch (colorName) {
+            case "HomeView":
+            case "search":
+            case "myProfile":
+            case "phoneBook":
+            case "settings":
+            case "help":
+            case "InProgressView":
+            case "mailing":
+            case "canteen":
+                setClassName("colorHome"); break;
+            case "ourCompany": setClassName("colorCompany"); break;
+            case "center": setClassName("colorCenter"); break;
+            case "projects": setClassName("colorProjects"); break;
+            case "library": setClassName("colorLibrary"); break;
+            case "services": setClassName("colorServices"); break;
+            case "community": setClassName("colorCommunity"); break;
+            default : break;
+        }
     }
 }
