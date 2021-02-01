@@ -1,8 +1,10 @@
 package com.example.application.ui.auxiliary;
 
+import com.example.application.backend.entities.LinkEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.files.ImageService;
+import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
@@ -10,6 +12,7 @@ import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
@@ -28,6 +31,8 @@ public class InitData {
     public static PageService pageService;
     public static PageEntity pageEntity;
 
+    public static LinkService linkService;
+
     public static UserEntity userEntity;
 
     public static ImagesManager imagesManager;
@@ -37,8 +42,13 @@ public class InitData {
     public static Paragraph pageContent;
 
     public InitData(PageService pageService){
+        this.pageService = pageService;
+    }
+
+    public InitData(PageService pageService, LinkService linkService){
 
         this.pageService = pageService;
+        this.linkService = linkService;
     }
 
     /*
@@ -64,4 +74,17 @@ public class InitData {
         dataSet.add(pageTitle, pageContent);
         return dataSet;
     }
+
+    public static  Component setLinkData(int linkId){
+        HorizontalLayout linkSet = new HorizontalLayout();
+        linkSet.setId("dataSetLayout");
+
+        LinkEntity linkEntity = linkService.findById(linkId);
+        Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
+
+        linkSet.add(mailLink);
+        return linkSet;
+    }
+
+
 }

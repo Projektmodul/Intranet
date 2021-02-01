@@ -20,16 +20,14 @@ import com.vaadin.flow.router.Route;
  *  FAQ View shows ...
  *
  *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
- *  @version 4.0
+ *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 28.01.2021 by Laura Neuendorf, Jessica Reistel
+ *  @lastUpdated 01.02.2021 by Laura Neuendorf
  */
 @Route(value = "fAQ", layout = MainView.class)
 @PageTitle("FAQ")
 public class FAQView extends Div {
     private PageService pageService;
-    private H1 pageTitle;
-    private Paragraph pageContent;
     private PageEntity pageEntity;
     private LinkService linkService;
     
@@ -43,37 +41,10 @@ public class FAQView extends Div {
         this.pageService = pageService;
         this.linkService = linkService;
 
-        LinkEntity linkEntity = linkService.findById(4);
-        Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
-
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("FAQ"));
 
-        InitData initAboutUs = new InitData(pageService);
-        this.add(breadcrumbs, initAboutUs.setData(17), mailLink);
-
-        //setData();
-
+        InitData initAboutUs = new InitData(pageService, linkService);
+        this.add(breadcrumbs, initAboutUs.setData(17), initAboutUs.setLinkData(4));
     }
-
-    /*
-     * This method fetches the data from the database
-     * and displays it on the corresponding page
-     */
-    /*public void setData(){
-        pageEntity = pageService.findPageById(17);
-        pageTitle = new H1(pageEntity.getTitle());
-
-        Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
-
-        pageContent = new Paragraph();
-        pageContent.setText(pageEntity.getContent());
-        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
-        LinkEntity linkEntity = linkService.findById(4);
-        Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
-
-        this.add(breadcrumbs, pageTitle, pageContent, mailLink);
-    }*/
 }
