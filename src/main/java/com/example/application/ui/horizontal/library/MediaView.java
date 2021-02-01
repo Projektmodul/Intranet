@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  FAQ View shows ...
+ *  Media View shows ...
  *
  *  @author Monika Martius and Laura Neuendorf
  *  @version 3.0
@@ -31,9 +31,7 @@ public class MediaView extends Div {
     private PageService pageService;
     private PageEntity pageEntity;
     private H1 pageTitle;
-    //private Paragraph pageContent;
 
-    private HorizontalLayout tabLayout;
 
     public MediaView(PageService pageService) {
 
@@ -54,16 +52,14 @@ public class MediaView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
-        //pageContent = new Paragraph();
-        //pageContent.setText(pageEntity.getContent());
-        //pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
-        //this.add(breadcrumbs, pageTitle, pageContent);
         this.add(breadcrumbs, pageTitle);
     }
 
+    /*
+     * This method creates a tab menu with three tabs.
+     * Furthermore, three pages are created, which are connected to the tabs.
+     */
     public void setTabs(){
-        tabLayout = new HorizontalLayout();
 
         Tab picture = new Tab("Bilder");
         Div pagePicture = new Div();
@@ -72,11 +68,12 @@ public class MediaView extends Div {
         Tab videos = new Tab("Videos");
         Div pageVideos = new Div();
         pageVideos.setText("Hier können Videos angezeigt werden");
+        pageVideos.setVisible(false);
 
         Tab pressReleases = new Tab("Pressemitteilungen");
         Div pagePressReleases = new Div();
-        pagePressReleases.setText(pageEntity.getContent());
         pagePressReleases.getElement().setProperty("innerHTML", pageEntity.getContent());
+        pagePressReleases.setVisible(false);
 
         Map<Tab, Component> tabsToPages = new HashMap<>();
         tabsToPages.put(picture, pagePicture);
