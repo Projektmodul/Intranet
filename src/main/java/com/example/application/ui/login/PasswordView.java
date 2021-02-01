@@ -15,6 +15,7 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.validator.RegexpValidator;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.context.annotation.Bean;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -129,8 +130,7 @@ public class PasswordView extends Dialog {
         confirm.addClickShortcut(Key.ENTER);
         confirm.addClickListener(e ->{
             if(password.getValue().equals(password2.getValue()) && password.getValue().matches(passwordPattern)){
-                String hashedPassword = passwordEncoder().encode(password.getValue());
-                userService.passwordUpdate(userEntity, hashedPassword);
+                userService.passwordUpdate(userEntity, passwordEncoder().encode(password.getValue()));
                 close();
             }
         });
@@ -140,6 +140,7 @@ public class PasswordView extends Dialog {
         add(layout, cancel, confirm);
     }
 
+    @Bean
     /**
      * This method encrypts the typed in password in 11 rounds (strength).
      *
