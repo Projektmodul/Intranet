@@ -15,7 +15,7 @@ import java.util.List;
  * This class manages the pdfs list and the pdfManagers.
  *
  * @author Anastasiya Jackwerth, Sabrine Gamdou, Jessica Reistel, Monika Martius
- * @version 4.0
+ * @version 5.0
  * @since 19.01.2021
  * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
