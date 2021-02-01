@@ -49,6 +49,7 @@ public class PdfManager {
     private Div errorContainer;
 
     private boolean isOnePdf;
+    private int role;
 
     private String keyword;
     private PageEntity pageEntity;
@@ -60,16 +61,16 @@ public class PdfManager {
     private final String RESOURCES_DIR = "~/uploads";
 
     public PdfManager(NotificationService notificationService,
-                      DocumentService documentService){
+                      DocumentService documentService, int role){
         this.notificationService = notificationService;
         this.documentService = documentService;
-
+        this.role = role;
 
         initializeUploader();
     }
 
     public PDF createPDF(){
-        pdf = new PDF(documentEntity, inputStream);
+        pdf = new PDF(documentEntity, inputStream, role);
         pdf.setHeight("55rem");
         return pdf;
     }

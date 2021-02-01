@@ -33,25 +33,25 @@ public class ImagesManager extends Div {
     //Variables to create a new imageEntity, should be set by the View
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private int role;
 
     private boolean isOneImage;
 
     private Div imagesUploader;
 
 
-    public ImagesManager(List<ImageEntity> imageEntities, ImageService imageService){
+    public ImagesManager(List<ImageEntity> imageEntities, ImageService imageService, int role){
 
         this.imageService = imageService;
-
         this.imageEntities = imageEntities;
-
+        this.role = role;
         this.images = new ArrayList<>();
 
     }
 
     //will be called by the view after setting list
     public void initializeAllImages(){
-        imageManager = new ImageManager(imageService);
+        imageManager = new ImageManager(imageService, role);
         imageManager.setAllImageEntitiesData(pageEntity,userEntity);
         for(ImageEntity imageEntity : imageEntities){
             imageManager.setImageEntity(imageEntity);

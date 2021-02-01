@@ -1,7 +1,9 @@
 package com.example.application.ui.horizontal.library;
 
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.DocumentService;
 import com.example.application.backend.services.notifications.NotificationService;
 import com.example.application.backend.services.pages.PageService;
@@ -53,6 +55,7 @@ public class DocumentsView extends Div {
     private Grid<GridDocument> documentsGrid;
 
     private Div pdfsUploader;
+    private int role;
     private String keyword;
     private Breadcrumbs breadcrumbs;
 
@@ -70,16 +73,21 @@ public class DocumentsView extends Div {
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new Paragraph(pageEntity.getContent());
-
+        GetUserController getUserController = new GetUserController();
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
         setData();
         //userEntity = pageEntity.getUser();
-
-        initializeRadioButtonsForKeyword();
+        if(role == 1) {
+            initializeRadioButtonsForKeyword();
+            initializeUploadContainer();
+        }
         initializePdfsManager();
-        initializeUploadContainer();
         initializeGrid();
 
         this.getStyle().set("width","100%");
@@ -121,7 +129,7 @@ public class DocumentsView extends Div {
     }
 
     public void initializePdfsManager(){
-        pdfsManager = new PdfsManager(pageEntity.getDocuments(),notificationService,documentService);
+        pdfsManager = new PdfsManager(pageEntity.getDocuments(),notificationService,documentService, role);
 
         pdfsManager.setDocumentEntities(pageEntity.getDocuments());
         pdfsManager.setAllDocumentEntitiesData(keyword,pageEntity,pageEntity.getUser());
@@ -133,7 +141,6 @@ public class DocumentsView extends Div {
     public void initializeUploadContainer(){
         pdfsManager.initializeUploadContainer();
         pdfsUploader = pdfsManager.getPdfsUploader();
-
         this.add(pdfsUploader);
     }
 
@@ -150,9 +157,4 @@ public class DocumentsView extends Div {
 
         add(documentsGrid);
     }
-
-
-
-
-
 }

@@ -46,16 +46,18 @@ public class ImageManager {
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private int role;
 
-    private final String RESOURCES_DIR = "~/uploads";
+    private final String RESOURCES_DIR = "src/main/resources/META-INF/resources/images/images1611532597562-Nordlicht_AmTag.jpg";
 
-    public ImageManager(ImageService imageService){
+    public ImageManager(ImageService imageService, int role){
         this.imageService = imageService;
+        this.role = role;
         isOneImage = true;
         initializeUploader();
     }
     public Image createPDF(){
-        image = new Image(imageEntity, inputStream);
+        image = new Image(imageEntity, inputStream, role);
         return image;
     }
 

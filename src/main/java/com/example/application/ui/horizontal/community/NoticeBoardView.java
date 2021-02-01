@@ -1,11 +1,10 @@
 package com.example.application.ui.horizontal.community;
 
-import com.example.application.backend.entities.DocumentEntity;
-import com.example.application.backend.entities.NoticeBoardOfferEntity;
-import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.entities.*;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.noticeBoard.NoticeBoardOfferService;
 import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.services.roles.RoleService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.ui.MainView;
@@ -57,7 +56,6 @@ public class NoticeBoardView extends Div {
     private NoticeBoardOfferEntity noticeBoardOfferEntity;
     private NoticeBoardOfferService noticeBoardOfferService;
     private UserService userService;
-    private UserEntity userEntity;
     private H1 pageTitle;
     private Span pageText;
     private PageEntity pageEntity;
@@ -72,9 +70,10 @@ public class NoticeBoardView extends Div {
     private Component rightComponent;
     private Breadcrumbs breadcrumbs;
 
-    public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService) {
+    public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService,UserService userService) {
         this.noticeBoardOfferService = noticeBoardOfferService;
         this.pageService = pageService;
+        this.userService = userService;
         setId("noticeBoard");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
@@ -94,13 +93,18 @@ public class NoticeBoardView extends Div {
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
-        initializeTreeGrid();
+        initializeGrid();
         initializeLeftContainer();
         initializeRightContainer();
         initializeSplitLayout();
     }
 
     public void initializeLeftContainer() {
+        GetUserController getUserController = new GetUserController();
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        int role = roleEntity.getRoleId();
 
         Div box = new Div();
         box.add(breadcrumbs, pageTitle);
@@ -113,11 +117,15 @@ public class NoticeBoardView extends Div {
         editIcon.setId("editIcon");
         boxIcon.add(editIcon,deleteIcon);
 
+        if (role != 1){
+            boxIcon.setVisible(false);
+        }
+
         leftComponent = new VerticalLayout(box, pageText,boxIcon,noticeBoardGrid);
         leftComponent.setId("leftLayout");
     }
 
-    public void initializeTreeGrid(){
+    public void initializeGrid(){
         noticeBoardGrid = new Grid<>();
         noticeBoardGrid.setItems(noticeBoardList);
         noticeBoardGrid.setSelectionMode(Grid.SelectionMode.NONE);

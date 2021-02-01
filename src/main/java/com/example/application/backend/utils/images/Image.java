@@ -28,15 +28,16 @@ public class Image extends Div {
     private Icon deleteButton;
     private Component imageViewer;
     private StreamResource stream; //Is it used?
-
+    private int role;
 
     private InputStream inputStream;
 
 
 
-    public Image(ImageEntity imageEntity, InputStream inputStream){
+    public Image(ImageEntity imageEntity, InputStream inputStream, int role){
         this.imageEntity = imageEntity;
         this.inputStream = inputStream;
+        this.role = role;
 
         initializePDF();
 
@@ -45,7 +46,10 @@ public class Image extends Div {
     public void initializePDF(){
         deleteButton = new Icon(VaadinIcon.TRASH);
         initializeImageViewer();
-        this.add(deleteButton, imageViewer);
+        if(role == 1){
+            this.add(deleteButton);
+        }
+        this.add(imageViewer);
     }
 
     public void initializeImageViewer(){

@@ -1,9 +1,6 @@
 package com.example.application.ui.horizontal.projects;
 
-import com.example.application.backend.entities.LinkEntity;
-import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.entities.ProjectEntity;
-import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.entities.*;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.links.LinkService;
@@ -35,6 +32,8 @@ import com.vaadin.flow.router.Route;
 public class NordlichtView extends Div {
 
     private ImagesManager imagesManager;
+    private ImagesManager imagesManagerTwo;
+    private UserService userService;
     private final PageEntity pageEntity;
     private final ImageService imageService;
     private final UserEntity userEntity;
@@ -46,13 +45,13 @@ public class NordlichtView extends Div {
     private LinkEntity linkEntityTwo;
     private LinkService linkService;
 
-    private Div bigContainer;
+    private HorizontalLayout bigContainer;
 
     private int linkOne;
     private int linkTwo;
+    private int role;
 
     private Component leftComponent;
-    private Component rightComponent;
 
     public NordlichtView(PageService pageService, UserService userService, ImageService imageService,
                          ProjectService projectService, LinkService linkService) {
@@ -61,7 +60,7 @@ public class NordlichtView extends Div {
         addClassName("projectsColorscheme");
 
         pageEntity = pageService.findPageById(12);
-
+        this.userService = userService;
         this.imageService = imageService;
         this.projectService = projectService;
         this.linkService = linkService;
@@ -76,14 +75,16 @@ public class NordlichtView extends Div {
         GetUserController getUserController = new GetUserController();
         String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
 
         setData();
 
         initializeImagesManager();
-        initializeBigContainer();
-        initializeUploadContainer();
-        imagesManager.setOneImage(false);
-
+        initializeImagesManagerTwo();
+        if(role == 1){
+            initializeUploadContainer();
+        }
         initializeRightContainer();
         initializeSplitLayout();
     }
@@ -101,10 +102,6 @@ public class NordlichtView extends Div {
         this.add(box, pageText);
     }
 
-    private void initializeSplitLayout() {
-        HorizontalLayout layout = new HorizontalLayout(leftComponent);
-        this.add(layout);
-    }
 
     private void initializeRightContainer() {
         HorizontalLayout contentTextLayout = new HorizontalLayout();
@@ -131,29 +128,41 @@ public class NordlichtView extends Div {
     }
 
     private  void initializeImagesManager(){
-        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
+        imagesManager.setOneImage(true);
         imagesManager.initializeAllImages();
     }
 
-    private void initializeImages(){
-        Div imagesContainer = new Div();
-        for(Image image : imagesManager.getImages()) imagesContainer.add(image);
-        bigContainer.add(imagesContainer);
-        bigContainer.add(imagesManager);
+    private  void initializeImagesManagerTwo(){
+        imagesManagerTwo = new ImagesManager(pageEntity.getImages(), imageService, role);
+        imagesManagerTwo.setImagesEntities(pageEntity.getImages());
+        imagesManagerTwo.setAllImageEntitiesData(pageEntity,userEntity);
+        imagesManagerTwo.setOneImage(true);
+        imagesManagerTwo.initializeAllImages();
     }
 
-    private void initializeBigContainer(){
-        bigContainer = new Div();
+    private void initializeSplitLayout() {
+        VerticalLayout layout = new VerticalLayout(leftComponent);
+        bigContainer = new HorizontalLayout();
         bigContainer.setId("layoutBigContainerPicture");
-        initializeImages();
+        Div imagesContainer = new Div();
+        Div imagesContainerTwo = new Div();
+        for(Image images : imagesManager.getImages()) imagesContainer.add(images);
+        for(Image images : imagesManagerTwo.getImages()) imagesContainerTwo.add(images);
+        bigContainer.add(imagesManager,imagesManagerTwo);
+        bigContainer.add(imagesContainer,imagesContainerTwo);
+        this.add(bigContainer,layout);
     }
 
     private void initializeUploadContainer(){
         imagesManager.initializeUploadContainer();
         Div imagesUploader = imagesManager.getImagesUploader();
-        this.add(bigContainer);
         this.add(imagesUploader);
+
+        imagesManagerTwo.initializeUploadContainer();
+        Div imagesUploaderTwo = imagesManagerTwo.getImagesUploader();
+        this.add(imagesUploaderTwo);
     }
 }
