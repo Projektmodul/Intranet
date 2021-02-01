@@ -5,26 +5,35 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *  FAQ View shows ...
  *
- *  @author Monika Martius
- *  @version 2.0
+ *  @author Monika Martius and Laura Neuendorf
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 27.01.2021 by Laura Neuendorf
  */
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")
 public class MediaView extends Div {
     private PageService pageService;
-    private H1 pageTitle;
-    private Paragraph pageText;
     private PageEntity pageEntity;
+    private H1 pageTitle;
+    //private Paragraph pageContent;
+
+    private HorizontalLayout tabLayout;
 
     public MediaView(PageService pageService) {
 
@@ -32,12 +41,56 @@ public class MediaView extends Div {
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
+        this.pageService = pageService;
+
+        setData();
+        setTabs();
+    }
+
+    public void setData(){
         pageEntity = pageService.findPageById(16);
         pageTitle = new H1(pageEntity.getTitle());
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
-        add(breadcrumbs, pageTitle);
+        //pageContent = new Paragraph();
+        //pageContent.setText(pageEntity.getContent());
+        //pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
+
+        //this.add(breadcrumbs, pageTitle, pageContent);
+        this.add(breadcrumbs, pageTitle);
+    }
+
+    public void setTabs(){
+        tabLayout = new HorizontalLayout();
+
+        Tab picture = new Tab("Bilder");
+        Div pagePicture = new Div();
+        pagePicture.setText("Hier können Bilder angezeigt werden");
+
+        Tab videos = new Tab("Videos");
+        Div pageVideos = new Div();
+        pageVideos.setText("Hier können Videos angezeigt werden");
+
+        Tab pressReleases = new Tab("Pressemitteilungen");
+        Div pagePressReleases = new Div();
+        pagePressReleases.setText(pageEntity.getContent());
+        pagePressReleases.getElement().setProperty("innerHTML", pageEntity.getContent());
+
+        Map<Tab, Component> tabsToPages = new HashMap<>();
+        tabsToPages.put(picture, pagePicture);
+        tabsToPages.put(videos, pageVideos);
+        tabsToPages.put(pressReleases, pagePressReleases);
+        Tabs allTabs = new Tabs(picture, videos, pressReleases);
+        Div allPages = new Div(pagePicture, pageVideos, pagePressReleases);
+
+        allTabs.addSelectedChangeListener(event -> {
+            tabsToPages.values().forEach(page -> page.setVisible(false));
+            Component selectedPage = tabsToPages.get(allTabs.getSelectedTab());
+            selectedPage.setVisible(true);
+        });
+
+        add(allTabs, allPages);
     }
 }
