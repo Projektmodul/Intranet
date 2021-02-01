@@ -84,12 +84,14 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         String text = content.toString();
         //System.out.println(content);
         String color = contentSplit(text);
-        setBackgroundColor(color);
+
 
         if(UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
             contentHolder.getElement().getChild(0).getClassList().remove("lightColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("darkColorscheme");
+            setBackgroundColorDark(color);
         } else {
+            setBackgroundColor(color);
             contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
 
@@ -144,6 +146,29 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
             case "library": setClassName("colorLibrary"); break;
             case "services": setClassName("colorServices"); break;
             case "community": setClassName("colorCommunity"); break;
+            default : break;
+        }
+    }
+
+    public void setBackgroundColorDark(String colorName) {
+
+        switch (colorName) {
+            case "HomeView":
+            case "search":
+            case "myProfile":
+            case "phoneBook":
+            case "settings":
+            case "help":
+            case "InProgressView":
+            case "mailing":
+            case "canteen":
+                setClassName("colorDarkHome"); break;
+            case "ourCompany": setClassName("colorDarkCompany"); break;
+            case "center": setClassName("colorDarkCenter"); break;
+            case "projects": setClassName("colorDarkProjects"); break;
+            case "library": setClassName("colorDarkLibrary"); break;
+            case "services": setClassName("colorDarkServices"); break;
+            case "community": setClassName("colorDarkCommunity"); break;
             default : break;
         }
     }

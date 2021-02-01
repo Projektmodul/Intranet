@@ -108,6 +108,49 @@
   color: white;
 }
 
+/*Dark Colors*/
+.colorDarkHome {
+  background: linear-gradient(180deg, #0D5699 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
+.colorDarkCompany {
+  background: linear-gradient(180deg, #A00505 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
+.colorDarkCenter {
+  background: linear-gradient(180deg, #1481de 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
+.colorDarkProjects {
+  background: linear-gradient(180deg, #581092 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
+.colorDarkLibrary{
+  background: linear-gradient(180deg, #2F7C78 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
+.colorDarkServices {
+  background: linear-gradient(180deg, #FF5621 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
+.colorDarkCommunity {
+  background: linear-gradient(180deg, #F0D12C 0%, hsl(214, 35%, 21%));
+  text-decoration-color: white;
+  color: white;
+}
+
 /* Horizontal Bar */
 #horizontalBar {
   background: #4B4A4A;
