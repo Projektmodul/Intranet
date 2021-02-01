@@ -64,7 +64,7 @@ public class CommunityView extends Div {
         secondQuote.setClassName("secondQuote");
 
         layout = new HorizontalLayout();
-        //layout.setPadding(true);
+        layout.setPadding(true);
         layout.addClassName("justifyContentCenter");
 
         Component componentBlog = OverviewComponents.createLinkedComponent(new Icon(VaadinIcon.PENCIL), "#F0D12C", "Blog", "https://blog.bsag.de/");
