@@ -24,7 +24,6 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -103,7 +102,7 @@ public class CareerView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
 
-        add(breadcrumbs, pageTitle, pageText);
+        add(breadcrumbs, pageTitle);
 
         initializePdfsManager();
         initializeUploadContainer();
@@ -118,7 +117,7 @@ public class CareerView extends Div {
     public void setData(){
         pageEntity = pageService.findPageById(8);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Paragraph(pageEntity.getContent());
+
         jobOfferEntity = new JobOfferEntity();
 
         GetUserController getUserController = new GetUserController();
