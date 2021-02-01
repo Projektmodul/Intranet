@@ -22,7 +22,7 @@ import com.vaadin.flow.router.Route;
 /**
  *  Nordlicht View shows ...
  *
- *  @author Monika Martius and Laura Neuendorf, Jessica Reistel
+ *  @author Monika Martius and Laura Neuendorf
  *  @version 3.0
  *  @since 24.01.2020
  *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
