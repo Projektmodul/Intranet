@@ -88,11 +88,11 @@ public class DocumentsView extends Div {
         add(breadcrumbs, pageTitle);
 
         //userEntity = pageEntity.getUser();
+        initializePdfsManager();
         if(role == 1) {
             initializeRadioButtonsForKeyword();
             initializeUploadContainer();
         }
-        initializePdfsManager();
         initializeGrid();
 
         this.getStyle().set("width","100%");
