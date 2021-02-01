@@ -77,8 +77,8 @@ public class SportView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb("Sport und Freizeit"));
 
-        InitData initAboutUs = new InitData(pageService);
-        this.add(breadcrumbs, initAboutUs.setData(7));
+        InitData initSport = new InitData(pageService);
+        this.add(breadcrumbs, initSport.setData(7));
 
         showActivities();
 

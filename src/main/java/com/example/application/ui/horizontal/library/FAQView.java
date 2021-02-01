@@ -44,7 +44,7 @@ public class FAQView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("FAQ"));
 
-        InitData initAboutUs = new InitData(pageService, linkService);
-        this.add(breadcrumbs, initAboutUs.setData(17), initAboutUs.setLinkData(4));
+        InitData initFAQ = new InitData(pageService, linkService);
+        this.add(breadcrumbs, initFAQ.setData(17), initFAQ.setLinkData(4));
     }
 }

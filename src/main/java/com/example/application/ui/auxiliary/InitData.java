@@ -8,8 +8,6 @@ import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
-import com.vaadin.componentfactory.Breadcrumb;
-import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Anchor;
@@ -85,6 +83,4 @@ public class InitData {
         linkSet.add(mailLink);
         return linkSet;
     }
-
-
 }
