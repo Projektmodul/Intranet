@@ -7,9 +7,9 @@ import javax.persistence.*;
  * This is a basic jobOffer class.
  *
  * @author  Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   05.01.2020
- * @lastUpdated 31.01.2021 from Litharshi ga Sivarasa
+ * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
  */
 
 @Entity(name="job_offers")
