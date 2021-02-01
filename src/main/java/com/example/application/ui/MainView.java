@@ -80,7 +80,7 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         // The code below sets the childWrapper to hold the view
         contentHolder.getElement().appendChild(content.getElement());
         String text = content.toString();
-        System.out.println(content);
+        //System.out.println(content);
         String color = contentSplit(text);
         header.setBackgroundColor(color);
 

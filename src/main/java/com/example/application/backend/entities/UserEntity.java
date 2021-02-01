@@ -1,6 +1,9 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -8,9 +11,9 @@ import java.util.List;
  * This is a basic user class.
  *
  * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
- * @version 6.0
+ * @version 7.0
  * @since   21-12-2020
- * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
+ * @lastUpdated 02.02.2021 from Marieke Menna de Boer, Lea Schünemann
  */
 
 @Entity(name= "users")
@@ -21,6 +24,9 @@ public class UserEntity {
 
     private String password;
     private String surname;
+
+    @Column(name = "email")
+    private String email;
 
     @Column(name ="first_name")
     private String firstName;
@@ -38,14 +44,28 @@ public class UserEntity {
     @Column(name ="telephone_number")
     private int telephoneNumber;
 
-    private String email;
-
     @Column(name ="job_description")
     private String jobDescription;
+
+    @Column(name = "securityquestion")
+    private String securityQuestion;
+
+    @Column(name = "securityanswer")
+    private String securityAnswer;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity role;
+
+    /*@ManyToMany
+    @JoinTable( //this defines the relationship and the foreign key columns
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<RolesEntity> roles;
+
+
 /*
     @OneToMany(mappedBy = "user")
     private List<DocumentEntity> documents;
@@ -174,9 +194,22 @@ public class UserEntity {
         this.pages = pages;
     }
 
+    public String getSecurityQuestion() {return securityQuestion;}
+
+    public void setSecurityQuestion(String securityQuestion) {this.securityQuestion = securityQuestion;}
+
+    public String getSecurityAnswer() {return securityAnswer;}
+
+    public void setSecurityAnswer(String securityAnswer) {this.securityAnswer = securityAnswer;}
+
     public RoleEntity getRole() { return role; }
 
     public void setRole(RoleEntity role) { this.role = role; }
+
+    /*public List<RolesEntity> getRoles() {
+        return roles;
+    }
+
 /*
     public List<DocumentEntity> getDocuments() {
         return documents;

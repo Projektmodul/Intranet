@@ -3,6 +3,7 @@ package com.example.application.backend.services.users;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.repositories.UserRepository;
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 /**
  * DESCRIPTION
@@ -49,6 +51,11 @@ public class UserService implements UserDetailsService{
         userEntity.setJobDescription(updateJobDescription.getValue());
         getUserRepository().saveAndFlush(userEntity);
         UI.getCurrent().getPage().reload();
+    }
+
+    public void passwordUpdate(UserEntity userEntity, String password){
+        userEntity.setPassword(password);
+        getUserRepository().saveAndFlush(userEntity);
     }
 
     /**

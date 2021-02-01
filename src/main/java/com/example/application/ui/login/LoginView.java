@@ -1,5 +1,6 @@
 package com.example.application.ui.login;
 
+import com.example.application.backend.services.users.UserService;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginForm;
@@ -25,13 +26,15 @@ import com.vaadin.flow.router.Route;
 @CssImport("./styles/views/main/login.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-    private LoginForm loginForm;
+    private LoginForm loginForm = new LoginForm();
+    private UserService userService = new UserService();
+    private PasswordView passwordView;
     private Image logoImage;
 
-    public LoginView(){
-        setId("login");
 
-        loginForm = new LoginForm();
+    public LoginView(UserService userService){
+        this.userService = userService;
+        setId("login");
 
         loginForm.setI18n(createGermanTitles());
 
@@ -42,9 +45,11 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         setSizeFull();
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
+
+        loginForm.addForgotPasswordListener(e-> new PasswordView(userService).open());
+
         loginForm.setAction("login");
         loginForm.setId("loginForm");
-
 
         add(loginForm, logoImage);
     }
