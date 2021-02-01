@@ -38,11 +38,11 @@ public class IdeasManagementView extends Div {
     private final IdeaService ideaService;
 
     public IdeasManagementView(PageService pageService, IdeaService ideaService) {
-        this.ideaService = ideaService;
-
         setId("ideasManagement");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
+
+        this.ideaService = ideaService;
 
         PageEntity pageEntity = pageService.findPageById(21);
         H1 title = new H1(pageEntity.getTitle());

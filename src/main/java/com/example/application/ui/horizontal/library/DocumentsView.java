@@ -26,10 +26,10 @@ import com.vaadin.flow.router.Route;
 /**
  * Documents View shows a grid-view for all documents.
  *
- * @author  Sabrine Gamdou, Anastasiya Jackwerth, Vanessa Skowronsky
- * @version 5.0
+ * @author  Sabrine Gamdou, Anastasiya Jackwerth
+ * @version 6.0
  * @since   12.01.2021
- * @lastUpdated 01.02.2021 by Jessica Reistel
+ * @lastUpdated 01.02.2021 by Laura Neuendorf
  */
 
 @Route(value = "documents", layout = MainView.class)
@@ -38,7 +38,6 @@ public class DocumentsView extends Div {
 
     private PageService pageService;
     private H1 pageTitle;
-    private Paragraph pageText;
     private PageEntity pageEntity;
 
     //private TreeGrid<DocumentEntity> documentsGrid;
@@ -58,23 +57,24 @@ public class DocumentsView extends Div {
 
     public DocumentsView(PageService pageService, UserService userService, DocumentService documentService,
                          NotificationService notificationService) {
+        setId("documents");
+        setClassName("pageContentPosition");
+        addClassName("libraryColorscheme");
+
         this.pageService = pageService;
         this.userService = userService;
         this.documentService = documentService;
         this.notificationService = notificationService;
 
-        setId("documents");
-        setClassName("pageContentPosition");
-        addClassName("libraryColorscheme");
-
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Paragraph(pageEntity.getContent());
+        pageTitle.setId("pageTitle");
 
         breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
-        setData();
+        add(breadcrumbs, pageTitle);
+
         //userEntity = pageEntity.getUser();
 
         initializeRadioButtonsForKeyword();
@@ -83,14 +83,6 @@ public class DocumentsView extends Div {
         initializeGrid();
 
         this.getStyle().set("width","100%");
-    }
-
-    public void setData(){
-        pageEntity = pageService.findPageById(14);
-
-        pageTitle = new H1(pageEntity.getTitle());
-        pageTitle.setId("pageTitle");
-        add(breadcrumbs, pageTitle);
     }
 
     public void initializeRadioButtonsForKeyword(){

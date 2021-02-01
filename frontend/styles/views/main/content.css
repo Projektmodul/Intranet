@@ -110,6 +110,11 @@ vaadin-button{
     font-weight: 600;
 }
 
+#dataSetLayout{
+    box-sizing: border-box;
+    display: contents;
+}
+
 /* Colorschemes */
 
 .homeColorscheme {

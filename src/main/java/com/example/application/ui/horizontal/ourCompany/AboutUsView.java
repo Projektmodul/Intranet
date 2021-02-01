@@ -61,7 +61,7 @@ public class AboutUsView extends Div {
         this.userService = userService;
         getUserController = new GetUserController();
 
-        setData();
+        setContent();
         setTimeline();
 
         username = getUserController.getUsername();
@@ -73,7 +73,7 @@ public class AboutUsView extends Div {
         imagesManager.setOneImage(true);
     }
 
-    private void setData(){
+    private void setContent(){
         pageEntity = pageService.findPageById(5);
 
         pageTitle = new H1(pageEntity.getTitle());
