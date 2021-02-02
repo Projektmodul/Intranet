@@ -43,7 +43,7 @@ public class MediaView extends Div{
     }
 
     /**
-     * This method etches the data from the database
+     * This method fetches the data from the database
      * and displays it on the corresponding page
      */
     public void setContent(){
