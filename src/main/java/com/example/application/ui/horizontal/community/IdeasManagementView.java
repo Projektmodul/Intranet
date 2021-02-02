@@ -5,6 +5,7 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.ideas.IdeaService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.button.Button;
@@ -34,6 +35,8 @@ import java.util.List;
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
 public class IdeasManagementView extends Div {
+    private PageService pageService;
+    private PageEntity pageEntity;
 
     private final IdeaService ideaService;
 
@@ -42,21 +45,18 @@ public class IdeasManagementView extends Div {
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 
+        this.pageService = pageService;
         this.ideaService = ideaService;
-
-        PageEntity pageEntity = pageService.findPageById(21);
-        H1 title = new H1(pageEntity.getTitle());
 
         Button buttonIdea = new Button("Idee einreichen", new Icon(VaadinIcon.LIGHTBULB));
         buttonIdea.addClickListener(e -> initDialogAdd().open());
         buttonIdea.setIconAfterText(true);
 
-        Paragraph content = new Paragraph(pageEntity.getContent());
-
         Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("Ideenmanagement"));
 
-        add(breadcrumbs, title, buttonIdea, content, initializeGrid());
+        InitData initIdeas = new InitData(pageService);
+        this.add(breadcrumbs, buttonIdea, initIdeas.setData(21),  initializeGrid());
     }
 
     /**
