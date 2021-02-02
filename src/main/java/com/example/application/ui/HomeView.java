@@ -20,12 +20,13 @@ import java.util.List;
 
 
 /**
- *  Home View shows ...
+ *  Home View shows the company news as well as local news via RSS
  *
- *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel
- *  @version 3.0
+ *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel,
+ *          Anastasiya Jackwerth and Sabrine Gamdou
+ *  @version 4.0
  *  @since 04.01.2021
- *  @lastUpdated 20.01.2021
+ *  @lastUpdated 02.02.2021 by Anastasiya Jackwerth and Sabrine Gamdou
  */
 @RouteAlias(value = "", layout = MainView.class)
 @Route(value = "home", layout = MainView.class)
