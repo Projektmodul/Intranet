@@ -15,9 +15,18 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.validator.RegexpValidator;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.context.annotation.Bean;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
+/**
+ * This class instantiates a PasswordView component
+ * which allows the user to change their password.
+ *
+ * @author  Lea Schünemann, Marieke Menna de Boer
+ * @version 1.0
+ * @since   18.01.2021
+ * @lastUpdated 02.02.2021
+ */
 
 @Route("changePassword")
 @PageTitle("changePassword | BSAG")
@@ -120,7 +129,8 @@ public class PasswordView extends Dialog {
         confirm.addClickShortcut(Key.ENTER);
         confirm.addClickListener(e ->{
             if(password.getValue().equals(password2.getValue()) && password.getValue().matches(passwordPattern)){
-                userService.passwordUpdate(userEntity, passwordEncoder().encode(password.getValue()));
+                String hashedPassword = passwordEncoder().encode(password.getValue());
+                userService.passwordUpdate(userEntity, hashedPassword);
                 close();
             }
         });
@@ -130,7 +140,11 @@ public class PasswordView extends Dialog {
         add(layout, cancel, confirm);
     }
 
-    @Bean
+    /**
+     * This method encrypts the typed in password in 11 rounds (strength).
+     *
+     * @return BCryptPasswordEncoder
+     */
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(11);
     }
