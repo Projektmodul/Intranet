@@ -3,7 +3,6 @@ package com.example.application.backend.services.users;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.repositories.UserRepository;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import org.springframework.stereotype.Service;
  *          Lea Schünemann, Marieke Menna de Boer, Monika Martius
  * @version 5.0
  * @since   11.01.2021
- * @lastUpdated 25.01.2021
+ * @lastUpdated 02.02.2021
  */
 
 @Service
