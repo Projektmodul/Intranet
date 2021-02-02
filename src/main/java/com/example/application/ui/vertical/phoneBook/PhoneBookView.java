@@ -1,8 +1,10 @@
 package com.example.application.ui.vertical.phoneBook;
 
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.html.*;
@@ -14,45 +16,34 @@ import com.vaadin.flow.router.Route;
  *  phoneBook View shows ...
  *
  *  @author Rebecca Schirmacher, Jessica Reistel
- *  @version 3.0
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 02.02.2021 by Laura Neuendorf
  */
 @Route(value = "phoneBook", layout = MainView.class)
 @PageTitle("Telefonbuch")
 
 public class PhoneBookView extends Div {
     private PageService pageService;
-    private H1 pageTitle;
-    private Paragraph pageText;
-    private Span externTele;
-    private Span internTele;
     private PageEntity pageEntity;
+    private LinkService linkService;
 
-    public PhoneBookView(PageService pageService) {
+    public PhoneBookView(PageService pageService, LinkService linkService) {
         setId("phoneBook");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        pageEntity = pageService.findPageById(23);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Paragraph(pageEntity.getContent());
+        this.pageService = pageService;
+        this.linkService = linkService;
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Telefonbuch"));
 
-        externTele = new Span("externes Telefonbuch");
-        internTele = new Span("internes Telefonbuch");
+        InitData initPhoneBook = new InitData(pageService, linkService);
 
-        VerticalLayout verticalLayout = new VerticalLayout();
+        VerticalLayout phoneLinks = new VerticalLayout();
+        phoneLinks.add(initPhoneBook.setLinkData(8), initPhoneBook.setLinkData(9));
 
-        Anchor linkExtern = new Anchor("https://www.11880.com", externTele);
-        linkExtern.setTarget("https://www.11880.com");
-        Anchor linkIntern = new Anchor("https://fldsr274.bsag.local:8443/php-bin/WebClient.php?lang=de", internTele);
-        linkIntern.setTarget("https://fldsr274.bsag.local:8443/php-bin/WebClient.php?lang=de");
-
-        verticalLayout.add(linkExtern);
-        verticalLayout.add(linkIntern);
-        add(breadcrumbs, pageTitle, verticalLayout);
+        this.add(breadcrumbs, initPhoneBook.setData(23), phoneLinks);
     }
 }
