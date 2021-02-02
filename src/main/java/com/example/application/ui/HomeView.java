@@ -44,6 +44,7 @@ public class HomeView extends Div {
     private Div newsContainer;
     private List<NewsArticle> newsArticles;
 
+
     public HomeView(UserService userService, PageService pageService) {
         this.userService = userService;
         this.pageService = pageService;
@@ -61,6 +62,7 @@ public class HomeView extends Div {
         initializeNewsContainer();
 
         add(newsContainer);
+
     }
 
     /**
@@ -72,6 +74,7 @@ public class HomeView extends Div {
         UserEntity userEntity = userService.findByUsername(username);
         pageEntity = pageService.findPageById(1);
         H1 pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
+
         this.add(pageTitle);
 
         RssItems faz = new RssItems("https://www.faz.net/rss/aktuell/", 6, 100, 100, true, "description");
