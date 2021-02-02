@@ -5,6 +5,7 @@ import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
+import com.example.application.ui.auxiliary.InitData;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Text;
@@ -22,9 +23,9 @@ import com.vaadin.flow.router.RouterLink;
  *  Help View shows ...
  *
  *  @author Jessica Reistel
- *  @version 2.0
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 26.01.2021
+ *  @lastUpdated 02.02.2021 by Laura Neuendorf
  */
 @Route(value = "help", layout = MainView.class)
 @PageTitle("Hilfe")
@@ -33,9 +34,6 @@ public class HelpView extends Div {
     private PageService pageService;
     private PageEntity pageEntity;
     private LinkService linkService;
-    private H1 pageTitle;
-    private Paragraph pageContent;
-    private HorizontalLayout links;
 
     public HelpView(PageService pageService, LinkService linkService) {
         setId("help");
@@ -45,26 +43,13 @@ public class HelpView extends Div {
         this.pageService = pageService;
         this.linkService = linkService;
 
-        setContent();
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
-
-        add(breadcrumbs, pageTitle, pageContent, links);
-    }
-
-    private void setContent(){
-        pageEntity = pageService.findPageById(25);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Paragraph(pageEntity.getContent());
-        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
-
-        LinkEntity linkEntity = linkService.findById(3);
-        Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Hilfe"));
 
         RouterLink faqLink = new RouterLink("Antworten auf häufig gestellte Fragen", FAQView.class);
 
-        links = new HorizontalLayout();
-        links.add(faqLink, mailLink);
+        InitData initHelp = new InitData(pageService, linkService);
+        this.add(breadcrumbs, initHelp.setData(25), initHelp.setLinkData(3), faqLink);
     }
 }
