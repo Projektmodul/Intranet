@@ -23,9 +23,9 @@ import com.vaadin.flow.router.Route;
  *  Nordlicht View shows ...
  *
  *  @author Monika Martius and Laura Neuendorf
- *  @version 3.0
+ *  @version 4.0
  *  @since 24.01.2020
- *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
+ *  @lastUpdated 02.02.2021 by Sabrine Gamdou
  */
 @Route(value = "nordlicht", layout = MainView.class)
 @PageTitle("Nordlicht")
