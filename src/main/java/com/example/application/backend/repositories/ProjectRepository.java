@@ -5,8 +5,10 @@ import com.example.application.backend.entities.ProjectEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * DESCRIPTION
  *
+ * This interface is a repository for the entity project.
+ * Each entity has a repository to manage its data exchange.
+ * The repository takes over the DAO functionality.
  * @author  Monika Martius and Laura Neuendorf
  * @version 1.0
  * @since   26.01.2021
