@@ -11,9 +11,9 @@ import java.util.List;
  * This is a basic page class.
  *
  * @author  Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   05-01-2021
- * @lastUpdated 25.01.2021 from Litharshiga Sivarasa, Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 @Entity(name = "pages")
