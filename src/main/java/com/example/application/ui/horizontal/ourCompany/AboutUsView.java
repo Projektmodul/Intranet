@@ -38,17 +38,11 @@ public class AboutUsView extends Div {
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
-    private GetUserController getUserController;
 
-    private String username;
-    private H1 pageTitle;
-    private Paragraph pageContent;
     private ImageService imageService;
     private int role;
 
     private Div bigContainer;
-    private Div imagesContainer;
-    private Div imagesUploader;
 
     public AboutUsView(PageService pageService, UserService userService, ImageService imageService) {
         setId("aboutUs");
@@ -57,12 +51,12 @@ public class AboutUsView extends Div {
 
         this.pageService = pageService;
         this.imageService = imageService;
-        getUserController = new GetUserController();
+        GetUserController getUserController = new GetUserController();
 
         setContent();
         setTimeline();
 
-        username = getUserController.getUsername();
+        String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         RoleEntity roleEntity = userEntity.getRole();
         role = roleEntity.getRoleId();
@@ -80,8 +74,8 @@ public class AboutUsView extends Div {
     private void setContent(){
         pageEntity = pageService.findPageById(5);
 
-        pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Paragraph();
+        H1 pageTitle = new H1(pageEntity.getTitle());
+        Paragraph pageContent = new Paragraph();
         pageContent.setId("pageContentWelcome");
         pageContent.setText((pageEntity.getContent()));
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
@@ -125,7 +119,7 @@ public class AboutUsView extends Div {
     }
 
     private void initializeImages(){
-        imagesContainer = new Div();
+        Div imagesContainer = new Div();
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
         bigContainer.add(imagesManager);
@@ -138,7 +132,7 @@ public class AboutUsView extends Div {
 
     private void initializeUploadContainer(){
         imagesManager.initializeUploadContainer();
-        imagesUploader = imagesManager.getImagesUploader();
+        Div imagesUploader = imagesManager.getImagesUploader();
         this.add(bigContainer);
         if(role == 1) {
             this.add(imagesUploader);
