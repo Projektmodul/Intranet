@@ -15,9 +15,9 @@ import com.vaadin.flow.router.Route;
  * This class instantiates a LoginForm component
  *
  * @author  Lea Schünemann, Marieke Menna de Boer
- * @version 1.0
+ * @version 2.0
  * @since   11.01.2021
- * @lastUpdated 12.01.2021
+ * @lastUpdated 02.02.2021
  */
 
 
@@ -57,10 +57,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     /**
      * With this method we want to check if there is an error query parameter present.
      *
-     * @author  Lea Schünemann, Marieke Menna de Boer
-     * @version 1.0
-     * @since   11.01.2021
-     * @lastUpdated 12.01.2021
+     * @param beforeEnterEvent
      */
     @Override
     public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {

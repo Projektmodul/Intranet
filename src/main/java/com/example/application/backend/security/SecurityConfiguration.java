@@ -19,9 +19,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * This class is for configuring spring security.
  *
  * @author  Lea Schünemann, Marieke Menna de Boer
- * @version 1.0
+ * @version 2.0
  * @since   11.01.2021
- * @lastUpdated 12.01.2021
+ * @lastUpdated 02.02.2021
  */
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -53,10 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * This method returns a new UserService.
      *
-     * @author  Lea Schünemann, Marieke Menna de Boer
-     * @version 1.0
-     * @since   11.01.2021
-     * @lastUpdated 12.01.2021
+     * @return UserService
      */
     @Bean
     public UserDetailsService userDetailsService() {
@@ -66,10 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * This method encrypts the typed in password in 11 rounds (strength).
      *
-     * @author  Lea Schünemann, Marieke Menna de Boer
-     * @version 1.0
-     * @since   11.01.2021
-     * @lastUpdated 12.01.2021
+     * @return BCryptPasswordEncoder
      */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -81,10 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * With this method we are configuring http security.
      * It is to block unauthenticated requests to all pages, except the login page.
      *
-     * @author  Lea Schünemann, Marieke Menna de Boer
-     * @version 1.0
-     * @since   11.01.2021
-     * @lastUpdated 12.01.2021
+     * @param http
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -109,10 +100,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * Method for configuring access to static resources.
      * Excluding Vaadin-framework communication and static assets from Spring Security
      *
-     * @author  Lea Schünemann, Marieke Menna de Boer
-     * @version 1.0
-     * @since   11.01.2021
-     * @lastUpdated 12.01.2021
+     * @param web
      */
     @Override
     public void configure(WebSecurity web) {

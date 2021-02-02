@@ -1,7 +1,6 @@
 package com.example.application.backend.security;
 
 import com.vaadin.flow.server.HandlerHelper;
-import com.vaadin.flow.server.ServletHelper;
 import com.vaadin.flow.shared.ApplicationConstants;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,9 +12,9 @@ import java.util.stream.Stream;
      * This class provides utility methods
      *
      * @author  Lea Schünemann, Marieke Menna de Boer
-     * @version 1.0
+     * @version 2.0
      * @since   11.01.2021
-     * @lastUpdated 12.01.2021
+     * @lastUpdated 02.02.2021
      */
 
 public final class SecurityUtils {
@@ -29,10 +28,8 @@ public final class SecurityUtils {
          * request parameter is present and if its value is consistent
          *  with any of the request types know
          *
-         * @author  Lea Schünemann, Marieke Menna de Boer
-         * @version 1.0
-         * @since   11.01.2021
-         * @lastUpdated 12.01.2021
+         * @param request
+         * @return boolean
          */
     static boolean isFrameworkInternalRequest(HttpServletRequest request) {
 
@@ -46,10 +43,7 @@ public final class SecurityUtils {
         /**
          * This method tests if some user is authenticated
          *
-         * @author  Lea Schünemann, Marieke Menna de Boer
-         * @version 1.0
-         * @since   11.01.2021
-         * @lastUpdated 12.01.2021
+         * @return boolean
          */
     static boolean isUserLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext()
