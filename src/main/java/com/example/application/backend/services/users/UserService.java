@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * DESCRIPTION
+ * This class is service class for the entity user.
+ * The service layer processes requests from the UI layer.
  *
  * @author  Jessica Reistel and Laura Neuendorf,
  *          Lea Schünemann, Marieke Menna de Boer, Monika Martius
@@ -45,6 +46,12 @@ public class UserService implements UserDetailsService{
 
     public UserEntity findByUsername (String username) {return getUserRepository().findByUsername(username);}
 
+    /**
+     * This method updates the entered information from the MyProfilView in the database
+     * @param userEntity
+     * @param updateIban
+     * @param updateJobDescription
+     */
     public void update(UserEntity userEntity, TextField updateIban, TextArea updateJobDescription){
         userEntity.setIban(updateIban.getValue());
         userEntity.setJobDescription(updateJobDescription.getValue());
@@ -52,6 +59,11 @@ public class UserService implements UserDetailsService{
         UI.getCurrent().getPage().reload();
     }
 
+    /**
+     * This method updates the password from user
+     * @param userEntity
+     * @param password
+     */
     public void passwordUpdate(UserEntity userEntity, String password){
         userEntity.setPassword(password);
         getUserRepository().saveAndFlush(userEntity);
