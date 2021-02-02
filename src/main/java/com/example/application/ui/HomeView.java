@@ -1,9 +1,11 @@
 package com.example.application.ui;
+import com.example.application.backend.entities.NewsEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
+import com.example.application.ui.horizontal.ourCompany.news.NewsArticle;
 import com.flowingcode.vaadin.addons.rssitems.RssItems;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -12,6 +14,9 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -36,6 +41,9 @@ public class HomeView extends Div {
     private GetUserController getUserController;
     private String username;
 
+    private Div newsContainer;
+    private List<NewsArticle> newsArticles;
+
     public HomeView(UserService userService, PageService pageService) {
         this.userService = userService;
         this.pageService = pageService;
@@ -46,12 +54,19 @@ public class HomeView extends Div {
         addClassName("homeColorscheme");
 
         setData();
+
+        newsArticles = new ArrayList<>();
+
+        initializeNewsArticles();
+        initializeNewsContainer();
+
+        add(newsContainer);
     }
 
     private void setData(){
         username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
-        PageEntity pageEntity = pageService.findPageById(1);
+        pageEntity = pageService.findPageById(1);
         pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
         this.add(pageTitle);
 
@@ -59,6 +74,20 @@ public class HomeView extends Div {
         add(faz);
     }
 
+    public void initializeNewsContainer(){
+        newsContainer = new Div();
+        newsContainer.setId("newsContainer");
+
+        for(NewsArticle newsArticle : newsArticles) newsContainer.add(newsArticle);
+
+    }
+
+    public void initializeNewsArticles(){
+        List<NewsEntity> newsEntities = pageEntity.getNews();
+        for(NewsEntity newsEntity : newsEntities){
+            newsArticles.add(new NewsArticle(newsEntity.getImage(), newsEntity));
+        }
+    }
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserService();
