@@ -42,7 +42,7 @@ public class PhoneBookView extends Div {
         InitData initPhoneBook = new InitData(pageService, linkService);
 
         VerticalLayout phoneLinks = new VerticalLayout();
-        phoneLinks.add(initPhoneBook.setLinkData(8), initPhoneBook.setLinkData(9));
+        phoneLinks.add(initPhoneBook.setLinkData(6), initPhoneBook.setLinkData(7));
 
         this.add(breadcrumbs, initPhoneBook.setData(23), phoneLinks);
     }
