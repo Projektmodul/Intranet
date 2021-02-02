@@ -1,6 +1,8 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -24,28 +26,19 @@ public class NewsEntity {
     private String description;
     private String type;
 
-  /*  @OneToOne
-    @JoinColumn(name="link_id")
-    private LinkEntity link;
+    @Column(name ="created_at")
+    private Timestamp date;
 
     @OneToOne
     @JoinColumn(name="image_id")
     private ImageEntity image;
 
-    *//*@ManyToMany(mappedBy = "news")
-    private List<PageEntity> pages;*//*
 
-    @OneToOne
-    @JoinColumn(name="notification_id")
-    private NotificationEntity notification;
-*/
-    public int getNewsId() {
-        return newsId;
-    }
 
-    public void setNewsId(int newsId) {
-        this.newsId = newsId;
-    }
+    @ManyToMany(mappedBy = "news")
+    private List<PageEntity> pages;
+
+
 
     public String getTitle() {
         return title;
@@ -71,14 +64,6 @@ public class NewsEntity {
         this.type = type;
     }
 
-  /*  public LinkEntity getLink() {
-        return link;
-    }
-
-    public void setLink(LinkEntity link) {
-        this.link = link;
-    }
-
     public ImageEntity getImage() {
         return image;
     }
@@ -86,22 +71,16 @@ public class NewsEntity {
     public void setImage(ImageEntity image) {
         this.image = image;
     }
-*/
-    /*public List<PageEntity> getPages() {
+
+    public Date getDate() {
+        return new Date(date.getTime());
+    }
+
+    public List<PageEntity> getPages() {
         return pages;
     }
 
     public void setPages(List<PageEntity> pages) {
         this.pages = pages;
-    }*/
-/*
-    public NotificationEntity getNotification() {
-        return notification;
     }
-
-    public void setNotification(NotificationEntity notification) {
-        this.notification = notification;
-    }*/
-
-
 }
