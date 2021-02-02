@@ -18,7 +18,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Projects View shows ...
+ *  Projects View is the overview page of the projects. Here you can add a dummy project
  *
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 4.0
@@ -28,7 +28,6 @@ import com.vaadin.flow.router.Route;
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
 public class ProjectsView extends Div {
-
     private PageService pageService;
     private PageEntity pageEntity;
 
@@ -54,6 +53,10 @@ public class ProjectsView extends Div {
         add(breadcrumbs,pageTitle, firstQuote, secondQuote, layout);
     }
 
+    /**
+     * This method etches the data from the database
+     * and displays it on the corresponding page
+     */
     private void setContent(){
         pageEntity = pageService.findPageById(11);
 
@@ -75,9 +78,12 @@ public class ProjectsView extends Div {
         Component componentAdd = OverviewComponents.createComponent(iconAdd, "#581092", "Projekt hinzufügen","projects");
 
         layout.add(componentAdd, componentNordlicht);
-
     }
 
+    /**
+     * This method creates a content dialog window to add a new project
+     * @return addDialog as dialog
+     */
     private Dialog initDialogAdd(){
         Dialog addDialog = new Dialog();
         addDialog.setCloseOnOutsideClick(false);
@@ -96,6 +102,10 @@ public class ProjectsView extends Div {
         return addDialog;
     }
 
+    /**
+     * This method creates a new dummy component named "Neues E-Auto"
+     * @return componentNewProject as div
+     */
     private Div addProject(){
         Div componentNewProject = new Div();
 
