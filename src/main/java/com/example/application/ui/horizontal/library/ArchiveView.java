@@ -19,10 +19,10 @@ import com.vaadin.flow.router.Route;
 /**
  *  Archive View shows a short text and a non-functional button
  *
- *  @author Vanessa Skowronsky and Laura Neuendorf
+ *  @author Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021
+ *  @lastUpdated 01.02.2021 by Laura Neuendorf
  */
 @Route(value = "archive", layout = MainView.class)
 @PageTitle("Archiv")

@@ -66,13 +66,17 @@ public class InitData {
         pageContent = new Paragraph();
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
-        //Breadcrumbs breadcrumbs = new Breadcrumbs();
-        //breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
-
         dataSet.add(pageTitle, pageContent);
         return dataSet;
     }
 
+    /*
+     * This method fetches the link data from the database
+     * and displays it on the corresponding page
+     *
+     * @param int linkId
+     * @return linkSet
+     */
     public static  Component setLinkData(int linkId){
         HorizontalLayout linkSet = new HorizontalLayout();
         linkSet.setId("dataSetLayout");
