@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * DESCRIPTION
- *
+ * This interface is a repository for the entity user.
+ *  Each entity has a repository to manage its data exchange.
+ *  The repository takes over the DAO functionality.
  * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou,
  *          Lea Schünemann, Marieke Menna de Boer, Monika Martius
  * @version 4.0
