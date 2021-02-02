@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * DESCRIPTION
+ * This class is service class for the class MyProfileView.
+ *  The service layer processes requests from the UI layer.
  *
  * @author  Jessica Reistel and Laura Neuendorf
  * @version 2.0
