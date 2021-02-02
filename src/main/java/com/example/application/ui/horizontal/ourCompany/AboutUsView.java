@@ -1,7 +1,6 @@
 package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
-
 import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
@@ -22,19 +21,18 @@ import de.nils_bauer.PureTimeline;
 import de.nils_bauer.PureTimelineItem;
 
 
-/**	/**
- *  AboutUs View shows ...
+/**
+ *  AboutUs View shows information about the BSAG and has a timeline with the most important historical data
  *	 *
  *  @author Laura Neuendorf, Jessica Reistel
  *  @version 7.0
  *  @since 15.12.2020
  *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
- *  */
+ */
 
 @Route(value = "aboutUs", layout = MainView.class)
 @PageTitle("Über Uns")
 public class AboutUsView extends Div {
-
     private PageService pageService;
     private ImagesManager imagesManager;
 
@@ -46,7 +44,6 @@ public class AboutUsView extends Div {
     private H1 pageTitle;
     private Paragraph pageContent;
     private ImageService imageService;
-    private UserService userService;
     private int role;
 
     private Div bigContainer;
@@ -60,7 +57,6 @@ public class AboutUsView extends Div {
 
         this.pageService = pageService;
         this.imageService = imageService;
-        this.userService = userService;
         getUserController = new GetUserController();
 
         setContent();
@@ -77,6 +73,10 @@ public class AboutUsView extends Div {
         imagesManager.setOneImage(true);
     }
 
+    /**
+     * This method etches the data from the database
+     * and displays it on the corresponding page
+     */
     private void setContent(){
         pageEntity = pageService.findPageById(5);
 
@@ -92,6 +92,9 @@ public class AboutUsView extends Div {
         this.add(breadcrumbs, pageTitle, pageContent);
     }
 
+    /**
+     * This method creates a timeline with the most important data of the BSAG
+     */
     private void setTimeline(){
         PureTimeline timelineBSAG = new PureTimeline();
         PureTimelineItem item1876 = new PureTimelineItem("1876", new Paragraph("Betrieb der Aktiengesellschaft Bremer Pferdebahn wurde aufgenommen"));
@@ -110,6 +113,9 @@ public class AboutUsView extends Div {
         this.add(timelineBSAG);
     }
 
+    /**
+     * This methods initializes the entity lists + containers
+     */
     private void initializeImagesManager(){
         imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
