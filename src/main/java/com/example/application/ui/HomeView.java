@@ -33,7 +33,6 @@ import java.util.List;
 @PageTitle("BSAG Intranet")
 
 public class HomeView extends Div {
-
     private UserService userService;
 
     private PageService pageService;
