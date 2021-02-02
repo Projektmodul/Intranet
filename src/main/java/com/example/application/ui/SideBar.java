@@ -64,7 +64,7 @@ public class SideBar extends VerticalLayout{
 
 
         tabs = new Tabs();
-        Tab[] tabArray = new Tab[12];
+        Tab[] tabArray = new Tab[14];
         for (int i = 0; i<tabArray.length;i++) {
             tabArray[i] = new Tab("");
         }
@@ -81,6 +81,8 @@ public class SideBar extends VerticalLayout{
         tabArray[9].add(new RouterLink("Favoriten", InProgressView.class));
         tabArray[10].add(new RouterLink("Betriebsrestaurant", CanteenView.class));
         tabArray[11].add(new RouterLink("Zuletzt besucht", InProgressView.class));
+        tabArray[12].add(new RouterLink("Meine Aufgaben", InProgressView.class));
+        tabArray[13].add(new RouterLink("Hinzufügen", InProgressView.class));
 
         for (Tab tab : tabArray) {
             tabs.add(tab);
