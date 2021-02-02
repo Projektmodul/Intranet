@@ -67,7 +67,7 @@ public class NordlichtView extends Div {
         RoleEntity roleEntity = userEntity.getRole();
         role = roleEntity.getRoleId();
 
-        setData();
+        setContent();
 
         initializeImagesManager();
         initializeImagesManagerTwo();
@@ -82,7 +82,7 @@ public class NordlichtView extends Div {
      * This method etches the data from the database
      * and displays it on the corresponding page
      */
-    private void setData(){
+    private void setContent(){
         H1 pageTitle = new H1(pageEntity.getTitle());
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
