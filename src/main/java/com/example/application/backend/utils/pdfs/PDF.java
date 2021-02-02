@@ -16,9 +16,9 @@ import java.io.InputStream;
  * This is class that creates the file in the database and the server.
  *
  * @author Anastasiya Jackwerth, Sabrine Gamdou
- * @version 2.0
+ * @version 3.0
  * @since   21.12.2020
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class PDF extends Div {
@@ -31,13 +31,14 @@ public class PDF extends Div {
 
 
     private InputStream inputStream;
+    private int role;
 
 
 
-    public PDF(DocumentEntity documentEntity, InputStream inputStream){
+    public PDF(DocumentEntity documentEntity, InputStream inputStream, int role){
         this.documentEntity = documentEntity;
         this.inputStream = inputStream;
-
+        this.role = role;
         initializePDF();
 
     }
@@ -45,7 +46,10 @@ public class PDF extends Div {
     public void initializePDF(){
         deleteButton = new Icon(VaadinIcon.TRASH);
         initializePdfViewer();
-        this.add(deleteButton, pdfDocumentViewer);
+        if(role == 1 || role == 3) {
+            this.add(deleteButton);
+        }
+        this.add(pdfDocumentViewer);
     }
 
     public void initializePdfViewer(){

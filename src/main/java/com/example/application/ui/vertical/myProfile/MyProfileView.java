@@ -119,7 +119,7 @@ public class MyProfileView extends Div {
 
     // initializes the entity lists + containers.
     private  void initializeImagesManager(){
-        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, 1);
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
 

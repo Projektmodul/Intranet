@@ -18,9 +18,9 @@ import java.util.Date;
  * imageCreationManager and the imageDeletionManager to create and delete images.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 4.0
+ * @version 5.0
  * @since   19.01.2021
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class ImageManager {
@@ -46,16 +46,18 @@ public class ImageManager {
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private int role;
 
     private final String RESOURCES_DIR = "~/uploads";
 
-    public ImageManager(ImageService imageService){
+    public ImageManager(ImageService imageService, int role){
         this.imageService = imageService;
+        this.role = role;
         isOneImage = true;
         initializeUploader();
     }
     public Image createPDF(){
-        image = new Image(imageEntity, inputStream);
+        image = new Image(imageEntity, inputStream, role);
         return image;
     }
 
