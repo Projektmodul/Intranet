@@ -11,9 +11,9 @@ import java.util.List;
  * This is a basic page class.
  *
  * @author  Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   05-01-2021
- * @lastUpdated 25.01.2021 from Litharshiga Sivarasa, Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
  */
 
 @Entity(name = "pages")
@@ -44,23 +44,26 @@ public class PageEntity {
 
 
     @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<ImageEntity> images;
 
 
   /*  @OneToMany(mappedBy = "page")
     private List<IdeaEntity> ideas;*/
 
-/*
-    @OneToMany(mappedBy = "page")
-    private List<NoticeBoardOfferEntity> noticeBoardOffers;
 
-    @ManyToMany
+
+    /*@OneToMany(mappedBy = "page")
+    private List<NoticeBoardOfferEntity> noticeBoardOffers;*/
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable( //this defines the relationship and the foreign key columns
             name = "pages_news",
             joinColumns = @JoinColumn(name = "page_id"),
             inverseJoinColumns = @JoinColumn(name = "news_id")
     )
-    private List<NewsEntity> news;*/
+    private List<NewsEntity> news;
 
     @ManyToOne
     @JoinColumn(name ="username")
@@ -137,7 +140,7 @@ public class PageEntity {
 
     public void setLinks(List<LinkEntity> links) {
         this.links = links;
-    }
+    }*/
 
 
 
@@ -155,7 +158,7 @@ public class PageEntity {
 
 
 
-    public List<IdeaEntity> getIdeas() { return ideas; }
+   /* public List<IdeaEntity> getIdeas() { return ideas; }
 
     public void setIdeas(List<IdeaEntity> ideas) {
         this.ideas = ideas;

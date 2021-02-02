@@ -306,6 +306,21 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
+#readMoreButton{
+    cursor: pointer;
+    align-self: flex-end;
+    background: none!important;
+}
+
+#addNews{
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+#date{
+    color: #A00505;
+    font-weight: bold;
+}
 
 /* -------------------------------------------------------------- */
 
