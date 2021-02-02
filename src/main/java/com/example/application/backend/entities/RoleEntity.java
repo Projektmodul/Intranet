@@ -7,9 +7,9 @@ import java.util.List;
  * This is a basic role class.
  *
  * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   21-12-2020
- * @lastUpdated 05.01.2021
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 @Entity(name ="roles")
@@ -19,10 +19,9 @@ public class RoleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="role_id")
     private int roleId;
-
     private String roleName;
 
-   /* @ManyToMany
+   /* @ManyToOne
     @JoinTable( //this defines the relationship and the foreign key columns
             name = "permissions_roles",
             joinColumns = @JoinColumn(name = "role_id"),

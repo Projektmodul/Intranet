@@ -33,9 +33,9 @@ import com.vaadin.flow.router.Route;
  *  The user is able to change his profile information
  *
  *  @author Jessica Reistel and Laura Neuendorf
- *  @version 5.0
+ *  @version 6.0
  *  @since 21.12.2020
- *  @lastUpdated 24.01.2021 by Vanessa Skowronsky
+ *  @lastUpdated 01.02.2021 by Jessica Reistel
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = MainView.class)
@@ -110,18 +110,16 @@ public class MyProfileView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        content.addComponentAsFirst(breadcrumbs);
         content.setSizeFull();
-        content.addComponentAtIndex(1, new H1(pageEntity.getTitle()));
-        content.addComponentAtIndex(2, initData());
+        content.addComponentAsFirst(initData());
 
 
-        add(content);
+        add(breadcrumbs,new H1(pageEntity.getTitle()), content);
     }
 
     // initializes the entity lists + containers.
     private  void initializeImagesManager(){
-        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, 1);
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
 

@@ -17,9 +17,9 @@ import java.io.InputStream;
  * the files input stream.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 2.0
+ * @version 3.0
  * @since   21.12.2020
- * @lastUpdated 23.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 public class Image extends Div {
@@ -28,15 +28,16 @@ public class Image extends Div {
     private Icon deleteButton;
     private Component imageViewer;
     private StreamResource stream; //Is it used?
-
+    private int role;
 
     private InputStream inputStream;
 
 
 
-    public Image(ImageEntity imageEntity, InputStream inputStream){
+    public Image(ImageEntity imageEntity, InputStream inputStream, int role){
         this.imageEntity = imageEntity;
         this.inputStream = inputStream;
+        this.role = role;
 
         initializePDF();
 
@@ -45,7 +46,10 @@ public class Image extends Div {
     public void initializePDF(){
         deleteButton = new Icon(VaadinIcon.TRASH);
         initializeImageViewer();
-        this.add(deleteButton, imageViewer);
+        if(role == 1){
+            this.add(deleteButton);
+        }
+        this.add(imageViewer);
     }
 
     public void initializeImageViewer(){

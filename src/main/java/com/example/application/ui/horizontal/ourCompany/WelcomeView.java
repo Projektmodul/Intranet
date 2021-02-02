@@ -2,10 +2,12 @@ package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
 
+import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.services.roles.RoleService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
@@ -41,6 +43,8 @@ public class WelcomeView extends Div {
     private PageService pageService;
     private UserService userService;
     private ImageService imageService;
+    private RoleService roleService;
+
 
     private String username;
     private Div bigContainer;
@@ -48,10 +52,11 @@ public class WelcomeView extends Div {
 
     private H1 pageTitle;
     private Paragraph pageContent;
+    private int role;
 
     private Div imagesUploader;
 
-    public WelcomeView(PageService pageService, UserService userService, ImageService imageService) {
+    public WelcomeView(PageService pageService, UserService userService, ImageService imageService, RoleService roleService) {
         setId("welcome");
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
@@ -59,16 +64,20 @@ public class WelcomeView extends Div {
         this.pageService = pageService;
         this.userService = userService;
         this.imageService = imageService;
+        this.roleService = roleService;
         getUserController = new GetUserController();
 
         setData();
 
         username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
 
         initializeImagesManager();
         initializeBigContainer();
         initializeUploadContainer();
+
         imagesManager.setOneImage(true);
     }
 
@@ -88,7 +97,7 @@ public class WelcomeView extends Div {
     }
 
     private void initializeImagesManager(){
-        imagesManager = new ImagesManager(pageEntity.getImages(), imageService);
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity, userEntity);
 
@@ -111,7 +120,9 @@ public class WelcomeView extends Div {
         imagesManager.initializeUploadContainer();
         imagesUploader = imagesManager.getImagesUploader();
         this.add(bigContainer);
-        this.add(imagesUploader);
+        if(role == 1){
+            this.add(imagesUploader);
+        }
     }
 
 }

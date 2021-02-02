@@ -51,6 +51,7 @@ public class CareerView extends Div {
     private PageService pageService;
     private H1 pageTitle;
     private PageEntity pageEntity;
+    private int role;
 
     private Component leftComponent;
     private Component rightComponent;
@@ -185,7 +186,7 @@ public class CareerView extends Div {
 
     public void initializePdfsManager(){
         List<DocumentEntity> tempDocumentsList = initializeJobOfferDocuments();
-        pdfsManager = new PdfsManager(tempDocumentsList,notificationService,documentService);
+        pdfsManager = new PdfsManager(tempDocumentsList,notificationService,documentService, role);
 
         pdfsManager.setDocumentEntities(tempDocumentsList);
         pdfsManager.setAllDocumentEntitiesData("Verwaltung",pageEntity,pageEntity.getUser());

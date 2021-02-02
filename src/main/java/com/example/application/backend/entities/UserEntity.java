@@ -8,9 +8,9 @@ import java.util.List;
  * This is a basic user class.
  *
  * @author  Jessica Reistel, Laura Neuendorf and Sabrine Gamdou
- * @version 5.0
+ * @version 6.0
  * @since   21-12-2020
- * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
+ * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
  */
 
 @Entity(name= "users")
@@ -43,14 +43,10 @@ public class UserEntity {
     @Column(name ="job_description")
     private String jobDescription;
 
-    /*@ManyToMany
-    @JoinTable( //this defines the relationship and the foreign key columns
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private List<RolesEntity> roles;
-
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RoleEntity role;
+/*
     @OneToMany(mappedBy = "user")
     private List<DocumentEntity> documents;
 
@@ -178,14 +174,10 @@ public class UserEntity {
         this.pages = pages;
     }
 
-    /*public List<RolesEntity> getRoles() {
-        return roles;
-    }
+    public RoleEntity getRole() { return role; }
 
-    public void setRoles(List<RolesEntity> roles) {
-        this.roles = roles;
-    }
-
+    public void setRole(RoleEntity role) { this.role = role; }
+/*
     public List<DocumentEntity> getDocuments() {
         return documents;
     }
