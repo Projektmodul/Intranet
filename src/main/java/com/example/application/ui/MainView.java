@@ -1,5 +1,7 @@
 package com.example.application.ui;
 
+import com.example.application.backend.services.links.LinkService;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
@@ -43,6 +45,7 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
     public MainView(NotificationPresenter notificationPresenter, UserService userService) {
         this.notificationPresenter = notificationPresenter;
         this.userService = userService;
+
 
         setId("mainView");
 
