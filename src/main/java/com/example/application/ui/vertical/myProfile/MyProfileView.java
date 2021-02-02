@@ -43,7 +43,6 @@ import com.vaadin.flow.router.Route;
 
 public class MyProfileView extends Div {
 
-    private MyProfileViewService myProfileViewService;
     private UserService userService;
     private ImageService imageService;
     private AddressService addressService;
@@ -51,8 +50,6 @@ public class MyProfileView extends Div {
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private AddressEntity addressEntity;
-    private GetUserController getUserController;
-    private String username;
 
     private TextField updateIban;
     private TextArea updateJobDescription;
@@ -65,24 +62,19 @@ public class MyProfileView extends Div {
     private ImagesManager imagesManager;
 
     private Div bigContainer;
-    private Div imagesContainer;
     private Div imagesUploader;
 
-    /*
-     * Constructor of the MyProfileVew class where the content is added to the view
-     */
     public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService, ImageService imageService) {
         setId("myProfile");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        this.myProfileViewService = myProfileViewService;
         this.userService = userService;
         this.addressService = addressService;
 
         this.imageService = imageService;
 
-        getUserController = new GetUserController();
+        GetUserController getUserController = new GetUserController();
 
         updateIban = new TextField();
         updateJobDescription = new TextArea();
@@ -94,7 +86,7 @@ public class MyProfileView extends Div {
 
         pageEntity = myProfileViewService.findPageById(22);
 
-        username = getUserController.getUsername();
+        String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         addressEntity = userEntity.getAddress();
 
@@ -104,20 +96,20 @@ public class MyProfileView extends Div {
         initializeBigContainer();
         initializeUploadContainer();
 
-        //True means only one image could be added.
         imagesManager.setOneImage(true);
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
         content.setSizeFull();
-        content.addComponentAsFirst(initData());
-
+        content.addComponentAsFirst(initContent());
 
         add(breadcrumbs,new H1(pageEntity.getTitle()), content);
     }
 
-    // initializes the entity lists + containers.
+    /**
+     * This methods initializes the entity lists + containers
+     */
     private  void initializeImagesManager(){
         imagesManager = new ImagesManager(pageEntity.getImages(), imageService, 1);
         imagesManager.setImagesEntities(pageEntity.getImages());
@@ -127,7 +119,7 @@ public class MyProfileView extends Div {
     }
 
     private void initializeImages(){
-        imagesContainer = new Div();
+        Div imagesContainer = new Div();
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
         bigContainer.add(imagesManager);
@@ -143,11 +135,11 @@ public class MyProfileView extends Div {
         imagesUploader = imagesManager.getImagesUploader();
     }
 
-    /*
+    /**
      * The method initData generates the horizontal layout data and adds two vertical layouts
-     * @return data
+     * @return data as horizontal layout
      */
-    private HorizontalLayout initData () {
+    private HorizontalLayout initContent(){
         HorizontalLayout data = new HorizontalLayout();
 
         data.setSizeFull();
@@ -158,12 +150,12 @@ public class MyProfileView extends Div {
         return data;
     }
 
-    /*
+    /**
      * The method initVerticalLayoutLeft generates the left vertical layout for data
      * Includes the text fields firstname, surname, email, telephone, center, roomnumber, address and iban
-     * @return left
+     * @return left as vertical layout
      */
-    private VerticalLayout initVerticalLayoutLeft () {
+    private VerticalLayout initVerticalLayoutLeft(){
         VerticalLayout left = new VerticalLayout();
 
         HorizontalLayout name = new HorizontalLayout();
@@ -233,15 +225,14 @@ public class MyProfileView extends Div {
         return left;
     }
 
-    /*
+    /**
      * The method initVerticalLayoutRight generates the right vertical layout for data
      * Includes the text field job description, the profile picture and the button updateProfile
-     * @return right
+     * @return right as vertical layout
      */
-    private VerticalLayout initVerticalLayoutRight () {
+    private VerticalLayout initVerticalLayoutRight(){
         VerticalLayout right = new VerticalLayout();
 
-        /*Image profilepicture = new Image("images/user.png", "My Profile Picture");*/
         bigContainer.setHeight("auto");
         bigContainer.setWidth("15rem");
         bigContainer.addClassName("user");
@@ -255,7 +246,6 @@ public class MyProfileView extends Div {
         updateProfile.addClickListener(e -> initContentDialog().open());
         updateProfile.setIconAfterText(true);
 
-
         right.addComponentAsFirst(bigContainer);
         right.addComponentAtIndex(1, jobDescription);
         right.addComponentAtIndex(2, updateProfile);
@@ -263,12 +253,12 @@ public class MyProfileView extends Div {
         return right;
     }
 
-    /*
+    /**
      * The method initContentDialog generates a dialog window with a horizontal layout update,
      * where the user can update his profile
-     * @return contentDialog
+     * @return contentDialog as dialog
      */
-    private Dialog initContentDialog () {
+    private Dialog initContentDialog(){
         Dialog contentDialog = new Dialog();
         contentDialog.setCloseOnOutsideClick(false);
         contentDialog.setCloseOnEsc(false);
@@ -293,21 +283,18 @@ public class MyProfileView extends Div {
         update.addComponentAtIndex(1, initUpdateVerticalLayoutRight());
         contentDialog.add(new H1("Profil bearbeiten"),update,  imagesUploader,saveCancel);
 
-
         return contentDialog;
     }
 
-    /*
+    /**
      * The method initUpdateVerticalLayoutLeft generates the left vertical layout for update
-     * @return updateLeft
+     * @return updateLeft us vertical layout
      */
-    private VerticalLayout initUpdateVerticalLayoutLeft () {
+    private VerticalLayout initUpdateVerticalLayoutLeft(){
         VerticalLayout updateLeft = new VerticalLayout();
-
 
         updateIban.setValue(userEntity.getIban());
         updateIban.setLabel("Kontodaten");
-
 
         updateJobDescription.setValue(userEntity.getJobDescription());
         updateJobDescription.setLabel("Tätigkeitsbeschreibung");
@@ -315,19 +302,17 @@ public class MyProfileView extends Div {
         Button updateProfilpicture = new Button("Bild hochladen", new Icon(VaadinIcon.UPLOAD));
         updateProfilpicture.setIconAfterText(true);
 
-
         updateLeft.addComponentAsFirst(updateIban);
         updateLeft.addComponentAtIndex(1, updateJobDescription);
-        //updateLeft.addComponentAtIndex(2, updateProfilpicture);
 
         return updateLeft;
     }
 
-    /*
+    /**
      * The method initUpdateVerticalLayoutRight generates the right vertical layout for update
-     * @return updateRight
+     * @return updateRight as vertical layout
      */
-    private VerticalLayout initUpdateVerticalLayoutRight () {
+    private VerticalLayout initUpdateVerticalLayoutRight(){
         VerticalLayout updateRight = new VerticalLayout();
 
         HorizontalLayout addressNumber = new HorizontalLayout();
@@ -336,14 +321,11 @@ public class MyProfileView extends Div {
         updateStreet.setValue(addressEntity.getStreetName());
         updateStreet.setLabel("Straße");
 
-
         updateNumber.setValue(addressEntity.getStreetNumber());
         updateNumber.setLabel("Hausnummer");
 
-
         updatePostcode.setValue(addressEntity.getPostcode());
         updatePostcode.setLabel("PLZ");
-
 
         updateCity.setValue(addressEntity.getCity());
         updateCity.setLabel("Stadt");
@@ -358,5 +340,4 @@ public class MyProfileView extends Div {
 
         return updateRight;
     }
-
 }
