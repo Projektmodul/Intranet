@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 /**
- *  Home View shows ...
+ *  Home View shows the personal greeting of an employee. In additional, news is displayed via an RSS feed
  *
  *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel
  *  @version 3.0
@@ -27,14 +27,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @PageTitle("BSAG Intranet")
 
 public class HomeView extends Div {
-
     private UserService userService;
-    private UserEntity userEntity;
     private PageService pageService;
-    private H1 pageTitle;
-    private PageEntity pageEntity;
     private GetUserController getUserController;
-    private String username;
 
     public HomeView(UserService userService, PageService pageService) {
         this.userService = userService;
@@ -45,14 +40,18 @@ public class HomeView extends Div {
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        setData();
+        setContent();
     }
 
-    private void setData(){
-        username = getUserController.getUsername();
-        userEntity = userService.findByUsername(username);
+    /**
+     * This method fetches the data from the database
+     * and displays it on the corresponding page
+     */
+    private void setContent(){
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
         PageEntity pageEntity = pageService.findPageById(1);
-        pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
+        H1 pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() + " " + userEntity.getSurname());
         this.add(pageTitle);
 
         RssItems faz = new RssItems("https://www.faz.net/rss/aktuell/", 6, 100, 100, true, "description");
