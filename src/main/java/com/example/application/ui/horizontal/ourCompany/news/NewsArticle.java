@@ -15,6 +15,15 @@ import com.vaadin.flow.server.StreamResource;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 
+/**
+ *  A news article represents a single newsEntity, where the image, title etc will
+ *  be shown in a div container
+ *
+ *  @author Anastasiya Jackwerth, Sabrine Gamdou
+ *  @version 1.0
+ *  @since 02.02.2021
+ *  @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
+ */
 public class NewsArticle extends HorizontalLayout {
 
     private ImageEntity imageEntity;
