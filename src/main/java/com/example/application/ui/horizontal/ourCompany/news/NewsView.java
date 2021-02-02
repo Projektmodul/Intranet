@@ -25,12 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  FAQ View shows ...
+ *  The news view shows all added company news
  *
- *  @author Monika Martius
+ *  @author Anastasiya Jackwerth, Sabrine Gamdou
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
  */
 @Route(value = "news", layout = MainView.class)
 @PageTitle("Nachrichten")
