@@ -1,5 +1,6 @@
 package com.example.application.ui;
 
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
 import com.example.application.ui.vertical.notifications.NotificationCounterChangedListener;
@@ -16,9 +17,9 @@ import com.vaadin.flow.server.PWA;
  *  MainView shows ...
  *
  *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
- *  @version 5.0
+ *  @version 6.0
  *  @since 15.12.2020
- *  @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 01.02.2021 by Jessica Reistel
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")
@@ -29,6 +30,7 @@ import com.vaadin.flow.server.PWA;
 
 public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener, NotificationCounterChangedListener {
 
+    private UserService userService;
     private VerticalLayout contentHolder = new VerticalLayout();
     private Header header;
     private  SideBar sidebar;
@@ -36,13 +38,14 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
     //bidirectional communication between ContentHolder and NotificationPresenter
     private final NotificationPresenter notificationPresenter;
 
-    public MainView(NotificationPresenter notificationPresenter) {
+    public MainView(NotificationPresenter notificationPresenter, UserService userService) {
         this.notificationPresenter = notificationPresenter;
+        this.userService = userService;
 
         setId("mainView");
 
         //Header
-        header = new Header();
+        header = new Header(this.userService);
         header.getHorizontalBar().getInitiator().addListener(this);
 
         // ContentHolder for routed Views

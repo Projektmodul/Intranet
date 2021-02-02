@@ -2,6 +2,7 @@ package com.example.application.ui.presenters;
 
 import com.example.application.backend.services.notifications.NotificationDataProvider;
 import com.example.application.backend.services.notifications.NotificationService;
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.vaadin.flow.spring.annotation.SpringComponent;
@@ -15,9 +16,9 @@ import org.springframework.context.annotation.Scope;
  * Role: handling the requests of the views, processing them and sending the right responses back.
  *
  * @author Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   06.01.2021
- * @lastUpdated 06.01.2021
+ * @lastUpdated 01.02.2021 by Jessica Reistel
  */
 
 @SpringComponent
@@ -27,15 +28,15 @@ public class NotificationPresenter {
     private MainView mainView;
 
     private final NotificationService notificationService;
+    private final UserService userService;
     private final NotificationsView notificationsView;
     private NotificationDataProvider notificationDataProvider;
 
 
     @Autowired
-    NotificationPresenter(NotificationService notificationService) {
+    NotificationPresenter(NotificationService notificationService, UserService userService) {
         this.notificationService = notificationService;
-
-
+        this.userService = userService;
 
         notificationsView = new NotificationsView();
 
@@ -51,7 +52,7 @@ public class NotificationPresenter {
 
         notificationsView.setNotificationsCounter(notificationDataProvider.getNotificationCounter());
 
-        this.mainView = new MainView(this);
+        this.mainView = new MainView(this, this.userService);
         this.mainView.getSidebar().setNotificationCounter(notificationDataProvider.getNotificationCounter());
     }
 
