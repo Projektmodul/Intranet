@@ -56,7 +56,7 @@ public class ImageManager {
         isOneImage = true;
         initializeUploader();
     }
-    public Image createPDF(){
+    public Image createImage(){
         image = new Image(imageEntity, inputStream, role);
         return image;
     }
