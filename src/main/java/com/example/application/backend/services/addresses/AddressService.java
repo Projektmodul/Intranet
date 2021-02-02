@@ -1,20 +1,15 @@
 package com.example.application.backend.services.addresses;
 
 import com.example.application.backend.entities.AddressEntity;
-import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.repositories.AddressRepository;
-
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.textfield.IntegerField;
-import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * DESCRIPTION
- *
+ * This class is service class for the entity address.
+ * The service layer processes requests from the UI layer.
  * @author  Jessica Reistel and Laura Neuendorf
  * @version 2.0
  * @since   11.01.2021
@@ -35,10 +30,14 @@ public class AddressService {
         return addressRepository;
     }
 
-    /*public AddressEntity findById (int addressId) {
-        return getAddressRepository().findByAddressId(addressId);
-    }*/
-
+    /**
+     * This method updates the entered information from the MyProfilView in the database
+     * @param addressEntity
+     * @param updateStreet
+     * @param updateNumber
+     * @param updatePostcode
+     * @param updateCity
+     */
     public void update(AddressEntity addressEntity, TextField updateStreet, IntegerField updateNumber,
                        IntegerField updatePostcode, TextField updateCity){
         addressEntity.setStreetName(updateStreet.getValue());

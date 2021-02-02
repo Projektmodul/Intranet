@@ -5,6 +5,7 @@ import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
 import com.example.application.ui.vertical.notifications.NotificationCounterChangedListener;
 import com.vaadin.flow.component.HasElement;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -12,6 +13,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
  *  MainView shows ...
@@ -82,7 +84,18 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         String text = content.toString();
         //System.out.println(content);
         String color = contentSplit(text);
-        header.setBackgroundColor(color);
+
+
+        if(UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
+            contentHolder.getElement().getChild(0).getClassList().remove("lightColorscheme");
+            contentHolder.getElement().getChild(0).getClassList().add("darkColorscheme");
+            setBackgroundColorDark(color);
+        } else {
+            setBackgroundColor(color);
+            contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
+            contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
+
+        }
 
     }
 
@@ -112,5 +125,51 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
     @Override
     public void notificationCounterChanged() {
         notificationPresenter.setCounterFromDialogToSideBar();
+    }
+
+    public void setBackgroundColor(String colorName) {
+
+        switch (colorName) {
+            case "HomeView":
+            case "search":
+            case "myProfile":
+            case "phoneBook":
+            case "settings":
+            case "help":
+            case "InProgressView":
+            case "mailing":
+            case "canteen":
+                setClassName("colorHome"); break;
+            case "ourCompany": setClassName("colorCompany"); break;
+            case "center": setClassName("colorCenter"); break;
+            case "projects": setClassName("colorProjects"); break;
+            case "library": setClassName("colorLibrary"); break;
+            case "services": setClassName("colorServices"); break;
+            case "community": setClassName("colorCommunity"); break;
+            default : break;
+        }
+    }
+
+    public void setBackgroundColorDark(String colorName) {
+
+        switch (colorName) {
+            case "HomeView":
+            case "search":
+            case "myProfile":
+            case "phoneBook":
+            case "settings":
+            case "help":
+            case "InProgressView":
+            case "mailing":
+            case "canteen":
+                setClassName("colorDarkHome"); break;
+            case "ourCompany": setClassName("colorDarkCompany"); break;
+            case "center": setClassName("colorDarkCenter"); break;
+            case "projects": setClassName("colorDarkProjects"); break;
+            case "library": setClassName("colorDarkLibrary"); break;
+            case "services": setClassName("colorDarkServices"); break;
+            case "community": setClassName("colorDarkCommunity"); break;
+            default : break;
+        }
     }
 }

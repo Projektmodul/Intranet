@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  Media View shows ...
+ *  Media View shows how the media "images", "videos" and "press releases" could be displayed
  *
  *  @author Monika Martius and Laura Neuendorf
  *  @version 4.0
@@ -25,14 +25,13 @@ import java.util.Map;
  */
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")
-public class MediaView extends Div {
+public class MediaView extends Div{
     private PageService pageService;
     private PageEntity pageEntity;
     private H1 pageTitle;
 
 
-    public MediaView(PageService pageService) {
-
+    public MediaView(PageService pageService){
         setId("media");
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
@@ -43,6 +42,10 @@ public class MediaView extends Div {
         setTabs();
     }
 
+    /**
+     * This method fetches the data from the database
+     * and displays it on the corresponding page
+     */
     public void setContent(){
         pageEntity = pageService.findPageById(16);
         pageTitle = new H1(pageEntity.getTitle());
@@ -53,12 +56,11 @@ public class MediaView extends Div {
         this.add(breadcrumbs, pageTitle);
     }
 
-    /*
+    /**
      * This method creates a tab menu with three tabs.
      * Furthermore, three pages are created, which are connected to the tabs.
      */
     public void setTabs(){
-
         Tab picture = new Tab("Bilder");
         Div pagePicture = new Div();
         pagePicture.setText("Hier können Bilder angezeigt werden");

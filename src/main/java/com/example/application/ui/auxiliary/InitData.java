@@ -15,6 +15,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 /**
  * InitData is a class that contains the setData method for the View classes
@@ -58,7 +59,7 @@ public class InitData {
      */
     public static Component setData(int pageId){
 
-        HorizontalLayout dataSet = new HorizontalLayout();
+        VerticalLayout dataSet = new VerticalLayout();
         dataSet.setId("dataSetLayout");
 
         pageEntity = pageService.findPageById(pageId);

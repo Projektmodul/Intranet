@@ -1,7 +1,6 @@
 package com.example.application.ui.horizontal.ourCompany;
 
 import com.example.application.backend.entities.PageEntity;
-
 import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
@@ -22,36 +21,28 @@ import de.nils_bauer.PureTimeline;
 import de.nils_bauer.PureTimelineItem;
 
 
-/**	/**
- *  AboutUs View shows ...
+/**
+ *  AboutUs View shows information about the BSAG and has a timeline with the most important historical data
  *	 *
  *  @author Laura Neuendorf, Jessica Reistel
  *  @version 7.0
  *  @since 15.12.2020
  *  @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
- *  */
+ */
 
 @Route(value = "aboutUs", layout = MainView.class)
 @PageTitle("Über Uns")
 public class AboutUsView extends Div {
-
     private PageService pageService;
     private ImagesManager imagesManager;
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
-    private GetUserController getUserController;
 
-    private String username;
-    private H1 pageTitle;
-    private Paragraph pageContent;
     private ImageService imageService;
-    private UserService userService;
     private int role;
 
     private Div bigContainer;
-    private Div imagesContainer;
-    private Div imagesUploader;
 
     public AboutUsView(PageService pageService, UserService userService, ImageService imageService) {
         setId("aboutUs");
@@ -60,13 +51,12 @@ public class AboutUsView extends Div {
 
         this.pageService = pageService;
         this.imageService = imageService;
-        this.userService = userService;
-        getUserController = new GetUserController();
+        GetUserController getUserController = new GetUserController();
 
         setContent();
         setTimeline();
 
-        username = getUserController.getUsername();
+        String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         RoleEntity roleEntity = userEntity.getRole();
         role = roleEntity.getRoleId();
@@ -77,11 +67,15 @@ public class AboutUsView extends Div {
         imagesManager.setOneImage(true);
     }
 
+    /**
+     * This method fetches the data from the database
+     * and displays it on the corresponding page
+     */
     private void setContent(){
         pageEntity = pageService.findPageById(5);
 
-        pageTitle = new H1(pageEntity.getTitle());
-        pageContent = new Paragraph();
+        H1 pageTitle = new H1(pageEntity.getTitle());
+        Paragraph pageContent = new Paragraph();
         pageContent.setId("pageContentWelcome");
         pageContent.setText((pageEntity.getContent()));
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
@@ -92,6 +86,9 @@ public class AboutUsView extends Div {
         this.add(breadcrumbs, pageTitle, pageContent);
     }
 
+    /**
+     * This method creates a timeline with the most important data of the BSAG
+     */
     private void setTimeline(){
         PureTimeline timelineBSAG = new PureTimeline();
         PureTimelineItem item1876 = new PureTimelineItem("1876", new Paragraph("Betrieb der Aktiengesellschaft Bremer Pferdebahn wurde aufgenommen"));
@@ -110,6 +107,9 @@ public class AboutUsView extends Div {
         this.add(timelineBSAG);
     }
 
+    /**
+     * This methods initializes the entity lists + containers
+     */
     private void initializeImagesManager(){
         imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
@@ -119,7 +119,7 @@ public class AboutUsView extends Div {
     }
 
     private void initializeImages(){
-        imagesContainer = new Div();
+        Div imagesContainer = new Div();
         for(Image image : imagesManager.getImages()) imagesContainer.add(image);
         bigContainer.add(imagesContainer);
         bigContainer.add(imagesManager);
@@ -132,7 +132,7 @@ public class AboutUsView extends Div {
 
     private void initializeUploadContainer(){
         imagesManager.initializeUploadContainer();
-        imagesUploader = imagesManager.getImagesUploader();
+        Div imagesUploader = imagesManager.getImagesUploader();
         this.add(bigContainer);
         if(role == 1) {
             this.add(imagesUploader);

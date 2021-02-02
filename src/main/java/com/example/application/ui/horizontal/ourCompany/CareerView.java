@@ -134,7 +134,6 @@ public class CareerView extends Div {
         quoteCareer.setClassName("quoteCareer");
 
         Div iconAndOfferDiv = new Div();
-        iconAndOfferDiv.setClassName("iconDiv");
         Icon iconCareer = new Icon( VaadinIcon.USER);
         Label CareerOffer =new Label(" Stellenangebote");
         iconAndOfferDiv.add(iconCareer,CareerOffer);
@@ -181,6 +180,7 @@ public class CareerView extends Div {
     public void initializeSplitLayout(){
         splitLayout = new SplitLayout(leftComponent,rightComponent);
         splitLayout.setId("splitLayout");
+        splitLayout.setSplitterPosition(70);
         this.add(splitLayout);
     }
 

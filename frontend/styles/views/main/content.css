@@ -23,18 +23,18 @@ html {
     line-height: 30px;
     align-items: center;
     font-family: 'Gothic A1', sans-serif;
+    border-radius: 16px;
+    padding-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 #contentHolder{
     padding: 0;
-}
-
-vcf-breadcrumbs{
-    margin: 16px;
+    margin-right: 16px;
 }
 
 #contentHolder h1 {
-    margin-left: 15px;
     margin-top: 35px;
     font-family: 'Gothic A1', sans-serif;
     font-style: normal;
@@ -57,17 +57,16 @@ vcf-breadcrumbs{
 
 h2 {
     margin: 0;
-    margin-left: 15px;
     font-family: 'Gothic A1', sans-serif;
     display: flex;
     align-items: normal;
     text-align: center;
     line-height: initial;
-    color: #FFFFFF;
     font-weight: 500;
 }
 
 .firstQuote{
+    margin-left: 15px;
     margin-top: 80px;
     font-style: italic;
     font-size: 40px;
@@ -93,12 +92,6 @@ vaadin-upload{
     margin-left: 15px;
     margin-right: 15px;
 }
-
-#career vaadin-upload, #noticeBoard vaadin-upload{
-    margin: 0;
-    margin-top: 15px;
-}
-
 vaadin-upload button{
     background: #A00505;
     color: white;
@@ -124,7 +117,53 @@ vaadin-button{
     font-weight: 600;
     color: #A00505;
     font-size: 17px;
-    margin-left: 30px;
+    margin-left: 15px;
+}
+
+#dataSetLayout{
+   padding-left: 0;
+
+}
+
+/* Colorschemes */
+
+.darkColorscheme {
+    background:hsl(214, 35%, 21%);
+    color:white;
+}
+
+.lightColorscheme{
+    background: white;
+    color: hsl(214, 35%, 21%);
+}
+
+
+.homeColorscheme h1 {
+    color: #0D5699;
+}
+
+.ourCompanyColorscheme h1{
+    color: #A00505;
+}
+
+.projectsColorscheme h1 {
+    color: #581092;
+}
+
+.libraryColorscheme h1{
+    color: #2F7C78;
+}
+
+.servicesColorscheme h1{
+    color: #FF5621;
+}
+
+.communityColorscheme h1{
+    color: #F0D12C;
+}
+
+.centerColorscheme h1 {
+    color: #1481de;
 }
 
 .anchorComponent{
@@ -133,93 +172,12 @@ vaadin-button{
     margin-left: 15px;
 }
 
-#dataSetLayout{
-    box-sizing: border-box;
-    display: contents;
-}
-
-/* Colorschemes */
-.homeColorscheme {
-    background: linear-gradient(180deg, rgba(0, 133, 255, 0.5) 0%, rgba(14, 89, 203, 0) 120%);
-}
-
-.homeColorscheme h1 {
-    color: #0D5699;
-}
-
-.ourCompanyColorscheme{
-    background: linear-gradient(180deg, rgba(216, 131, 131, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
-}
-
-.ourCompanyColorscheme h1{
-    color: #A00505;
-}
-
-.projectsColorscheme {
-    background: linear-gradient(180deg, rgba(128, 70, 174, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
-}
-
-.projectsColorscheme h1 {
-    color: #581092;
-}
-
-.libraryColorscheme {
-    background: linear-gradient(180deg, rgba(47, 124, 120, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
-}
-
-.libraryColorscheme h1{
-    color: #255b57;
-}
-
-.servicesColorscheme {
-    background: linear-gradient(180deg, rgba(255, 96, 33, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
-}
-
-.servicesColorscheme h1{
-    color: #9b3a23;
-}
-
-.communityColorscheme {
-    background: linear-gradient(180deg, rgba(240, 191, 44, 0.5) 0%, rgba(196, 196, 196, 0) 120%);
-}
-
-.communityColorscheme h1{
-    color: darkgoldenrod;
-}
-
-.centerColorscheme {
-    background: linear-gradient(180deg, rgb(73, 174, 239) 0%, rgba(196, 196, 196, 0) 150%);
-}
-
-.centerColorscheme h1 {
-    color: #0D5699;
-}
 /* -------------------------------------------------------------- */
-/*
 
-.layoutData{
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    flex-direction: row;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.layout {
-    width: auto;
-    height: 636px;
-}
-
-*/
 /* horizontal/center/CenterIView */
-#centerI vaadin-horizontal-layout{
-    margin-left: 15px;
-}
 
 #centerI #organizationChart{
     height: 800px;
-    margin-left: 160px;
     margin-top: 40px;
 }
 /* -------------------------------------------------------------- */
@@ -309,31 +267,23 @@ vaadin-button{
 
 #career .quoteCareer{
     display: flex;
-    margin-left: 30px;
     margin-bottom: 5px;
-    color:  #4B4A4A;
     font-family: 'Gothic A1', sans-serif;
     align-items: normal;
     text-align: center;
 }
 
-#career .iconDiv{
-    margin-left: 30px;
-}
-
 #career .latestOffer{
     display: flex;
-    font-size:20px;
-    margin-left: 30px;
+    font-size: 20px;
     margin-top: 60px;
-    color:  #4B4A4A;
     font-family: 'Gothic A1', sans-serif;
     align-items: normal;
     text-align: center;
 }
 
 #career #tableCareer{
-    margin-left: 30px;
+
     display: grid;
     width: 600px;
     height: 230px;
@@ -341,9 +291,7 @@ vaadin-button{
 
 #career .pageContent{
     display: flex;
-    margin-left: 30px;
     margin-bottom: 5px;
-    color:  #4B4A4A;
     font-family: 'Gothic A1', sans-serif;
     align-items: normal;
 
@@ -355,10 +303,6 @@ vaadin-button{
     display: flex;
 }
 
-#career #addClearDiv{
-    margin-left: 200px;
-    display: flex;
-}
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
@@ -390,7 +334,6 @@ vaadin-button{
     margin-left: 15px;
     font-weight: 600;
     margin-top: 1.25em;
-    color: black;
 }
 
 #nordlicht h3{
@@ -406,8 +349,6 @@ vaadin-button{
 /* horizontal/projects/ProjectsView */
 #projects #scroll{
     max-width: 1000px;
-    width: 100%;
-    margin-left: 120px;
     overflow-x: auto;
 }
 /* -------------------------------------------------------------- */
@@ -498,19 +439,6 @@ vaadin-button{
     text-align: center;
 }
 
-#myProfile.myProfileButton{
-    background-color: darkgrey;
-    color: white;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 1px solid black;
-}
-
-#myProfile vaadin-vertical-layout{
-    padding: 0;
-    margin-left: 15px;
-    margin-right: 15px;
-}
 /* -------------------------------------------------------------- */
 
 /* vertical/notifications/NotificationsView */
@@ -520,7 +448,7 @@ vaadin-button{
 /* vertical/phoneBook/PhoneBookView */
 #phoneBook vaadin-vertical-layout {
     padding: 0;
-    margin-top: 40px;
+    margin: 0;
 }
 /* -------------------------------------------------------------- */
 
@@ -529,26 +457,16 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* vertical/settings/Settingsiew */
-#settings h3{
-    margin-left: 15px;
-}
 
-#settings div#container{
-    margin-left: 15px;
-}
 /* -------------------------------------------------------------- */
 
 /* ui/HomeView */
 #home rss-items{
-    margin-left: 15px;
     margin-right: 15px;
 }
 /* -------------------------------------------------------------- */
 
 /* ui/InProgressView */
-#inProgressH2{
-    color: black;
-}
 
 #inProgress iron-icon{
     width: 300px;
