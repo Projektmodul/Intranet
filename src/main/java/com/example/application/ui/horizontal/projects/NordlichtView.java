@@ -7,7 +7,7 @@ import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.projects.ProjectService;
 import com.example.application.backend.services.users.UserService;
-import com.example.application.backend.utils.images.Image;
+
 import com.example.application.backend.utils.images.ImagesManager;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
@@ -32,7 +32,7 @@ import com.vaadin.flow.router.Route;
 public class NordlichtView extends Div {
 
     private ImagesManager imagesManager;
-    private ImagesManager imagesManagerTwo;
+
     private UserService userService;
     private final PageEntity pageEntity;
     private final ImageService imageService;
@@ -81,7 +81,7 @@ public class NordlichtView extends Div {
         setData();
 
         initializeImagesManager();
-        initializeImagesManagerTwo();
+
         if(role == 1){
             initializeUploadContainer();
         }
@@ -111,6 +111,9 @@ public class NordlichtView extends Div {
         H3 hOne = new H3(projectEntity.getTitelTextBoxOne());
         Paragraph textOne = new Paragraph();
         textOne.add(new Paragraph(projectEntity.getTextBoxOne()));
+        if(imagesManager.getImages() != null && imagesManager.getImages().size() != 0){
+            boxOne.add(imagesManager.getImages().get(0));
+        }
         boxOne.add(hOne,textOne,linkOne);
         boxOne.setSizeFull();
 
@@ -120,40 +123,32 @@ public class NordlichtView extends Div {
         H3 hTwo = new H3(projectEntity.getTitelTextBoxTwo());
         Paragraph textTwo = new Paragraph();
         textTwo.add(new Paragraph(projectEntity.getTextBoxTwo()));
+        if(imagesManager.getImages() != null && imagesManager.getImages().size() > 1) {
+            boxTwo.add(imagesManager.getImages().get(1));
+        }
         boxTwo.add(hTwo,textTwo,linkTwo);
         boxTwo.setSizeFull();
         contentTextLayout.add(boxOne, boxTwo);
 
         leftComponent = new VerticalLayout(contentTextLayout);
+        add(leftComponent);
     }
 
     private  void initializeImagesManager(){
         imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
-        imagesManager.setOneImage(true);
+        imagesManager.setOneImage(false);
         imagesManager.initializeAllImages();
     }
 
-    private  void initializeImagesManagerTwo(){
-        imagesManagerTwo = new ImagesManager(pageEntity.getImages(), imageService, role);
-        imagesManagerTwo.setImagesEntities(pageEntity.getImages());
-        imagesManagerTwo.setAllImageEntitiesData(pageEntity,userEntity);
-        imagesManagerTwo.setOneImage(true);
-        imagesManagerTwo.initializeAllImages();
-    }
+
 
     private void initializeSplitLayout() {
-        VerticalLayout layout = new VerticalLayout(leftComponent);
+
         bigContainer = new HorizontalLayout();
         bigContainer.setId("layoutBigContainerPicture");
-        Div imagesContainer = new Div();
-        Div imagesContainerTwo = new Div();
-        for(Image images : imagesManager.getImages()) imagesContainer.add(images);
-        for(Image images : imagesManagerTwo.getImages()) imagesContainerTwo.add(images);
-        bigContainer.add(imagesManager,imagesManagerTwo);
-        bigContainer.add(imagesContainer,imagesContainerTwo);
-        this.add(bigContainer,layout);
+
     }
 
     private void initializeUploadContainer(){
@@ -161,8 +156,6 @@ public class NordlichtView extends Div {
         Div imagesUploader = imagesManager.getImagesUploader();
         this.add(imagesUploader);
 
-        imagesManagerTwo.initializeUploadContainer();
-        Div imagesUploaderTwo = imagesManagerTwo.getImagesUploader();
-        this.add(imagesUploaderTwo);
+
     }
 }
