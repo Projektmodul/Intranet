@@ -1,7 +1,5 @@
 package com.example.application.ui;
 
-import com.example.application.backend.services.links.LinkService;
-import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
@@ -23,7 +21,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
  *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
  *  @version 6.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Jessica Reistel
+ *  @lastUpdated 02.02.2021 by Vanessa Skowronsky
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")

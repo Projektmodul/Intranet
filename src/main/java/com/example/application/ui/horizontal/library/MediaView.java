@@ -24,7 +24,7 @@ import java.util.Map;
  *  @author Monika Martius and Laura Neuendorf
  *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Laura Neuendorf
+ *  @lastUpdated 02.02.2021 by Vanessa Skowronsky
  */
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")

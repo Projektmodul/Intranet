@@ -31,7 +31,7 @@ import com.vaadin.flow.router.RouterLink;
  *  @author Lea Schünemann, Vanessa Skowronsky
  *  @version 3.0
  *  @since 16.12.2020
- *  @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 02.02.2021 from Vanessa Skowronsky
  */
 public class SideBar extends VerticalLayout{
 

@@ -23,7 +23,7 @@ import com.vaadin.flow.router.Route;
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 02.02.2021 by Vanessa Skowronsky
  */
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
