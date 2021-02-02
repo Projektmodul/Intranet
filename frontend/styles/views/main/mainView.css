@@ -192,6 +192,7 @@
   height: 140px;
   align-items: center;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 /* Sidebar */
