@@ -20,7 +20,7 @@ import java.util.List;
 
 
 /**
- *  Home View shows the company news as well as local news via RSS
+ *  Home View shows the personal greeting of an employee. In additional, news is displayed via an RSS feed
  *
  *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel,
  *          Anastasiya Jackwerth and Sabrine Gamdou
@@ -35,12 +35,11 @@ import java.util.List;
 public class HomeView extends Div {
 
     private UserService userService;
-    private UserEntity userEntity;
+
     private PageService pageService;
-    private H1 pageTitle;
+
     private PageEntity pageEntity;
     private GetUserController getUserController;
-    private String username;
 
     private Div newsContainer;
     private List<NewsArticle> newsArticles;
@@ -54,7 +53,7 @@ public class HomeView extends Div {
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        setData();
+        setContent();
 
         newsArticles = new ArrayList<>();
 
@@ -64,11 +63,15 @@ public class HomeView extends Div {
         add(newsContainer);
     }
 
-    private void setData(){
-        username = getUserController.getUsername();
-        userEntity = userService.findByUsername(username);
+    /**
+     * This method fetches the data from the database
+     * and displays it on the corresponding page
+     */
+    private void setContent(){
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
         pageEntity = pageService.findPageById(1);
-        pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
+        H1 pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() + " " + userEntity.getSurname());
         this.add(pageTitle);
 
         RssItems faz = new RssItems("https://www.faz.net/rss/aktuell/", 6, 100, 100, true, "description");
