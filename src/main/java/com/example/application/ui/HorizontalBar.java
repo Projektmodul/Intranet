@@ -100,7 +100,7 @@ public class HorizontalBar extends MenuBar {
     }
 
     private void initProjectsMenu() {
-        VerticalLayout layoutNordlicht = createSubMenu(new Icon(VaadinIcon.TRAIN), "#581092", "Nordlicht", "nordlicht");
+        VerticalLayout layoutNordlicht = createSubMenu(new Icon(VaadinIcon.TRAIN), "#7626b5", "Nordlicht", "nordlicht");
 
         ArrayList<VerticalLayout> subMenuListProjects = new ArrayList<>();
         subMenuListProjects.add(layoutNordlicht);
