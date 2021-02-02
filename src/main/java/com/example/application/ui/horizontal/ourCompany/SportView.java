@@ -13,7 +13,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -24,7 +23,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Sport View shows ...
+ *  Sport View shows sporting activities offered by BSAG for its employees
  *
  *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
  *  @version 4.0
@@ -34,12 +33,7 @@ import com.vaadin.flow.router.Route;
 @Route(value = "sport", layout = MainView.class)
 @PageTitle("Sport&Freizeit")
 public class SportView extends Div {
-    private PageService pageService;
-    private UserService userService;
     private UserEntity userEntity;
-    private GetUserController getUserController;
-
-    private String username;
 
     private TextField updateWeekday;
     private TextField updateTime;
@@ -58,9 +52,7 @@ public class SportView extends Div {
         setClassName("pageContentPosition");
         addClassName("ourCompanyColorscheme");
 
-        this.pageService = pageService;
-        this.userService = userService;
-        getUserController = new GetUserController();
+        GetUserController getUserController = new GetUserController();
 
         updateWeekday = new TextField();
         updateTime = new TextField();
@@ -82,10 +74,14 @@ public class SportView extends Div {
 
         showActivities();
 
-        username = getUserController.getUsername();
+        String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
     }
 
+    /**
+     * This method creates a vertical layout in which the offered activities are listed
+     * @return activities as a vertical layout
+     */
     private VerticalLayout showActivities(){
         VerticalLayout activities = new VerticalLayout();
 
@@ -158,6 +154,10 @@ public class SportView extends Div {
         return activities;
     }
 
+    /**
+     * This method initializes a content dialog window with two buttons
+     * @return updateDialog as a dialog
+     */
     private Dialog initUpdateDialog(){
         Dialog updateDialog = new Dialog();
 
@@ -179,6 +179,10 @@ public class SportView extends Div {
         return updateDialog;
     }
 
+    /**
+     * This method fills the dialog updateDialog with content
+     * @return updateData as a vertical layout
+     */
     private VerticalLayout updateLayout(){
         VerticalLayout updateData = new VerticalLayout();
 
