@@ -1,17 +1,24 @@
 package com.example.application.ui;
 
 
+import com.example.application.backend.services.links.LinkService;
+import com.example.application.backend.services.pages.PageService;
+import com.example.application.ui.auxiliary.InitData;
 import com.example.application.ui.vertical.canteen.CanteenView;
 import com.example.application.ui.vertical.help.HelpView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.settings.SettingsView;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
@@ -62,6 +69,11 @@ public class SideBar extends VerticalLayout{
         Anchor anchorMailing = new Anchor("https://email.bsag.de", "Mailing");
         anchorMailing.setTarget("_blank");
 
+        Label telephoneBook = new Label("Telefonbuch");
+        telephoneBook.getStyle().set("cursor", "pointer");
+        HorizontalLayout dialogButton = new HorizontalLayout(telephoneBook);
+        dialogButton.addClickListener(e -> new Dialog().open());
+
 
         tabs = new Tabs();
         Tab[] tabArray = new Tab[14];
@@ -70,7 +82,7 @@ public class SideBar extends VerticalLayout{
         }
 
         tabArray[0].add(new RouterLink("Mein Profil", MyProfileView.class));
-        tabArray[1].add(new RouterLink("Telefonbuch", PhoneBookView.class));
+        tabArray[1].add(dialogButton);
         tabArray[2].add(new RouterLink("Einstellungen", SettingsView.class));
         tabArray[3].add(new RouterLink("Hilfe", HelpView.class));
         tabArray[4].add(new RouterLink("Meine Kontakte", InProgressView.class));
@@ -133,5 +145,13 @@ public class SideBar extends VerticalLayout{
             alertIcon.setColor("#e31313");
             this.counterSpan.setVisible(true);
         }
+    }
+
+    public void initPhoneBookChoice(PageService pageService, LinkService linkService){
+        InitData initPhoneBook = new InitData(pageService, linkService);
+
+        VerticalLayout phoneLinks = new VerticalLayout();
+        phoneLinks.add(initPhoneBook.setLinkData(6), initPhoneBook.setLinkData(7));
+        add(phoneLinks);
     }
 }

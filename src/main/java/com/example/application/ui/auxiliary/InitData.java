@@ -84,6 +84,7 @@ public class InitData {
 
         LinkEntity linkEntity = linkService.findById(linkId);
         Anchor mailLink = new Anchor(linkEntity.getUrl(), linkEntity.getTitle());
+        mailLink.setTarget("_blank");
 
         linkSet.add(mailLink);
         return linkSet;
