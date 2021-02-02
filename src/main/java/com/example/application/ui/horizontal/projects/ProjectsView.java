@@ -74,8 +74,8 @@ public class ProjectsView extends Div {
         Icon iconAdd = new Icon(VaadinIcon.ADD_DOCK);
         iconAdd.addClickListener(e -> initDialogAdd().open());
 
-        Component componentNordlicht = OverviewComponents.createComponent(new Icon(VaadinIcon.TRAIN), "#581092", "Nordlicht", "nordlicht");
-        Component componentAdd = OverviewComponents.createComponent(iconAdd, "#581092", "Projekt hinzufügen","projects");
+        Component componentNordlicht = OverviewComponents.createComponent(new Icon(VaadinIcon.TRAIN), "#7626b5", "Nordlicht", "nordlicht");
+        Component componentAdd = OverviewComponents.createComponent(iconAdd, "#7626b5", "Projekt hinzufügen","projects");
 
         layout.add(componentAdd, componentNordlicht);
     }

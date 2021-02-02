@@ -149,7 +149,7 @@ vaadin-button{
 }
 
 .projectsColorscheme h1 {
-    color: #581092;
+    color: #7626b5;
 }
 
 .libraryColorscheme h1{
@@ -248,15 +248,12 @@ vaadin-button{
 /* horizontal/ourCompany/AboutUsView */
 #aboutUs #timelineBSAG {
     width: 80%;
+    --timeline-bar: rgba(160, 5, 5, 0.25) !important;
 }
 
 #aboutUs #timelineBSAG::before {
     height: 100%;
     transform: translate(0%, 0%);
-}
-
-#aboutUs #item1876 {
-    padding-top: 50px;
 }
 
 #aboutUs #item1961 {
@@ -265,6 +262,9 @@ vaadin-button{
 
 #aboutUs pure-timeline-item{
     --box: #a00505;
+    --item-background: rgba(160, 5, 5, 0.5);
+    --dots: #a00505;
+
 }
 /* -------------------------------------------------------------- */
 
