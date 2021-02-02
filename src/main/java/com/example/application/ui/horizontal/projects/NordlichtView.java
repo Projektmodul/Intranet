@@ -20,7 +20,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Nordlicht View shows ...
+ *  Nordlicht View shows the project "Nordlicht"
  *
  *  @author Monika Martius and Laura Neuendorf
  *  @version 3.0
@@ -30,25 +30,17 @@ import com.vaadin.flow.router.Route;
 @Route(value = "nordlicht", layout = MainView.class)
 @PageTitle("Nordlicht")
 public class NordlichtView extends Div {
-
     private ImagesManager imagesManager;
     private ImagesManager imagesManagerTwo;
-    private UserService userService;
     private final PageEntity pageEntity;
     private final ImageService imageService;
     private final UserEntity userEntity;
 
     private ProjectEntity projectEntity;
-    private ProjectService projectService;
 
     private LinkEntity linkEntity;
     private LinkEntity linkEntityTwo;
-    private LinkService linkService;
 
-    private HorizontalLayout bigContainer;
-
-    private int linkOne;
-    private int linkTwo;
     private int role;
 
     private Component leftComponent;
@@ -60,16 +52,13 @@ public class NordlichtView extends Div {
         addClassName("projectsColorscheme");
 
         pageEntity = pageService.findPageById(12);
-        this.userService = userService;
         this.imageService = imageService;
-        this.projectService = projectService;
-        this.linkService = linkService;
 
-        projectEntity = this.projectService.findById(1);
-        linkOne = projectEntity.getLinkOne();
-        linkTwo = projectEntity.getLinkTwo();
-        linkEntity = this.linkService.findById(linkOne);
-        linkEntityTwo = this.linkService.findById(linkTwo);
+        projectEntity = projectService.findById(1);
+        int linkOne = projectEntity.getLinkOne();
+        int linkTwo = projectEntity.getLinkTwo();
+        linkEntity = linkService.findById(linkOne);
+        linkEntityTwo = linkService.findById(linkTwo);
 
 
         GetUserController getUserController = new GetUserController();
@@ -89,6 +78,10 @@ public class NordlichtView extends Div {
         initializeSplitLayout();
     }
 
+    /**
+     * This method etches the data from the database
+     * and displays it on the corresponding page
+     */
     private void setData(){
         H1 pageTitle = new H1(pageEntity.getTitle());
 
@@ -102,7 +95,9 @@ public class NordlichtView extends Div {
         this.add(box, pageText);
     }
 
-
+    /**
+     * This method initializes two div boxes with the content from the database of two sample projects
+     */
     private void initializeRightContainer() {
         HorizontalLayout contentTextLayout = new HorizontalLayout();
         Div boxOne = new Div();
@@ -127,6 +122,9 @@ public class NordlichtView extends Div {
         leftComponent = new VerticalLayout(contentTextLayout);
     }
 
+    /**
+     * This methods initializes the entity lists + containers
+     */
     private  void initializeImagesManager(){
         imagesManager = new ImagesManager(pageEntity.getImages(), imageService, role);
         imagesManager.setImagesEntities(pageEntity.getImages());
@@ -145,7 +143,7 @@ public class NordlichtView extends Div {
 
     private void initializeSplitLayout() {
         VerticalLayout layout = new VerticalLayout(leftComponent);
-        bigContainer = new HorizontalLayout();
+        HorizontalLayout bigContainer = new HorizontalLayout();
         bigContainer.setId("layoutBigContainerPicture");
         Div imagesContainer = new Div();
         Div imagesContainerTwo = new Div();
