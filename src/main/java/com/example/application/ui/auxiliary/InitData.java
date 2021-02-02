@@ -22,7 +22,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  *
  * @author Laura Neuendorf
  * @version 1.0
- * @since 01.02.2021
+ * @since 02.02.2021 by Vanessa Skowronsky
  */
 
 @CssImport("./styles/views/main/content.css")

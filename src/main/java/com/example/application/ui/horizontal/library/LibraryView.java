@@ -20,7 +20,7 @@ import com.vaadin.flow.router.Route;
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 31.01.2021 by Vanessa Skowronsky
+ *  @lastUpdated 02.02.2021 by Vanessa Skowronsky
  */
 @Route(value = "library", layout = MainView.class)
 @PageTitle("Bibliothek")
