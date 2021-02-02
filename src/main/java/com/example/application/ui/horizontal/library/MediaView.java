@@ -7,6 +7,9 @@ import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
@@ -62,16 +65,19 @@ public class MediaView extends Div{
      */
     public void setTabs(){
         Tab picture = new Tab("Bilder");
-        Div pagePicture = new Div();
-        pagePicture.setText("Hier können Bilder angezeigt werden");
+        VerticalLayout pagePicture = new VerticalLayout();
+        pagePicture.add(new Span("Hier können Bilder angezeigt werden"));
+        pagePicture.add(new Icon(VaadinIcon.PICTURE));
+
 
         Tab videos = new Tab("Videos");
-        Div pageVideos = new Div();
-        pageVideos.setText("Hier können Videos angezeigt werden");
+        VerticalLayout pageVideos = new  VerticalLayout();
+        pageVideos.add(new Span("Hier können Videos angezeigt werden"));
+        pageVideos.add(new Icon(VaadinIcon.FILM));
         pageVideos.setVisible(false);
 
         Tab pressReleases = new Tab("Pressemitteilungen");
-        Div pagePressReleases = new Div();
+        Paragraph pagePressReleases = new Paragraph();
         pagePressReleases.getElement().setProperty("innerHTML", pageEntity.getContent());
         pagePressReleases.setVisible(false);
 

@@ -68,7 +68,7 @@ public class LibraryView extends Div {
 
         Component componentArchive = OverviewComponents.createComponent(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
 
-        Component componentMedia = OverviewComponents.createComponent(new Icon(VaadinIcon.FILM), "#2F7C78", "Medien", "media");
+        Component componentMedia = OverviewComponents.createComponent(new Icon(VaadinIcon.CAMERA), "#2F7C78", "Medien", "media");
 
         Component componentFAQ = OverviewComponents.createComponent(new Icon(VaadinIcon.QUESTION), "#2F7C78", "FAQ", "fAQ");
 
