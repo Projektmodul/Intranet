@@ -1,6 +1,5 @@
 package com.example.application.ui.horizontal.library;
 
-import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
