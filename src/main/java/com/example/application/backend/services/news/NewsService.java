@@ -5,6 +5,14 @@ import com.example.application.backend.repositories.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service class for the news
+ *
+ * @author  Anastasiya Jackwerth and Sabrine Gamdou
+ * @version 1.0
+ * @since   02.02.2021
+ * @lastUpdated 02.02.2021 by Anastasiya Jackwerth and Sabrine Gamdou
+ */
 @Service
 public class NewsService {
 
