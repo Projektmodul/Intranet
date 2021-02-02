@@ -114,7 +114,7 @@ public class HorizontalBar extends MenuBar {
 
         VerticalLayout layoutArchive = createSubMenu(new Icon(VaadinIcon.ARCHIVE), "#2F7C78", "Archiv", "archive");
 
-        VerticalLayout layoutMedia = createSubMenu(new Icon(VaadinIcon.FILM), "#2F7C78", "Medien", "media");
+        VerticalLayout layoutMedia = createSubMenu(new Icon(VaadinIcon.CAMERA), "#2F7C78", "Medien", "media");
 
         VerticalLayout layoutFAQ = createSubMenu(new Icon(VaadinIcon.QUESTION), "#2F7C78", "FAQ", "fAQ");
 
