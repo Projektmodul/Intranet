@@ -20,8 +20,9 @@ public class SettingEntity {
     @Column(name ="setting_id")
     private int settingsId;
 
-    private String type;
-    private String category;
+    private boolean darkmode;
+    //private String type;
+    //private String category;
 
    /* @Column(name ="font_size")
     private String fontSize;
@@ -40,7 +41,15 @@ public class SettingEntity {
         this.settingsId = settingsId;
     }
 
-    public String getType() {
+    public boolean getDarkmode() {
+        return darkmode;
+    }
+
+    public void setDarkmode(boolean darkmode) {
+        this.darkmode = darkmode;
+    }
+
+   /* public String getType() {
         return type;
     }
 
@@ -56,7 +65,7 @@ public class SettingEntity {
         this.category = category;
     }
 
-   /* public String getFontSize() {
+    public String getFontSize() {
         return fontSize;
     }
 
