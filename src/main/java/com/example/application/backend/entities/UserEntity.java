@@ -203,11 +203,11 @@ public class UserEntity {
 
     public void setRole(RoleEntity role) { this.role = role; }
 
-    public SettingEntity getSettings() {
+    public SettingEntity getSetting() {
         return settings;
     }
 
-    public void setSettings(SettingEntity settings) {
+    public void setSetting(SettingEntity settings) {
         this.settings = settings;
     }
 
