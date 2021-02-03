@@ -143,10 +143,16 @@ public class SideBar extends VerticalLayout{
     }
 
     private VerticalLayout initPhoneBookChoice(LinkService linkService){
+        Icon telephoneIcon = new Icon(VaadinIcon.PHONE);
+        telephoneIcon.setSize("3rem");
+
         InitData initPhoneBook = new InitData(linkService);
 
         VerticalLayout phoneLinks = new VerticalLayout();
+        phoneLinks.add(telephoneIcon);
         phoneLinks.add(initPhoneBook.setLinkData(6), initPhoneBook.setLinkData(7));
+        phoneLinks.getElement().getStyle().set("align-items", "center");
+
         add(phoneLinks);
 
         return phoneLinks;
