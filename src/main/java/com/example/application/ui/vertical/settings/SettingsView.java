@@ -1,7 +1,12 @@
 package com.example.application.ui.vertical.settings;
 
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.SettingEntity;
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.services.settings.SettingService;
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
@@ -31,25 +36,42 @@ public class SettingsView extends Div {
     private PageEntity pageEntity;
     private Span light;
     private Span dark;
+    private SettingService settingService;
+    private SettingEntity settingEntity;
 
-    public SettingsView(PageService pageService) {
+    private UserEntity userEntity;
+    private UserService userService;
+    private ToggleButton toggleButton;
+
+
+    public SettingsView(PageService pageService, SettingService settingService, UserService userService) {
         setId("settings");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
+
+        this.settingService = settingService;
+        this.userService = userService;
+
+        GetUserController getUserController = new GetUserController();
 
         pageEntity = pageService.findPageById(24);
         pageTitle = new H1(pageEntity.getTitle());
         pageText = new H3(pageEntity.getContent());
 
+        String username = getUserController.getUsername();
+        userEntity = userService.findByUsername(username);
+        settingEntity = userEntity.getSetting();
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        ToggleButton toggleButton;
+        //ToggleButton toggleButton;
         if (UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
             toggleButton = new ToggleButton(true);
+            toggleButton.setValue(settingEntity.getDarkmode());
         } else {
             toggleButton = new ToggleButton(false);
+            toggleButton.setValue(settingEntity.getDarkmode());
         }
 
         toggleButton.addClickListener(event -> {
@@ -75,10 +97,12 @@ public class SettingsView extends Div {
 
         if (themeList.contains(Lumo.DARK)) {
             themeList.remove(Lumo.DARK);
+            settingService.update(settingEntity, toggleButton);
             getStyle().set("background-color", "white");
             getStyle().set("color", "hsl(214, 35%, 21%)");
         } else {
             themeList.add(Lumo.DARK);
+            settingService.update(settingEntity, toggleButton);
             getStyle().set("background-color", "hsl(214, 35%, 21%)");
             getStyle().set("color", "white");
         }
