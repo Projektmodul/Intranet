@@ -2,15 +2,12 @@ package com.example.application.ui;
 
 
 import com.example.application.backend.services.links.LinkService;
-import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.auxiliary.InitData;
 import com.example.application.ui.vertical.canteen.CanteenView;
 import com.example.application.ui.vertical.help.HelpView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
-import com.example.application.ui.vertical.phoneBook.PhoneBookView;
 import com.example.application.ui.vertical.settings.SettingsView;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
@@ -31,7 +28,7 @@ import com.vaadin.flow.router.RouterLink;
  *  @author Lea Schünemann, Vanessa Skowronsky
  *  @version 3.0
  *  @since 16.12.2020
- *  @lastUpdated 02.02.2021 from Vanessa Skowronsky
+ *  @lastUpdated 03.02.2021 from Vanessa Skowronsky
  */
 public class SideBar extends VerticalLayout{
 
@@ -108,7 +105,6 @@ public class SideBar extends VerticalLayout{
         initializeAlertIcon();
 
         add(notificationsAlertIconSpanContainer,searchField,tabs);
-
     }
 
     public void setEventOfNotificationView(NotificationsView notificationsView){

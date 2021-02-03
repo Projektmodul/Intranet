@@ -471,13 +471,6 @@ vaadin-button{
 
 /* -------------------------------------------------------------- */
 
-/* vertical/phoneBook/PhoneBookView */
-#phoneBook vaadin-vertical-layout {
-    padding: 0;
-    margin: 0;
-}
-/* -------------------------------------------------------------- */
-
 /* vertical/search/SearchView */
 
 /* -------------------------------------------------------------- */
