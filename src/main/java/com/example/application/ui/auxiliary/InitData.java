@@ -50,6 +50,10 @@ public class InitData {
         this.linkService = linkService;
     }
 
+    public InitData(LinkService linkService){
+        this.linkService = linkService;
+    }
+
     /*
      * This method fetches the data from the database
      * and displays it on the corresponding page

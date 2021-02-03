@@ -1,5 +1,6 @@
 package com.example.application.ui;
 
+import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
 import com.example.application.ui.presenters.NotificationPresenter;
@@ -40,7 +41,7 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
     //bidirectional communication between ContentHolder and NotificationPresenter
     private final NotificationPresenter notificationPresenter;
 
-    public MainView(NotificationPresenter notificationPresenter, UserService userService) {
+    public MainView(NotificationPresenter notificationPresenter, UserService userService, LinkService linkService) {
         this.notificationPresenter = notificationPresenter;
         this.userService = userService;
 
@@ -55,7 +56,7 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         contentHolder.setId("contentHolder");
 
         //Sidebar
-        sidebar = new SideBar();
+        sidebar = new SideBar(linkService);
 
         // Main Container
         HorizontalLayout mainContainer = new HorizontalLayout();
@@ -95,7 +96,6 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
             setBackgroundColor(color);
             contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
-
         }
 
     }

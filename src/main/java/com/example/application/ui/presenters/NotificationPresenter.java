@@ -1,5 +1,6 @@
 package com.example.application.ui.presenters;
 
+import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.notifications.NotificationDataProvider;
 import com.example.application.backend.services.notifications.NotificationService;
 import com.example.application.backend.services.users.UserService;
@@ -29,14 +30,16 @@ public class NotificationPresenter {
 
     private final NotificationService notificationService;
     private final UserService userService;
+    private final LinkService linkService;
     private final NotificationsView notificationsView;
     private NotificationDataProvider notificationDataProvider;
 
 
     @Autowired
-    NotificationPresenter(NotificationService notificationService, UserService userService) {
+    NotificationPresenter(NotificationService notificationService, UserService userService, LinkService linkService) {
         this.notificationService = notificationService;
         this.userService = userService;
+        this.linkService = linkService;
 
         notificationsView = new NotificationsView();
 
@@ -52,7 +55,7 @@ public class NotificationPresenter {
 
         notificationsView.setNotificationsCounter(notificationDataProvider.getNotificationCounter());
 
-        this.mainView = new MainView(this, this.userService);
+        this.mainView = new MainView(this, this.userService, this.linkService);
         this.mainView.getSidebar().setNotificationCounter(notificationDataProvider.getNotificationCounter());
     }
 

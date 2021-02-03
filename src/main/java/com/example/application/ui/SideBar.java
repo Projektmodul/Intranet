@@ -42,10 +42,10 @@ public class SideBar extends VerticalLayout{
     private int notificationCounter;
     private Span counterSpan;
 
-    public SideBar(){
-
-
+    public SideBar(LinkService linkService){
         setId("sideBar");
+
+
         //insert icon for alertIcon
         alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alertBell");
@@ -69,11 +69,10 @@ public class SideBar extends VerticalLayout{
         Anchor anchorMailing = new Anchor("https://email.bsag.de", "Mailing");
         anchorMailing.setTarget("_blank");
 
-        Label telephoneBook = new Label("Telefonbuch");
-        telephoneBook.getStyle().set("cursor", "pointer");
-        HorizontalLayout dialogButton = new HorizontalLayout(telephoneBook);
-        dialogButton.addClickListener(e -> new Dialog().open());
-
+        Label telephoneBookLabel = new Label("Telefonbuch");
+        telephoneBookLabel.getStyle().set("cursor", "pointer");
+        HorizontalLayout phoneBookLayout = new HorizontalLayout(telephoneBookLabel);
+        phoneBookLayout.addClickListener(e -> new Dialog(initPhoneBookChoice(linkService)).open());
 
         tabs = new Tabs();
         Tab[] tabArray = new Tab[14];
@@ -82,7 +81,7 @@ public class SideBar extends VerticalLayout{
         }
 
         tabArray[0].add(new RouterLink("Mein Profil", MyProfileView.class));
-        tabArray[1].add(dialogButton);
+        tabArray[1].add(phoneBookLayout);
         tabArray[2].add(new RouterLink("Einstellungen", SettingsView.class));
         tabArray[3].add(new RouterLink("Hilfe", HelpView.class));
         tabArray[4].add(new RouterLink("Meine Kontakte", InProgressView.class));
@@ -147,11 +146,13 @@ public class SideBar extends VerticalLayout{
         }
     }
 
-    public void initPhoneBookChoice(PageService pageService, LinkService linkService){
-        InitData initPhoneBook = new InitData(pageService, linkService);
+    private VerticalLayout initPhoneBookChoice(LinkService linkService){
+        InitData initPhoneBook = new InitData(linkService);
 
         VerticalLayout phoneLinks = new VerticalLayout();
         phoneLinks.add(initPhoneBook.setLinkData(6), initPhoneBook.setLinkData(7));
         add(phoneLinks);
+
+        return phoneLinks;
     }
 }
