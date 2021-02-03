@@ -79,6 +79,10 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<NotificationEntity> notifications;
+
+    @OneToOne
+    @JoinColumn(name="setting_id")
+    private SettingEntity settings;
     /*
 
     @OneToMany(mappedBy = "user")
@@ -86,10 +90,6 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<JobOfferEntity> jobOffers;
-
-    @OneToOne
-    @JoinColumn(name="setting_id")
-    private SettingsEntity settings;
 
     public List<ImageEntity> getImages() {
         return images;
@@ -203,6 +203,14 @@ public class UserEntity {
 
     public void setRole(RoleEntity role) { this.role = role; }
 
+    public SettingEntity getSettings() {
+        return settings;
+    }
+
+    public void setSettings(SettingEntity settings) {
+        this.settings = settings;
+    }
+
     /*public List<RolesEntity> getRoles() {
         return roles;
     }
@@ -244,12 +252,6 @@ public class UserEntity {
         this.jobOffers = jobOffers;
     }
 
-    public SettingsEntity getSettings() {
-        return settings;
-    }
 
-    public void setSettings(SettingsEntity settings) {
-        this.settings = settings;
-    }
 */
 }
