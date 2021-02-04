@@ -13,17 +13,10 @@ import com.example.application.backend.utils.pdfs.PdfsManager;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.splitlayout.SplitLayout;
-import com.vaadin.flow.component.upload.Upload;
-import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -33,31 +26,29 @@ import com.vaadin.flow.router.Route;
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 3.0
  * @since   14.12.2020
- * @lastUpdated 25.01.2021 by Laura Neuendorf, Monika Martius, Vanessa Skowronsky
+ * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 
 @Route(value = "canteen", layout = MainView.class)
 @PageTitle("Betriebsrestaurant")
 public class CanteenView extends Div {
-    //private Component leftComponent;
-    //private Component rightComponent;
-    //private Upload uploadButton;
-    //private SplitLayout splitLayout;
-    //private Dialog imageDialog;
 
-    private H1 pageTitle;
-    private Image pdfImage;
-    private Icon deleteIcon;
-    private PageEntity pageEntity;
+
     private PageService pageService;
     private UserService userService;
     private DocumentService documentService;
     private NotificationService notificationService;
+
+    private PageEntity pageEntity;
+    private PdfsManager pdfsManager;
     private Paragraph pageContent;
+
+    private H1 pageTitle;
+
     private Div bigContainer;
     private Div pdfsContainer;
     private Div pdfsUploader;
-    private PdfsManager pdfsManager;
+
     private int role;
 
 
@@ -91,7 +82,7 @@ public class CanteenView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        /*pageContent = new Span("Werfen Sie doch schon vorab einen Blick in unsere Speisekarte.");*/
+
 
         pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
@@ -107,6 +98,7 @@ public class CanteenView extends Div {
         pdfsManager.setDocumentEntities(pageEntity.getDocuments());
         pdfsManager.setAllDocumentEntitiesData("Speiseplan", pageEntity, pageEntity.getUser());
         pdfsManager.initializeAllPdfs();
+        pdfsManager.getPdfManager().setNotificationCategory("Speiseplan");
     }
 
     private void initializePDFs() {
