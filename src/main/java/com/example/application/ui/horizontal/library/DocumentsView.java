@@ -29,7 +29,7 @@ import com.vaadin.flow.router.Route;
  * Documents View shows a grid-view for all documents.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 6.0
+ * @version 7.0
  * @since   12.01.2021
  * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */

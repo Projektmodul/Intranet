@@ -24,7 +24,7 @@ import com.vaadin.flow.router.Route;
  * Canteen View shows  a View for all menus.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
- * @version 3.0
+ * @version 4.0
  * @since   14.12.2020
  * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */

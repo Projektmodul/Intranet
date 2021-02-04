@@ -23,9 +23,9 @@ import java.util.Date;
  * pdfCreationManager and the pdfDeletionManager to create and delete documents.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 5.0
+ * @version 6.0
  * @since   19.01.2021
- * @lastUpdated 01.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 public class PdfManager {
 

@@ -16,7 +16,7 @@ import java.io.InputStream;
  * This is class that creates the file in the database and the server.
  *
  * @author Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   21.12.2020
  * @lastUpdated 04.02.2021 Sabrine Gamdou
  */
