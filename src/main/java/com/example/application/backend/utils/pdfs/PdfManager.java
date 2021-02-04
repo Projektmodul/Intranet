@@ -176,7 +176,7 @@ public class PdfManager {
     public NotificationEntity initializeNotificationForDocument(String fileName){
 
         NotificationEntity notificationEntity;
-        if(notificationCategory == "Speiseplan"){
+        if(notificationCategory.equals("Speiseplan")){
             notificationEntity = new NotificationEntity("Der neue Speisplan ist online!",
                     "Die Datei '"+fileName + " ein neuer Speisplan wurde in der " +
                             "Betriebsrestaurant-Seite hinzugefügt.",
@@ -229,21 +229,15 @@ public class PdfManager {
         this.pdfDeletionManager = new PdfDeletionManager(documentEntity, documentService);
     }
 
-    public String getNotificationCategory() {
-        return notificationCategory;
-    }
+
 
     public void setNotificationCategory(String notificationCategory) {
         this.notificationCategory = notificationCategory;
     }
 
-    public InputStream getInputStream() {
-        return inputStream;
-    }
 
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
+
+
 
     public boolean isPdfUploaded() {
         return isPdfUploaded;
