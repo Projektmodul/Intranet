@@ -19,9 +19,9 @@ import org.springframework.context.annotation.Scope;
  * Role: handling the requests of the views, processing them and sending the right responses back.
  *
  * @author Sabrine Gamdou
- * @version 2.0
+ * @version 3.0
  * @since   06.01.2021
- * @lastUpdated 01.02.2021 by Jessica Reistel
+ * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 
 @SpringComponent

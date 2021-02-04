@@ -29,9 +29,9 @@ import com.vaadin.flow.router.RouterLink;
  *  SideBar shows ...
  *
  *  @author Lea Schünemann, Vanessa Skowronsky
- *  @version 3.0
+ *  @version 4.0
  *  @since 16.12.2020
- *  @lastUpdated 03.02.2021 from Vanessa Skowronsky
+ *  @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 public class SideBar extends VerticalLayout{
 
