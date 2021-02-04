@@ -106,6 +106,8 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         /*if(settingEntity.getDarkmode() == true ){
 
         }*/
+        userEntity = userService.findByUsername(username);
+        settingEntity = userEntity.getSetting();
 
         if(settingEntity.getDarkmode() == true) {
             contentHolder.getElement().getChild(0).getThemeList().add(Lumo.DARK);
