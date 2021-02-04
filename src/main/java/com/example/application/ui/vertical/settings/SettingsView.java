@@ -65,8 +65,6 @@ public class SettingsView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        System.out.println(UI.getCurrent().getElement().getThemeList());
-
         toggleButton = new ToggleButton(settingEntity.getDarkmode());
 
         toggleButton.addClickListener(event -> {
@@ -90,20 +88,14 @@ public class SettingsView extends Div {
     private void toggleDarkMode(){
         ThemeList themeList = UI.getCurrent().getElement().getThemeList();
 
-        if (themeList.contains(Lumo.DARK)) {
+        if (settingEntity.getDarkmode()) {
             themeList.remove(Lumo.DARK);
             settingService.update(settingEntity, false);
 
-            //lightColorscheme
-            getStyle().set("background-color", "white");
-            getStyle().set("color", "hsl(214, 35%, 21%)");
         } else {
             themeList.add(Lumo.DARK);
             settingService.update(settingEntity, true);
 
-            //darkColorscheme
-            getStyle().set("background-color", "hsl(214, 35%, 21%)");
-            getStyle().set("color", "white");
         }
 
     }

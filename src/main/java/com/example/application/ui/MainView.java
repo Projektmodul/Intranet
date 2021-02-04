@@ -97,26 +97,17 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         // The code below sets the childWrapper to hold the view
         contentHolder.getElement().appendChild(content.getElement());
         String text = content.toString();
-        //System.out.println(content);
         String color = contentSplit(text);
 
-        //Auslesen der DB Einstellung darkmode
-        //if(DB_dark == true && Lumo.DARK == false) { Lumo.DARK == true;}
-
-        /*if(settingEntity.getDarkmode() == true ){
-
-        }*/
-        userEntity = userService.findByUsername(username);
-        settingEntity = userEntity.getSetting();
 
         if(settingEntity.getDarkmode() == true) {
-            contentHolder.getElement().getChild(0).getThemeList().add(Lumo.DARK);
+            UI.getCurrent().getElement().getThemeList().add(Lumo.DARK);
             contentHolder.getElement().getChild(0).getClassList().remove("lightColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("darkColorscheme");
             setBackgroundColorDark(color);
 
         } else if (settingEntity.getDarkmode() == false ){
-            contentHolder.getElement().getChild(0).getThemeList().remove(Lumo.DARK);
+            UI.getCurrent().getElement().getThemeList().remove(Lumo.DARK);
             contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
             setBackgroundColor(color);

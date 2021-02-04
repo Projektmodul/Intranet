@@ -30,9 +30,10 @@ public class SettingService {
         return settingRepository;
     }
 
-    public void update(SettingEntity settingEntity, ToggleButton toggleButton){
-        settingEntity.setDarkmode(toggleButton.getValue());
+    public void update(SettingEntity settingEntity, Boolean toggleValue){
+        settingEntity.setDarkmode(toggleValue);
         getSettingRepository().saveAndFlush(settingEntity);
+        UI.getCurrent().getPage().reload();
     }
 
 }
