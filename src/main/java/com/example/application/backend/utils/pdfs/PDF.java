@@ -27,7 +27,7 @@ public class PDF extends Div {
 
     private Icon deleteButton;
     private Component pdfDocumentViewer;
-    private StreamResource stream;
+
 
 
     private InputStream inputStream;
