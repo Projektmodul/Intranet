@@ -2,7 +2,7 @@ package com.example.application.backend.services.settings;
 
 import com.example.application.backend.entities.SettingEntity;
 import com.example.application.backend.repositories.SettingRepository;
-import com.vaadin.componentfactory.ToggleButton;
+import com.vaadin.flow.component.UI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

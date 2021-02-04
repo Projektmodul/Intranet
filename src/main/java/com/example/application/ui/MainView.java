@@ -1,5 +1,8 @@
 package com.example.application.ui;
 
+import com.example.application.backend.entities.SettingEntity;
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.auxiliary.HorizontalBarClickedListener;
@@ -33,10 +36,15 @@ import com.vaadin.flow.theme.lumo.Lumo;
 
 public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener, NotificationCounterChangedListener {
 
+    private SettingEntity settingEntity;
     private UserService userService;
     private VerticalLayout contentHolder = new VerticalLayout();
     private Header header;
     private  SideBar sidebar;
+    GetUserController getUserController;
+    String username;
+
+    private UserEntity userEntity;
 
     //bidirectional communication between ContentHolder and NotificationPresenter
     private final NotificationPresenter notificationPresenter;
@@ -45,6 +53,11 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         this.notificationPresenter = notificationPresenter;
         this.userService = userService;
 
+        getUserController = new GetUserController();
+
+        username = getUserController.getUsername();
+        userEntity = userService.findByUsername(username);
+        settingEntity = userEntity.getSetting();
 
         setId("mainView");
 
@@ -87,15 +100,24 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         //System.out.println(content);
         String color = contentSplit(text);
 
+        //Auslesen der DB Einstellung darkmode
+        //if(DB_dark == true && Lumo.DARK == false) { Lumo.DARK == true;}
 
-        if(UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
+        /*if(settingEntity.getDarkmode() == true ){
+
+        }*/
+
+        if(settingEntity.getDarkmode() == true) {
+            contentHolder.getElement().getChild(0).getThemeList().add(Lumo.DARK);
             contentHolder.getElement().getChild(0).getClassList().remove("lightColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("darkColorscheme");
             setBackgroundColorDark(color);
-        } else {
-            setBackgroundColor(color);
+
+        } else if (settingEntity.getDarkmode() == false ){
+            contentHolder.getElement().getChild(0).getThemeList().remove(Lumo.DARK);
             contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
+            setBackgroundColor(color);
         }
 
     }
