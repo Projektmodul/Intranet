@@ -18,7 +18,7 @@ import java.io.InputStream;
  * @author Anastasiya Jackwerth, Sabrine Gamdou
  * @version 3.0
  * @since   21.12.2020
- * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
+ * @lastUpdated 04.02.2021 Sabrine Gamdou
  */
 
 public class PDF extends Div {
@@ -66,29 +66,8 @@ public class PDF extends Div {
 
     }
 
-
     public Icon getDeleteButton() {
         return deleteButton;
     }
-
-
-    public InputStream getInputStream() {
-        return inputStream;
-    }
-
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-   /* public void setDeleteButton(NativeButton deleteButton) {
-        this.deleteButton = deleteButton;
-    }
-
-
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-        initializePdfViewer();
-    }*/
-
 
 }
