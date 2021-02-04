@@ -10,6 +10,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.NativeButton;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.upload.SucceededEvent;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 
@@ -54,6 +55,7 @@ public class PdfManager {
     private int role;
 
     private String keyword;
+    private String notificationCategory;
     private PageEntity pageEntity;
     private UserEntity userEntity;
 
@@ -87,54 +89,35 @@ public class PdfManager {
     }
 
     public void setUploaderEvents(){
-        upload.setAcceptedFileTypes("application/pdf");
-
-        NativeButton uploadButton = new NativeButton("PDF-Datei hochladen");
-        upload.setUploadButton(uploadButton);
-
-        Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
-        upload.setDropLabel(label);
-
-        upload.setVisible(isOnePdf);
-        System.out.println("isOnePdf: " + isOnePdf);
+        setUploadButton();
         upload.addSucceededListener(e -> {
-            inputStream = buffer.getInputStream();
-            createDocumentEntity(changeGlobalFileName(e.getFileName()));
-            documentEntity.setKeyword(keyword);
-            pdfCreationManager = new PdfCreationManager(inputStream, documentEntity, documentService);
-            pdfCreationManager.setMimeType(e.getMIMEType());
-            pdfCreationManager.save();
+            setUploadSucceededListener(e);
             UI.getCurrent().getPage().reload();
         });
 
-        upload.addFileRejectedListener(e -> errorContainer.add(new Span(e.getErrorMessage())));
-
-        upload.addFailedListener(e -> errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen")));
+        setUploadFailRejectedListeners();
     }
 
     public void setUploaderEventForJobOffers(){
-        upload.setAcceptedFileTypes("application/pdf");
-
-        NativeButton uploadButton = new NativeButton("PDF-Datei hochladen");
-        upload.setUploadButton(uploadButton);
-
-        Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
-        upload.setDropLabel(label);
-
-        upload.setVisible(isOnePdf);
-        System.out.println("isOnePdf: " + isOnePdf);
+        setUploadButton();
         upload.addSucceededListener(e -> {
-            inputStream = buffer.getInputStream();
-            createDocumentEntity(changeGlobalFileName(e.getFileName()));
-            documentEntity.setKeyword(keyword);
-            pdfCreationManager = new PdfCreationManager(inputStream, documentEntity, documentService);
+            setUploadSucceededListener(e);
+            isPdfUploaded = true; });
 
-            pdfCreationManager.setMimeType(e.getMIMEType());
-            pdfCreationManager.save();
-            isPdfUploaded = true;
-            //UI.getCurrent().getPage().reload();
-        });
+        setUploadFailRejectedListeners();
+    }
 
+    public void setUploadSucceededListener(SucceededEvent e){
+        inputStream = buffer.getInputStream();
+        createDocumentEntity(changeGlobalFileName(e.getFileName()));
+        documentEntity.setKeyword(keyword);
+        pdfCreationManager = new PdfCreationManager(inputStream, documentEntity, documentService);
+
+        pdfCreationManager.setMimeType(e.getMIMEType());
+        pdfCreationManager.save();
+    }
+
+    public void setUploadFailRejectedListeners(){
         upload.addFileRejectedListener(e -> {
             errorContainer.add(new Span(e.getErrorMessage()));
             isPdfUploaded = false;
@@ -144,6 +127,19 @@ public class PdfManager {
             errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen"));
             isPdfUploaded = false;
         });
+    }
+
+    public void setUploadButton(){
+        upload.setAcceptedFileTypes("application/pdf");
+
+        NativeButton uploadButton = new NativeButton("PDF-Datei hochladen");
+        upload.setUploadButton(uploadButton);
+
+        Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
+        upload.setDropLabel(label);
+
+        upload.setVisible(isOnePdf);
+        System.out.println("isOnePdf: " + isOnePdf);
     }
 
     public int getDocumentOfJobOfferId(){
@@ -179,9 +175,19 @@ public class PdfManager {
     //Categories in database should be changed
     public NotificationEntity initializeNotificationForDocument(String fileName){
 
-        NotificationEntity notificationEntity = new NotificationEntity("Es wurde eine neue Datei hinzugefügt!",
-                "Die Datei '"+fileName + "' wurde vor kurzem hinzugefügt.",
-                "Speiseplan", false, userEntity);
+        NotificationEntity notificationEntity;
+        if(notificationCategory == "Speiseplan"){
+            notificationEntity = new NotificationEntity("Der neue Speisplan ist online!",
+                    "Die Datei '"+fileName + " ein neuer Speisplan wurde in der " +
+                            "Betriebsrestaurant-Seite hinzugefügt.",
+                    notificationCategory, false, userEntity);
+
+        }else{
+            notificationEntity = new NotificationEntity("Es wurde eine neue Datei hinzugefügt!",
+                    "Die Datei '"+fileName + " wurde vor kurzem hinzugefügt.",
+                    notificationCategory, false, userEntity);
+        }
+
         notificationEntity.setDate();
 
         notificationService.save(notificationEntity);
@@ -223,6 +229,13 @@ public class PdfManager {
         this.pdfDeletionManager = new PdfDeletionManager(documentEntity, documentService);
     }
 
+    public String getNotificationCategory() {
+        return notificationCategory;
+    }
+
+    public void setNotificationCategory(String notificationCategory) {
+        this.notificationCategory = notificationCategory;
+    }
 
     public InputStream getInputStream() {
         return inputStream;
