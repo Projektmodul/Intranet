@@ -22,6 +22,8 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
 
+
+
 /**
  *  SideBar shows ...
  *
@@ -38,6 +40,7 @@ public class SideBar extends VerticalLayout{
     private final Icon alertIcon;
     private int notificationCounter;
     private Span counterSpan;
+
 
     public SideBar(LinkService linkService){
         setId("sideBar");
@@ -77,6 +80,10 @@ public class SideBar extends VerticalLayout{
             tabArray[i] = new Tab("");
         }
 
+        for (Tab tab: tabArray) {
+            tab.getStyle().set("color", "white");
+        }
+
         tabArray[0].add(new RouterLink("Mein Profil", MyProfileView.class));
         tabArray[1].add(phoneBookLayout);
         tabArray[2].add(new RouterLink("Einstellungen", SettingsView.class));
@@ -95,6 +102,7 @@ public class SideBar extends VerticalLayout{
         for (Tab tab : tabArray) {
             tabs.add(tab);
         }
+
 
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);

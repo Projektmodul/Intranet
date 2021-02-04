@@ -189,6 +189,11 @@
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
+
+}
+
+vaadin-menu-bar-button {
+  background-color: #1481de;
 }
 
 /* Sidebar */
@@ -247,13 +252,8 @@
   width: 100%;
 }
 
-#sideBar vaadin-tab{
-  color:white;
-}
-
-#sideBar vaadin-tab[selected] a[highlight]{
+#sideBar vaadin-tab[selected] {
   background: #A00505;
-  font-weight: bold;
 }
 
 #sideBar vaadin-tab:hover{
