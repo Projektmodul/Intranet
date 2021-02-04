@@ -112,6 +112,7 @@ public class DocumentsView extends Div {
         //messageContainer.setText("Bitte wählen Sie eine Abteilung aus, bevor Sie ein neues Dokument hinzufügen.");
 
         keyword = "Allgemein";
+        pdfsManager.getPdfManager().setKeyword(keyword);
         messageContainer.setText("Sie haben ausgewählt: Allgemein");
         messageContainer.setId("messageContainer");
 
