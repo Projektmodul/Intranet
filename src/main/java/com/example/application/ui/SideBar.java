@@ -7,6 +7,7 @@ import com.example.application.ui.vertical.canteen.CanteenView;
 import com.example.application.ui.vertical.help.HelpView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
+import com.example.application.ui.vertical.notifications.ZeroNotificationsDialog;
 import com.example.application.ui.vertical.settings.SettingsView;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Anchor;
@@ -35,7 +36,7 @@ import com.vaadin.flow.router.RouterLink;
 public class SideBar extends VerticalLayout{
 
     public Tabs tabs;
-    private NotificationsView notificationsView;
+    private Dialog notificationsView;
 
     private final Icon alertIcon;
     private int notificationCounter;
@@ -115,7 +116,7 @@ public class SideBar extends VerticalLayout{
         add(notificationsAlertIconSpanContainer,searchField,tabs);
     }
 
-    public void setEventOfNotificationView(NotificationsView notificationsView){
+    public void setEventOfNotificationView(Dialog notificationsView){
         alertIcon.addClickListener(e-> notificationsView.open());
     }
 
@@ -144,6 +145,7 @@ public class SideBar extends VerticalLayout{
         if(notificationCounter == 0){
             alertIcon.setColor("#575757");
             this.counterSpan.setVisible(false);
+            notificationsView = new ZeroNotificationsDialog();
         }else{
             alertIcon.setColor("#e31313");
             this.counterSpan.setVisible(true);

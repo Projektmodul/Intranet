@@ -6,6 +6,8 @@ import com.example.application.backend.services.notifications.NotificationServic
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.vertical.notifications.NotificationsView;
+import com.example.application.ui.vertical.notifications.ZeroNotificationsDialog;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -31,7 +33,7 @@ public class NotificationPresenter {
     private final NotificationService notificationService;
     private final UserService userService;
     private final LinkService linkService;
-    private final NotificationsView notificationsView;
+    private final Dialog notificationsView;
     private NotificationDataProvider notificationDataProvider;
 
 
@@ -41,19 +43,23 @@ public class NotificationPresenter {
         this.userService = userService;
         this.linkService = linkService;
 
-        notificationsView = new NotificationsView();
-
         notificationDataProvider = new NotificationDataProvider();
 
         //The presenter handles the request of retrieving the notifications from the backend
         notificationDataProvider.findNotification(notificationService);
 
-        //The presenter adds all retrieved notifications to the notificationsView
-        notificationDataProvider.addNotifications(notificationsView.getAllNotificationsContainer(), notificationService);
+        if(notificationDataProvider.getNotificationCounter() == 0){
+            notificationsView = new ZeroNotificationsDialog();
+        }else{
+            notificationsView = new NotificationsView();
 
-        notificationDataProvider.setClickEventOnSaveButton(notificationsView.getDeleteButton(), notificationService);
+            //The presenter adds all retrieved notifications to the notificationsView
+            notificationDataProvider.addNotifications(((NotificationsView) notificationsView).getAllNotificationsContainer(), notificationService);
 
-        notificationsView.setNotificationsCounter(notificationDataProvider.getNotificationCounter());
+            notificationDataProvider.setClickEventOnSaveButton(((NotificationsView) notificationsView).getDeleteButton(), notificationService);
+
+            ((NotificationsView) notificationsView).setNotificationsCounter(notificationDataProvider.getNotificationCounter());
+        }
 
         this.mainView = new MainView(this, this.userService, this.linkService);
         this.mainView.getSidebar().setNotificationCounter(notificationDataProvider.getNotificationCounter());
