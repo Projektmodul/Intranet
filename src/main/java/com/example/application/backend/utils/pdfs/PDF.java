@@ -56,7 +56,7 @@ public class PDF extends Div {
         pdfDocumentViewer = new PdfDocumentViewer(new StreamResource(documentEntity.getFileName(), () -> {
 
             try {
-                System.out.println("PATH: "+documentEntity.getPath());
+
                 return new FileInputStream(documentEntity.getPath());
             } catch (Exception e) {
                 return new ByteArrayInputStream(new byte[]{});
