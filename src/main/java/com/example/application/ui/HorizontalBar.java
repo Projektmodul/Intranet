@@ -18,6 +18,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * HorizontalBarView shows a menubar with submenu items that open after hovering over them.
@@ -69,6 +70,7 @@ public class HorizontalBar extends MenuBar {
         chat.setColor("#FFFFFF");
         chat.addClickListener(e -> new Dialog(initChat()).open());
         addItem(chat);
+
     }
 
     private void initOurCompanyMenu() {
@@ -231,6 +233,8 @@ public class HorizontalBar extends MenuBar {
         layout.setSpacing(true);
 
         Label label = new Label(labelText);
+
+
         label.getStyle().set("color", "white");
         MenuItem menuItem = addItem(label);
         menuItem.addClickListener(e -> {
@@ -238,6 +242,7 @@ public class HorizontalBar extends MenuBar {
             layout.getUI().ifPresent(ui -> ui.navigate(route));
         });
         menuItem.getSubMenu().addItem(layout);
+
     }
 
     /**
