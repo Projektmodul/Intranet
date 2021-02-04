@@ -65,14 +65,9 @@ public class SettingsView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        //ToggleButton toggleButton;
-        if (UI.getCurrent().getElement().getThemeList().contains(Lumo.DARK)) {
-            toggleButton = new ToggleButton(true);
-            toggleButton.setValue(settingEntity.getDarkmode());
-        } else {
-            toggleButton = new ToggleButton(false);
-            toggleButton.setValue(settingEntity.getDarkmode());
-        }
+        System.out.println(UI.getCurrent().getElement().getThemeList());
+
+        toggleButton = new ToggleButton(settingEntity.getDarkmode());
 
         toggleButton.addClickListener(event -> {
             toggleDarkMode();
@@ -97,12 +92,16 @@ public class SettingsView extends Div {
 
         if (themeList.contains(Lumo.DARK)) {
             themeList.remove(Lumo.DARK);
-            settingService.update(settingEntity, toggleButton);
+            settingService.update(settingEntity, false);
+
+            //lightColorscheme
             getStyle().set("background-color", "white");
             getStyle().set("color", "hsl(214, 35%, 21%)");
         } else {
             themeList.add(Lumo.DARK);
-            settingService.update(settingEntity, toggleButton);
+            settingService.update(settingEntity, true);
+
+            //darkColorscheme
             getStyle().set("background-color", "hsl(214, 35%, 21%)");
             getStyle().set("color", "white");
         }
