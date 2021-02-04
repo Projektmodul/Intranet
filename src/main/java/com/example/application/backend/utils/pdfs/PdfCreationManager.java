@@ -10,9 +10,9 @@ import java.io.*;
  * database and on the server.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 1.0
- * @since   21-12-2020
- * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ * @version 2.0
+ * @since   21.12.2020
+ * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 
 public class PdfCreationManager {
@@ -44,15 +44,15 @@ public class PdfCreationManager {
             fileContent= getArrayFromInputStream(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("No such file exists.");
+
         }
         try(BufferedOutputStream fileOutputStream = new BufferedOutputStream(new FileOutputStream(
-                new File(documentEntity.getPath())))){
+                documentEntity.getPath()))){
             fileOutputStream.write(fileContent);
             fileOutputStream.flush();
         }catch (IOException e){
             e.printStackTrace();
-            System.out.println("Conversion failed.");
+
         }
     }
 
@@ -77,9 +77,7 @@ public class PdfCreationManager {
     }
 
 
-    public String getMimeType() {
-        return mimeType;
-    }
+
 
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
