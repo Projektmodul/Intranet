@@ -43,7 +43,7 @@ public class DocumentsView extends Div {
 
     private PageEntity pageEntity;
 
-    //private TreeGrid<DocumentEntity> documentsGrid;
+
     private VerticalLayout pageContentLayout;
 
     private PdfsManager pdfsManager;
@@ -121,6 +121,7 @@ public class DocumentsView extends Div {
                 messageContainer.setText("Sie haben ausgewählt: " + event.getValue());
                 keyword = event.getValue();
                 pdfsManager.getPdfManager().setKeyword(keyword);
+                pdfsManager.getPdfManager().setNotificationCategory("Pdf-Dokument");
                 System.out.println("Keyword: " + event.getValue());
             }
         });
