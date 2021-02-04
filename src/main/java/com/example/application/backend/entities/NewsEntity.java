@@ -10,9 +10,9 @@ import java.util.List;
  * This is a basic news class.
  *
  * @author  Sabrine Gamdou
- * @version 2.0
+ * @version 3.0
  * @since   05.01.2020
- * @lastUpdated 02.02.2021 by Anastasiya Jackwerth and Sabrine Gamdou
+ * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 
 @Entity(name ="news")
@@ -24,6 +24,7 @@ public class NewsEntity {
     private int newsId;
     private String title;
     private String description;
+    private String text;
     private String type;
 
     @Column(name ="created_at")
@@ -82,5 +83,13 @@ public class NewsEntity {
 
     public void setPages(List<PageEntity> pages) {
         this.pages = pages;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
