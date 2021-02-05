@@ -20,12 +20,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
- *  Settings View shows ...
+ *  Settings View displays the settings that a user can change
  *
  *  @author Rebecca Schirmacher
- *  @version 1.0
+ *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated
+ *  @lastUpdated 04.02.2021 by Vanessa Skowronsky and Laura Neuendorf
  */
 @Route(value = "settings", layout = MainView.class)
 @PageTitle("Einstellungen")
@@ -91,12 +91,9 @@ public class SettingsView extends Div {
         if (settingEntity.getDarkmode()) {
             themeList.remove(Lumo.DARK);
             settingService.update(settingEntity, false);
-
         } else {
             themeList.add(Lumo.DARK);
             settingService.update(settingEntity, true);
-
         }
-
     }
 }
