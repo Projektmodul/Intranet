@@ -1,8 +1,6 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 /**
  * This is a basic idea class.
@@ -22,16 +20,10 @@ public class IdeaEntity {
     private int ideaId;
 
     private String title;
-    private String description;
-    private String rating;
-/*
-    @ManyToOne
-    @JoinColumn(name ="username")
-    private UsersEntity user;*/
 
-    /*@ManyToOne
-    @JoinColumn(name ="page_id")
-    private PageEntity page;*/
+    private String description;
+
+    private String rating;
 
     public int getIdeaId() {
         return ideaId;
@@ -64,13 +56,4 @@ public class IdeaEntity {
     public void setRating(String rating) {
         this.rating = rating;
     }
-/*
-    public UsersEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UsersEntity user) {
-        this.user = user;
-    }*/
-
 }
