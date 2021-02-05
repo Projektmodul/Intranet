@@ -1,8 +1,6 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 /**
  * This is a basic address class.
@@ -13,11 +11,24 @@ import java.util.List;
  * @lastUpdated 25.01.2021 from Jessica Reistel, Monika Martius and Laura Neuendorf
  */
 
-@Entity(name = "addresses")//name of the database table
+/**
+ * Name of the database table
+ */
+@Entity(name = "addresses")
 public class AddressEntity {
 
-    @Id //specifies the primary key of the table
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // specifies how the primary key gets generated
+    /**
+     * Specifies the primary key of the table
+     */
+    @Id
+    /**
+     * Specifies how the primary key gets generated
+     */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * If the name in the database and the variable name in the code are different,
+     * they must be marked with the following tag
+     */
     @Column(name ="address_id")
     private int addressId;
 
@@ -31,21 +42,6 @@ public class AddressEntity {
     private int postcode;
 
     private String city;
-
-   /* @OneToOne(mappedBy = "address")
-    private UsersEntity users;
-*/
-    public AddressEntity() {
-
-    }
-
-    public AddressEntity(int addressId, String streetName, int streetNumber, int postcode, String city) {
-        this.addressId = addressId;
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-        this.postcode = postcode;
-        this.city = city;
-    }
 
     public int getAddressId() {
         return addressId;
@@ -86,13 +82,4 @@ public class AddressEntity {
     public void setCity(String city) {
         this.city = city;
     }
-
-   /* public UsersEntity getUsers() {
-        return users;
-    }
-
-    public void setUsers(UsersEntity users) {
-        this.users = users;
-    }*/
-
 }
