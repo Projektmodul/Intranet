@@ -2,7 +2,6 @@ package com.example.application.backend.entities;
 
 import javax.persistence.*;
 
-
 /**
  * This is a basic image class.
  *
@@ -22,14 +21,9 @@ public class ImageEntity {
 
     @Column(name ="file_name")
     private String fileName;
+
     private String path;
 
-   /* @OneToOne(mappedBy = "image")
-    private NewsEntity news;
-
-    @OneToOne(mappedBy = "image")
-    private NoticeBoardOfferEntity noticeBoardOffer;
-*/
     @ManyToOne
     @JoinColumn(name ="page_id")
     private PageEntity page;
@@ -38,12 +32,7 @@ public class ImageEntity {
     @JoinColumn(name ="username")
     private UserEntity user;
 
-    public ImageEntity(){
-
-    }
-
     public ImageEntity(String fileName, String path, PageEntity page, UserEntity user) {
-
         this.fileName = fileName;
         this.path = path;
         this.page = page;
@@ -74,22 +63,6 @@ public class ImageEntity {
         this.path = path;
     }
 
-  /*  public NewsEntity getNews() {
-        return news;
-    }
-
-    public void setNews(NewsEntity news) {
-        this.news = news;
-    }
-
-    public NoticeBoardOfferEntity getNoticeBoardOffer() {
-        return noticeBoardOffer;
-    }
-
-    public void setNoticeBoardOffer(NoticeBoardOfferEntity noticeBoardOffer) {
-        this.noticeBoardOffer = noticeBoardOffer;
-    }
-*/
     public UserEntity getUser() {
         return user;
     }
@@ -98,13 +71,11 @@ public class ImageEntity {
         this.user = user;
     }
 
-   public PageEntity getPage() {
+    public PageEntity getPage() {
         return page;
     }
 
     public void setPage(PageEntity page) {
         this.page = page;
     }
-
-
 }
