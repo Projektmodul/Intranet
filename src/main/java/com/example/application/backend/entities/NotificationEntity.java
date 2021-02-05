@@ -40,6 +40,13 @@ public class NotificationEntity {
     @JoinColumn(name ="username")
     private UserEntity user;
 
+    /**
+     * Default constructor must be present, otherwise there will be an ERROR message
+     */
+    public NotificationEntity(){
+
+    }
+
     public NotificationEntity(String title, String description, String category, boolean status, UserEntity user) {
         this.title = title;
         this.description = description;

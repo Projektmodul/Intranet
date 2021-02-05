@@ -18,15 +18,18 @@ public class ProjectEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
     private int projectId;
+
     @Column(name = "titel_text_box_one")
     private String titelTextBoxOne;
+
     @Column(name = "titel_text_box_two")
     private String titelTextBoxTwo;
+
     @Column(name = "text_box_one")
     private String textBoxOne;
+
     @Column(name = "text_box_two")
     private String textBoxTwo;
-
 
     @OneToOne
     @JoinColumn(name = "image_id_one")
@@ -41,15 +44,6 @@ public class ProjectEntity {
 
     @Column(name = "link_id_two")
     private int linkTwo;
-
-    @ManyToOne
-    @JoinColumn(name ="page_id")
-    private PageEntity page;
-
-    @ManyToOne
-    @JoinColumn(name ="username")
-    private UserEntity user;
-
 
     public int getProjectId() {
         return projectId;
@@ -90,11 +84,7 @@ public class ProjectEntity {
     public void setTextBoxTwo(String textBoxTwo) {
         this.textBoxTwo = textBoxTwo;
     }
-/*
-    public int getImageId() { return imageId; }
 
-    public void setImageId(int imageId) { this.imageId = imageId; }
-*/
     public ImageEntity getImageOne() {
         return imageOne;
     }
@@ -126,14 +116,4 @@ public class ProjectEntity {
     public void setLinkTwo(int linkTwo) {
         this.linkTwo = linkTwo;
     }
-/*
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-*/
-
-
 }
