@@ -1,7 +1,6 @@
 package com.example.application.backend.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * This is a basic role class.
@@ -19,20 +18,9 @@ public class RoleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="role_id")
     private int roleId;
+
     private String roleName;
 
-   /* @ManyToOne
-    @JoinTable( //this defines the relationship and the foreign key columns
-            name = "permissions_roles",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id")
-    )
-    private List<PermissionsEntity> permissions;
-
-
-    @ManyToMany(mappedBy = "roles")
-    private List<UsersEntity> users;
-*/
     public RoleEntity(){
 
     }
@@ -57,20 +45,4 @@ public class RoleEntity {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
-
-    /*public List<PermissionsEntity> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<PermissionsEntity> permissions) {
-        this.permissions = permissions;
-    }
-
-    public List<UsersEntity> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<UsersEntity> users) {
-        this.users = users;
-    }*/
 }
