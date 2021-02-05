@@ -23,9 +23,9 @@ import com.vaadin.flow.theme.lumo.Lumo;
  *  MainView shows ...
  *
  *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
- *  @version 6.0
+ *  @version 7.0
  *  @since 15.12.2020
- *  @lastUpdated 02.02.2021 by Vanessa Skowronsky
+ *  @lastUpdated 04.02.2021 by Vanessa Skowronsky and Laura Neuendorf
  */
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/mainView.css")
@@ -87,8 +87,6 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         notificationPresenter.setEventOfNotificationViewOnSideBar();
         notificationPresenter.setCounterFromDialogToSideBar();
         notificationPresenter.getNotificationDataProvider().getInitiator().addListener(this);
-
-
     }
 
     @Override
@@ -98,7 +96,6 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         contentHolder.getElement().appendChild(content.getElement());
         String text = content.toString();
         String color = contentSplit(text);
-
 
         if(settingEntity.getDarkmode() == true) {
             UI.getCurrent().getElement().getThemeList().add(Lumo.DARK);
@@ -112,7 +109,6 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
             contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
             setBackgroundColor(color);
         }
-
     }
 
     public String contentSplit(String contentText){
