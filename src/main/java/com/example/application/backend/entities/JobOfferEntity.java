@@ -2,7 +2,6 @@ package com.example.application.backend.entities;
 
 import javax.persistence.*;
 
-
 /**
  * This is a basic jobOffer class.
  *
@@ -23,8 +22,11 @@ public class JobOfferEntity implements Cloneable {
 
     @Column(name ="title")
     private String title;
+
     private String category;
+
     private String type;
+
     private String location;
 
     @ManyToOne
@@ -39,7 +41,6 @@ public class JobOfferEntity implements Cloneable {
     @JoinColumn(name="document_id")
     private DocumentEntity document;
 
-
     public int getJobOfferId() {
         return jobOfferId;
     }
@@ -47,7 +48,6 @@ public class JobOfferEntity implements Cloneable {
     public void setJobOfferId(int jobOfferId) {
         this.jobOfferId = jobOfferId;
     }
-
 
     public String getTitle() {
         return title;
@@ -89,15 +89,6 @@ public class JobOfferEntity implements Cloneable {
         this.page = page;
     }
 
-
-   /* public String getKeyword() {
-        return keyword;
-    }
-
-    public void setK eyword(String keyword) {
-        this.keyword = keyword;
-    }*/
-
     public DocumentEntity getDocument() {
         return document;
     }
@@ -113,5 +104,4 @@ public class JobOfferEntity implements Cloneable {
     public void setUser(UserEntity user) {
         this.user = user;
     }
-
 }
