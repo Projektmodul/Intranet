@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
  * The service layer processes requests from the UI layer.
  *
  * @author  Laura Neuendorf,
- * @version 1.0
+ * @version 2.0
  * @since   03.02.2021
- * @lastUpdated
+ * @lastUpdated 04.02.2021 by Vanessa Skowronsky and Laura Neuendorf
  */
 
 @Service
@@ -30,6 +30,11 @@ public class SettingService {
         return settingRepository;
     }
 
+    /**
+     * This method updates the entered information from the toggle button in SettingView in the database
+     * @param settingEntity
+     * @param toggleValue
+     */
     public void update(SettingEntity settingEntity, Boolean toggleValue){
         settingEntity.setDarkmode(toggleValue);
         getSettingRepository().saveAndFlush(settingEntity);
