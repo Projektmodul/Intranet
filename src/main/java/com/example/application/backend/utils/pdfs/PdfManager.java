@@ -23,9 +23,9 @@ import java.util.Date;
  * pdfCreationManager and the pdfDeletionManager to create and delete documents.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 6.0
+ * @version 7.0
  * @since   19.01.2021
- * @lastUpdated 04.02.2021 by Sabrine Gamdou
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 public class PdfManager {
 
@@ -142,10 +142,6 @@ public class PdfManager {
         System.out.println("isOnePdf: " + isOnePdf);
     }
 
-    public int getDocumentOfJobOfferId(){
-        return documentEntity.getDocumentId();
-    }
-
     public void setDeleteButtonEvent(){
         pdf.getDeleteButton().addClickListener(e -> {
             pdfDeletionManager.delete();
@@ -229,6 +225,10 @@ public class PdfManager {
         this.pdfDeletionManager = new PdfDeletionManager(documentEntity, documentService);
     }
 
+
+    public int getDocumentOfJobOfferId(){
+        return documentEntity.getDocumentId();
+    }
 
 
     public void setNotificationCategory(String notificationCategory) {
