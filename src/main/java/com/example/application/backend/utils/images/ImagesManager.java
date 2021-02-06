@@ -14,9 +14,9 @@ import java.util.List;
  * This class manages the images list and the imageManagers.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
- * @since   21-12-2020
- * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
+ * @version 4.0
+ * @since   21.12.2020
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 
 public class ImagesManager extends Div {
@@ -33,6 +33,7 @@ public class ImagesManager extends Div {
     //Variables to create a new imageEntity, should be set by the View
     private PageEntity pageEntity;
     private UserEntity userEntity;
+    private ImageEntity imageEntity;
     private int role;
 
     private boolean isOneImage;
@@ -96,6 +97,12 @@ public class ImagesManager extends Div {
         setUserEntity(userEntity);
     }
 
+    public void initializeUploadContainerForNews(){
+        imagesUploader = new Div();
+        imageManager.setUploaderEventsForNews();
+        imagesUploader.add(imageManager.getUploaderContainer());
+    }
+
     public void setOneImage(boolean isOneImage){
         this.isOneImage = !isOneImage;
 
@@ -132,5 +139,15 @@ public class ImagesManager extends Div {
         this.imagesUploader = imagesUploader;
     }
 
+    public int getIdOfNewsImage(){
+        return imageManager.getIdOfNewsImage();
+    }
 
+    public boolean isImageUploaded(){
+        return imageManager.isImageUploaded();
+    }
+
+    public void setImageEntity(ImageEntity imageEntity) {
+        this.imageEntity = imageEntity;
+    }
 }
