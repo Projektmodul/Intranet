@@ -68,10 +68,13 @@ public class CareerView extends Div {
 
     private ComboBox<String> typeDropBox;
     private ComboBox<String> categoryDropBox;
-    TextField description;
-    TextField location;
-    Div errorContainer;
-    Div addClearDiv;
+
+    private NotificationService notificationService;
+
+    private TextField description;
+    private TextField location;
+    private Div errorContainer;
+    private Div addClearDiv;
 
     private boolean isDescriptionFilled = false;
     private boolean isTypeFilled = false;
