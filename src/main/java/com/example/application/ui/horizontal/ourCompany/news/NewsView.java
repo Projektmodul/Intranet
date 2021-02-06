@@ -13,7 +13,6 @@ import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -30,7 +29,7 @@ import java.util.List;
  *  @author Anastasiya Jackwerth, Sabrine Gamdou
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 @Route(value = "news", layout = MainView.class)
 @PageTitle("Nachrichten")
@@ -103,13 +102,16 @@ public class NewsView extends Div {
     public void initializeNewsArticles(){
         List<NewsEntity> newsEntities = pageEntity.getNews();
 
-        for(NewsEntity newsEntity : newsEntities){
-            newsArticles.add(new NewsArticle(newsEntity.getImage(), newsEntity));
+        for(int i = newsEntities.size()  - 1; i>=0 ; i--){
+            newsArticles.add(new NewsArticle(newsEntities.get(i).getImage(), newsEntities.get(i),
+                    imageService, newsService, userEntity.getRole().getRoleId()));
         }
     }
 
     public void initializeAddNewsButton(){
         addNews = new Button("Unternehmensnachricht erstellen", event -> {
+            NewsCreator newsCreator = new NewsCreator(pageEntity, userEntity, imageService, newsService, pageService);
+            newsCreator.open();
         });
         addNews.setId("addNews");
     }
