@@ -1,8 +1,10 @@
 package com.example.application.backend.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -10,9 +12,9 @@ import java.util.List;
  * This is a basic news class.
  *
  * @author  Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   05.01.2020
- * @lastUpdated 04.02.2021 by Sabrine Gamdou
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 
 @Entity(name ="news")
@@ -28,7 +30,7 @@ public class NewsEntity {
     private String type;
 
     @Column(name ="created_at")
-    private Timestamp date;
+    private Date date;
 
     @OneToOne
     @JoinColumn(name="image_id")
@@ -36,7 +38,13 @@ public class NewsEntity {
 
 
 
-    @ManyToMany(mappedBy = "news")
+    @ManyToMany
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable( //this defines the relationship and the foreign key columns
+            name = "pages_news",
+            joinColumns = @JoinColumn(name = "news_id"),
+            inverseJoinColumns = @JoinColumn(name = "page_id")
+    )
     private List<PageEntity> pages;
 
 
@@ -75,6 +83,9 @@ public class NewsEntity {
 
     public Date getDate() {
         return new Date(date.getTime());
+    }
+    public void setDate() {
+        this.date = new Date(System.currentTimeMillis());
     }
 
     public List<PageEntity> getPages() {
