@@ -42,7 +42,7 @@ import java.util.List;
  *  @author Monika Martius, Jessica Reistel
  *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
+ *  @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
@@ -68,10 +68,10 @@ public class CareerView extends Div {
 
     private NotificationService notificationService;
 
-    TextField description;
-    TextField location;
-    Div errorContainer;
-    Div addClearDiv;
+    private TextField description;
+    private TextField location;
+    private Div errorContainer;
+    private Div addClearDiv;
 
     private boolean isDescriptionFilled = false;
     private boolean isTypeFilled = false;
