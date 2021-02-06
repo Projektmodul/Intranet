@@ -1,6 +1,8 @@
 package com.example.application.backend.utils.images;
 
-import com.example.application.backend.entities.*;
+import com.example.application.backend.entities.ImageEntity;
+import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.files.ImageService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
@@ -18,9 +20,9 @@ import java.util.Date;
  * imageCreationManager and the imageDeletionManager to create and delete images.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 5.0
+ * @version 6.0
  * @since   19.01.2021
- * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 
 public class ImageManager {
@@ -43,6 +45,7 @@ public class ImageManager {
     private Div errorContainer;
 
     private boolean isOneImage;
+    private boolean isImageUploaded = false;
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
@@ -71,7 +74,32 @@ public class ImageManager {
 
     }
 
-    public void setUploaderEvents(){
+    public void setUploaderErrorEvents(){
+        upload.addFileRejectedListener(e -> {
+            errorContainer.add(new Span(e.getErrorMessage()));
+            isImageUploaded = false;
+        });
+
+        upload.addFailedListener(e -> {
+            errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen"));
+            isImageUploaded = false;
+        });
+    }
+
+    public void setUploaderEventsForNews(){
+        setUploadLabels();
+        upload.addSucceededListener(e -> {
+            inputStream = buffer.getInputStream();
+            createImageEntity(changeGlobalFileName(e.getFileName()));
+            imageCreationManager = new ImageCreationManager(inputStream, imageEntity, imageService);
+            imageCreationManager.setMimeType(e.getMIMEType());
+            imageCreationManager.save();
+            isImageUploaded = true;
+        });
+        setUploaderErrorEvents();
+    }
+
+    public void setUploadLabels(){
         upload.setAcceptedFileTypes("image/jpeg", "image/png");
 
         NativeButton uploadButton = new NativeButton("Bild hochladen");
@@ -79,24 +107,22 @@ public class ImageManager {
 
         Span label = new Span("Ziehen Sie die Datei per Drag & Drop hierher!");
         upload.setDropLabel(label);
-
         upload.setVisible(isOneImage);
-        System.out.println("isOneImage: " + isOneImage);
+    }
+    public void setUploaderEvents(){
+        setUploadLabels();
         upload.addSucceededListener(e -> {
             inputStream = buffer.getInputStream();
             createImageEntity(changeGlobalFileName(e.getFileName()));
-            //pdf.setInputStream(inputStream);
+
             imageCreationManager = new ImageCreationManager(inputStream, imageEntity, imageService);
             imageCreationManager.setMimeType(e.getMIMEType());
             imageCreationManager.save();
+            isImageUploaded = true;
             UI.getCurrent().getPage().reload();
 
         });
-
-        upload.addFileRejectedListener(e -> errorContainer.add(new Span(e.getErrorMessage())));
-
-        upload.addFailedListener(e -> errorContainer.add(new Span("Hochladen der Datei fehlgeschlagen")));
-
+        setUploaderErrorEvents();
     }
 
     public void setDeleteButtonEvent(){
@@ -164,4 +190,11 @@ public class ImageManager {
         this.inputStream = inputStream;
     }
 
+    public int getIdOfNewsImage(){
+        return imageEntity.getImageId();
+    }
+
+    public boolean isImageUploaded() {
+        return isImageUploaded;
+    }
 }
