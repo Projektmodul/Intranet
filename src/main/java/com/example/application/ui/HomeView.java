@@ -3,6 +3,8 @@ import com.example.application.backend.entities.NewsEntity;
 import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
+import com.example.application.backend.services.files.ImageService;
+import com.example.application.backend.services.news.NewsService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.horizontal.ourCompany.news.NewsArticle;
@@ -26,7 +28,7 @@ import java.util.List;
  *          Anastasiya Jackwerth and Sabrine Gamdou
  *  @version 4.0
  *  @since 04.01.2021
- *  @lastUpdated 02.02.2021 by Anastasiya Jackwerth and Sabrine Gamdou
+ *  @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 @RouteAlias(value = "", layout = MainView.class)
 @Route(value = "home", layout = MainView.class)
@@ -36,8 +38,11 @@ public class HomeView extends Div {
     private UserService userService;
 
     private PageService pageService;
+    private ImageService imageService;
+    private NewsService newsService;
 
     private PageEntity pageEntity;
+    private UserEntity userEntity;
     private GetUserController getUserController;
 
 
@@ -45,9 +50,12 @@ public class HomeView extends Div {
     private List<NewsArticle> newsArticles;
 
 
-    public HomeView(UserService userService, PageService pageService) {
+    public HomeView(UserService userService, PageService pageService,
+                    ImageService imageService, NewsService newsService) {
         this.userService = userService;
         this.pageService = pageService;
+        this.imageService = imageService;
+        this.newsService = newsService;
         getUserController = new GetUserController();
 
         setId("home");
@@ -71,7 +79,7 @@ public class HomeView extends Div {
      */
     private void setContent(){
         String username = getUserController.getUsername();
-        UserEntity userEntity = userService.findByUsername(username);
+        userEntity = userService.findByUsername(username);
         pageEntity = pageService.findPageById(1);
         H1 pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
 
@@ -91,8 +99,12 @@ public class HomeView extends Div {
 
     public void initializeNewsArticles(){
         List<NewsEntity> newsEntities = pageEntity.getNews();
-        for(NewsEntity newsEntity : newsEntities){
-            newsArticles.add(new NewsArticle(newsEntity.getImage(), newsEntity));
+        /*for(NewsEntity newsEntity : newsEntities){
+            newsArticles.add(new NewsArticle(newsEntity.getImage(), newsEntity, imageService,newsService));
+        }*/
+        for(int i = newsEntities.size() - 1 ; i>=0 ; i--){
+            newsArticles.add(new NewsArticle(newsEntities.get(i).getImage(), newsEntities.get(i), imageService,
+                    newsService, userEntity.getRole().getRoleId()));
         }
     }
     @Bean
