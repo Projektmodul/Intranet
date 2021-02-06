@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
  * A service class for the news
  *
  * @author  Anastasiya Jackwerth and Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   02.02.2021
- * @lastUpdated 02.02.2021 by Anastasiya Jackwerth and Sabrine Gamdou
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 @Service
 public class NewsService {
@@ -33,5 +33,9 @@ public class NewsService {
 
     public void save(NewsEntity newsEntity){
         getNewsRepository().saveAndFlush(newsEntity);
+    }
+
+    public void delete(NewsEntity newsEntity){
+        getNewsRepository().delete(newsEntity);
     }
 }
