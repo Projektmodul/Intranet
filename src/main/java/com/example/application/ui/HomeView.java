@@ -26,7 +26,7 @@ import java.util.List;
  *
  *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel,
  *          Anastasiya Jackwerth and Sabrine Gamdou
- *  @version 4.0
+ *  @version 5.0
  *  @since 04.01.2021
  *  @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
