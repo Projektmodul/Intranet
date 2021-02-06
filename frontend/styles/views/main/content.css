@@ -333,6 +333,48 @@ vaadin-button{
     font-weight: bold;
 }
 
+#addDeleteButtonsContainer{
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#addDeleteButtonsContainer > * {
+    align-items: flex-end;
+}
+
+#titleTypeContainer{
+    display: flex;
+    width: -webkit-fill-available;
+}
+
+#titleTypeContainer #newsTitle{
+    flex: 3;
+}
+
+#titleTypeContainer #newsType{
+    flex: 2;
+}
+
+#verticalLayoutNews{
+    display: flex;
+    width: -webkit-fill-available;
+    align-items: center;
+}
+
+#verticalLayoutNews > #button{
+    cursor: pointer;
+}
+
+#verticalLayoutNews #newsDescription,
+#verticalLayoutNews #newsText {
+    flex: 1;
+    width: -webkit-fill-available;
+}
+
+#vaadin-text-field-container{
+    height: 20rem;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/OurCompanyView */
