@@ -27,9 +27,9 @@ import java.util.List;
  * This is a dialog for creating news.
  *
  * @author Sabrine Gamdou
- * @version 1.0
+ * @version 2.0
  * @since   06.02.2020
- * @lastUpdated 06.02.2021 by Sabrine Gamdou
+ * @lastUpdated 07.02.2021 by Sabrine Gamdou
  */
 @CssImport("./styles/views/main/content.css")
 public class NewsCreator extends Dialog {
@@ -85,7 +85,7 @@ public class NewsCreator extends Dialog {
         errorContainer.setText("Bitte laden Sie erst ein Bild hoch und füllen Sie anschließend die nachfolgenden Felder aus.");
 
         imageContainer = new Div();
-        H3 dialogTitle = new H3("Unternehmensnachrichten erstellen");
+        H3 dialogTitle = new H3("Unternehmensnachricht erstellen");
         newsInformationContainer = new VerticalLayout(dialogTitle,errorContainer);
         newsInformationContainer.setId("verticalLayoutNews");
 
