@@ -39,6 +39,7 @@ import java.util.List;
  *  @version 5.0
  *  @since 15.12.2020
  *  @lastUpdated 07.02.2021 by Jessica Reistel
+
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
@@ -68,8 +69,7 @@ public class CareerView extends Div {
 
     private ComboBox<String> typeDropBox;
     private ComboBox<String> categoryDropBox;
-
-
+    private NotificationService notificationService;
 
     private TextField description;
     private TextField location;
