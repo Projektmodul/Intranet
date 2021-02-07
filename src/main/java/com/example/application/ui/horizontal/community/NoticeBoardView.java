@@ -129,7 +129,7 @@ public class NoticeBoardView extends Div {
         noticeBoardGrid = new Grid<>();
         noticeBoardGrid.setItems(noticeBoardList);
         noticeBoardGrid.setSelectionMode(Grid.SelectionMode.NONE);
-        noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getCategory, "Suche/Biete").setHeader("Suche/Biete").setFooter("Gesamt: " + noticeBoardList.size() + " Angebote");
+        noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getCategory, "Suche/Biete").setHeader("Suche/Biete").setFooter("Gesamt: " + noticeBoardList.size());
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getTitle, "Titel").setHeader("Titel");
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getDescription).setHeader("Beschreibung");
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getPrice, "Preis").setHeader("Preis");
