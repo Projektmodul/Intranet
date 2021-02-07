@@ -36,10 +36,9 @@ import java.util.List;
  *  Career View shows ...
  *
  *  @author Monika Martius, Jessica Reistel, Litharshiga Sivarasa, Sabrine Gamdou, Anastasiya Jackwerth
- *  @version 5.0
+ *  @version 6.0
  *  @since 15.12.2020
- *  @lastUpdated 07.02.2021 by Jessica Reistel
-
+ *  @lastUpdated 07.02.2021 by Sabrine Gamdou
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
