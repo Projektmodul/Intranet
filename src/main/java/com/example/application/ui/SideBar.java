@@ -103,7 +103,6 @@ public class SideBar extends VerticalLayout{
             tabs.add(tab);
         }
 
-
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setFlexGrowForEnclosedTabs(1);
         tabs.setSelectedTab(null);
@@ -142,11 +141,9 @@ public class SideBar extends VerticalLayout{
 
     public void initializeAlertIcon(){
         if(notificationCounter == 0){
-            //alertIcon.setColor("#575757");
             this.counterSpan.setVisible(false);
             notificationsView = new ZeroNotificationsDialog();
         }else{
-            //alertIcon.setColor("#e31313");
             this.counterSpan.setVisible(true);
         }
     }

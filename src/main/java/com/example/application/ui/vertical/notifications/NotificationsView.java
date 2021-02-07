@@ -41,7 +41,6 @@ public class NotificationsView extends Dialog {
 
         closeButton.setId("notificationBtn");
         allNotificationsContainer.add(closeButton);
-        this.setWidth("25%");
     }
 
 
