@@ -174,7 +174,7 @@ public class PdfManager {
         NotificationEntity notificationEntity;
         if(notificationCategory.equals("Speiseplan")){
             notificationEntity = new NotificationEntity("Der neue Speisplan ist online!",
-                    "Die Datei '"+fileName + " ein neuer Speisplan wurde in der " +
+                    "Ein neuer Speisplan wurde in der " +
                             "Betriebsrestaurant-Seite hinzugefügt.",
                     notificationCategory, false, userEntity);
 
