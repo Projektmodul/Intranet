@@ -82,6 +82,7 @@ public class CareerView extends Div {
     private boolean isLocationFilled = false;
 
     private int role;
+    private String keyword;
 
     public CareerView(PageService pageService, DocumentService documentService, JobOfferService jobOfferService,
                       UserService userService, NotificationService notificationService) {
@@ -193,6 +194,7 @@ public class CareerView extends Div {
         pdfsManager.setOnePdf(false);
 
         pdfsManager.initializeAllPdfs();
+        pdfsManager.getPdfManager().setNotificationCategory("Pdf-Dokument");
     }
 
     public void initializeUploadContainer(){
@@ -213,13 +215,16 @@ public class CareerView extends Div {
         categoryDropBox = new ComboBox<>();
         categoryDropBox.setItems("Fahrdienst", "Werkstatt", "Verwaltung");
         categoryDropBox.setPlaceholder("Kategorie");
+        keyword = "Allgemein";
         categoryDropBox.addValueChangeListener( event -> {
             if(event.getValue() == null){
                 errorContainer.setText("Sie haben nichts ausgewählt");
                 toAdd.setEnabled(false);
                 isCategoryFilled = false;
             }else{
+                keyword = event.getValue();
                 jobOfferEntity.setCategory(event.getValue());
+                pdfsManager.getPdfManager().setKeyword(keyword);
                 isCategoryFilled = true;
             }
             toAdd.setEnabled(checkFilled());
