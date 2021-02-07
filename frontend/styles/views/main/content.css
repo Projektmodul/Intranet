@@ -125,6 +125,7 @@ vaadin-button{
 
 #dataSetLayout{
    padding-left: 0;
+    padding-bottom: 0;
 }
 
 #saveCancelDiv vaadin-button{
