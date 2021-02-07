@@ -42,7 +42,7 @@ public class NewsCreator extends Dialog {
 
     private VerticalLayout newsInformationContainer;
     private Div errorContainer;
-    private Div imageContainer;
+
 
     private ImagesManager imagesManager;
 
@@ -62,7 +62,7 @@ public class NewsCreator extends Dialog {
 
     public NewsCreator(PageEntity pageEntity, UserEntity userEntity,
                        ImageService imageService, NewsService newsService,
-                       PageService pageService) {
+                       PageService pageService){
         this.pageEntity = pageEntity;
         this.userEntity = userEntity;
         this.imageService = imageService;
@@ -80,11 +80,11 @@ public class NewsCreator extends Dialog {
         this.setCloseOnOutsideClick(false);
     }
 
-    public void setContent() {
+    public void setContent(){
         errorContainer = new Div();
         errorContainer.setText("Bitte laden Sie erst ein Bild hoch und füllen Sie anschließend die nachfolgenden Felder aus.");
 
-        imageContainer = new Div();
+
         H3 dialogTitle = new H3("Unternehmensnachricht erstellen");
         newsInformationContainer = new VerticalLayout(dialogTitle,errorContainer);
         newsInformationContainer.setId("verticalLayoutNews");
@@ -115,7 +115,7 @@ public class NewsCreator extends Dialog {
         this.setMaxWidth("80%");
     }
 
-    public void initializeAddButton() {
+    public void initializeAddButton(){
         addNews = new Button("Hinzufügen", e -> {
             newsEntity.setImage(imageService.findImageById(imagesManager.getIdOfNewsImage()));
             newsEntity.setPages(Arrays.asList(pageEntity, pageService.findPageById(1)));
@@ -139,7 +139,7 @@ public class NewsCreator extends Dialog {
         clearNews.getStyle().set("cursor","pointer");
     }
 
-    public void initializeTitle() {
+    public void initializeTitle(){
         title = new TextField();
         title.setPlaceholder("Nachrichtentitel");
         title.addValueChangeListener(event -> {
@@ -155,7 +155,7 @@ public class NewsCreator extends Dialog {
         title.setId("newsTitle");
     }
 
-    public void initializeDescription() {
+    public void initializeDescription(){
         description = new TextField();
         description.setPlaceholder("Kurzbeschreibung der Nachricht");
         description.addValueChangeListener(event -> {
@@ -171,9 +171,9 @@ public class NewsCreator extends Dialog {
         description.setId("newsDescription");
     }
 
-    public void initializeText() {
+    public void initializeText(){
         text = new TextField();
-        text.setPlaceholder("Der Inhalt der Nachrichten");
+        text.setPlaceholder("Der Inhalt der Nachricht");
         text.addValueChangeListener(event -> {
             if (event.getValue() == null) {
                 errorContainer.setText("Sie haben nichts eingegeben");
@@ -187,7 +187,7 @@ public class NewsCreator extends Dialog {
         text.setId("newsText");
     }
 
-    public void initializeTypeCombobox() {
+    public void initializeTypeCombobox(){
         type = new ComboBox<>();
         type.setItems("Unternehmensnachricht", "Centernachricht", "Allgemeine Nachricht");
         type.setPlaceholder("Kategorie");
