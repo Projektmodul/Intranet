@@ -137,6 +137,7 @@ public class DocumentsView extends Div {
         pdfsManager.setOnePdf(false);
 
         pdfsManager.initializeAllPdfs();
+        pdfsManager.getPdfManager().setNotificationCategory("Pdf-Dokument");
     }
 
     public void initializeUploadContainer(){
