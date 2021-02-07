@@ -1,7 +1,11 @@
 package com.example.application.ui.horizontal.projects;
 
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.RoleEntity;
+import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
+import com.example.application.backend.services.users.UserService;
 import com.example.application.ui.MainView;
 import com.example.application.ui.auxiliary.OverviewComponents;
 import com.vaadin.componentfactory.Breadcrumb;
@@ -21,14 +25,15 @@ import com.vaadin.flow.router.Route;
  *  Projects View is the overview page of the projects. Here you can add a dummy project
  *
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
- *  @version 4.0
+ *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 02.02.2021 by Vanessa Skowronsky
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
 public class ProjectsView extends Div {
     private PageService pageService;
+    private UserService userService;
     private PageEntity pageEntity;
 
     private H1 pageTitle;
@@ -36,8 +41,9 @@ public class ProjectsView extends Div {
     private H2 secondQuote;
     private HorizontalLayout layout;
 
-    public ProjectsView(PageService pageService) {
+    public ProjectsView(PageService pageService, UserService userService) {
         this.pageService = pageService;
+        this.userService = userService;
 
         setId("projects");
         setClassName("pageContentPosition");
@@ -48,9 +54,7 @@ public class ProjectsView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-
-
-        add(breadcrumbs,pageTitle, firstQuote, secondQuote, layout);
+        add(breadcrumbs, pageTitle, firstQuote, secondQuote, layout);
     }
 
     /**
@@ -66,6 +70,12 @@ public class ProjectsView extends Div {
         firstQuote.setClassName("firstQuote");
         secondQuote.setClassName("secondQuote");
 
+        GetUserController getUserController = new GetUserController();
+        String username = getUserController.getUsername();
+        UserEntity userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        int role = roleEntity.getRoleId();
+
         layout = new HorizontalLayout();
         layout.setPadding(true);
         layout.setId("scroll");
@@ -77,7 +87,11 @@ public class ProjectsView extends Div {
         Component componentNordlicht = OverviewComponents.createComponent(new Icon(VaadinIcon.TRAIN), "#7626b5", "Nordlicht", "nordlicht");
         Component componentAdd = OverviewComponents.createComponent(iconAdd, "#7626b5", "Projekt hinzufügen","projects");
 
-        layout.add(componentAdd, componentNordlicht);
+        if(role==1){
+            layout.add(componentAdd);
+        }
+
+        layout.add(componentNordlicht);
     }
 
     /**
