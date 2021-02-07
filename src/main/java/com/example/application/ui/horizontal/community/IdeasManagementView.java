@@ -77,7 +77,7 @@ public class IdeasManagementView extends Div {
         Grid<IdeaEntity> grid = new Grid<>();
         grid.setItems(ideaList);
         grid.setSelectionMode(Grid.SelectionMode.NONE);
-        grid.addColumn(IdeaEntity::getTitle, "Titel").setHeader("Titel").setFooter("Gesamt: "+ ideaList.size() + " Ideen");
+        grid.addColumn(IdeaEntity::getTitle, "Titel").setHeader("Titel").setFooter("Gesamt: "+ ideaList.size());
         grid.addColumn(IdeaEntity::getDescription, "Idee").setHeader("Idee");
         grid.addColumn(IdeaEntity::getRating, "Status").setHeader("Status");
         grid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);

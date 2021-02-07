@@ -153,7 +153,7 @@ public class DocumentsView extends Div {
                 pageEntity.getDocuments()
         ));
 
-        documentsGrid.addColumn(GridDocument::getKeyword, "keyword").setHeader("Abteilung").setFooter("Gesamt: "+ pageEntity.getDocuments().size() + " Dokumente");
+        documentsGrid.addColumn(GridDocument::getKeyword, "keyword").setHeader("Abteilung").setFooter("Gesamt: "+ pageEntity.getDocuments().size());
         documentsGrid.addColumn(new ComponentRenderer<>(GridDocument::getDownloadLink)).setHeader("Dateiname");
         documentsGrid.setId("gridFullPage");
 
