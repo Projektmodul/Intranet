@@ -204,9 +204,11 @@ vaadin-menu-bar-button {
 
 #search{
   width: 100%;
-  height: 25px;
-  font-size: small;
+  font-size: smaller;
   margin-top: 2px;
+  color: #FFFFFF;
+  border-radius: 10px;
+  background-color: rgb(87, 87, 87);
 }
 
 #alertBell{
