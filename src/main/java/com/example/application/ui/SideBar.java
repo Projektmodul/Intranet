@@ -46,7 +46,6 @@ public class SideBar extends VerticalLayout{
     public SideBar(LinkService linkService){
         setId("sideBar");
 
-
         //insert icon for alertIcon
         alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alertBell");
@@ -143,11 +142,11 @@ public class SideBar extends VerticalLayout{
 
     public void initializeAlertIcon(){
         if(notificationCounter == 0){
-            alertIcon.setColor("#575757");
+            //alertIcon.setColor("#575757");
             this.counterSpan.setVisible(false);
             notificationsView = new ZeroNotificationsDialog();
         }else{
-            alertIcon.setColor("#e31313");
+            //alertIcon.setColor("#e31313");
             this.counterSpan.setVisible(true);
         }
     }
