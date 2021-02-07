@@ -56,7 +56,7 @@ public class IdeasManagementView extends Div {
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("Ideenmanagement"));
 
         InitData initIdeas = new InitData(pageService);
-        this.add(breadcrumbs, buttonIdea, initIdeas.setData(21),  initializeGrid());
+        this.add(breadcrumbs, initIdeas.setData(21), buttonIdea,  initializeGrid());
     }
 
     /**
