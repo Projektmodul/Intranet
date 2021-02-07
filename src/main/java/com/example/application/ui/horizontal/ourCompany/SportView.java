@@ -1,6 +1,7 @@
 package com.example.application.ui.horizontal.ourCompany;
 
 
+import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.pages.PageService;
@@ -26,9 +27,9 @@ import com.vaadin.flow.router.Route;
  *  Sport View shows sporting activities offered by BSAG for its employees
  *
  *  @author Monika Martius, Jessica Reistel, Laura Neuendorf
- *  @version 4.0
+ *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Laura Neuendorf
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "sport", layout = MainView.class)
 @PageTitle("Sport&Freizeit")
@@ -46,6 +47,8 @@ public class SportView extends Div {
     private TextField updateWeekdayTwo;
     private TextField updateTimeTwo;
     private TextField updateActivityTwo;
+
+    private int role;
 
     public SportView(PageService pageService, UserService userService) {
         setId("sport");
@@ -72,10 +75,12 @@ public class SportView extends Div {
         InitData initSport = new InitData(pageService);
         this.add(breadcrumbs, initSport.setData(7));
 
-        showActivities();
-
         String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
+
+        showActivities();
     }
 
     /**
@@ -84,6 +89,7 @@ public class SportView extends Div {
      */
     private VerticalLayout showActivities(){
         VerticalLayout activities = new VerticalLayout();
+        activities.setId("activities");
 
         HorizontalLayout firstActivity = new HorizontalLayout();
         HorizontalLayout secondActivity = new HorizontalLayout();
@@ -135,7 +141,7 @@ public class SportView extends Div {
         firstActivity.addComponentAsFirst(weekday);
         firstActivity.addComponentAtIndex(1, time);
         firstActivity.addComponentAtIndex(2, activity);
-        activities.addComponentAsFirst(firstActivity);
+        activities.addComponentAtIndex(0, firstActivity);
 
         secondActivity.addComponentAsFirst(weekdayOne);
         secondActivity.addComponentAtIndex(1, timeOne);
@@ -147,7 +153,9 @@ public class SportView extends Div {
         thirdActivity.addComponentAtIndex(2, activityTwo);
         activities.addComponentAtIndex(2, thirdActivity);
 
-        activities.addComponentAtIndex(3, updateActivity);
+        if(role==1){
+            this.add(updateActivity);
+        }
 
         this.add(activities);
 
@@ -168,6 +176,7 @@ public class SportView extends Div {
 
         Button saveButton = new Button("Speichern", e -> updateDialog.close());
         Button cancelButton = new Button ("Abbrechen", e -> updateDialog.close());
+        saveCancel.setId("saveCancelDiv");
 
         saveCancel.add(saveButton, cancelButton);
 
