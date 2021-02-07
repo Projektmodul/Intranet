@@ -119,7 +119,7 @@ public class PdfManager {
 
     public void setUploadFailRejectedListeners(){
         upload.addFileRejectedListener(e -> {
-            errorContainer.add(new Span(e.getErrorMessage()));
+            errorContainer.add(new Span("Falscher Dateityp"));
             isPdfUploaded = false;
         });
 
