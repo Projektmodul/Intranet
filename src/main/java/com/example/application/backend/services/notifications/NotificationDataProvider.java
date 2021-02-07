@@ -79,15 +79,16 @@ public class NotificationDataProvider {
         //Set styling classes for the layout and the checkboxes
         notificationsMap.forEach((details, checkbox) -> {
             checkbox.setClassName("checkbox");
-            HorizontalLayout horizontalLayout = new HorizontalLayout();
-            horizontalLayout.addClassName("layout");
-            horizontalLayout.add(checkbox, details);
-            addClickEventOnCheckbox(checkbox, horizontalLayout, notificationService);
-            allNotificationsContainer.add(horizontalLayout);
+            details.setId("singleNotificationDetails");
+            HorizontalLayout singleNotificationContainer = new HorizontalLayout();
+            singleNotificationContainer.addClassName("singleNotificationContainer");
+            singleNotificationContainer.add(details, checkbox);
+            addClickEventOnCheckbox(checkbox, notificationService);
+            allNotificationsContainer.add(singleNotificationContainer);
         });
     }
 
-    public void addClickEventOnCheckbox(Checkbox checkbox, HorizontalLayout layout, NotificationService notificationService) {
+    public void addClickEventOnCheckbox(Checkbox checkbox, NotificationService notificationService) {
         checkbox.addValueChangeListener(event -> {
             if (event.getValue()) {
 

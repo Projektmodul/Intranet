@@ -1,8 +1,8 @@
 /**
  Stylesheet for mainView, header, horizontalBar, sideBar and notifications
- @version 4.0
+ @version 6.0
  @since 20-12-2020
- @lastUpdated 01.02.2021 by Vanessa Skowronsky
+ @lastUpdated 07.02.2021 by Vanessa Skowronsky
  */
 
 #mainView{
@@ -15,7 +15,6 @@
   max-width: 1024px;
   align-self: center;
   padding: 0;
-
 }
 
 #mainContainer{
@@ -192,7 +191,6 @@
 
 }
 
-
 /* Sidebar */
 #sideBar {
   padding: 0;
@@ -257,6 +255,10 @@
 }
 
 /* Notifications*/
+.notificationsContainer {
+  padding-bottom: 30px;
+}
+
 #notificationBtn, #deleteButton{
   background: #A00505;
   color: white;
@@ -264,11 +266,13 @@
   font-size: 14px;
   cursor: pointer;
 }
+
 #notificationBtn{
   bottom: 0.07rem;
   right: 0.75rem;
   padding: 7px;
 }
+
 #deleteButton{
   right: 6rem;
   bottom: 0.3rem;
@@ -278,27 +282,28 @@
   border: none;
 }
 
-/* Close and Delete Button get darker when hovered on */
 #notificationBtn:hover, #deleteButton:hover {
   background: #730606;
   color: white;
   transition: 0.5s;
 }
 
-/*Make selected notification visible*/
-.layout:active, .layout:focus, .layout:hover{
-  background: linear-gradient(180deg, rgb(70, 153, 197) 0%, rgba(11, 100, 183, 0) 90.8%);
+.singleNotificationContainer {
+  align-items: center;
+  width: 100%;
 }
 
-/*Hide the id of the notification*/
+.singleNotificationContainer:hover{
+  border-bottom: solid #a00505;
+}
+
+#singleNotificationDetails[opened] {
+  background: rgba(13, 86, 153,0.3);
+}
+
 .checkbox{
   color:transparent;
-  padding-top: 0.3rem;
-  right:1.8rem;
-  position: absolute;
 }
-
-
 
 
 
