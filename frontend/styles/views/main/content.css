@@ -52,6 +52,9 @@ html {
     max-width: 50em;
     line-height: 1.5 !important;
 }
+#contentHolder a{
+    padding-left: 5px;
+}
 
 #contentHolder::before{
     content: none;
@@ -483,10 +486,18 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* vertical/myProfile/MyProfileView */
-#myProfile #saveCancelDiv{
-    text-align: center;
+#myProfile vaadin-vertical-layout{
+    padding: 0;
+    padding-left: 5px;
 }
 
+vaadin-vertical-layout#myProfileUpdate{
+    padding-left: 0;
+}
+
+#myProfileUploader vaadin-upload{
+    margin: 0;
+}
 /* -------------------------------------------------------------- */
 
 /* vertical/notifications/NotificationsView */
