@@ -18,6 +18,7 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -133,6 +134,7 @@ public class MyProfileView extends Div {
     private void initializeUploadContainer(){
         imagesManager.initializeUploadContainer();
         imagesUploader = imagesManager.getImagesUploader();
+        imagesUploader.setId("myProfileUploader");
     }
 
     /**
@@ -279,7 +281,7 @@ public class MyProfileView extends Div {
 
         update.addComponentAsFirst(initUpdateVerticalLayoutLeft());
         update.addComponentAtIndex(1, initUpdateVerticalLayoutRight());
-        contentDialog.add(new H1("Profil bearbeiten"),update,  imagesUploader,saveCancel);
+        contentDialog.add(new H2("Profil bearbeiten"),update,  imagesUploader,saveCancel);
 
         return contentDialog;
     }
@@ -290,15 +292,13 @@ public class MyProfileView extends Div {
      */
     private VerticalLayout initUpdateVerticalLayoutLeft(){
         VerticalLayout updateLeft = new VerticalLayout();
+        updateLeft.setId("myProfileUpdate");
 
         updateIban.setValue(userEntity.getIban());
         updateIban.setLabel("Kontodaten");
 
         updateJobDescription.setValue(userEntity.getJobDescription());
         updateJobDescription.setLabel("Tätigkeitsbeschreibung");
-
-        Button updateProfilpicture = new Button("Bild hochladen", new Icon(VaadinIcon.UPLOAD));
-        updateProfilpicture.setIconAfterText(true);
 
         updateLeft.addComponentAsFirst(updateIban);
         updateLeft.addComponentAtIndex(1, updateJobDescription);
@@ -312,6 +312,7 @@ public class MyProfileView extends Div {
      */
     private VerticalLayout initUpdateVerticalLayoutRight(){
         VerticalLayout updateRight = new VerticalLayout();
+        updateRight.setId("myProfileUpdate");
 
         HorizontalLayout addressNumber = new HorizontalLayout();
         HorizontalLayout postcodeCity = new HorizontalLayout();
