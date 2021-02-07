@@ -22,7 +22,6 @@ html {
     margin-top: 0;
     line-height: 30px;
     align-items: center;
-    font-family: 'Gothic A1', sans-serif;
     border-radius: 16px;
     padding-left: 16px;
     padding-top: 16px;
@@ -36,7 +35,6 @@ html {
 
 #contentHolder h1 {
     margin-top: 25px;
-    font-family: 'Gothic A1', sans-serif;
     font-style: normal;
     font-size: 40px;
     margin-bottom: 10px;
@@ -62,7 +60,6 @@ html {
 
 h2 {
     margin: 0;
-    font-family: 'Gothic A1', sans-serif;
     display: flex;
     align-items: normal;
     text-align: center;
