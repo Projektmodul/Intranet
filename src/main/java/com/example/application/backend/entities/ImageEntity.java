@@ -32,6 +32,10 @@ public class ImageEntity {
     @JoinColumn(name ="username")
     private UserEntity user;
 
+    public ImageEntity(){
+
+    }
+
     public ImageEntity(String fileName, String path, PageEntity page, UserEntity user) {
         this.fileName = fileName;
         this.path = path;
