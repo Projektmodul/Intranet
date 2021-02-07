@@ -37,7 +37,7 @@ public class HelpView extends Div {
 
         InitData initHelp = new InitData(pageService, linkService);
 
-        HorizontalLayout horizontalLayout = new HorizontalLayout(initHelp.setLinkData(3), faqLink);
+        HorizontalLayout horizontalLayout = new HorizontalLayout(faqLink, initHelp.setLinkData(3));
 
         add(breadcrumbs,initHelp.setData(25) , horizontalLayout);
     }
