@@ -22,67 +22,55 @@ import com.vaadin.flow.theme.lumo.Lumo;
 /**
  *  Settings View displays the settings that a user can change
  *
- *  @author Rebecca Schirmacher
- *  @version 2.0
+ *  @author Rebecca Schirmacher, Vanessa Skowronsky Laura Neuendorf, Jessica Reistel
+ *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 04.02.2021 by Vanessa Skowronsky and Laura Neuendorf
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "settings", layout = MainView.class)
 @PageTitle("Einstellungen")
 public class SettingsView extends Div {
-    private PageService pageService;
-    private H1 pageTitle;
-    private H3 pageText;
-    private PageEntity pageEntity;
-    private Span light;
-    private Span dark;
+
     private SettingService settingService;
     private SettingEntity settingEntity;
 
-    private UserEntity userEntity;
-    private UserService userService;
-    private ToggleButton toggleButton;
-
-
     public SettingsView(PageService pageService, SettingService settingService, UserService userService) {
+        this.settingService = settingService;
+
         setId("settings");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
-        this.settingService = settingService;
-        this.userService = userService;
+        PageEntity pageEntity = pageService.findPageById(24);
+        H1 pageTitle = new H1(pageEntity.getTitle());
+        H4 pageText = new H4(pageEntity.getContent());
 
         GetUserController getUserController = new GetUserController();
-
-        pageEntity = pageService.findPageById(24);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageText = new H3(pageEntity.getContent());
-
         String username = getUserController.getUsername();
-        userEntity = userService.findByUsername(username);
+        UserEntity userEntity = userService.findByUsername(username);
         settingEntity = userEntity.getSetting();
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        toggleButton = new ToggleButton(settingEntity.getDarkmode());
-
-        toggleButton.addClickListener(event -> {
+        ToggleButton toggleButtonDarkMode = new ToggleButton(settingEntity.getDarkmode());
+        toggleButtonDarkMode.addClickListener(event -> {
             toggleDarkMode();
             getUI().ifPresent(ui -> ui.navigate("settings"));
         });
+        Span light = new Span("hell");
+        Span dark = new Span("dunkel");
+        HorizontalLayout toogleLayoutDarkMode = new HorizontalLayout();
+        toogleLayoutDarkMode.add(light,toggleButtonDarkMode,dark);
 
-        light = new Span("hell");
-        dark = new Span("dunkel");
+        H4 pageText2 = new H4("Stellen Sie hier die Unternehmensnachrichten ein / aus:");
+        ToggleButton toggleButtonNews = new ToggleButton(true);
+        Span off = new Span("aus");
+        Span on = new Span("ein");
+        HorizontalLayout toogleLayoutNews = new HorizontalLayout();
+        toogleLayoutNews.add(off,toggleButtonNews,on);
 
-        HorizontalLayout toogleLayout = new HorizontalLayout();
-        toogleLayout.add(light,toggleButton,dark);
-
-        Div container = new Div();
-        container.add(toogleLayout);
-        container.setId("container");
-
-        add(breadcrumbs, pageTitle ,pageText ,container);
+        add(breadcrumbs, pageTitle ,pageText, toogleLayoutDarkMode, pageText2, toogleLayoutNews);
     }
 
     private void toggleDarkMode(){
