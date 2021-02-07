@@ -123,7 +123,7 @@ public class ProjectsView extends Div {
     private Div addProject(){
         Div componentNewProject = new Div();
 
-        Component componentNew = OverviewComponents.createComponent(new Icon(VaadinIcon.CAR), "#581092", "Neues E-Auto", "projects");
+        Component componentNew = OverviewComponents.createComponent(new Icon(VaadinIcon.CAR), "#7626b5", "Neues E-Auto", "projects");
         layout.add(componentNew);
 
         return componentNewProject;
