@@ -208,8 +208,10 @@ vaadin-menu-bar-button {
   margin-top: 2px;
   color: #FFFFFF;
   border-radius: 10px;
-  background-color: rgb(87, 87, 87);
+  border-style: solid;
+  padding: 0;
 }
+
 
 #alertBell{
   width: 55px;
