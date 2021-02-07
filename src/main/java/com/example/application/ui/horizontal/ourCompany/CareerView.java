@@ -123,7 +123,7 @@ public class CareerView extends Div {
         role = roleEntity.getRoleId();
 
         errorContainer = new Div();
-        errorContainer.setText("Bitte laden Sie erst eine PDF Datei hoch und füllen Sie anschließend die nachfologenden" +
+        errorContainer.setText("Bitte laden Sie erst eine PDF Datei hoch und füllen Sie anschließend die nachfolgenden" +
                 " Felder aus.");
 
         breadcrumbs = new Breadcrumbs();

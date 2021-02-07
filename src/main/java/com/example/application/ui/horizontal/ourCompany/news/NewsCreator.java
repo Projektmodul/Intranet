@@ -82,7 +82,7 @@ public class NewsCreator extends Dialog {
 
     public void setContent() {
         errorContainer = new Div();
-        errorContainer.setText("Bitte laden Sie erst ein Bild hoch und füllen Sie anschließend die nachfologenden Felder aus.");
+        errorContainer.setText("Bitte laden Sie erst ein Bild hoch und füllen Sie anschließend die nachfolgenden Felder aus.");
 
         imageContainer = new Div();
         H3 dialogTitle = new H3("Unternehmensnachrichten erstellen");
