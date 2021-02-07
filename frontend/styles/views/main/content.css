@@ -116,6 +116,7 @@ vaadin-upload button:hover {
 
 vaadin-button{
     font-weight: 600;
+    cursor: pointer;
 }
 
 #help a, #centerI a, #fAQ a, #phoneBook a{
@@ -307,7 +308,6 @@ vaadin-button{
 }
 
 #addNews{
-    cursor: pointer;
     align-self: flex-end;
 }
 
