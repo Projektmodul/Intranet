@@ -17,9 +17,9 @@ import java.io.InputStream;
  * the files input stream.
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
- * @version 3.0
+ * @version 4.0
  * @since   21.12.2020
- * @lastUpdated 01.02.2021 from Jessica Reistel, Monika Martius
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 
 public class Image extends Div {
@@ -39,11 +39,11 @@ public class Image extends Div {
         this.inputStream = inputStream;
         this.role = role;
 
-        initializePDF();
+        initializeImage();
 
     }
 
-    public void initializePDF(){
+    public void initializeImage(){
         deleteButton = new Icon(VaadinIcon.TRASH);
         initializeImageViewer();
         if(role == 1){

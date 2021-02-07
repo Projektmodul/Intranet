@@ -3,6 +3,8 @@ package com.example.application.ui.horizontal.ourCompany.news;
 import com.example.application.backend.entities.ImageEntity;
 import com.example.application.backend.entities.NewsEntity;
 
+import com.example.application.backend.services.files.ImageService;
+import com.example.application.backend.services.news.NewsService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.Image;
@@ -20,26 +22,34 @@ import java.io.FileInputStream;
  *  be shown in a div container
  *
  *  @author Anastasiya Jackwerth, Sabrine Gamdou
- *  @version 1.0
+ *  @version 2.0
  *  @since 02.02.2021
- *  @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 public class NewsArticle extends HorizontalLayout {
 
     private ImageEntity imageEntity;
     private NewsEntity newsEntity;
+    private ImageService imageService;
+    private NewsService newsService;
 
     private H4 title;
     private Label date;
     private Paragraph description;
     private Image image;
     private Button readMoreButton;
+    private Button deleteButton;
 
     private VerticalLayout textContainer;
+    private int role;
 
-    public NewsArticle(ImageEntity imageEntity, NewsEntity newsEntity){
+    public NewsArticle(ImageEntity imageEntity, NewsEntity newsEntity,
+                       ImageService imageService, NewsService newsService, int role){
         this.imageEntity = imageEntity;
         this.newsEntity = newsEntity;
+        this.imageService = imageService;
+        this.newsService = newsService;
+        this.role = role;
 
         setData();
 
@@ -51,6 +61,7 @@ public class NewsArticle extends HorizontalLayout {
     }
 
     public void setData(){
+        HorizontalLayout horizontalLayout = new HorizontalLayout();;
         title = new H4(newsEntity.getTitle());
 
         date = new Label(newsEntity.getDate().toString());
@@ -58,10 +69,25 @@ public class NewsArticle extends HorizontalLayout {
 
         description = new Paragraph(newsEntity.getDescription());
 
-        readMoreButton = new Button("Mehr lesen");
-        readMoreButton.setId("readMoreButton");
+        readMoreButton = new Button("Mehr lesen", e -> {
+            NewsDialog newsDialog = new NewsDialog(newsEntity);
+            newsDialog.open();
+        });
 
-        textContainer = new VerticalLayout(date,title,description,readMoreButton);
+        deleteButton = new Button("Löschen", e -> {
+            NewsDeletionDialog newsDeletionDialog = new NewsDeletionDialog(newsEntity,
+                    newsService,imageService);
+            newsDeletionDialog.open();
+        });
+
+        if(role == 1){
+            horizontalLayout.add(deleteButton);
+        }
+
+        horizontalLayout.add(readMoreButton);
+        readMoreButton.setId("readMoreButton");
+        deleteButton.setId("readMoreButton");
+        textContainer = new VerticalLayout(date,title,description,horizontalLayout);
 
     }
 

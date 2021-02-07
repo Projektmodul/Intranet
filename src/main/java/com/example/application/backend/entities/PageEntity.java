@@ -11,9 +11,9 @@ import java.util.List;
  * This is a basic page class.
  *
  * @author  Sabrine Gamdou
- * @version 4.0
+ * @version 5.0
  * @since   05-01-2021
- * @lastUpdated 02.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
+ * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
 
 @Entity(name = "pages")
@@ -30,10 +30,7 @@ public class PageEntity {
     private String content;
 
     private String type;
-/*
-    @OneToMany(mappedBy = "page")
-    private List<LinkEntity> links;
-*/
+
     @OneToMany(mappedBy = "page", fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<DocumentEntity> documents;
@@ -47,36 +44,13 @@ public class PageEntity {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<ImageEntity> images;
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "pages")
 
-  /*  @OneToMany(mappedBy = "page")
-    private List<IdeaEntity> ideas;*/
-
-
-
-    /*@OneToMany(mappedBy = "page")
-    private List<NoticeBoardOfferEntity> noticeBoardOffers;*/
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JoinTable( //this defines the relationship and the foreign key columns
-            name = "pages_news",
-            joinColumns = @JoinColumn(name = "page_id"),
-            inverseJoinColumns = @JoinColumn(name = "news_id")
-    )
     private List<NewsEntity> news;
 
     @ManyToOne
     @JoinColumn(name ="username")
     private UserEntity user;
-
-
-    public int getPageId() {
-        return pageId;
-    }
-
-    public void setPageId(int pageId) {
-        this.pageId = pageId;
-    }
 
     public String getTitle() {
         return title;
@@ -108,23 +82,13 @@ public class PageEntity {
         this.user = user;
     }
 
-
     public List<DocumentEntity> getDocuments() {
         return documents;
-    }
-
-    public void setDocuments(List<DocumentEntity> documents) {
-        this.documents = documents;
     }
 
     public List<JobOfferEntity> getJobOffers() {
         return jobOffers;
     }
-
-    public void setJobOffers(List<JobOfferEntity> jobOffers) {
-        this.jobOffers = jobOffers;
-    }
-
 
     public List<ImageEntity> getImages() {
         return images;
@@ -133,18 +97,6 @@ public class PageEntity {
     public void setImages(List<ImageEntity> images) {
         this.images = images;
     }
-    
-  /*  public List<LinkEntity> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<LinkEntity> links) {
-        this.links = links;
-    }*/
-
-
-
-
 
     public List<NewsEntity> getNews() {
         return news;
@@ -154,14 +106,4 @@ public class PageEntity {
         this.news = news;
     }
 
-
-
-
-
-   /* public List<IdeaEntity> getIdeas() { return ideas; }
-
-    public void setIdeas(List<IdeaEntity> ideas) {
-        this.ideas = ideas;
-    }
-*/
 }

@@ -39,6 +39,7 @@ import java.util.List;
  *  @version 5.0
  *  @since 15.12.2020
  *  @lastUpdated 07.02.2021 by Jessica Reistel
+
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
@@ -68,10 +69,12 @@ public class CareerView extends Div {
 
     private ComboBox<String> typeDropBox;
     private ComboBox<String> categoryDropBox;
-    TextField description;
-    TextField location;
-    Div errorContainer;
-    Div addClearDiv;
+
+
+    private TextField description;
+    private TextField location;
+    private Div errorContainer;
+    private Div addClearDiv;
 
     private boolean isDescriptionFilled = false;
     private boolean isTypeFilled = false;
@@ -120,7 +123,7 @@ public class CareerView extends Div {
         role = roleEntity.getRoleId();
 
         errorContainer = new Div();
-        errorContainer.setText("Bitte laden Sie erst eine PDF Datei hoch und füllen Sie anschließend die nachfologenden" +
+        errorContainer.setText("Bitte laden Sie erst eine PDF Datei hoch und füllen Sie anschließend die nachfolgenden" +
                 " Felder aus.");
 
         breadcrumbs = new Breadcrumbs();
