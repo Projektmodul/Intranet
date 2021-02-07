@@ -216,7 +216,11 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* horizontal/library/ArchiveView */
-
+#archive div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/library/DocumentsView */

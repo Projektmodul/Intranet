@@ -19,10 +19,10 @@ import com.vaadin.flow.router.Route;
 /**
  *  Archive View shows a short text and a non-functional button
  *
- *  @author Vanessa Skowronsky
- *  @version 3.0
+ *  @author Vanessa Skowronsky, Laura Neuendorf
+ *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Laura Neuendorf
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "archive", layout = MainView.class)
 @PageTitle("Archiv")
@@ -39,7 +39,7 @@ public class ArchiveView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("Archiv"));
 
-        VerticalLayout archiveLayout = new VerticalLayout();
+        Div archiveLayout = new Div();
         archiveLayout.add(new Button("Zum Dokumentenmanagementsystem"));
 
         InitData initArchive = new InitData(pageService);
