@@ -30,7 +30,7 @@ import java.util.List;
  *  @author Litharshiga Sivarasa, Jessica Reistel, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")

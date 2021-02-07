@@ -46,7 +46,7 @@ import java.util.List;
  *  @author Monika Martius, Jessica Reistel
  *  @version 5.0
  *  @since 19.01.2021
- *  @lastUpdated 01.02.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "noticeBoard", layout = MainView.class)
 @PageTitle("Schwarzes Brett")

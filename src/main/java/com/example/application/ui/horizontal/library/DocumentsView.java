@@ -31,7 +31,7 @@ import com.vaadin.flow.router.Route;
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 7.0
  * @since   12.01.2021
- * @lastUpdated 04.02.2021 by Sabrine Gamdou
+ * @lastUpdated 07.02.2021 by Jessica Reistel
  */
 
 @Route(value = "documents", layout = MainView.class)
