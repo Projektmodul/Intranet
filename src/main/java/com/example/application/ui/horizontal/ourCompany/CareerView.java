@@ -63,7 +63,6 @@ public class CareerView extends Div {
     private Button toAdd;
     private Button buttonAdd;
 
-    private Grid<GridJobOffer> jobOfferGrid;
     private Breadcrumbs breadcrumbs;
     private Dialog addDialog;
 
@@ -134,7 +133,7 @@ public class CareerView extends Div {
     }
 
     public void initializeGrid(){
-        jobOfferGrid = new Grid<>();
+        Grid<GridJobOffer> jobOfferGrid = new Grid<>();
 
         jobOfferGrid.setItems(GridJobOffer.JobOfferEntitiesConverter.convertJobOfferEntities(pageEntity.getJobOffers()));
         jobOfferGrid.setSelectionMode(Grid.SelectionMode.NONE);
