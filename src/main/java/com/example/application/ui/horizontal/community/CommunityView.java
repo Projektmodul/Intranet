@@ -23,7 +23,7 @@ import com.vaadin.flow.router.Route;
  *  @author Litahshi Sivarasa, Vanessa Skowronsky
  *  @version 4.0
  *  @since 15.12.2020
- *  @lastUpdated 27.01.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "community", layout = MainView.class)
 @PageTitle("Community")
@@ -59,7 +59,7 @@ public class CommunityView extends Div {
 
         pageTitle = new H1(pageEntity.getTitle());
         firstQuote = new H2(pageEntity.getContent());
-        secondQuote = new H2("ganz Zentral");
+        secondQuote = new H2("ganz zentral");
         firstQuote.setClassName("firstQuote");
         secondQuote.setClassName("secondQuote");
 
