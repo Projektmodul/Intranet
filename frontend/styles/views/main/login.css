@@ -3,6 +3,10 @@
     background-size: cover;
 }
 
+#loginForm{
+    margin: 0;
+}
+
 #login #logoImage{
     width: 30%;
     height: auto;
