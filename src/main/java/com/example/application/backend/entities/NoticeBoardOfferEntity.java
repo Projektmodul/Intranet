@@ -2,7 +2,6 @@ package com.example.application.backend.entities;
 
 import javax.persistence.*;
 
-
 /**
  * This is a basic noticeBoardOffer class.
  *
@@ -19,22 +18,14 @@ public class NoticeBoardOfferEntity implements Cloneable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="notice_board_offer_id")
     private int noticeBoardOfferId;
+
     private String title;
+
     private String description;
+
     private String category;
+
     private String price;
-
-   /* @OneToOne
-    @JoinColumn(name="image_id")
-    private ImageEntity image;
-
-    @ManyToOne
-    @JoinColumn(name ="username")
-    private UsersEntity user;*/
-/*
-    @ManyToOne
-    @JoinColumn(name ="page_id")
-    private PageEntity page;*/
 
     public int getNoticeBoardOfferId() {
         return noticeBoardOfferId;
@@ -71,34 +62,6 @@ public class NoticeBoardOfferEntity implements Cloneable{
     public String getPrice() {return price;}
 
     public void setPrice(String price) { this.price = price; }
-/*
-    public int getImageId() { return imageId; }
-
-    public void setImageId(int imageId) { this.imageId = imageId; }
-
-     public ImageEntity getImage() {
-        return image;
-    }
-
-    public void setImage(ImageEntity image) {
-        this.image = image;
-    }
-
-    public UsersEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UsersEntity user) {
-        this.user = user;
-
-    @Override
-    public NoticeBoardOfferEntity clone() {
-        try {
-                return (NoticeBoardOfferEntity)super.clone();
-        } catch (CloneNotSupportedException e) {
-                return null;
-            }
-    }  }*/
 
     @Override
     public int hashCode() {

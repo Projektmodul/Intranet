@@ -2,7 +2,6 @@ package com.example.application.backend.entities;
 
 import javax.persistence.*;
 
-
 /**
  * This is a basic link class.
  *
@@ -21,18 +20,8 @@ public class LinkEntity {
     private int linkId;
 
     private String title;
+
     private String url;
-
-   /* @OneToOne(mappedBy = "link")
-    private NewsEntity news;
-
-    @ManyToOne
-    @JoinColumn(name ="username")
-    private UsersEntity user;*/
-
-    /*@ManyToOne
-    @JoinColumn(name ="page_id")
-    private PageEntity page;*/
 
     public int getLinkId() {
         return linkId;
@@ -57,20 +46,4 @@ public class LinkEntity {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    /*public NewsEntity getNews() {
-        return news;
-    }
-
-    public void setNews(NewsEntity news) {
-        this.news = news;
-    }
-
-    public UsersEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UsersEntity user) {
-        this.user = user;
-    }*/
 }

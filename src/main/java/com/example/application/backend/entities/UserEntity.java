@@ -20,6 +20,7 @@ public class UserEntity {
     private String username;
 
     private String password;
+
     private String surname;
 
     @Column(name = "email")
@@ -54,26 +55,6 @@ public class UserEntity {
     @JoinColumn(name = "role_id")
     private RoleEntity role;
 
-    /*@ManyToMany
-    @JoinTable( //this defines the relationship and the foreign key columns
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private List<RolesEntity> roles;
-
-
-/*
-    @OneToMany(mappedBy = "user")
-    private List<DocumentEntity> documents;
-
-    @OneToMany(mappedBy = "user")
-    private List<ImageEntity> images;
-
-    @OneToMany(mappedBy = "user")
-    private List<LinkEntity> links;
-
-    */
     @OneToMany(mappedBy = "user")
     private List<PageEntity> pages;
 
@@ -83,17 +64,6 @@ public class UserEntity {
     @OneToOne
     @JoinColumn(name="setting_id")
     private SettingEntity settings;
-    /*
-
-    @OneToMany(mappedBy = "user")
-    private List<IdeaEntity> ideas;
-
-    @OneToMany(mappedBy = "user")
-    private List<JobOfferEntity> jobOffers;
-
-    public List<ImageEntity> getImages() {
-        return images;
-    }*/
 
     public String getUsername() {
         return username;
@@ -210,48 +180,4 @@ public class UserEntity {
     public void setSetting(SettingEntity settings) {
         this.settings = settings;
     }
-
-    /*public List<RolesEntity> getRoles() {
-        return roles;
-    }
-
-/*
-    public List<DocumentEntity> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<DocumentEntity> documents) {
-        this.documents = documents;
-    }
-
-    public void setImages(List<ImageEntity> images) {
-        this.images = images;
-    }
-
-    public List<LinkEntity> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<LinkEntity> links) {
-        this.links = links;
-    }
-
-    public List<IdeaEntity> getIdeas() {
-        return ideas;
-    }
-
-    public void setIdeas(List<IdeaEntity> ideas) {
-        this.ideas = ideas;
-    }
-
-    public List<JobOfferEntity> getJobOffers() {
-        return jobOffers;
-    }
-
-    public void setJobOffers(List<JobOfferEntity> jobOffers) {
-        this.jobOffers = jobOffers;
-    }
-
-
-*/
 }

@@ -23,7 +23,9 @@ public class NotificationEntity {
     private int notificationId;
 
     private String title;
+
     private String description;
+
     private String category;
 
     private boolean status;
@@ -38,15 +40,14 @@ public class NotificationEntity {
     @JoinColumn(name ="username")
     private UserEntity user;
 
-
+    /**
+     * Default constructor must be present, otherwise there will be an ERROR message
+     */
     public NotificationEntity(){
 
     }
 
-    public NotificationEntity(String title, String description,
-                              String category, boolean status,
-                              UserEntity user) {
-
+    public NotificationEntity(String title, String description, String category, boolean status, UserEntity user) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -94,7 +95,10 @@ public class NotificationEntity {
         this.status = status;
     }
 
-    //Only the Date is needed for display
+    /**
+     * Only the Date is needed for display
+     * @return new Date(date.getTime())
+     */
     public Date getDate() {
         return new Date(date.getTime());
     }
@@ -118,6 +122,4 @@ public class NotificationEntity {
     public void setUser(UserEntity user) {
         this.user = user;
     }
-
-
 }

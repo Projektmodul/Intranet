@@ -46,7 +46,7 @@ import java.util.List;
  *  @author Monika Martius, Jessica Reistel
  *  @version 5.0
  *  @since 19.01.2021
- *  @lastUpdated 01.02.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "noticeBoard", layout = MainView.class)
 @PageTitle("Schwarzes Brett")
@@ -129,7 +129,7 @@ public class NoticeBoardView extends Div {
         noticeBoardGrid = new Grid<>();
         noticeBoardGrid.setItems(noticeBoardList);
         noticeBoardGrid.setSelectionMode(Grid.SelectionMode.NONE);
-        noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getCategory, "Suche/Biete").setHeader("Suche/Biete").setFooter("Gesamt: " + noticeBoardList.size() + " Angebote");
+        noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getCategory, "Suche/Biete").setHeader("Suche/Biete").setFooter("Gesamt: " + noticeBoardList.size());
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getTitle, "Titel").setHeader("Titel");
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getDescription).setHeader("Beschreibung");
         noticeBoardGrid.addColumn(NoticeBoardOfferEntity::getPrice, "Preis").setHeader("Preis");

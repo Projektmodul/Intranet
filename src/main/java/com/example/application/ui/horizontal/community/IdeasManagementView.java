@@ -30,7 +30,7 @@ import java.util.List;
  *  @author Litharshiga Sivarasa, Jessica Reistel, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 01.02.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
@@ -56,7 +56,7 @@ public class IdeasManagementView extends Div {
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb("Ideenmanagement"));
 
         InitData initIdeas = new InitData(pageService);
-        this.add(breadcrumbs, buttonIdea, initIdeas.setData(21),  initializeGrid());
+        this.add(breadcrumbs, initIdeas.setData(21), buttonIdea,  initializeGrid());
     }
 
     /**
@@ -77,7 +77,7 @@ public class IdeasManagementView extends Div {
         Grid<IdeaEntity> grid = new Grid<>();
         grid.setItems(ideaList);
         grid.setSelectionMode(Grid.SelectionMode.NONE);
-        grid.addColumn(IdeaEntity::getTitle, "Titel").setHeader("Titel").setFooter("Gesamt: "+ ideaList.size() + " Ideen");
+        grid.addColumn(IdeaEntity::getTitle, "Titel").setHeader("Titel").setFooter("Gesamt: "+ ideaList.size());
         grid.addColumn(IdeaEntity::getDescription, "Idee").setHeader("Idee");
         grid.addColumn(IdeaEntity::getRating, "Status").setHeader("Status");
         grid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);

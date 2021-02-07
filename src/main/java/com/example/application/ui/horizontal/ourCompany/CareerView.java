@@ -1,9 +1,6 @@
 package com.example.application.ui.horizontal.ourCompany;
 
-import com.example.application.backend.entities.DocumentEntity;
-import com.example.application.backend.entities.JobOfferEntity;
-import com.example.application.backend.entities.PageEntity;
-import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.entities.*;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.files.DocumentService;
 import com.example.application.backend.services.files.JobOfferService;
@@ -19,15 +16,14 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
@@ -39,33 +35,40 @@ import java.util.List;
 /**
  *  Career View shows ...
  *
- *  @author Monika Martius, Jessica Reistel
+ *  @author Monika Martius, Jessica Reistel, Litharshiga Sivarasa, Sabrine Gamdou, Anastasiya Jackwerth
  *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 06.02.2021 by Sabrine Gamdou
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
+
  */
 @Route(value = "career", layout = MainView.class)
 @PageTitle("Stellenangebote")
 public class CareerView extends Div {
 
     private PageService pageService;
-    private H1 pageTitle;
-    private PageEntity pageEntity;
-    private int role;
+    private UserService userService;
+    private JobOfferService jobOfferService;
+    private NotificationService notificationService;
+    private DocumentService documentService;
 
-    private Component leftComponent;
-    private Component rightComponent;
+    private PageEntity pageEntity;
+    private UserEntity userEntity;
+    private JobOfferEntity jobOfferEntity;
+
+    private PdfsManager pdfsManager;
+    private Div pdfsUploader;
+
+    private H1 pageTitle;
+    private Paragraph pageContent;
 
     private Button toAdd;
-    private Button toDelete;
+    private Button buttonAdd;
 
-    private SplitLayout splitLayout;
+    private Breadcrumbs breadcrumbs;
+    private Dialog addDialog;
 
-    private Grid<GridJobOffer> jobOfferGrid;
-    private Div pdfsUploader;
     private ComboBox<String> typeDropBox;
     private ComboBox<String> categoryDropBox;
-
     private NotificationService notificationService;
 
     private TextField description;
@@ -78,16 +81,10 @@ public class CareerView extends Div {
     private boolean isCategoryFilled = false;
     private boolean isLocationFilled = false;
 
-    private PdfsManager pdfsManager;
-    private UserService userService;
-    private UserEntity userEntity;
-    private DocumentService documentService;
-    private JobOfferService jobOfferService;
-    private JobOfferEntity jobOfferEntity;
+    private int role;
 
-
-    public CareerView(PageService pageService, DocumentService documentService,
-                      JobOfferService jobOfferService, UserService userService, NotificationService notificationService) {
+    public CareerView(PageService pageService, DocumentService documentService, JobOfferService jobOfferService,
+                      UserService userService, NotificationService notificationService) {
         this.pageService = pageService;
         this.jobOfferService = jobOfferService;
         this.documentService = documentService;
@@ -99,25 +96,22 @@ public class CareerView extends Div {
         addClassName("ourCompanyColorscheme");
 
         setData();
-
-        Breadcrumbs breadcrumbs = new Breadcrumbs();
-        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
-
-        add(breadcrumbs, pageTitle);
+        add(breadcrumbs, pageTitle, pageContent);
+        if(role==1){
+            add(buttonAdd);
+        }
 
         initializePdfsManager();
         initializeUploadContainer();
         initializeGrid();
 
-        initializeLeftContainer();
-        initializeRightContainer();
-
-        initializeSplitLayout();
+        initializeDialog();
     }
 
     public void setData(){
         pageEntity = pageService.findPageById(8);
         pageTitle = new H1(pageEntity.getTitle());
+        pageContent = new Paragraph(pageEntity.getContent());
 
         jobOfferEntity = new JobOfferEntity();
 
@@ -125,47 +119,49 @@ public class CareerView extends Div {
         String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
 
+        RoleEntity roleEntity = userEntity.getRole();
+        role = roleEntity.getRoleId();
+
         errorContainer = new Div();
-        errorContainer.setText("Bitte laden Sie erst eine PDF Datei hoch und füllen Sie anschließend die nachfologenden Felder aus.");
-    }
+        errorContainer.setText("Bitte laden Sie erst eine PDF Datei hoch und füllen Sie anschließend die nachfolgenden" +
+                " Felder aus.");
 
-    public void initializeLeftContainer(){
-        Label quoteCareer = new Label("Nutzen Sie die Chance und bewerben Sie sich online bei uns. ");
-        quoteCareer.setClassName("quoteCareer");
+        breadcrumbs = new Breadcrumbs();
+        breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity
+                .getTitle()));
 
-        Div iconAndOfferDiv = new Div();
-        Icon iconCareer = new Icon( VaadinIcon.USER);
-        Label CareerOffer =new Label(" Stellenangebote");
-        iconAndOfferDiv.add(iconCareer,CareerOffer);
-
-
-        Label pageContent = new Label("Zur Unterstützung unseres Teams suchen wir immer wieder ideenreiche und ehrgeizige Kolleginnen und Kollegen. Deshalb freuen wir uns auch über Initiativbewerbungen.");
-        pageContent.setClassName("pageContent");
-
-        leftComponent = new VerticalLayout(quoteCareer,iconAndOfferDiv,jobOfferGrid, pageContent);
-        leftComponent.setId("leftComponent");
+        buttonAdd = new Button("Stellenangebot hinzufügen", new Icon(VaadinIcon.USER));
+        buttonAdd.addClickListener(e -> initializeDialog().open());
+        buttonAdd.setIconAfterText(true);
     }
 
     public void initializeGrid(){
-        jobOfferGrid = new Grid<>();
+        Grid<GridJobOffer> jobOfferGrid = new Grid<>();
 
         jobOfferGrid.setItems(GridJobOffer.JobOfferEntitiesConverter.convertJobOfferEntities(pageEntity.getJobOffers()));
         jobOfferGrid.setSelectionMode(Grid.SelectionMode.NONE);
 
-        jobOfferGrid.addColumn(GridJobOffer::getTitle, "Bezeichnung").setHeader("Bezeichnung");
+        jobOfferGrid.addColumn(GridJobOffer::getTitle, "Bezeichnung").setHeader("Bezeichnung")
+                .setFooter("Gesamt: "+ GridJobOffer.JobOfferEntitiesConverter.convertJobOfferEntities(pageEntity
+                        .getJobOffers()).size());
         jobOfferGrid.addColumn(GridJobOffer::getCategory, "Kategorie").setHeader("Kategorie");
         jobOfferGrid.addColumn(GridJobOffer::getType,"Stellenart").setHeader("Stellenart");
         jobOfferGrid.addColumn(GridJobOffer::getLocation, "Arbeitsort").setHeader("Arbeitsort");
 
         jobOfferGrid.addColumn(new ComponentRenderer<>(GridJobOffer::getDownloadLink)).setHeader("Dateiname");
 
-        jobOfferGrid.addThemeVariants(GridVariant.LUMO_COLUMN_BORDERS,GridVariant.LUMO_ROW_STRIPES,GridVariant.LUMO_WRAP_CELL_CONTENT);
-        jobOfferGrid.getStyle().set("border", "2px solid #a6a6a6");
         jobOfferGrid.setSelectionMode(Grid.SelectionMode.NONE);
-        jobOfferGrid.setId("tableCareer");
+        jobOfferGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
+        jobOfferGrid.setId("gridFullPage");
+
+        if(role!=1) {
+            jobOfferGrid.getStyle().set("margin-top", "20px");
+        }
+
+        this.add(jobOfferGrid);
     }
 
-    public void initializeRightContainer(){
+    public Dialog initializeDialog(){
         initializeCategory();
         initializeType();
         initializeDescription();
@@ -173,15 +169,19 @@ public class CareerView extends Div {
 
         initializeAddAndClearButtons();
 
-        rightComponent = new VerticalLayout(errorContainer, pdfsUploader,description,categoryDropBox,typeDropBox,location, addClearDiv);
-        rightComponent.setId("rightComponent");
-    }
+        HorizontalLayout descriptionLocation = new HorizontalLayout(description, location);
+        HorizontalLayout categoryType = new HorizontalLayout(categoryDropBox, typeDropBox);
 
-    public void initializeSplitLayout(){
-        splitLayout = new SplitLayout(leftComponent,rightComponent);
-        splitLayout.setId("splitLayout");
-        splitLayout.setSplitterPosition(70);
-        this.add(splitLayout);
+        Component dialogComponent = new VerticalLayout(errorContainer, pdfsUploader, descriptionLocation, categoryType,
+                addClearDiv);
+
+        addDialog = new Dialog();
+        addDialog.setCloseOnOutsideClick(false);
+        addDialog.setCloseOnEsc(false);
+
+        addDialog.add(new H2("Stellenangebot hinzufügen"), dialogComponent);
+
+        return addDialog;
     }
 
     public void initializePdfsManager(){
@@ -198,6 +198,7 @@ public class CareerView extends Div {
     public void initializeUploadContainer(){
         pdfsManager.initializeUploadContainerForJobOffers();
         pdfsUploader = pdfsManager.getPdfsUploader();
+        pdfsUploader.setId("careerUploader");
     }
 
     public List<DocumentEntity> initializeJobOfferDocuments(){
@@ -293,7 +294,7 @@ public class CareerView extends Div {
         toAdd.setEnabled(false);
         toAdd.setId("addButton");
 
-        toDelete = new Button("Eingabe Löschen", event -> {
+        Button toDelete = new Button("Eingabe Löschen", event -> {
             description.clear();
             location.clear();
             typeDropBox.clear();
@@ -302,8 +303,10 @@ public class CareerView extends Div {
             jobOfferEntity = new JobOfferEntity();
         });
 
+        Button cancel = new Button("Abbrechen", e -> addDialog.close());
+
         addClearDiv = new Div();
-        addClearDiv.add(toAdd,toDelete);
+        addClearDiv.add(toAdd,toDelete,cancel);
         addClearDiv.setId("addClearDiv");
     }
 

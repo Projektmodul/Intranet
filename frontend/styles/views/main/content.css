@@ -35,7 +35,7 @@ html {
 }
 
 #contentHolder h1 {
-    margin-top: 35px;
+    margin-top: 25px;
     font-family: 'Gothic A1', sans-serif;
     font-style: normal;
     font-size: 40px;
@@ -86,7 +86,6 @@ h2 {
 
 #gridFullPage{
     margin-right: 15px;
-    margin-left: 15px;
     margin-top: 20px;
 }
 
@@ -123,8 +122,8 @@ vaadin-button{
 }
 
 #dataSetLayout{
-   padding-left: 0;
-
+   padding: 0;
+   margin-top: 25px;
 }
 
 /* Colorschemes */
@@ -202,10 +201,7 @@ vaadin-button{
     margin-left: 15px;
     margin-right: 15px;
     float: right;
-    margin-top: 0;
-}
-#ideasManagement p{
-    margin-top: 13px;
+    margin-top: -40px;
 }
 /* -------------------------------------------------------------- */
 
@@ -269,44 +265,8 @@ vaadin-button{
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/CareerView */
-
-#career #careerHeadL{
-    margin-block-start: inherit;
-    margin-bottom: revert;
-    color: #A00505;
-}
-
-#career .quoteCareer{
-    display: flex;
-    margin-bottom: 5px;
-    font-family: 'Gothic A1', sans-serif;
-    align-items: normal;
-    text-align: center;
-}
-
-#career .latestOffer{
-    display: flex;
-    font-size: 20px;
-    margin-top: 60px;
-    font-family: 'Gothic A1', sans-serif;
-    align-items: normal;
-    text-align: center;
-}
-
-#career #tableCareer{
-
-    display: grid;
-    width: 600px;
-    height: 230px;
-}
-
-#career .pageContent{
-    display: flex;
-    margin-bottom: 5px;
-    font-family: 'Gothic A1', sans-serif;
-    align-items: normal;
-
-
+#career #gridFullPage{
+    margin-top: 35px;
 }
 
 #career #addButton{
@@ -314,6 +274,21 @@ vaadin-button{
     display: flex;
 }
 
+#career vaadin-button{
+    margin-left: 15px;
+    margin-right: 15px;
+    float: right;
+    margin-top: -22px;
+}
+
+#careerUploader vaadin-upload{
+    margin: 0;
+}
+
+#addClearDiv vaadin-button{
+    margin-right: 15px;
+    margin-top: 30px;
+}
 /* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
