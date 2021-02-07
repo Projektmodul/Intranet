@@ -45,14 +45,14 @@ public class NewsDeletionDialog extends Dialog {
     }
 
     public void initializeButtons(){
-        message = new H3("Sind Sie sicher, dass Sie die Nachricht löschen wollen?");
+        message = new H3("Sind Sie sich sicher, dass Sie diese Nachricht löschen wollen?");
 
         deleteButton = new Button("Löschen", e -> {
             try {
                 newsService.delete(newsEntity);
                 imageService.delete(newsEntity.getImage());
                 deleteImageFromServer();
-                setDeletionNotification(new Icon(VaadinIcon.CHECK_CIRCLE), "die Nachricht wurde erfolgreich gelöscht!");
+                setDeletionNotification(new Icon(VaadinIcon.CHECK_CIRCLE), "Die Nachricht wurde erfolgreich gelöscht!");
                 notification.open();
                 this.close();
             } catch (IOException ioException) {
@@ -62,9 +62,7 @@ public class NewsDeletionDialog extends Dialog {
         });
         deleteButton.getStyle().set("cursor","pointer");
 
-        cancelButton = new Button("Abbrechen", e ->{
-           this.close();
-        });
+        cancelButton = new Button("Abbrechen", e -> this.close());
         cancelButton.getStyle().set("cursor","pointer");
 
         HorizontalLayout horizontalLayout = new HorizontalLayout(deleteButton, cancelButton);
@@ -72,7 +70,7 @@ public class NewsDeletionDialog extends Dialog {
         add(message, horizontalLayout);
     }
 
-    private void deleteImageFromServer() throws IOException {
+    private void deleteImageFromServer() throws IOException{
         Files.deleteIfExists(
                     Paths.get(newsEntity.getImage().getPath()));
     }

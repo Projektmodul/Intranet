@@ -76,7 +76,7 @@ public class ImageManager {
 
     public void setUploaderErrorEvents(){
         upload.addFileRejectedListener(e -> {
-            errorContainer.add(new Span(e.getErrorMessage()));
+            errorContainer.add(new Span("Falscher Dateityp"));
             isImageUploaded = false;
         });
 
