@@ -192,14 +192,20 @@
 
 }
 
-vaadin-menu-bar-button {
-  background-color: #1481de;
-}
 
 /* Sidebar */
 #sideBar {
   padding: 0;
   width: auto !important;
+  align-items: center;
+}
+
+#sideBar vaadin-tab[selected] {
+  background: #A00505;
+}
+
+#sideBar vaadin-tab:hover {
+  background: #A00505;
 }
 
 #search{
@@ -212,13 +218,10 @@ vaadin-menu-bar-button {
   padding: 0;
 }
 
-
 #alertBell{
-  width: 55px;
-  height: 55px;
-  left: 19px;
-  top: 1px;
-  color: #575757;
+  width: 50px;
+  height: auto;
+  color: #FFFFFF;
 }
 
 #alertBell:hover {
@@ -238,11 +241,8 @@ vaadin-menu-bar-button {
 
 #notificationAlertSpan{
   color: white;
-  text-decoration: none;
-  padding: 15px 26px;
+  padding: 10px 10px;
   position: relative;
-  display: inline-block;
-  border-radius: 2px;
 }
 
 #tabsView{
@@ -254,14 +254,6 @@ vaadin-menu-bar-button {
   margin-top: 20px;
   background: #575757;
   width: 100%;
-}
-
-#sideBar vaadin-tab[selected] {
-  background: #A00505;
-}
-
-#sideBar vaadin-tab:hover{
-  background: #A00505;
 }
 
 /* Notifications*/
@@ -291,14 +283,6 @@ vaadin-menu-bar-button {
   background: #730606;
   color: white;
   transition: 0.5s;
-}
-
-/* Styling the notifications container */
-.notificationsContainer{
-  background: linear-gradient(180deg, #82b7d0 47.4%, rgba(11, 100, 183, 0) 85%);
-  padding: 1rem;
-  margin: 0;
-  display: block;
 }
 
 /*Make selected notification visible*/
