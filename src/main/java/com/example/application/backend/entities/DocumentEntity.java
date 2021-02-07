@@ -39,6 +39,10 @@ public class DocumentEntity {
     @JoinColumn(name="notification_id")
     private NotificationEntity notification;
 
+    public DocumentEntity(){
+
+    }
+
     public DocumentEntity(String fileName, String path, String keyword,
                           PageEntity page, NotificationEntity notification,
                           UserEntity user) {
