@@ -69,7 +69,7 @@ public class CareerView extends Div {
 
     private ComboBox<String> typeDropBox;
     private ComboBox<String> categoryDropBox;
-    private NotificationService notificationService;
+
 
     private TextField description;
     private TextField location;
