@@ -11,6 +11,7 @@ import com.example.application.ui.horizontal.ourCompany.news.NewsArticle;
 import com.flowingcode.vaadin.addons.rssitems.RssItems;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
@@ -26,9 +27,9 @@ import java.util.List;
  *
  *  @author Vanessa Skowronsky, Monika Martius, Laura Neuendorf, Jessica Reistel,
  *          Anastasiya Jackwerth and Sabrine Gamdou
- *  @version 5.0
+ *  @version 6.0
  *  @since 04.01.2021
- *  @lastUpdated 06.02.2021 by Sabrine Gamdou
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @RouteAlias(value = "", layout = MainView.class)
 @Route(value = "home", layout = MainView.class)
@@ -45,6 +46,7 @@ public class HomeView extends Div {
     private UserEntity userEntity;
     private GetUserController getUserController;
 
+    private RssItems faz;
 
     private Div newsContainer;
     private List<NewsArticle> newsArticles;
@@ -69,7 +71,7 @@ public class HomeView extends Div {
         initializeNewsArticles();
         initializeNewsContainer();
 
-        add(newsContainer);
+        add(newsContainer, faz);
 
     }
 
@@ -82,11 +84,12 @@ public class HomeView extends Div {
         userEntity = userService.findByUsername(username);
         pageEntity = pageService.findPageById(1);
         H1 pageTitle = new H1(pageEntity.getTitle() + " " + userEntity.getFirstName() +" " + userEntity.getSurname() );
+        Paragraph pageContent = new Paragraph(pageEntity.getContent());
+        pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
-        this.add(pageTitle);
+        this.add(pageTitle, pageContent);
 
-        RssItems faz = new RssItems("https://www.faz.net/rss/aktuell/", 6, 100, 100, true, "description");
-        add(faz);
+        faz = new RssItems("https://www.faz.net/rss/aktuell/", 6, 100, 100, true, "description");
     }
 
     public void initializeNewsContainer(){
