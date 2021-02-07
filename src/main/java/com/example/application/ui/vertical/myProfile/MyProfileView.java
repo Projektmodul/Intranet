@@ -36,7 +36,7 @@ import com.vaadin.flow.router.Route;
  *  @author Jessica Reistel and Laura Neuendorf
  *  @version 6.0
  *  @since 21.12.2020
- *  @lastUpdated 01.02.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @CssImport("./styles/views/main/content.css")
 @Route(value = "myProfile", layout = MainView.class)
