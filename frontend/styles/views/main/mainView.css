@@ -234,13 +234,13 @@
   right: -2px;
   padding: 0px 8px 1px;
   border-radius: 50%;
-  background: #e31313;
+  background: #2FFE00;
   font-weight: 700;
   font-size: 14px;
+  color: #000000;
 }
 
 #notificationAlertSpan{
-  color: white;
   padding: 10px 10px;
   position: relative;
 }
