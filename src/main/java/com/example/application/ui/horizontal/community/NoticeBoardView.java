@@ -46,7 +46,7 @@ import java.util.List;
  *  @author Monika Martius, Jessica Reistel
  *  @version 5.0
  *  @since 19.01.2021
- *  @lastUpdated 07.02.2021 by Jessica Reistel
+ *  @lastUpdated 08.02.2021 by Monika Martius
  */
 @Route(value = "noticeBoard", layout = MainView.class)
 @PageTitle("Schwarzes Brett")
@@ -98,6 +98,10 @@ public class NoticeBoardView extends Div {
         initializeSplitLayout();
     }
 
+    /**
+     * The method initialize a Vertical Layout with pageText,boxIcon,noticeBoardGrid
+     * @return Vertical Layout
+     */
     public void initializeLeftContainer() {
         GetUserController getUserController = new GetUserController();
         String username = getUserController.getUsername();
@@ -125,6 +129,10 @@ public class NoticeBoardView extends Div {
         leftComponent.setId("leftLayout");
     }
 
+    /**
+     * The method initialize the Grid with all offers
+     * @return initializeGrid
+     */
     public void initializeGrid(){
         noticeBoardGrid = new Grid<>();
         noticeBoardGrid.setItems(noticeBoardList);
@@ -136,6 +144,10 @@ public class NoticeBoardView extends Div {
         noticeBoardGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
     }
 
+    /**
+     * The method initialize a Vertical Layout with radioOffer,textTitle,textArea,price,uploadButton,toAdd
+     * @return Vertical Layout
+     */
     public void initializeRightContainer(){
         initializeUploadButton();
         initializeRadioButton();
@@ -152,12 +164,20 @@ public class NoticeBoardView extends Div {
         rightComponent.setId("rightComponent");
     }
 
+    /**
+     * The method initialize a Horizontal Layout with two vertical Layouts
+     * @return Horizontal Layout
+     */
     public void initializeSplitLayout(){
         layoutSplit = new HorizontalLayout(leftComponent,rightComponent);
         layoutSplit.setId("splitLayout");
         this.add(layoutSplit);
     }
 
+    /**
+     * The method initialize a Upload with a button and a Span
+     * @return Upload
+     */
     public void initializeUploadButton(){
         MemoryBuffer buffer = new MemoryBuffer();
         uploadButton = new Upload(buffer);
@@ -165,6 +185,10 @@ public class NoticeBoardView extends Div {
         uploadButton.setDropLabel(new Span("Bild-Datei hier reinziehen"));
     }
 
+    /**
+     * The method initialize a RadioButtonGroup with a label and items
+     * @return RadioButtonGroup
+     */
     public void initializeRadioButton(){
         radioOffer = new RadioButtonGroup();
         radioOffer.setLabel("Was möchten Sie?");
