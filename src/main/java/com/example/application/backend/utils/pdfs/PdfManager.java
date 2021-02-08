@@ -173,8 +173,8 @@ public class PdfManager {
 
         NotificationEntity notificationEntity;
         if(notificationCategory.equals("Speiseplan")){
-            notificationEntity = new NotificationEntity("Der neue Speisplan ist online!",
-                    "Ein neuer Speisplan wurde in der " +
+            notificationEntity = new NotificationEntity("Der neue Speiseplan ist online!",
+                    "Ein neuer Speiseplan wurde in der " +
                             "Betriebsrestaurant-Seite hinzugefügt.",
                     notificationCategory, false, userEntity);
 
