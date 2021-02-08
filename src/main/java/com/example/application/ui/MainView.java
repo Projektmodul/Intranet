@@ -111,6 +111,10 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         }
     }
 
+    /**
+     * The method create a String with the name of the actual route
+     * @return String
+     */
     public String contentSplit(String contentText){
         String[] split = contentText.split("\\.");
         int length = split.length;
