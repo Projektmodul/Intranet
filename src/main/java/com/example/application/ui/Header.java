@@ -50,6 +50,10 @@ public class Header extends VerticalLayout {
     }
 
 
+    /**
+     * The method return the backgroundcolor of the routes for the views
+     * @return backgroundcolor
+     */
     public void setBackgroundColor(String colorName) {
 
         switch (colorName) {
