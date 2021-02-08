@@ -43,6 +43,8 @@ import java.util.List;
 
 
 /**
+ * NoticeBoard View shows all offers from the database
+ *
  *  @author Monika Martius, Jessica Reistel
  *  @version 5.0
  *  @since 19.01.2021
@@ -99,7 +101,7 @@ public class NoticeBoardView extends Div {
     }
 
     /**
-     * The method initialize a Vertical Layout with pageText,boxIcon,noticeBoardGrid
+     * The method initializes a Vertical Layout with pageText,boxIcon,noticeBoardGrid
      * @return Vertical Layout
      */
     public void initializeLeftContainer() {
@@ -130,7 +132,7 @@ public class NoticeBoardView extends Div {
     }
 
     /**
-     * The method initialize the Grid with all offers
+     * The method initializes the Grid with all offers
      * @return initializeGrid
      */
     public void initializeGrid(){
@@ -145,7 +147,7 @@ public class NoticeBoardView extends Div {
     }
 
     /**
-     * The method initialize a Vertical Layout with radioOffer,textTitle,textArea,price,uploadButton,toAdd
+     * The method initializes a Vertical Layout with radioOffer,textTitle,textArea,price,uploadButton,toAdd
      * @return Vertical Layout
      */
     public void initializeRightContainer(){
@@ -165,7 +167,7 @@ public class NoticeBoardView extends Div {
     }
 
     /**
-     * The method initialize a Horizontal Layout with two vertical Layouts
+     * The method initializes a Horizontal Layout with two vertical Layouts
      * @return Horizontal Layout
      */
     public void initializeSplitLayout(){
@@ -175,7 +177,7 @@ public class NoticeBoardView extends Div {
     }
 
     /**
-     * The method initialize a Upload with a button and a Span
+     * The method initializes a Upload with a button and a Span
      * @return Upload
      */
     public void initializeUploadButton(){
@@ -186,7 +188,7 @@ public class NoticeBoardView extends Div {
     }
 
     /**
-     * The method initialize a RadioButtonGroup with a label and items
+     * The method initializes a RadioButtonGroup with a label and items
      * @return RadioButtonGroup
      */
     public void initializeRadioButton(){
