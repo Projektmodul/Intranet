@@ -61,7 +61,7 @@ public class IdeasManagementView extends Div {
 
     /**
      * The method initializes the Grid with all ideas
-     * @return initializeGrid
+     * @return grid
      */
     public Grid initializeGrid(){
         List<IdeaEntity> ideaList = new ArrayList<>();
