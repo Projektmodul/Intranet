@@ -30,7 +30,7 @@ import java.util.List;
  *  @author Litharshiga Sivarasa, Jessica Reistel, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 07.02.2021 by Jessica Reistel
+ *  @lastUpdated 10.02.2021 by Jessica Reistel
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
@@ -60,7 +60,7 @@ public class IdeasManagementView extends Div {
     }
 
     /**
-     * The method initialize the Grid with all ideas
+     * The method initializes the Grid with all ideas
      * @return initializeGrid
      */
     public Grid initializeGrid(){
