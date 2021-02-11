@@ -1,7 +1,6 @@
 package com.example.application.ui.horizontal.community;
 
 import com.example.application.backend.entities.IdeaEntity;
-import com.example.application.backend.entities.PageEntity;
 import com.example.application.backend.services.ideas.IdeaService;
 import com.example.application.backend.services.pages.PageService;
 import com.example.application.ui.MainView;
@@ -12,7 +11,8 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -21,6 +21,7 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +36,6 @@ import java.util.List;
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
 public class IdeasManagementView extends Div {
-    private PageService pageService;
-    private PageEntity pageEntity;
-
     private final IdeaService ideaService;
 
     public IdeasManagementView(PageService pageService, IdeaService ideaService) {
@@ -45,7 +43,6 @@ public class IdeasManagementView extends Div {
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 
-        this.pageService = pageService;
         this.ideaService = ideaService;
 
         Button buttonIdea = new Button("Idee einreichen", new Icon(VaadinIcon.LIGHTBULB));
