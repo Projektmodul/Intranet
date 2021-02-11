@@ -1,3 +1,10 @@
+/**
+ Stylesheet for LoginView
+ @version 4.0
+ @since 20.12.2020
+ @lastUpdated 07.02.2021 by Jessica Reistel
+ */
+
 #login {
     background: no-repeat center center fixed;
     background-size: cover;
