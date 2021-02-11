@@ -47,14 +47,12 @@ public class NewsDialog extends Dialog {
 
     public void initializeImage(){
         image = new Image( new StreamResource(newsEntity.getImage().getFileName(), () -> {
-
-            try {
-                System.out.println("Image PATH: " + newsEntity.getImage().getPath());
+            try{
                 return new FileInputStream(newsEntity.getImage().getPath());
-            } catch (Exception e) {
+            } catch (Exception e){
                 return new ByteArrayInputStream(new byte[]{});
             }
-        }), "Unternehmensnachrichtensbild");
+        }), "Unternehmensnachrichtenbild");
         image.getStyle().set("width","100%");
         image.getStyle().set("height","auto");
     }
