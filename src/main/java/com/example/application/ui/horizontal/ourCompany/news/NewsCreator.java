@@ -33,6 +33,7 @@ import java.util.List;
  */
 @CssImport("./styles/views/main/content.css")
 public class NewsCreator extends Dialog {
+
     private Button addNews;
     private Button clearNews;
     private TextField title;
@@ -42,7 +43,6 @@ public class NewsCreator extends Dialog {
 
     private VerticalLayout newsInformationContainer;
     private Div errorContainer;
-
 
     private ImagesManager imagesManager;
 
@@ -83,7 +83,6 @@ public class NewsCreator extends Dialog {
     public void setContent(){
         errorContainer = new Div();
         errorContainer.setText("Bitte laden Sie erst ein Bild hoch und füllen Sie anschließend die nachfolgenden Felder aus.");
-
 
         H3 dialogTitle = new H3("Unternehmensnachricht erstellen");
         newsInformationContainer = new VerticalLayout(dialogTitle,errorContainer);
@@ -143,10 +142,10 @@ public class NewsCreator extends Dialog {
         title = new TextField();
         title.setPlaceholder("Nachrichtentitel");
         title.addValueChangeListener(event -> {
-            if (event.getValue() == null) {
+            if (event.getValue() == null){
                 errorContainer.setText("Sie haben nichts eingegeben");
                 isTitleFilled = false;
-            } else {
+            } else{
                 newsEntity.setTitle(event.getValue());
                 isTitleFilled = true;
             }
@@ -159,10 +158,10 @@ public class NewsCreator extends Dialog {
         description = new TextField();
         description.setPlaceholder("Kurzbeschreibung der Nachricht");
         description.addValueChangeListener(event -> {
-            if (event.getValue() == null) {
+            if (event.getValue() == null){
                 errorContainer.setText("Sie haben nichts eingegeben");
                 isDescriptionFilled = false;
-            } else {
+            } else{
                 newsEntity.setDescription(event.getValue());
                 isDescriptionFilled = true;
             }
@@ -175,10 +174,10 @@ public class NewsCreator extends Dialog {
         text = new TextField();
         text.setPlaceholder("Der Inhalt der Nachricht");
         text.addValueChangeListener(event -> {
-            if (event.getValue() == null) {
+            if (event.getValue() == null){
                 errorContainer.setText("Sie haben nichts eingegeben");
                 isTextFilled = false;
-            } else {
+            } else{
                 newsEntity.setText(event.getValue());
                 isTextFilled = true;
             }
