@@ -21,18 +21,16 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- * Canteen View shows  a View for all menus.
+ * Canteen View shows a View for all menus.
  *
  * @author  Sabrine Gamdou, Anastasiya Jackwerth
  * @version 4.0
  * @since   14.12.2020
  * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
-
 @Route(value = "canteen", layout = MainView.class)
 @PageTitle("Betriebsrestaurant")
 public class CanteenView extends Div {
-
 
     private PageService pageService;
     private UserService userService;
@@ -50,7 +48,6 @@ public class CanteenView extends Div {
     private Div pdfsUploader;
 
     private int role;
-
 
     public CanteenView(PageService pageService, UserService userService, NotificationService notificationService, DocumentService documentService) {
         setId("canteen");
@@ -82,8 +79,6 @@ public class CanteenView extends Div {
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-
-
         pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
@@ -93,7 +88,7 @@ public class CanteenView extends Div {
         this.add(breadcrumbs, pageTitle, pageContent, menuDeleteLayout);
     }
 
-    public void initializePdfsManager() {
+    public void initializePdfsManager(){
         pdfsManager = new PdfsManager(pageEntity.getDocuments(), notificationService, documentService, role);
         pdfsManager.setDocumentEntities(pageEntity.getDocuments());
         pdfsManager.setAllDocumentEntitiesData("Speiseplan", pageEntity, pageEntity.getUser());
@@ -101,14 +96,14 @@ public class CanteenView extends Div {
         pdfsManager.getPdfManager().setNotificationCategory("Speiseplan");
     }
 
-    private void initializePDFs() {
+    private void initializePDFs(){
         pdfsContainer = new Div();
         for (PDF pdf : pdfsManager.getPdfs()) pdfsContainer.add(pdf);
         bigContainer.add(pdfsContainer);
         bigContainer.add(pdfsManager);
     }
 
-    public void initializeBigContainer() {
+    public void initializeBigContainer(){
         bigContainer = new Div();
         initializePDFs();
         this.add(bigContainer);
