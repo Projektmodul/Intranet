@@ -20,7 +20,9 @@ import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
- *  MainView shows ...
+ *  MainView is the subordinate view for the whole single-page-application.
+ *  It contains the header, the sidebar and the content holder. The content of the content holder is routed by the
+ *  mainView. MainView sets the light and dark mode, depending on the setting of the user.
  *
  *  @author Sabrine Gamdou, Anastasiya Jackwerth, Monika Martius, Vanessa Skowronsky
  *  @version 7.0
@@ -37,44 +39,33 @@ import com.vaadin.flow.theme.lumo.Lumo;
 public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener, NotificationCounterChangedListener {
 
     private SettingEntity settingEntity;
-    private UserService userService;
-    private VerticalLayout contentHolder = new VerticalLayout();
-    private Header header;
-    private  SideBar sidebar;
+    private final VerticalLayout contentHolder;
+    private final SideBar sidebar;
     GetUserController getUserController;
     String username;
 
-    private UserEntity userEntity;
-
-    //bidirectional communication between ContentHolder and NotificationPresenter
     private final NotificationPresenter notificationPresenter;
 
     public MainView(NotificationPresenter notificationPresenter, UserService userService, LinkService linkService) {
+        setId("mainView");
+
         this.notificationPresenter = notificationPresenter;
-        this.userService = userService;
+        UserEntity userEntity;
 
         getUserController = new GetUserController();
-
         username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         settingEntity = userEntity.getSetting();
 
-        setId("mainView");
-
-        //Header
-        header = new Header(this.userService);
+        Header header = new Header(userService);
         header.getHorizontalBar().getInitiator().addListener(this);
 
-        // ContentHolder for routed Views
-        contentHolder.setId("contentHolder");
-
-        //Sidebar
-        sidebar = new SideBar(linkService);
-
-        // Main Container
         HorizontalLayout mainContainer = new HorizontalLayout();
-        mainContainer.add(contentHolder,sidebar);
         mainContainer.setId("mainContainer");
+        contentHolder = new VerticalLayout();
+        contentHolder.setId("contentHolder");
+        sidebar = new SideBar(linkService);
+        mainContainer.add(contentHolder,sidebar);
 
         VerticalLayout mainContainerVerticalLayout = new VerticalLayout();
         mainContainerVerticalLayout.add(mainContainer);
@@ -82,28 +73,32 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
 
         add(header, mainContainerVerticalLayout);
 
-        //Initialize the contentHolder in the notificationPresenter
         notificationPresenter.setMainView(this);
         notificationPresenter.setEventOfNotificationViewOnSideBar();
         notificationPresenter.setCounterFromDialogToSideBar();
         notificationPresenter.getNotificationDataProvider().getInitiator().addListener(this);
     }
 
+    /**
+     * The methods gets the element of the route it is navigating to and calls the methods for the background colors.
+     * The method is not called by us, but from the integrated Vaadin routing system.
+     * @param content Element of the content holder
+     */
     @Override
     public void showRouterLayoutContent(HasElement content) {
         // The "content" is the the view you are navigating to
-        // The code below sets the childWrapper to hold the view
+
         contentHolder.getElement().appendChild(content.getElement());
         String text = content.toString();
         String color = contentSplit(text);
 
-        if(settingEntity.getDarkmode() == true) {
+        if(settingEntity.getDarkmode()) {
             UI.getCurrent().getElement().getThemeList().add(Lumo.DARK);
             contentHolder.getElement().getChild(0).getClassList().remove("lightColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("darkColorscheme");
             setBackgroundColorDark(color);
 
-        } else if (settingEntity.getDarkmode() == false ){
+        } else if (!settingEntity.getDarkmode() ){
             UI.getCurrent().getElement().getThemeList().remove(Lumo.DARK);
             contentHolder.getElement().getChild(0).getClassList().remove("darkColorscheme");
             contentHolder.getElement().getChild(0).getClassList().add("lightColorscheme");
@@ -143,6 +138,10 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         notificationPresenter.setCounterFromDialogToSideBar();
     }
 
+    /**
+     * The method sets the light mode background color of the whole view depending on the given parameter.
+     * @param colorName Name of the color scheme of the view
+     */
     public void setBackgroundColor(String colorName) {
 
         switch (colorName) {
@@ -166,6 +165,10 @@ public class MainView extends VerticalLayout implements RouterLayout, Horizontal
         }
     }
 
+    /**
+     * The method sets the dark mode background color of the whole view depending on the given parameter.
+     * @param colorName Name of the color scheme of the view
+     */
     public void setBackgroundColorDark(String colorName) {
 
         switch (colorName) {
