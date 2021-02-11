@@ -32,8 +32,8 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @PageTitle("Einstellungen")
 public class SettingsView extends Div {
 
-    private SettingService settingService;
-    private SettingEntity settingEntity;
+    private final SettingService settingService;
+    private final SettingEntity settingEntity;
 
     public SettingsView(PageService pageService, SettingService settingService, UserService userService) {
         this.settingService = settingService;
