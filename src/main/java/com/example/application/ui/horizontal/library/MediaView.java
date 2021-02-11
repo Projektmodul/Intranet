@@ -29,10 +29,8 @@ import java.util.Map;
 @Route(value = "media", layout = MainView.class)
 @PageTitle("Medien")
 public class MediaView extends Div{
-    private PageService pageService;
+    private final PageService pageService;
     private PageEntity pageEntity;
-    private H1 pageTitle;
-
 
     public MediaView(PageService pageService){
         setId("media");
@@ -51,7 +49,7 @@ public class MediaView extends Div{
      */
     public void setContent(){
         pageEntity = pageService.findPageById(16);
-        pageTitle = new H1(pageEntity.getTitle());
+        H1 pageTitle = new H1(pageEntity.getTitle());
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
