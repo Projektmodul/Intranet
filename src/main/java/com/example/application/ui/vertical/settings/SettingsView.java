@@ -20,7 +20,8 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
- *  Settings View displays the settings that a user can change
+ *  Settings View displays the settings that a user can change.
+ *  Only the change between lightmode and darkmode is functioning. The other option is just a mockup.
  *
  *  @author Rebecca Schirmacher, Vanessa Skowronsky Laura Neuendorf, Jessica Reistel
  *  @version 3.0
@@ -58,6 +59,7 @@ public class SettingsView extends Div {
             toggleDarkMode();
             getUI().ifPresent(ui -> ui.navigate("settings"));
         });
+
         Span light = new Span("hell");
         Span dark = new Span("dunkel");
         HorizontalLayout toogleLayoutDarkMode = new HorizontalLayout();
@@ -73,6 +75,10 @@ public class SettingsView extends Div {
         add(breadcrumbs, pageTitle ,pageText, toogleLayoutDarkMode, pageText2, toogleLayoutNews);
     }
 
+    /**
+     * This method updates the database entry for the setting of the user regarding the light/darkmode.
+     * It manages the themeList for the chosen mode.
+     */
     private void toggleDarkMode(){
         ThemeList themeList = UI.getCurrent().getElement().getThemeList();
 
