@@ -14,10 +14,9 @@ import java.nio.file.Paths;
  *
  * @author  Anastasiya Jackwerth, Sabrine Gamdou
  * @version 1.0
- * @since   21-12-2020
+ * @since   21.12.2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
-
 public class ImageDeletionManager {
 
     private ImageService imageService;
@@ -35,19 +34,14 @@ public class ImageDeletionManager {
     }
 
     public void deleteFromServer(){
-        if(deleteFile()){
-            System.out.println("Deletion of file from Server successful!");
-        }else{
-            System.out.println("Deletion failed!");
-        }
+       deleteFile();
     }
 
     public void deleteFromDatabase(){
         try{
             this.imageService.delete(imageEntity);
-        }catch(NullPointerException e)
-        {
-            System.out.println("No such file exists.");
+        }catch(NullPointerException e){
+            e.printStackTrace();
         }
     }
 
@@ -58,12 +52,12 @@ public class ImageDeletionManager {
         }
         catch(NoSuchFileException e)
         {
-            System.out.println("No such file exists.");
+            e.printStackTrace();
             return false;
         }
         catch(IOException e)
         {
-            System.out.println("Invalid File.");
+            e.printStackTrace();
             return false;
         }
     }
