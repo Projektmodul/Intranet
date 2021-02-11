@@ -48,14 +48,14 @@ public class NewsDeletionDialog extends Dialog {
         message = new H3("Sind Sie sich sicher, dass Sie diese Nachricht löschen wollen?");
 
         deleteButton = new Button("Löschen", e -> {
-            try {
+            try{
                 newsService.delete(newsEntity);
                 imageService.delete(newsEntity.getImage());
                 deleteImageFromServer();
                 setDeletionNotification(new Icon(VaadinIcon.CHECK_CIRCLE), "Die Nachricht wurde erfolgreich gelöscht!");
                 notification.open();
                 this.close();
-            } catch (IOException ioException) {
+            } catch (IOException ioException){
                 setDeletionNotification(new Icon(VaadinIcon.CLOSE_CIRCLE), "Löschen der Nachricht fehlgeschlagen.");
                 ioException.printStackTrace();
             }
@@ -83,5 +83,4 @@ public class NewsDeletionDialog extends Dialog {
         notification.setDuration(3000);
         notification.setPosition(Notification.Position.MIDDLE);
     }
-
 }
