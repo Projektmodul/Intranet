@@ -5,6 +5,13 @@ import com.example.application.backend.repositories.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service class for the PageEntities
+ *
+ * @author  Sabrine Gamdou, Anastasiya Jackwerth
+ * @version 1.0
+ * @since 19.01.2021
+ */
 @Service
 public class PageService {
 
@@ -22,5 +29,4 @@ public class PageService {
     public PageRepository getPageRepository() {
         return pageRepository;
     }
-
 }
