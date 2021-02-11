@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Career View shows ...
+ *  Career View shows the JobOffers uploaded by the users
  *
  *  @author Monika Martius, Jessica Reistel, Litharshiga Sivarasa, Sabrine Gamdou, Anastasiya Jackwerth
  *  @version 6.0
@@ -68,7 +68,6 @@ public class CareerView extends Div {
 
     private ComboBox<String> typeDropBox;
     private ComboBox<String> categoryDropBox;
-
 
     private TextField description;
     private TextField location;
@@ -154,10 +153,9 @@ public class CareerView extends Div {
         jobOfferGrid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
         jobOfferGrid.setId("gridFullPage");
 
-        if(role!=1) {
+        if(role!=1){
             jobOfferGrid.getStyle().set("margin-top", "20px");
         }
-
         this.add(jobOfferGrid);
     }
 
@@ -263,7 +261,7 @@ public class CareerView extends Div {
         });
     }
 
-    public void initializeLocation() {
+    public void initializeLocation(){
         location = new TextField();
         location.setPlaceholder("Arbeitsort");
         location.addValueChangeListener( event -> {
@@ -313,5 +311,4 @@ public class CareerView extends Div {
         addClearDiv.add(toAdd,toDelete,cancel);
         addClearDiv.setId("addClearDiv");
     }
-
 }
