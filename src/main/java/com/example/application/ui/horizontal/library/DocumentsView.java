@@ -10,18 +10,16 @@ import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.GridDocument;
 import com.example.application.backend.utils.pdfs.PdfsManager;
-
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
-
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -33,22 +31,16 @@ import com.vaadin.flow.router.Route;
  * @since   12.01.2021
  * @lastUpdated 07.02.2021 by Jessica Reistel
  */
-
 @Route(value = "documents", layout = MainView.class)
 @PageTitle("Unterlagen")
 public class DocumentsView extends Div {
 
-    private PageService pageService;
     private H1 pageTitle;
 
+    private PdfsManager pdfsManager;
     private PageEntity pageEntity;
 
-
-    private VerticalLayout pageContentLayout;
-
-    private PdfsManager pdfsManager;
-    private UserEntity userEntity;
-    private UserService userService;
+    private PageService pageService;
     private DocumentService documentService;
     private NotificationService notificationService;
 
@@ -66,11 +58,8 @@ public class DocumentsView extends Div {
         addClassName("libraryColorscheme");
 
         this.pageService = pageService;
-        this.userService = userService;
         this.documentService = documentService;
         this.notificationService = notificationService;
-
-
 
         pageEntity = pageService.findPageById(14);
         pageTitle = new H1(pageEntity.getTitle());
@@ -87,9 +76,8 @@ public class DocumentsView extends Div {
 
         add(breadcrumbs, pageTitle);
 
-        //userEntity = pageEntity.getUser();
         initializePdfsManager();
-        if(role == 1) {
+        if(role == 1){
             initializeRadioButtonsForKeyword();
             initializeUploadContainer();
         }
@@ -97,8 +85,6 @@ public class DocumentsView extends Div {
 
         this.getStyle().set("width","100%");
     }
-
-
 
     public void initializeRadioButtonsForKeyword(){
         RadioButtonGroup<String> radioGroup = new RadioButtonGroup<>();
@@ -109,7 +95,6 @@ public class DocumentsView extends Div {
         radioGroup.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
 
         Div messageContainer = new Div();
-        //messageContainer.setText("Bitte wählen Sie eine Abteilung aus, bevor Sie ein neues Dokument hinzufügen.");
 
         keyword = "Allgemein";
         pdfsManager.getPdfManager().setKeyword(keyword);
@@ -122,10 +107,8 @@ public class DocumentsView extends Div {
                 keyword = event.getValue();
                 pdfsManager.getPdfManager().setKeyword(keyword);
                 pdfsManager.getPdfManager().setNotificationCategory("Pdf-Dokument");
-                System.out.println("Keyword: " + event.getValue());
             }
         });
-
         add(chooseDepartment ,radioGroup, messageContainer);
     }
 
