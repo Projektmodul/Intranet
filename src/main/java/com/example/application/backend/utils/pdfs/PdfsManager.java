@@ -19,25 +19,22 @@ import java.util.List;
  * @since 19.01.2021
  * @lastUpdated 01.02.2021 by Anastasiya Jackwerth, Sabrine Gamdou
  */
-
 public class PdfsManager extends Div {
 
-    NotificationService notificationService;
-    DocumentService documentService;
+    private NotificationService notificationService;
+    private DocumentService documentService;
 
     private List<DocumentEntity> documentEntities;
     private List<PDF> pdfs;
 
     private PdfManager pdfManager;
 
-
     private String keyword;
     private PageEntity pageEntity;
     private UserEntity userEntity;
+
     private int role;
-
     private boolean isOnePdf;
-
     private Div pdfsUploader;
 
     public PdfsManager(List<DocumentEntity> documentEntities, NotificationService notificationService,
@@ -49,53 +46,44 @@ public class PdfsManager extends Div {
         this.documentEntities = documentEntities;
 
         this.pdfs = new ArrayList<>();
-
     }
 
-    //will be called by the view after setting list
-    public void initializeAllPdfs() {
+    /**
+     * This method creates a documentManager with a given documentService and a role, sets the entities of the documentManager,
+     * creates an PDF component (not Vaadin, see PDF.java file) out of the documentEntities, these documents are then
+     * added to a documents container. Depending the size of the documentEntities-List the isOnePdf will be set to true
+     * or false
+     */
+    public void initializeAllPdfs(){
         pdfManager = new PdfManager(notificationService, documentService, role);
         pdfManager.setAllDocumentEntitiesData(keyword, pageEntity, userEntity);
-        for (DocumentEntity documentEntity : documentEntities) {
+        for (DocumentEntity documentEntity : documentEntities){
             pdfManager.setDocumentEntity(documentEntity);
             pdfManager.setOnePdf(isOnePdf);
             pdfs.add(pdfManager.createPDF());
             pdfManager.setDeleteButtonEvent();
-            System.out.println("CREATED PDF");
-            System.out.println("PATH: " + documentEntity.getPath());
         }
-
-        System.out.println("Pdfs List Size: " + documentEntities.size());
-        if (documentEntities.size() > 1) {
-            System.out.println("isOnePdf: " + isOnePdf);
+        if (documentEntities.size() > 1){
             pdfManager.setOnePdf(isOnePdf);
-        } else if (documentEntities.size() == 0) {
-            System.out.println("isOnePdf: " + isOnePdf);
+        } else if (documentEntities.size() == 0){
             pdfManager.setOnePdf(true);
-        } else {
-            System.out.println("isOnePdf: " + isOnePdf);
+        } else{
             pdfManager.setOnePdf(isOnePdf);
         }
-
-
-
     }
 
-
-    //will be set by the view :: gets the list of the page.
-    public void setDocumentEntities(List<DocumentEntity> documentEntities) {
+    public void setDocumentEntities(List<DocumentEntity> documentEntities){
         this.documentEntities = documentEntities;
     }
 
-    //Set by the view: global data for all documentEntities
     public void setAllDocumentEntitiesData(String keyword, PageEntity pageEntity,
-                                           UserEntity userEntity) {
+                                           UserEntity userEntity){
         setKeyword(keyword);
         setPageEntity(pageEntity);
         setUserEntity(userEntity);
     }
 
-    public void initializeUploadContainer() {
+    public void initializeUploadContainer(){
         pdfsUploader = new Div();
         pdfManager.setUploaderEvents();
         pdfsUploader.add(pdfManager.getUploaderContainer());
@@ -107,37 +95,31 @@ public class PdfsManager extends Div {
         pdfsUploader.add(pdfManager.getUploaderContainer());
     }
 
-    public void setOnePdf(boolean isOnePdf) {
+    public void setOnePdf(boolean isOnePdf){
         this.isOnePdf = !isOnePdf;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity){
         this.userEntity = userEntity;
     }
 
-
-    public void setKeyword(String keyword) {
+    public void setKeyword(String keyword){
         this.keyword = keyword;
     }
 
-
-    public void setPageEntity(PageEntity pageEntity) {
+    public void setPageEntity(PageEntity pageEntity){
         this.pageEntity = pageEntity;
     }
 
-    public List<PDF> getPdfs() {
+    public List<PDF> getPdfs(){
         return pdfs;
     }
 
-    public void setPdfs(List<PDF> pdfs) {
-        this.pdfs = pdfs;
-    }
-
-    public Div getPdfsUploader() {
+    public Div getPdfsUploader(){
         return pdfsUploader;
     }
 
-    public PdfManager getPdfManager() {
+    public PdfManager getPdfManager(){
         return pdfManager;
     }
 
@@ -145,7 +127,7 @@ public class PdfsManager extends Div {
         return this.pdfManager.getDocumentOfJobOfferId();
     }
 
-    public boolean isPdfUploaded() {
+    public boolean isPdfUploaded(){
         return pdfManager.isPdfUploaded();
     }
 }
