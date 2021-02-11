@@ -19,7 +19,8 @@ import java.util.List;
  * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
  */
 public class GridJobOffer {
-    private  String title;
+
+    private String title;
     private String location;
     private String type;
     private String category;
@@ -33,20 +34,20 @@ public class GridJobOffer {
         this.title = title;
     }
 
-    public String getTitle() {
+    public String getTitle(){
         return title;
     }
-    public String getLocation() {
+    public String getLocation(){
         return location;
     }
-    public String getType() {
+    public String getType(){
         return type;
     }
-    public String getCategory() {
+    public String getCategory(){
         return category;
     }
 
-    public Anchor getDownloadLink() {
+    public Anchor getDownloadLink(){
         downloadLink.setTarget("_blank");
         return downloadLink;
     }
@@ -60,23 +61,20 @@ public class GridJobOffer {
      * @since 24.01.2021
      * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
      */
-    public static class JobOfferEntitiesConverter {
-        public static Anchor createDownloadLink(String path, String filename) {
-
+    public static class JobOfferEntitiesConverter{
+        public static Anchor createDownloadLink(String path, String filename){
             return new Anchor(new StreamResource(filename, () -> {
-
-                try {
-                    System.out.println("PATH: " + path);
+                try{
                     return new FileInputStream(path);
-                } catch (Exception e) {
+                } catch (Exception e){
                     return new ByteArrayInputStream(new byte[]{});
                 }
-            }),  filename);
+            }), filename);
         }
 
-        public static List<GridJobOffer> convertJobOfferEntities(List<JobOfferEntity> jobOfferEntities) {
+        public static List<GridJobOffer> convertJobOfferEntities(List<JobOfferEntity> jobOfferEntities){
             List<GridJobOffer> gridJobOffers = new ArrayList<>();
-            for (JobOfferEntity jobOfferEntity : jobOfferEntities) {
+            for (JobOfferEntity jobOfferEntity : jobOfferEntities){
                 GridJobOffer gridJobOffer = new GridJobOffer(
                         createDownloadLink(jobOfferEntity.getDocument().getPath(), jobOfferEntity.getDocument().getFileName()),
                         jobOfferEntity.getTitle(), jobOfferEntity.getLocation(), jobOfferEntity.getType(),
@@ -85,7 +83,5 @@ public class GridJobOffer {
             }
             return gridJobOffers;
         }
-
     }
-
 }
