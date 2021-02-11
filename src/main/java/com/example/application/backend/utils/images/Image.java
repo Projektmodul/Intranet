@@ -11,7 +11,6 @@ import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-
 /**
  * This class represents an image component, it receives an imageEntity and
  * the files input stream.
@@ -21,18 +20,14 @@ import java.io.InputStream;
  * @since   21.12.2020
  * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
-
 public class Image extends Div {
     private ImageEntity imageEntity;
 
     private Icon deleteButton;
     private Component imageViewer;
-    private StreamResource stream; //Is it used?
     private int role;
 
     private InputStream inputStream;
-
-
 
     public Image(ImageEntity imageEntity, InputStream inputStream, int role){
         this.imageEntity = imageEntity;
@@ -40,7 +35,6 @@ public class Image extends Div {
         this.role = role;
 
         initializeImage();
-
     }
 
     public void initializeImage(){
@@ -52,33 +46,20 @@ public class Image extends Div {
         this.add(imageViewer);
     }
 
+    /**
+     * This method creates an imageViewer out of the StreamResource. The StreamResource is created from the path
+     * of the imageEntity
+     */
     public void initializeImageViewer(){
         imageViewer = new ImageViewer(new StreamResource(imageEntity.getFileName(), () -> {
-
-            try {
-                System.out.println("PATH: "+ imageEntity.getPath());
+            try{
                 return new FileInputStream(imageEntity.getPath());
-            } catch (Exception e) {
+            } catch (Exception e){
                 return new ByteArrayInputStream(new byte[]{});
             }
         }));
-
-
     }
 
-
-    public Icon getDeleteButton() {
-        return deleteButton;
-    }
-
-
-    public InputStream getInputStream() {
-        return inputStream;
-    }
-
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
+    public Icon getDeleteButton(){return deleteButton;}
 }
 
