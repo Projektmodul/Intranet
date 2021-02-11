@@ -20,15 +20,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 @HtmlImport(value="frontend://bower_components/vaadin-icons/vaadin-icons.html")
 
 public class Header extends VerticalLayout {
-
-    private UserService userService;
-    private HorizontalBar horizontalBar;
+    private final HorizontalBar horizontalBar;
 
     public Header(UserService userService){
-        this.userService = userService;
         setId("header");
 
-        horizontalBar = new HorizontalBar(this.userService);
+        horizontalBar = new HorizontalBar(userService);
 
         Image logoImage = new Image("images/bsag.png", "My Project logo");
         logoImage.setId("logoImage");
@@ -48,7 +45,6 @@ public class Header extends VerticalLayout {
     public HorizontalBar getHorizontalBar() {
         return horizontalBar;
     }
-
 
     /**
      * The method return the backgroundcolor of the routes for the views
