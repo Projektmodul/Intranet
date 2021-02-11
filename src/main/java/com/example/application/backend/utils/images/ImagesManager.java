@@ -18,28 +18,22 @@ import java.util.List;
  * @since   21.12.2020
  * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
-
 public class ImagesManager extends Div {
 
-
-
-    ImageService imageService;
+    private ImageService imageService;
 
     private List<ImageEntity> imageEntities;
     private List<Image> images;
 
     private ImageManager imageManager;
 
-    //Variables to create a new imageEntity, should be set by the View
     private PageEntity pageEntity;
     private UserEntity userEntity;
     private ImageEntity imageEntity;
+
     private int role;
-
     private boolean isOneImage;
-
     private Div imagesUploader;
-
 
     public ImagesManager(List<ImageEntity> imageEntities, ImageService imageService, int role){
 
@@ -47,10 +41,14 @@ public class ImagesManager extends Div {
         this.imageEntities = imageEntities;
         this.role = role;
         this.images = new ArrayList<>();
-
     }
 
-    //will be called by the view after setting list
+    /**
+     * This method creates an imageManager with a given imageService and a role, sets the entities of the imageManager,
+     * creates an Image component (not Vaadin, see Image.java file) out of the ImageEntities, these images are then
+     * added to a images container. Depending the size of the imageEntities-List the isOneImage will be set to true
+     * or false
+     */
     public void initializeAllImages(){
         imageManager = new ImageManager(imageService, role);
         imageManager.setAllImageEntitiesData(pageEntity,userEntity);
@@ -59,24 +57,15 @@ public class ImagesManager extends Div {
             imageManager.setOneImage(isOneImage);
             images.add(imageManager.createImage());
             imageManager.setDeleteButtonEvent();
-            System.out.println("CREATED IMAGE");
-            System.out.println("PATH: "+ imageEntity.getPath());
         }
-        System.out.println("Image List Size: " + imageEntities.size());
         if(imageEntities.size() > 1){
-            System.out.println("isOneImage: " + isOneImage);
             imageManager.setOneImage(isOneImage);
         }else if(imageEntities.size() == 0){
-            System.out.println("isOneImage: " + isOneImage);
             imageManager.setOneImage(true);
         }
         else{
-            System.out.println("isOneImage: " + isOneImage);
             imageManager.setOneImage(isOneImage);
         }
-        readList();
-
-
     }
 
     public void initializeUploadContainer(){
@@ -85,12 +74,10 @@ public class ImagesManager extends Div {
         imagesUploader.add(imageManager.getUploaderContainer());
     }
 
-    //will be set by the view :: gets the list of the page.
-    public void setImagesEntities(List<ImageEntity> imageEntities) {
+    public void setImagesEntities(List<ImageEntity> imageEntities){
         this.imageEntities = imageEntities;
     }
 
-    //Set by the view: global data for all documentEntities
     public void setAllImageEntitiesData(PageEntity pageEntity,
                                         UserEntity userEntity){
         setPageEntity(pageEntity);
@@ -105,38 +92,26 @@ public class ImagesManager extends Div {
 
     public void setOneImage(boolean isOneImage){
         this.isOneImage = !isOneImage;
-
     }
 
-    public void setUserEntity(UserEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity){
         this.userEntity = userEntity;
     }
 
-
-    public void setPageEntity(PageEntity pageEntity) {
+    public void setPageEntity(PageEntity pageEntity){
         this.pageEntity = pageEntity;
     }
 
-    public List<Image> getImages() {
+    public List<Image> getImages(){
         return images;
     }
 
-    public void setImages(List<Image> images) {
+    public void setImages(List<Image> images){
         this.images = images;
-    }
-
-    public void readList(){
-        for(ImageEntity d : pageEntity.getImages()){
-            System.out.println(d.toString());
-        }
     }
 
     public Div getImagesUploader() {
         return imagesUploader;
-    }
-
-    public void setImagesUploader(Div imagesUploader) {
-        this.imagesUploader = imagesUploader;
     }
 
     public int getIdOfNewsImage(){
