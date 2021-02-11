@@ -20,7 +20,6 @@ import java.io.InputStream;
  * @since   21.12.2020
  * @lastUpdated 04.02.2021 Sabrine Gamdou
  */
-
 public class PDF extends Div {
 
     private DocumentEntity documentEntity;
@@ -28,46 +27,40 @@ public class PDF extends Div {
     private Icon deleteButton;
     private Component pdfDocumentViewer;
 
-
-
     private InputStream inputStream;
     private int role;
-
-
 
     public PDF(DocumentEntity documentEntity, InputStream inputStream, int role){
         this.documentEntity = documentEntity;
         this.inputStream = inputStream;
         this.role = role;
         initializePDF();
-
     }
 
     public void initializePDF(){
         deleteButton = new Icon(VaadinIcon.TRASH);
         initializePdfViewer();
-        if(role == 1 || role == 3) {
+        if(role == 1 || role == 3){
             this.add(deleteButton);
         }
         this.add(pdfDocumentViewer);
     }
 
+    /**
+     * This method creates an imageViewer out of the StreamResource. The StreamResource is created from the path
+     * of the imageEntity
+     */
     public void initializePdfViewer(){
         pdfDocumentViewer = new PdfDocumentViewer(new StreamResource(documentEntity.getFileName(), () -> {
-
             try {
-
                 return new FileInputStream(documentEntity.getPath());
             } catch (Exception e) {
                 return new ByteArrayInputStream(new byte[]{});
             }
         }));
-
-
     }
 
     public Icon getDeleteButton() {
         return deleteButton;
     }
-
 }
