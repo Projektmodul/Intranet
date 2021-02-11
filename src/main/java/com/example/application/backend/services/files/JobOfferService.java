@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * A service class for the JobOfferEntities
  *
- * @author  Litharshiga Sivarasa
+ * @author  Litharshiga Sivarasa, Sabrine Gamdou, Anastasiya Jackwerth
  * @version 2.0
  * @since 31.01.2021
  * @lastUpdated 01.02.2021 by Sabrine Gamdou, Anastasiya Jackwerth
@@ -33,5 +33,4 @@ public class JobOfferService {
     public void save(JobOfferEntity jobOfferEntity){
         getJobOfferRepository().saveAndFlush(jobOfferEntity);
     }
-
 }
