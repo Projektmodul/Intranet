@@ -13,7 +13,7 @@ import java.util.List;
  *  @lastUpdated 01.02.2021 by Vanessa Skowronsky
  */
 public class HorizontalBarClickedInitiator {
-    private List<HorizontalBarClickedListener> listeners = new ArrayList<>();
+    private final List<HorizontalBarClickedListener> listeners = new ArrayList<>();
 
     public void addListener(HorizontalBarClickedListener horizontalBarClickedListener){
         listeners.add(horizontalBarClickedListener);
