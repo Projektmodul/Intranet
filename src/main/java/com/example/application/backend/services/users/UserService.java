@@ -48,9 +48,9 @@ public class UserService implements UserDetailsService{
 
     /**
      * This method updates the entered information from the MyProfilView in the database
-     * @param userEntity
-     * @param updateIban
-     * @param updateJobDescription
+     * @param userEntity is the entity to be compared
+     * @param updateIban is a text field where the new IBAN is set
+     * @param updateJobDescription is a text area where the new job description is set
      */
     public void update(UserEntity userEntity, TextField updateIban, TextArea updateJobDescription){
         userEntity.setIban(updateIban.getValue());
@@ -61,8 +61,8 @@ public class UserService implements UserDetailsService{
 
     /**
      * This method updates the password from user
-     * @param userEntity
-     * @param password
+     * @param userEntity is the entity to be compared
+     * @param password is a string where the new password is set
      */
     public void passwordUpdate(UserEntity userEntity, String password){
         userEntity.setPassword(password);
