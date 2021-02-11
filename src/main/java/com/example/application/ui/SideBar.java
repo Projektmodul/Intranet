@@ -1,12 +1,10 @@
 package com.example.application.ui;
 
-
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.ui.auxiliary.InitData;
 import com.example.application.ui.vertical.canteen.CanteenView;
 import com.example.application.ui.vertical.help.HelpView;
 import com.example.application.ui.vertical.myProfile.MyProfileView;
-import com.example.application.ui.vertical.notifications.NotificationsView;
 import com.example.application.ui.vertical.notifications.ZeroNotificationsDialog;
 import com.example.application.ui.vertical.settings.SettingsView;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -23,10 +21,9 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.RouterLink;
 
-
-
 /**
- *  SideBar shows ...
+ *  SideBar shows a notification bell, a search field and tabs, which navigate to different side views,
+ *  to external links or open a dialog
  *
  *  @author Lea Schünemann, Vanessa Skowronsky
  *  @version 4.0
@@ -34,43 +31,34 @@ import com.vaadin.flow.router.RouterLink;
  *  @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
 public class SideBar extends VerticalLayout{
-
     public Tabs tabs;
     private Dialog notificationsView;
-
     private final Icon alertIcon;
     private int notificationCounter;
-    private Span counterSpan;
-
+    private final Span counterSpan;
 
     public SideBar(LinkService linkService){
         setId("sideBar");
 
-        //insert icon for alertIcon
         alertIcon = new Icon(VaadinIcon.BELL);
         alertIcon.setId("alertBell");
-
         counterSpan = new Span();
         add(this.counterSpan);
         this.counterSpan.setId("alertSpan");
-
         Div notificationsAlertIconSpanContainer = new Div(alertIcon,counterSpan);
         notificationsAlertIconSpanContainer.setId("notificationAlertSpan");
 
-        //insert field for search
         TextField searchField = new TextField();
         searchField.setId("search");
         searchField.setPlaceholder("Suchbegriff eingeben...");
 
-        //external links
         Anchor anchorTimetable = new Anchor("https://fahrplaner.vbn.de", "Fahrplan");
         anchorTimetable.setTarget("_blank");
-
         Anchor anchorMailing = new Anchor("https://email.bsag.de", "Mailing");
         anchorMailing.setTarget("_blank");
-
         Label telephoneBookLabel = new Label("Telefonbuch");
         telephoneBookLabel.getStyle().set("cursor", "pointer");
+
         HorizontalLayout phoneBookLayout = new HorizontalLayout(telephoneBookLabel);
         phoneBookLayout.addClickListener(e -> new Dialog(initPhoneBookChoice(linkService)).open());
 
@@ -120,10 +108,6 @@ public class SideBar extends VerticalLayout{
 
     public void setSideBarToNull(){
         tabs.setSelectedTab(null);
-    }
-
-    public void setNotificationsView(NotificationsView notificationsView) {
-        this.notificationsView = notificationsView;
     }
 
     public int getNotificationCounter() {
