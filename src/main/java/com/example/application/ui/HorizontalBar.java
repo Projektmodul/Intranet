@@ -18,7 +18,6 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * HorizontalBarView shows a menubar with submenu items that open after hovering over them.
@@ -33,16 +32,12 @@ import java.util.List;
  */
 public class HorizontalBar extends MenuBar {
 
-    private HorizontalBarClickedInitiator initiator;
-    private Anchor anchorSubMenuLink;
-    private ArrayList<Message> messageList;
-    private GetUserController getUserController;
-    private UserService userService;
-    private UserEntity userEntity;
+    private final HorizontalBarClickedInitiator initiator;
+    private final UserEntity userEntity;
 
     public HorizontalBar(UserService userService) {
-        this.userService = userService;
-        getUserController = new GetUserController();
+
+        GetUserController getUserController = new GetUserController();
 
         setId("horizontalBar");
         setOpenOnHover(true);
@@ -63,7 +58,7 @@ public class HorizontalBar extends MenuBar {
         initCommunityMenu();
 
         String username = getUserController.getUsername();
-        userEntity = this.userService.findByUsername(username);
+        userEntity = userService.findByUsername(username);
 
         Icon chat = new Icon(VaadinIcon.CHAT);
         chat.setSize("35px");
@@ -181,7 +176,7 @@ public class HorizontalBar extends MenuBar {
         layout.setClassName("submenu");
         layout.getStyle().set("background-color", backgroundColor);
 
-        anchorSubMenuLink = new Anchor(href, layout);
+        Anchor anchorSubMenuLink = new Anchor(href, layout);
         anchorSubMenuLink.setTarget("_blank");
         anchorSubMenuLink.setClassName("submenuLink");
         anchorSubMenuLink.getStyle().set("color", backgroundColor);
@@ -270,7 +265,7 @@ public class HorizontalBar extends MenuBar {
      * @return List with messages
      */
     private ArrayList<Message> loadMessages() {
-        messageList = new ArrayList<>();
+        ArrayList<Message> messageList = new ArrayList<>();
         Message messageOne = new Message("Guten Morgen!", "", "Peter Lustig", false);
         Message messageTwo = new Message("Moin!", "", userEntity.getFirstName() + " " + userEntity.getSurname(), true);
         Message messageThree = new Message("Der neue Speiseplan ist da :-)", "", "Peter Lustig", false);
