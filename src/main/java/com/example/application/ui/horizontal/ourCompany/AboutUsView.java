@@ -33,14 +33,14 @@ import de.nils_bauer.PureTimelineItem;
 @Route(value = "aboutUs", layout = MainView.class)
 @PageTitle("Über Uns")
 public class AboutUsView extends Div {
-    private PageService pageService;
+    private final PageService pageService;
     private ImagesManager imagesManager;
 
     private PageEntity pageEntity;
-    private UserEntity userEntity;
+    private final UserEntity userEntity;
 
-    private ImageService imageService;
-    private int role;
+    private final ImageService imageService;
+    private final int role;
 
     private Div bigContainer;
 
