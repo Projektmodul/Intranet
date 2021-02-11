@@ -14,7 +14,6 @@ import java.io.*;
  * @since   21.12.2020
  * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
-
 public class PdfCreationManager {
 
     private DocumentService documentService;
@@ -38,13 +37,15 @@ public class PdfCreationManager {
         saveToServer();
     }
 
+    /**
+     * This method saves the file content(byte[]) on to the filesystem
+     */
     public void saveToServer(){
         byte[] fileContent = new byte[]{};
         try{
             fileContent= getArrayFromInputStream(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
-
         }
         try(BufferedOutputStream fileOutputStream = new BufferedOutputStream(new FileOutputStream(
                 documentEntity.getPath()))){
@@ -52,7 +53,6 @@ public class PdfCreationManager {
             fileOutputStream.flush();
         }catch (IOException e){
             e.printStackTrace();
-
         }
     }
 
@@ -60,7 +60,12 @@ public class PdfCreationManager {
         this.documentService.save(documentEntity);
     }
 
-    /*Transforms the inputStream into a byte array, so it can be later converted to a file*/
+    /**
+     * This method transforms the inputStream into a byte array, so it can be later converted to a file
+     * @param inputStream is where the file content is saved
+     * @return byte[] is the file content in a form of a byte[]
+     * @throws IOException
+     */
     public byte[] getArrayFromInputStream(InputStream inputStream) throws IOException {
         byte[] bytes;
         byte[] buffer = new byte[1073741824];
@@ -76,15 +81,8 @@ public class PdfCreationManager {
         return bytes;
     }
 
-
-
-
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
     }
-
-
-
-
 }
 
