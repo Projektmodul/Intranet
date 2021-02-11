@@ -12,7 +12,7 @@ import java.util.List;
  * @since   26.01.2021
  * @lastUpdated 26.01.2021
  */
-public class NotificationCounterChangedInitiator {
+public class NotificationCounterChangedInitiator{
     private List<NotificationCounterChangedListener> listeners = new ArrayList<>();
 
     public void addListener(NotificationCounterChangedListener notificationCounterChangedListener){
@@ -24,7 +24,4 @@ public class NotificationCounterChangedInitiator {
             listener.notificationCounterChanged();
         }
     }
-
-
-
 }
