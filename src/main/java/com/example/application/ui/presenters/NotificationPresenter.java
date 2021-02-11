@@ -23,7 +23,6 @@ import org.springframework.context.annotation.Scope;
  * @since   06.01.2021
  * @lastUpdated 04.02.2021 by Sabrine Gamdou
  */
-
 @SpringComponent
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class NotificationPresenter {
@@ -36,7 +35,6 @@ public class NotificationPresenter {
     private final Dialog notificationsView;
     private NotificationDataProvider notificationDataProvider;
 
-
     @Autowired
     NotificationPresenter(NotificationService notificationService, UserService userService, LinkService linkService) {
         this.notificationService = notificationService;
@@ -44,20 +42,14 @@ public class NotificationPresenter {
         this.linkService = linkService;
 
         notificationDataProvider = new NotificationDataProvider();
-
-        //The presenter handles the request of retrieving the notifications from the backend
         notificationDataProvider.findNotification(notificationService);
 
         if(notificationDataProvider.getNotificationCounter() == 0){
             notificationsView = new ZeroNotificationsDialog();
         }else{
             notificationsView = new NotificationsView();
-
-            //The presenter adds all retrieved notifications to the notificationsView
             notificationDataProvider.addNotifications(((NotificationsView) notificationsView).getAllNotificationsContainer(), notificationService);
-
             notificationDataProvider.setClickEventOnSaveButton(((NotificationsView) notificationsView).getDeleteButton(), notificationService);
-
             ((NotificationsView) notificationsView).setNotificationsCounter(notificationDataProvider.getNotificationCounter());
         }
 
@@ -65,7 +57,6 @@ public class NotificationPresenter {
         this.mainView.getSidebar().setNotificationCounter(notificationDataProvider.getNotificationCounter());
     }
 
-    //The presenter sets the clickEvent of the notification dialog
     public void setEventOfNotificationViewOnSideBar() {
         this.mainView.getSidebar().setEventOfNotificationView(this.notificationsView);
     }
