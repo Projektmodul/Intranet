@@ -12,16 +12,15 @@ import com.vaadin.flow.server.StreamResource;
  * @since   21.12.2020
  * @lastUpdated 19.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
-
 @Tag("object")
 public class PdfDocumentViewer extends Component implements HasSize {
 
-    public PdfDocumentViewer(StreamResource resource) {
+    public PdfDocumentViewer(StreamResource resource){
         this();
         getElement().setAttribute("data", resource);
     }
 
-    protected PdfDocumentViewer() {
+    protected PdfDocumentViewer(){
         getElement().setAttribute("type", "application/pdf");
         setSizeFull();
     }
