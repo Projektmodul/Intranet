@@ -1,15 +1,13 @@
 /**
  * Stylesheet for ContentHolder-Content
  *
- *@added Monika Martius, edited Vanessa Skowronsky and Jessica Reistel
- *@Version 4.0
- *@since 16.01.2021
- *@updated 27.01.2021 by Jessica Reistel
+ *@Version 10.0
+ *@since 21.12.2021
+ *@updated 07.02.2021 by Jessica Reistel
  */
 
 /* CSS-Befehle, die mehrere Views betreffen */
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
-
 
 html {
     --lumo-font-family: "Gothic A1", sans-serif;
@@ -19,18 +17,6 @@ html {
 [theme~="dark"] {
     --lumo-primary-text-color: rgb(217, 2, 2);
     --lumo-primary-color: hsl(0, 93%, 32%);
-}
-
-.pageContentPosition {
-    width: 100% !important;
-    height: 100%;
-    margin-top: 0;
-    line-height: 30px;
-    align-items: center;
-    border-radius: 16px;
-    padding-left: 16px;
-    padding-top: 16px;
-    padding-bottom: 16px;
 }
 
 #contentHolder{
@@ -61,6 +47,18 @@ html {
 
 #contentHolder::before{
     content: none;
+}
+
+.pageContentPosition {
+    width: 100% !important;
+    height: 100%;
+    margin-top: 0;
+    line-height: 30px;
+    align-items: center;
+    border-radius: 16px;
+    padding-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 h2 {
@@ -99,6 +97,7 @@ vaadin-upload{
     margin-left: 15px;
     margin-right: 15px;
 }
+
 vaadin-upload button{
     background: #A00505;
     color: white;
@@ -150,7 +149,6 @@ vaadin-button{
     color: hsl(214, 35%, 21%);
 }
 
-
 .homeColorscheme h1 {
     color: #0D5699;
 }
@@ -190,23 +188,12 @@ vaadin-button{
     padding-left: 5px !important;
 }
 
-/* -------------------------------------------------------------- */
-
 /* horizontal/center/CenterIView */
 
 #centerI #organizationChart{
     margin-top: 40px;
     width: inherit;
 }
-/* -------------------------------------------------------------- */
-
-/* horizontal/center/CentersView */
-
-/* -------------------------------------------------------------- */
-
-/* horizontal/community/CommunityView */
-
-/* -------------------------------------------------------------- */
 
 /* horizontal/community/IdeaManagementView */
 #ideasManagement vaadin-button{
@@ -215,7 +202,6 @@ vaadin-button{
     float: right;
     margin-top: -40px;
 }
-/* -------------------------------------------------------------- */
 
 /* horizontal/community/NoticeView */
 #noticeBoard p, #noticeBoard vaadin-radio-group{
@@ -225,7 +211,6 @@ vaadin-button{
 #noticeBoard #rightComponent{
     padding-top: 10px;
 }
-/* -------------------------------------------------------------- */
 
 /* horizontal/library/ArchiveView */
 #archive div {
@@ -233,29 +218,17 @@ vaadin-button{
     justify-content: center;
     align-items: center;
 }
-/* -------------------------------------------------------------- */
 
 /* horizontal/library/DocumentsView */
 #documents vaadin-radio-group, #documents #messageContainer, #documents h4{
     margin-left: 15px;
 }
-/* -------------------------------------------------------------- */
-
-/* horizontal/library/FAQView */
-
-/* -------------------------------------------------------------- */
-
-/* horizontal/library/libraryView */
-
-/* -------------------------------------------------------------- */
 
 /* horizontal/library/MediaView */
 #media iron-icon{
     width: 300px;
     height: 300px;
 }
-
-/* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/AboutUsView */
 #aboutUs #timelineBSAG {
@@ -276,9 +249,7 @@ vaadin-button{
     --box: #a00505;
     --item-background: rgba(160, 5, 5, 0.5);
     --dots: #a00505;
-
 }
-/* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/CareerView */
 #career #gridFullPage{
@@ -305,7 +276,6 @@ vaadin-button{
     margin-right: 15px;
     margin-top: 30px;
 }
-/* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/NewsView */
 #readMoreButton{
@@ -365,17 +335,12 @@ vaadin-button{
 #vaadin-text-field-container{
     height: 20rem;
 }
-/* -------------------------------------------------------------- */
-
-/* horizontal/ourCompany/OurCompanyView */
-
-/* -------------------------------------------------------------- */
 
 /* horizontal/ourCompany/SportView */
-#sport vaadin-vertical-layout#dataSetLayout{
+#sport #dataSetLayout{
     padding-bottom: 0;
 }
-#sport vaadin-vertical-layout#activities{
+#sport #activities{
     padding-top: 0;
 }
 #sport vaadin-button{
@@ -384,12 +349,6 @@ vaadin-button{
     float: right;
     margin-top: -15px;
 }
-
-/* -------------------------------------------------------------- */
-
-/* horizontal/ourCompany/WelcomeView */
-
-/* -------------------------------------------------------------- */
 
 /* horizontal/projects/NordlichtView */
 #nordlicht #layoutBigContainerPicture{
@@ -414,22 +373,12 @@ vaadin-button{
 #nordlicht p{
     margin: 0;
 }
-/* -------------------------------------------------------------- */
 
 /* horizontal/projects/ProjectsView */
 #projects #scroll{
     max-width: 1000px;
     overflow-x: auto;
 }
-/* -------------------------------------------------------------- */
-
-/* horizontal/services/ServicesView */
-
-/* -------------------------------------------------------------- */
-
-/* login/LoginView */
-
-/* -------------------------------------------------------------- */
 
 /* vertical/canteen/CanteenView */
 #canteen #leftComponent {
@@ -493,7 +442,6 @@ vaadin-button{
 #canteen.closeIcon:hover{
     cursor: pointer;
 }
-/* -------------------------------------------------------------- */
 
 /* vertical/help/HelpView */
 #help vaadin-horizontal-layout{
@@ -502,43 +450,27 @@ vaadin-button{
     align-items: baseline;
     justify-content: center;
 }
-/* -------------------------------------------------------------- */
 
 /* vertical/myProfile/MyProfileView */
-#myProfile vaadin-vertical-layout{
-    padding: 0;
+#myProfile{
+    padding-top: 0;
     padding-left: 5px;
 }
 
-vaadin-vertical-layout#myProfileUpdate{
+#myProfileUpdate{
     padding-left: 0;
 }
 
-#myProfileUploader vaadin-upload{
+#myProfileUploader{
     margin: 0;
 }
-/* -------------------------------------------------------------- */
-
-/* vertical/notifications/NotificationsView */
-
-/* -------------------------------------------------------------- */
-
-/* vertical/search/SearchView */
-
-/* -------------------------------------------------------------- */
-
-/* vertical/settings/Settingsiew */
-
-/* -------------------------------------------------------------- */
 
 /* ui/HomeView */
 #home rss-items{
     margin-right: 15px;
 }
-/* -------------------------------------------------------------- */
 
 /* ui/InProgressView */
-
 #inProgress iron-icon{
     width: 300px;
     height: 300px;
@@ -549,4 +481,4 @@ vaadin-vertical-layout#myProfileUpdate{
     justify-content: center;
     margin: 50px;
 }
-/* -------------------------------------------------------------- */
+
