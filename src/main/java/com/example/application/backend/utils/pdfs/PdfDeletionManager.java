@@ -24,7 +24,6 @@ public class PdfDeletionManager {
 
     public PdfDeletionManager (DocumentEntity documentEntity, DocumentService documentService){
         this.documentEntity = documentEntity;
-
         this.documentService = documentService;
     }
 
