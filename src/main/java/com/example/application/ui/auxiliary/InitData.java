@@ -6,7 +6,6 @@ import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
-import com.example.application.backend.utils.images.ImagesManager;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Anchor;
@@ -32,7 +31,6 @@ public class InitData {
 
     public static UserEntity userEntity;
 
-    public static ImagesManager imagesManager;
     public static ImageService imageService;
 
     public static H1 pageTitle;
