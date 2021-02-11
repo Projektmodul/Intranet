@@ -88,19 +88,17 @@ public class NewsArticle extends HorizontalLayout {
         readMoreButton.setId("readMoreButton");
         deleteButton.setId("readMoreButton");
         textContainer = new VerticalLayout(date,title,description,horizontalLayout);
-
     }
 
     public void initializeImage(){
         image = new Image( new StreamResource(imageEntity.getFileName(), () -> {
-
-            try {
-                System.out.println("Image PATH: " + imageEntity.getPath());
+            try{
                 return new FileInputStream(imageEntity.getPath());
             } catch (Exception e) {
                 return new ByteArrayInputStream(new byte[]{});
             }
         }), "Unternehmensnachrichtensbild");
+
         image.getStyle().set("width","40%");
         image.getStyle().set("height","auto");
         image.getStyle().set("padding","10px");
