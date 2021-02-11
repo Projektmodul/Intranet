@@ -6,6 +6,14 @@ import com.example.application.backend.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class is a service class for the entity image.
+ *
+ * @author  Sabrine Gamdou, Anastasiya Jackwerth
+ * @version 2.0
+ * @since   19.01.2021
+ * @lastUpdated 19.01.2021
+ */
 @Service
 public class ImageService {
 
