@@ -36,21 +36,20 @@ import java.util.List;
 @PageTitle("BSAG Intranet")
 
 public class HomeView extends Div {
-    private UserService userService;
+    private final UserService userService;
 
-    private PageService pageService;
-    private ImageService imageService;
-    private NewsService newsService;
+    private final PageService pageService;
+    private final ImageService imageService;
+    private final NewsService newsService;
 
     private PageEntity pageEntity;
     private UserEntity userEntity;
-    private GetUserController getUserController;
+    private final GetUserController getUserController;
 
     private RssItems faz;
 
     private Div newsContainer;
-    private List<NewsArticle> newsArticles;
-
+    private final List<NewsArticle> newsArticles;
 
     public HomeView(UserService userService, PageService pageService,
                     ImageService imageService, NewsService newsService) {
@@ -72,12 +71,10 @@ public class HomeView extends Div {
         initializeNewsContainer();
 
         add(newsContainer, faz);
-
     }
 
     /**
-     * This method fetches the data from the database
-     * and displays it on the corresponding page
+     * This method fetches the data from the database and displays it on the corresponding page
      */
     private void setContent(){
         String username = getUserController.getUsername();
@@ -97,19 +94,17 @@ public class HomeView extends Div {
         newsContainer.setId("newsContainer");
 
         for(NewsArticle newsArticle : newsArticles) newsContainer.add(newsArticle);
-
     }
 
     public void initializeNewsArticles(){
         List<NewsEntity> newsEntities = pageEntity.getNews();
-        /*for(NewsEntity newsEntity : newsEntities){
-            newsArticles.add(new NewsArticle(newsEntity.getImage(), newsEntity, imageService,newsService));
-        }*/
+
         for(int i = newsEntities.size() - 1 ; i>=0 ; i--){
             newsArticles.add(new NewsArticle(newsEntities.get(i).getImage(), newsEntities.get(i), imageService,
                     newsService, userEntity.getRole().getRoleId()));
         }
     }
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserService();
