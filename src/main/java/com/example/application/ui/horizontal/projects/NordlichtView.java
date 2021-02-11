@@ -32,20 +32,16 @@ import com.vaadin.flow.router.Route;
 public class NordlichtView extends Div {
     private ImagesManager imagesManager;
 
-    private UserService userService;
-
     private final PageEntity pageEntity;
     private final ImageService imageService;
     private final UserEntity userEntity;
 
-    private ProjectEntity projectEntity;
+    private final ProjectEntity projectEntity;
 
-    private LinkEntity linkEntity;
-    private LinkEntity linkEntityTwo;
+    private final LinkEntity linkEntity;
+    private final LinkEntity linkEntityTwo;
 
-    private int role;
-
-    private Component leftComponent;
+    private final int role;
 
     public NordlichtView(PageService pageService, UserService userService, ImageService imageService,
                          ProjectService projectService, LinkService linkService) {
@@ -127,7 +123,7 @@ public class NordlichtView extends Div {
         boxTwo.setSizeFull();
         contentTextLayout.add(boxOne, boxTwo);
 
-        leftComponent = new VerticalLayout(contentTextLayout);
+        Component leftComponent = new VerticalLayout(contentTextLayout);
         add(leftComponent);
     }
 
