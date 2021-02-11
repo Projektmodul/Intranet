@@ -21,15 +21,15 @@ import com.vaadin.flow.router.Route;
 @Route(value = "inProgress", layout = MainView.class)
 @PageTitle("Im Aufbau")
 public class InProgressView extends Div {
-    private PageService pageService;
-    private H1 pageTitle;
-    private H2 pageText;
-    private PageEntity pageEntity;
 
     public InProgressView(PageService pageService){
         setId("inProgress");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
+
+        H1 pageTitle;
+        H2 pageText;
+        PageEntity pageEntity;
 
         pageEntity = pageService.findPageById(2);
         pageTitle = new H1(pageEntity.getTitle());
