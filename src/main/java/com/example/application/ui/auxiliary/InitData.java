@@ -6,12 +6,10 @@ import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.services.files.ImageService;
 import com.example.application.backend.services.links.LinkService;
 import com.example.application.backend.services.pages.PageService;
-import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -54,12 +52,12 @@ public class InitData {
         this.linkService = linkService;
     }
 
-    /*
+    /**
      * This method fetches the data from the database
      * and displays it on the corresponding page
      *
-     * @param int pageId
-     * @return dataSet
+     * @param pageId is an int which is used to read the correct page from the database
+     * @return dataSet as a vertical layout
      */
     public static Component setData(int pageId){
 
@@ -75,12 +73,12 @@ public class InitData {
         return dataSet;
     }
 
-    /*
+    /**
      * This method fetches the link data from the database
      * and displays it on the corresponding page
      *
-     * @param int linkId
-     * @return linkSet
+     * @param linkId is an int which is used to read the correct link from the database
+     * @return linkSet as a horizontal layout
      */
     public static  Component setLinkData(int linkId){
         HorizontalLayout linkSet = new HorizontalLayout();
