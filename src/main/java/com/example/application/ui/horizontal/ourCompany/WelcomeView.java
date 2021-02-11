@@ -23,12 +23,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Welcome View shows ...
+ *  Welcome View shows a welcome Text and an Image
  *
  *  @author Sabrine Gamdou, Jessica Reistel, Laura Neuendorf
  *  @version 2.0
  *  @since 15.12.2020
- *  @lastUpdated 24.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
+ *  @lastUpdated 24.01.2021 by Anastasiya Jackwerth, Sabrine Gamdou
  */
 @Route(value = "welcome", layout = MainView.class)
 @PageTitle("Willkommen")
@@ -44,7 +44,6 @@ public class WelcomeView extends Div {
     private UserService userService;
     private ImageService imageService;
     private RoleService roleService;
-
 
     private String username;
     private Div bigContainer;
@@ -124,5 +123,4 @@ public class WelcomeView extends Div {
             this.add(imagesUploader);
         }
     }
-
 }
