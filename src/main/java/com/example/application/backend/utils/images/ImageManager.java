@@ -24,7 +24,6 @@ import java.util.Date;
  * @since   19.01.2021
  * @lastUpdated 06.02.2021 by Sabrine Gamdou
  */
-
 public class ImageManager {
 
     private ImageService imageService;
@@ -57,13 +56,18 @@ public class ImageManager {
         this.imageService = imageService;
         this.role = role;
         isOneImage = true;
+
         initializeUploader();
     }
+
     public Image createImage(){
         image = new Image(imageEntity, inputStream, role);
         return image;
     }
 
+    /**
+     * This method initializes the Uploader with an upload button and a buffer to save the content of the uploaded file
+     */
     private void initializeUploader(){
         buffer = new MemoryBuffer();
         upload = new Upload(buffer);
@@ -71,7 +75,6 @@ public class ImageManager {
 
         errorContainer = new Div();
         uploaderContainer.add(errorContainer,upload);
-
     }
 
     public void setUploaderErrorEvents(){
@@ -86,6 +89,12 @@ public class ImageManager {
         });
     }
 
+    /**
+     * This method sets the events for the news upload button. Once the button is clicked the content saved in the
+     * buffer is then saved into the inputStream variable, imageEntity is created out of the uploaded file,
+     * imageCreatingManager is created and given to the inputStream, imageEntity and the imageService and then the
+     * imageCreationManager saves the file on the server and the database
+     */
     public void setUploaderEventsForNews(){
         setUploadLabels();
         upload.addSucceededListener(e -> {
@@ -109,6 +118,10 @@ public class ImageManager {
         upload.setDropLabel(label);
         upload.setVisible(isOneImage);
     }
+
+    /**
+     * See description of setUploaderEventsForNews()
+     */
     public void setUploaderEvents(){
         setUploadLabels();
         upload.addSucceededListener(e -> {
@@ -143,10 +156,8 @@ public class ImageManager {
         return new Date().getTime() + "-" + imageFileName;
     }
 
-    //Data set by the ImagesManager
     public void setAllImageEntitiesData(PageEntity pageEntity,
                                         UserEntity userEntity){
-
         setPageEntity(pageEntity);
         setUserEntity(userEntity);
     }
@@ -159,42 +170,32 @@ public class ImageManager {
         return RESOURCES_DIR + fileName;
     }
 
-    public void setPageEntity(PageEntity pageEntity) {
+    public void setPageEntity(PageEntity pageEntity){
         this.pageEntity = pageEntity;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity){
         this.userEntity = userEntity;
     }
 
-
-    public Div getUploaderContainer() {
+    public Div getUploaderContainer(){
         return uploaderContainer;
     }
 
-    public ImageEntity getImageEntity() {
+    public ImageEntity getImageEntity(){
         return imageEntity;
     }
 
-    public void setImageEntity(ImageEntity imageEntity) {
+    public void setImageEntity(ImageEntity imageEntity){
         this.imageEntity = imageEntity;
         this.imageDeletionManager = new ImageDeletionManager(imageEntity, imageService);
-    }
-
-
-    public InputStream getInputStream() {
-        return inputStream;
-    }
-
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
     }
 
     public int getIdOfNewsImage(){
         return imageEntity.getImageId();
     }
 
-    public boolean isImageUploaded() {
+    public boolean isImageUploaded(){
         return isImageUploaded;
     }
 }
