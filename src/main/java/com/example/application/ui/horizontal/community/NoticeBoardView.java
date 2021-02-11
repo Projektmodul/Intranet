@@ -1,42 +1,36 @@
 package com.example.application.ui.horizontal.community;
 
-import com.example.application.backend.entities.*;
-import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.entities.NoticeBoardOfferEntity;
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
+import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.noticeBoard.NoticeBoardOfferService;
 import com.example.application.backend.services.pages.PageService;
-import com.example.application.backend.services.roles.RoleService;
 import com.example.application.backend.services.users.UserService;
-
-
 import com.example.application.ui.MainView;
 import com.vaadin.componentfactory.Breadcrumb;
 import com.vaadin.componentfactory.Breadcrumbs;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
-
 import com.vaadin.flow.component.grid.Grid;
-
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
-
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
-
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,21 +49,20 @@ import java.util.List;
 
 public class NoticeBoardView extends Div {
     private NoticeBoardOfferEntity noticeBoardOfferEntity;
-    private NoticeBoardOfferService noticeBoardOfferService;
-    private UserService userService;
-    private H1 pageTitle;
-    private Paragraph pageText;
-    private PageEntity pageEntity;
+    private final NoticeBoardOfferService noticeBoardOfferService;
+    private final UserService userService;
+    private final H1 pageTitle;
+    private final Paragraph pageText;
+    private final PageEntity pageEntity;
     private Upload uploadButton;
     private HorizontalLayout layoutSplit;
     private RadioButtonGroup radioOffer;
-    private Button toAdd;
-    private List<NoticeBoardOfferEntity> noticeBoardList;
+    private final List<NoticeBoardOfferEntity> noticeBoardList;
     private Grid<NoticeBoardOfferEntity> noticeBoardGrid;
-    private PageService pageService;
+    private final PageService pageService;
     private Component leftComponent;
     private Component rightComponent;
-    private Breadcrumbs breadcrumbs;
+    private final Breadcrumbs breadcrumbs;
 
     public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService,UserService userService) {
         this.noticeBoardOfferService = noticeBoardOfferService;
@@ -102,7 +95,6 @@ public class NoticeBoardView extends Div {
 
     /**
      * The method initializes a Vertical Layout with pageText,boxIcon,noticeBoardGrid
-     * @return Vertical Layout
      */
     public void initializeLeftContainer() {
         GetUserController getUserController = new GetUserController();
@@ -133,7 +125,6 @@ public class NoticeBoardView extends Div {
 
     /**
      * The method initializes the Grid with all offers
-     * @return initializeGrid
      */
     public void initializeGrid(){
         noticeBoardGrid = new Grid<>();
@@ -148,7 +139,6 @@ public class NoticeBoardView extends Div {
 
     /**
      * The method initializes a Vertical Layout with radioOffer,textTitle,textArea,price,uploadButton,toAdd
-     * @return Vertical Layout
      */
     public void initializeRightContainer(){
         initializeUploadButton();
@@ -158,17 +148,16 @@ public class NoticeBoardView extends Div {
         TextArea textArea = new TextArea("Beschreibung");
         textArea.setId("styleTextArea");
         textArea.setPlaceholder("Anzeige aufgeben ...");
-        toAdd = new Button();
+        Button toAdd = new Button();
         toAdd.setText("Hinzufügen");
         toAdd.setId("layoutSetID");
-        rightComponent = new VerticalLayout(radioOffer,textTitle,textArea,price,uploadButton,toAdd);
+        rightComponent = new VerticalLayout(radioOffer,textTitle,textArea,price,uploadButton, toAdd);
         rightComponent.getElement().getStyle().set("width", "50%");
         rightComponent.setId("rightComponent");
     }
 
     /**
      * The method initializes a Horizontal Layout with two vertical Layouts
-     * @return Horizontal Layout
      */
     public void initializeSplitLayout(){
         layoutSplit = new HorizontalLayout(leftComponent,rightComponent);
@@ -178,7 +167,6 @@ public class NoticeBoardView extends Div {
 
     /**
      * The method initializes a Upload with a button and a Span
-     * @return Upload
      */
     public void initializeUploadButton(){
         MemoryBuffer buffer = new MemoryBuffer();
@@ -189,7 +177,6 @@ public class NoticeBoardView extends Div {
 
     /**
      * The method initializes a RadioButtonGroup with a label and items
-     * @return RadioButtonGroup
      */
     public void initializeRadioButton(){
         radioOffer = new RadioButtonGroup();
