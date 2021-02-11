@@ -14,8 +14,8 @@ import java.util.List;
  *
  * @author Sabrine Gamdou, Anastasiya Jackwerth
  * @version 1.0
- * @lastUpdated 24.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
  * @since 24.01.2021
+ * @lastUpdated 24.01.2021 from Sabrine Gamdou, Anastasiya Jackwerth
  */
 public class GridDocument {
 
@@ -51,19 +51,17 @@ public class GridDocument {
         public static Anchor createDownloadLink(String path, String filename) {
 
             return new Anchor(new StreamResource(filename, () -> {
-
-                try {
-                    System.out.println("PATH: " + path);
+                try{
                     return new FileInputStream(path);
-                } catch (Exception e) {
+                } catch (Exception e){
                     return new ByteArrayInputStream(new byte[]{});
                 }
             }), filename);
         }
 
-        public static List<GridDocument> convertDocumentEntities(List<DocumentEntity> documentEntities) {
+        public static List<GridDocument> convertDocumentEntities(List<DocumentEntity> documentEntities){
             List<GridDocument> gridDocuments = new ArrayList<>();
-            for (DocumentEntity documentEntity : documentEntities) {
+            for (DocumentEntity documentEntity : documentEntities){
                 GridDocument gridDocument = new GridDocument(documentEntity.getFileName(),
                         documentEntity.getKeyword(),
                         createDownloadLink(documentEntity.getPath(),
@@ -72,6 +70,5 @@ public class GridDocument {
             }
             return gridDocuments;
         }
-
     }
 }
