@@ -7,15 +7,15 @@ import com.vaadin.flow.component.html.NativeButton;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 /**
- * Notification Dialog, pops up when the Bulb/Notification icon is clicked.
+ * Notification Dialog, pops up when the Bell/Notification icon is clicked.
  *
  * @author  Sabrine Gamdou
  * @version 2.0
- * @since   20-12-2020
+ * @since   20.12.2020
  * @lastUpdated 26.01.2021 from Anastasiya Jackwerth, Sabrine Gamdou
  */
-
 public class NotificationsView extends Dialog {
+
     private H4 notificationText ;
     private VerticalLayout allNotificationsContainer;
     private NativeButton deleteButton;
@@ -38,12 +38,10 @@ public class NotificationsView extends Dialog {
 
         Button closeButton = new Button("Schließen", event -> this.close());
 
-
         closeButton.setId("notificationBtn");
         allNotificationsContainer.add(closeButton);
         this.setWidth("30%");
     }
-
 
     public VerticalLayout getAllNotificationsContainer() {
         return allNotificationsContainer;
@@ -51,10 +49,6 @@ public class NotificationsView extends Dialog {
 
     public NativeButton getDeleteButton() {
         return deleteButton;
-    }
-
-    public int getNotificationsCounter() {
-        return notificationsCounter;
     }
 
     public void setNotificationsCounter(int notificationsCounter) {
