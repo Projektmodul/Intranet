@@ -34,6 +34,7 @@ import java.util.List;
 @Route(value = "news", layout = MainView.class)
 @PageTitle("Nachrichten")
 public class NewsView extends Div {
+
     private PageService pageService;
     private UserService userService;
     private ImageService imageService;
@@ -54,7 +55,6 @@ public class NewsView extends Div {
     public NewsView(PageService pageService, UserService userService, ImageService imageService,
                     NewsService newsService, RoleService roleService) {
 
-        this.userService = userService;
         this.pageService = pageService;
         this.imageService = imageService;
         this.roleService = roleService;
@@ -82,13 +82,11 @@ public class NewsView extends Div {
         initializeNewsContainer();
         initializeAddNewsButton();
 
-
         add(breadcrumbs, pageTitle,pageText);
         if(role == 1){
             add(addNews);
         }
         add(newsContainer);
-
     }
 
     public void initializeNewsContainer(){
@@ -96,7 +94,6 @@ public class NewsView extends Div {
         newsContainer.setId("newsContainer");
 
         for(NewsArticle newsArticle : newsArticles) newsContainer.add(newsArticle);
-
     }
 
     public void initializeNewsArticles(){
