@@ -21,7 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @author  Lea Schünemann, Marieke Menna de Boer
  * @version 2.0
  * @since   11.01.2021
- * @lastUpdated 02.02.2021
+ * @lastUpdated 12.02.2021
  */
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -35,12 +35,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_URL = "/login";
     private static final String LOGOUT_SUCCESS_URL = "/login";
 
-
+    /**
+     * SecurityBuilder used to create an AuthenticationManager.
+     * Allows for easily building in memory authentication adding UserDetailsService,
+     * and adding AuthenticationProvider's.
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    /**
+     * An AuthenticationProvider implementation that retrieves user details from a UserDetailsService.
+     *
+     * @return DaoAuthenticationProvider
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -76,14 +87,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * It is to block unauthenticated requests to all pages, except the login page.
      *
      * @param http
+     * @throws Exception
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-               /* .requestCache().requestCache(new CustomRequestCache())
-                .and().authorizeRequests()
-                .requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll();*/
 
         http.authorizeRequests()
                 .antMatchers("/account/**").authenticated()
