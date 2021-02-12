@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 /**
- * DESCRIPTION
+ *  This class is service class for the entity ideas.
  *
  * @author  Jessica Reistel and Litharshiga Sivarasa
  * @version 1.0
