@@ -22,8 +22,8 @@ public class AddressService {
     private final AddressRepository addressRepository;
 
     @Autowired
-    public AddressService(AddressRepository addressRepositiory){
-        this.addressRepository = addressRepositiory;
+    public AddressService(AddressRepository addressRepository){
+        this.addressRepository = addressRepository;
     }
 
     public AddressRepository getAddressRepository() {
