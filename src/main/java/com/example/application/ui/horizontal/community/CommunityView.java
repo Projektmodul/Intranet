@@ -18,7 +18,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Community View shows ...
+ *  Community View shows the overview of Community
  *
  *  @author Litahshi Sivarasa, Vanessa Skowronsky
  *  @version 4.0
@@ -54,6 +54,10 @@ public class CommunityView extends Div {
         add(breadcrumbs,pageTitle, firstQuote, secondQuote, layout);
     }
 
+    /**
+     * This method creates and puts Components in the middle of the page.
+     * And also make the listed pages accessible from this initial Page.
+     */
     private void setContent(){
         pageEntity = pageService.findPageById(19);
 
