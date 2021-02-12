@@ -15,7 +15,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 /**
- *  Library View shows ...
+ *  Library View shows the overview of Library
  *
  *  @author Litharshi Sivarasa, Vanessa Skowronsky
  *  @version 3.0
@@ -49,6 +49,10 @@ public class LibraryView extends Div {
         add(breadcrumbs, pageTitle, firstQuote, secondQuote, layout);
     }
 
+    /**
+     * This method creates and puts Components in the middle of the page.
+     * And also make the listed pages accessible from this initial Page.
+     */
     private void setContent(){
         pageEntity = pageService.findPageById(13);
 
