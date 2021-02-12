@@ -71,6 +71,9 @@ public class UserService implements UserDetailsService{
 
     /**
      * This method loads the user by the username typed in.
+     * @param username
+     * @return UserDetails
+     * @throws UsernameNotFoundException
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
