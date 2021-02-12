@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  IdeaManagementView shows all ideas from the database
+ *  IdeaManagement shows all ideas from the database
  *
  *  @author Litharshiga Sivarasa, Jessica Reistel, Vanessa Skowronsky
  *  @version 3.0
@@ -61,7 +61,7 @@ public class IdeasManagementView extends Div {
 
     /**
      * The method initializes the Grid with all ideas
-     * @return grid
+     * @return initializeGrid as a Table with values from Database
      */
     public Grid initializeGrid(){
         List<IdeaEntity> ideaList = new ArrayList<>();
@@ -88,7 +88,7 @@ public class IdeasManagementView extends Div {
 
     /**
      * The method initDialogAdd generates a dialog window to add an idea
-     * @return addDialog
+     * @return addDialog as dialog
      */
     private Dialog initDialogAdd() {
         Dialog addDialog = new Dialog();
@@ -112,7 +112,7 @@ public class IdeasManagementView extends Div {
 
     /**
      * The method ideaAdd generates the vertical layout to add a idea
-     * @return addIdea
+     * @return addIdea as Vertical layout
      */
     private VerticalLayout ideaAdd() {
         VerticalLayout addIdea = new VerticalLayout();
