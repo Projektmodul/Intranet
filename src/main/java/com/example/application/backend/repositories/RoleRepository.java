@@ -4,8 +4,7 @@ import com.example.application.backend.entities.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * DESCRIPTION
- *
+ * This interface is a repository for the RoleEntity.
  * @author  Sabrine Gamdou
  * @version 2.0 
  * @since 05.01.2021 
