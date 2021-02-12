@@ -25,12 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  IdeaManagement View shows all ideas from the database
+ *  IdeaManagementView shows all ideas from the database
  *
  *  @author Litharshiga Sivarasa, Jessica Reistel, Vanessa Skowronsky
  *  @version 3.0
  *  @since 15.12.2020
- *  @lastUpdated 10.02.2021 by Jessica Reistel
+ *  @lastUpdated 07.02.2021 by Jessica Reistel
  */
 @Route(value = "ideasManagement", layout = MainView.class)
 @PageTitle("Ideenmanagement")
@@ -86,7 +86,7 @@ public class IdeasManagementView extends Div {
         return grid;
     }
 
-    /*
+    /**
      * The method initDialogAdd generates a dialog window to add an idea
      * @return addDialog
      */
@@ -110,7 +110,7 @@ public class IdeasManagementView extends Div {
         return addDialog;
     }
 
-    /*
+    /**
      * The method ideaAdd generates the vertical layout to add a idea
      * @return addIdea
      */
