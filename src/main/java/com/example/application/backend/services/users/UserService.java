@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
  *          Lea Schünemann, Marieke Menna de Boer, Monika Martius
  * @version 5.0
  * @since   11.01.2021
- * @lastUpdated 02.02.2021
+ * @lastUpdated 13.02.2021
  */
 
 @Service
@@ -71,9 +71,9 @@ public class UserService implements UserDetailsService{
 
     /**
      * This method loads the user by the username typed in.
-     * @param username
-     * @return UserDetails
-     * @throws UsernameNotFoundException
+     * @param username is the username from the user we're looking for
+     * @return UserDetails contains all the details of the user
+     * @throws UsernameNotFoundException throws an exception if the user is not found
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

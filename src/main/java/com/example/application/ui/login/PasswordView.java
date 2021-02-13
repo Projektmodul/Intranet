@@ -26,7 +26,7 @@ import com.vaadin.flow.router.Route;
  * @author  Lea Schünemann, Marieke Menna de Boer
  * @version 1.0
  * @since   18.01.2021
- * @lastUpdated 02.02.2021
+ * @lastUpdated 13.02.2021
  */
 
 @Route("changePassword")
@@ -144,7 +144,7 @@ public class PasswordView extends Dialog {
     /**
      * This method encrypts the typed in password in 11 rounds (strength).
      *
-     * @return BCryptPasswordEncoder
+     * @return BCryptPasswordEncoder encrypted password
      */
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(11);

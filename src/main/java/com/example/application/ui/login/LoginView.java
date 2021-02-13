@@ -17,7 +17,7 @@ import com.vaadin.flow.router.Route;
  * @author  Lea Schünemann, Marieke Menna de Boer
  * @version 2.0
  * @since   11.01.2021
- * @lastUpdated 02.02.2021
+ * @lastUpdated 13.02.2021
  */
 
 
@@ -57,7 +57,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     /**
      * With this method we want to check if there is an error query parameter present.
      *
-     * @param beforeEnterEvent
+     * @param beforeEnterEvent created before navigation happens
      */
     @Override
     public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
