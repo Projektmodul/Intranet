@@ -21,7 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @author  Lea Schünemann, Marieke Menna de Boer
  * @version 2.0
  * @since   11.01.2021
- * @lastUpdated 12.02.2021
+ * @lastUpdated 13.02.2021
  */
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -39,8 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * SecurityBuilder used to create an AuthenticationManager.
      * Allows for easily building in memory authentication adding UserDetailsService,
      * and adding AuthenticationProvider's.
-     * @param auth
-     * @throws Exception
+     * @param auth allows building in memory authentication.
+     * @throws Exception if it can't create an AuthenticationManager.
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * An AuthenticationProvider implementation that retrieves user details from a UserDetailsService.
      *
-     * @return DaoAuthenticationProvider
+     * @return DaoAuthenticationProvider that retrieves userDetailsService
      */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -64,7 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * This method returns a new UserService.
      *
-     * @return UserService
+     * @return UserService which contains the user information
      */
     @Bean
     public UserDetailsService userDetailsService() {
@@ -74,7 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * This method encrypts the typed in password in 11 rounds (strength).
      *
-     * @return BCryptPasswordEncoder
+     * @return BCryptPasswordEncoder encrypted password
      */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -86,8 +86,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * With this method we are configuring http security.
      * It is to block unauthenticated requests to all pages, except the login page.
      *
-     * @param http
-     * @throws Exception
+     * @param http web based security for specific http requests.
+     * @throws Exception if the configuration failed
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -109,7 +109,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * Method for configuring access to static resources.
      * Excluding Vaadin-framework communication and static assets from Spring Security
      *
-     * @param web
+     * @param web create a FilterChainProxy
      */
     @Override
     public void configure(WebSecurity web) {
