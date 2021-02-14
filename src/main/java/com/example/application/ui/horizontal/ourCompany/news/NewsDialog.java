@@ -19,13 +19,10 @@ import java.io.FileInputStream;
  */
 public class NewsDialog extends Dialog {
 
-    private Label date;
-    private H1 title;
-    private Paragraph description;
     private Image image;
     private VerticalLayout verticalLayout;
 
-    private NewsEntity newsEntity;
+    private final NewsEntity newsEntity;
 
     public NewsDialog(NewsEntity newsEntity){
         this.newsEntity = newsEntity;
@@ -34,14 +31,14 @@ public class NewsDialog extends Dialog {
     }
 
     public void setContent(){
-        date = new Label(newsEntity.getDate().toString());
+        Label date = new Label(newsEntity.getDate().toString());
         date.setId("date");
 
-        title = new H1(newsEntity.getTitle());
-        description = new Paragraph(newsEntity.getText());
+        H1 title = new H1(newsEntity.getTitle());
+        Paragraph description = new Paragraph(newsEntity.getText());
         initializeImage();
 
-        verticalLayout = new VerticalLayout(title,image,date,description);
+        verticalLayout = new VerticalLayout(title,image, date, description);
         this.setMaxWidth("80%");
     }
 

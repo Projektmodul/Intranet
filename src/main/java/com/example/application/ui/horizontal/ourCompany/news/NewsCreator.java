@@ -46,14 +46,13 @@ public class NewsCreator extends Dialog {
 
     private ImagesManager imagesManager;
 
-    private NewsEntity newsEntity;
-    private PageEntity pageEntity;
-    private UserEntity userEntity;
-    private ImageEntity imageEntity;
+    private final NewsEntity newsEntity;
+    private final PageEntity pageEntity;
+    private final UserEntity userEntity;
 
-    private ImageService imageService;
-    private NewsService newsService;
-    private PageService pageService;
+    private final ImageService imageService;
+    private final NewsService newsService;
+    private final PageService pageService;
 
     private boolean isTitleFilled = false;
     private boolean isDescriptionFilled = false;
@@ -70,7 +69,7 @@ public class NewsCreator extends Dialog {
         this.newsEntity = new NewsEntity();
         this.pageService = pageService;
 
-        imageEntity = new ImageEntity();
+        ImageEntity imageEntity = new ImageEntity();
         imageEntity.setUser(userEntity);
         imageEntity.setPage(pageEntity);
         this.newsEntity.setImage(imageEntity);

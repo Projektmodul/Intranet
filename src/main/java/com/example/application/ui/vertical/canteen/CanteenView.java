@@ -32,22 +32,16 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Betriebsrestaurant")
 public class CanteenView extends Div {
 
-    private PageService pageService;
-    private UserService userService;
-    private DocumentService documentService;
-    private NotificationService notificationService;
+    private final PageService pageService;
+    private final DocumentService documentService;
+    private final NotificationService notificationService;
 
     private PageEntity pageEntity;
     private PdfsManager pdfsManager;
-    private Paragraph pageContent;
-
-    private H1 pageTitle;
 
     private Div bigContainer;
-    private Div pdfsContainer;
-    private Div pdfsUploader;
 
-    private int role;
+    private final int role;
 
     public CanteenView(PageService pageService, UserService userService, NotificationService notificationService, DocumentService documentService) {
         setId("canteen");
@@ -55,7 +49,6 @@ public class CanteenView extends Div {
         addClassName("homeColorscheme");
 
         this.pageService = pageService;
-        this.userService = userService;
         this.documentService = documentService;
         this.notificationService = notificationService;
         GetUserController getUserController = new GetUserController();
@@ -74,12 +67,12 @@ public class CanteenView extends Div {
 
     public void setData(){
         pageEntity = pageService.findPageById(26);
-        pageTitle = new H1(pageEntity.getTitle());
+        H1 pageTitle = new H1(pageEntity.getTitle());
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb(pageEntity.getTitle()));
 
-        pageContent = new Paragraph(pageEntity.getContent());
+        Paragraph pageContent = new Paragraph(pageEntity.getContent());
         pageContent.getElement().setProperty("innerHTML", pageEntity.getContent());
 
         HorizontalLayout menuDeleteLayout = new HorizontalLayout(pageTitle);
@@ -97,7 +90,7 @@ public class CanteenView extends Div {
     }
 
     private void initializePDFs(){
-        pdfsContainer = new Div();
+        Div pdfsContainer = new Div();
         for (PDF pdf : pdfsManager.getPdfs()) pdfsContainer.add(pdf);
         bigContainer.add(pdfsContainer);
         bigContainer.add(pdfsManager);
@@ -111,7 +104,7 @@ public class CanteenView extends Div {
 
     public void initializeUploadContainer() {
         pdfsManager.initializeUploadContainer();
-        pdfsUploader = pdfsManager.getPdfsUploader();
+        Div pdfsUploader = pdfsManager.getPdfsUploader();
         this.add(bigContainer);
         if(role == 1 || role == 3) {
             this.add(pdfsUploader);
