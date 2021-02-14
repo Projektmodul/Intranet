@@ -48,36 +48,30 @@ import java.util.List;
 @PageTitle("Schwarzes Brett")
 
 public class NoticeBoardView extends Div {
-    private NoticeBoardOfferEntity noticeBoardOfferEntity;
-    private final NoticeBoardOfferService noticeBoardOfferService;
     private final UserService userService;
     private final H1 pageTitle;
     private final Paragraph pageText;
-    private final PageEntity pageEntity;
     private Upload uploadButton;
-    private HorizontalLayout layoutSplit;
     private RadioButtonGroup radioOffer;
     private final List<NoticeBoardOfferEntity> noticeBoardList;
     private Grid<NoticeBoardOfferEntity> noticeBoardGrid;
-    private final PageService pageService;
     private Component leftComponent;
     private Component rightComponent;
     private final Breadcrumbs breadcrumbs;
 
     public NoticeBoardView(PageService pageService, NoticeBoardOfferService noticeBoardOfferService,UserService userService) {
-        this.noticeBoardOfferService = noticeBoardOfferService;
-        this.pageService = pageService;
-        this.userService = userService;
         setId("noticeBoard");
         setClassName("pageContentPosition");
         addClassName("communityColorscheme");
 
+        this.userService = userService;
+
         int maxId = noticeBoardOfferService.findMaxId();
-        pageEntity = this.pageService.findPageById(20);
+        PageEntity pageEntity = pageService.findPageById(20);
         noticeBoardList = new ArrayList<>();
         for(int i= 1;i<=maxId;i++){
-            if(this.noticeBoardOfferService.findById(i) != null){
-                noticeBoardOfferEntity = this.noticeBoardOfferService.findById(i);
+            if(noticeBoardOfferService.findById(i) != null){
+                NoticeBoardOfferEntity noticeBoardOfferEntity = noticeBoardOfferService.findById(i);
                 noticeBoardList.add(noticeBoardOfferEntity);
             }
         }
@@ -160,7 +154,7 @@ public class NoticeBoardView extends Div {
      * The method initializes a Horizontal Layout with two vertical Layouts
      */
     public void initializeSplitLayout(){
-        layoutSplit = new HorizontalLayout(leftComponent,rightComponent);
+        HorizontalLayout layoutSplit = new HorizontalLayout(leftComponent, rightComponent);
         layoutSplit.setId("splitLayout");
         this.add(layoutSplit);
     }

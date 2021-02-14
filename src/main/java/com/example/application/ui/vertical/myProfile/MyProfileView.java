@@ -44,21 +44,21 @@ import com.vaadin.flow.router.Route;
 
 public class MyProfileView extends Div {
 
-    private UserService userService;
-    private ImageService imageService;
-    private AddressService addressService;
+    private final UserService userService;
+    private final ImageService imageService;
+    private final AddressService addressService;
 
-    private PageEntity pageEntity;
-    private UserEntity userEntity;
-    private AddressEntity addressEntity;
+    private final PageEntity pageEntity;
+    private final UserEntity userEntity;
+    private final AddressEntity addressEntity;
 
-    private TextField updateIban;
-    private TextArea updateJobDescription;
+    private final TextField updateIban;
+    private final TextArea updateJobDescription;
 
-    private TextField updateStreet;
-    private IntegerField updateNumber;
-    private IntegerField updatePostcode;
-    private TextField updateCity;
+    private final TextField updateStreet;
+    private final IntegerField updateNumber;
+    private final IntegerField updatePostcode;
+    private final TextField updateCity;
 
     private ImagesManager imagesManager;
 

@@ -29,7 +29,7 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Unser Unternehmen")
 public class OurCompanyView extends Div {
 
-    private PageService pageService;
+    private final PageService pageService;
     private PageEntity pageEntity;
 
     private H1 pageTitle;

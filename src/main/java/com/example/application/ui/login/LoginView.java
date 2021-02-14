@@ -26,20 +26,15 @@ import com.vaadin.flow.router.Route;
 @CssImport("./styles/views/main/login.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-    private LoginForm loginForm = new LoginForm();
-    private UserService userService = new UserService();
-    private PasswordView passwordView;
-    private Image logoImage;
-
+    private final LoginForm loginForm = new LoginForm();
 
     public LoginView(UserService userService){
-        this.userService = userService;
         setId("login");
 
         loginForm.setI18n(createGermanTitles());
 
         this.getElement().getStyle().set("background-image", "url(images/nordlicht-bremer-rathaus.jpg)");
-        logoImage = new Image("images/bsag.png", "Intranetlogo");
+        Image logoImage = new Image("images/bsag.png", "Intranetlogo");
         logoImage.setId("logoImage");
 
         setSizeFull();
@@ -61,7 +56,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
      */
     @Override
     public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-        // inform the user about an authentication error
+
         if(beforeEnterEvent.getLocation()
                 .getQueryParameters()
                 .getParameters()
