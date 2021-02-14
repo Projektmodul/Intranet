@@ -16,16 +16,15 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
  */
 public class NotificationsView extends Dialog {
 
-    private H4 notificationText ;
-    private VerticalLayout allNotificationsContainer;
-    private NativeButton deleteButton;
+    private final VerticalLayout allNotificationsContainer;
+    private final NativeButton deleteButton;
 
     private int notificationsCounter;
 
     public NotificationsView() {
         setId("notifications");
 
-        notificationText = new H4("Ihre Benachrichtigungen: ");
+        H4 notificationText = new H4("Ihre Benachrichtigungen: ");
 
         allNotificationsContainer = new VerticalLayout(notificationText);
 

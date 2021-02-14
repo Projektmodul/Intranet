@@ -35,21 +35,14 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Unterlagen")
 public class DocumentsView extends Div {
 
-    private H1 pageTitle;
-
     private PdfsManager pdfsManager;
-    private PageEntity pageEntity;
+    private final PageEntity pageEntity;
 
-    private PageService pageService;
-    private DocumentService documentService;
-    private NotificationService notificationService;
+    private final DocumentService documentService;
+    private final NotificationService notificationService;
 
-    private Grid<GridDocument> documentsGrid;
-
-    private Div pdfsUploader;
-    private int role;
+    private final int role;
     private String keyword;
-    private Breadcrumbs breadcrumbs;
 
     public DocumentsView(PageService pageService, UserService userService, DocumentService documentService,
                          NotificationService notificationService) {
@@ -57,12 +50,11 @@ public class DocumentsView extends Div {
         setClassName("pageContentPosition");
         addClassName("libraryColorscheme");
 
-        this.pageService = pageService;
         this.documentService = documentService;
         this.notificationService = notificationService;
 
         pageEntity = pageService.findPageById(14);
-        pageTitle = new H1(pageEntity.getTitle());
+        H1 pageTitle = new H1(pageEntity.getTitle());
         pageTitle.setId("pageTitle");
 
         GetUserController getUserController = new GetUserController();
@@ -71,7 +63,7 @@ public class DocumentsView extends Div {
         RoleEntity roleEntity = userEntity.getRole();
         role = roleEntity.getRoleId();
 
-        breadcrumbs = new Breadcrumbs();
+        Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Bibliothek"), new Breadcrumb(pageEntity.getTitle()));
 
         add(breadcrumbs, pageTitle);
@@ -125,13 +117,13 @@ public class DocumentsView extends Div {
 
     public void initializeUploadContainer(){
         pdfsManager.initializeUploadContainer();
-        pdfsUploader = pdfsManager.getPdfsUploader();
+        Div pdfsUploader = pdfsManager.getPdfsUploader();
 
         this.add(pdfsUploader);
     }
 
     public void initializeGrid(){
-        documentsGrid = new Grid<>();
+        Grid<GridDocument> documentsGrid = new Grid<>();
 
         documentsGrid.setItems(GridDocument.DocumentEntitiesConverter.convertDocumentEntities(
                 pageEntity.getDocuments()

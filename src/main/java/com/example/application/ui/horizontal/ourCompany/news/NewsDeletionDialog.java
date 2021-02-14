@@ -26,13 +26,10 @@ import java.nio.file.Paths;
  */
 public class NewsDeletionDialog extends Dialog {
 
-    private NewsEntity newsEntity;
-    private NewsService newsService;
-    private ImageService imageService;
+    private final NewsEntity newsEntity;
+    private final NewsService newsService;
+    private final ImageService imageService;
 
-    private H3 message;
-    private Button deleteButton;
-    private Button cancelButton;
     private Notification notification;
 
     public NewsDeletionDialog(NewsEntity newsEntity, NewsService newsService,
@@ -45,24 +42,24 @@ public class NewsDeletionDialog extends Dialog {
     }
 
     public void initializeButtons(){
-        message = new H3("Sind Sie sich sicher, dass Sie diese Nachricht löschen wollen?");
+        H3 message = new H3("Sind Sie sich sicher, dass Sie diese Nachricht löschen wollen?");
 
-        deleteButton = new Button("Löschen", e -> {
-            try{
+        Button deleteButton = new Button("Löschen", e -> {
+            try {
                 newsService.delete(newsEntity);
                 imageService.delete(newsEntity.getImage());
                 deleteImageFromServer();
                 setDeletionNotification(new Icon(VaadinIcon.CHECK_CIRCLE), "Die Nachricht wurde erfolgreich gelöscht!");
                 notification.open();
                 this.close();
-            } catch (IOException ioException){
+            } catch (IOException ioException) {
                 setDeletionNotification(new Icon(VaadinIcon.CLOSE_CIRCLE), "Löschen der Nachricht fehlgeschlagen.");
                 ioException.printStackTrace();
             }
         });
         deleteButton.getStyle().set("cursor","pointer");
 
-        cancelButton = new Button("Abbrechen", e -> this.close());
+        Button cancelButton = new Button("Abbrechen", e -> this.close());
         cancelButton.getStyle().set("cursor","pointer");
 
         HorizontalLayout horizontalLayout = new HorizontalLayout(deleteButton, cancelButton);

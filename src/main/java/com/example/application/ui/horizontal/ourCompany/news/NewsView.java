@@ -35,29 +35,23 @@ import java.util.List;
 @PageTitle("Nachrichten")
 public class NewsView extends Div {
 
-    private PageService pageService;
+    private final PageService pageService;
     private UserService userService;
-    private ImageService imageService;
-    private RoleService roleService;
-    private NewsService newsService;
+    private final ImageService imageService;
+    private final NewsService newsService;
 
-    private H1 pageTitle;
-    private Paragraph pageText;
-    private PageEntity pageEntity;
-    private UserEntity userEntity;
-
-    private int role;
+    private final PageEntity pageEntity;
+    private final UserEntity userEntity;
 
     private Button addNews;
     private Div newsContainer;
-    private List<NewsArticle> newsArticles;
+    private final List<NewsArticle> newsArticles;
 
     public NewsView(PageService pageService, UserService userService, ImageService imageService,
                     NewsService newsService, RoleService roleService) {
 
         this.pageService = pageService;
         this.imageService = imageService;
-        this.roleService = roleService;
         this.newsService = newsService;
 
         setId("news");
@@ -65,15 +59,15 @@ public class NewsView extends Div {
         addClassName("ourCompanyColorscheme");
 
         pageEntity = pageService.findPageById(6);
-        pageTitle = new H1(pageEntity.getTitle());
-        pageText = new Paragraph(pageEntity.getContent());
+        H1 pageTitle = new H1(pageEntity.getTitle());
+        Paragraph pageText = new Paragraph(pageEntity.getContent());
         newsArticles = new ArrayList<>();
 
         GetUserController getUserController = new GetUserController();
         String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         RoleEntity roleEntity = userEntity.getRole();
-        role = roleEntity.getRoleId();
+        int role = roleEntity.getRoleId();
 
         Breadcrumbs breadcrumbs = new Breadcrumbs();
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb(pageEntity.getTitle()));
@@ -82,7 +76,7 @@ public class NewsView extends Div {
         initializeNewsContainer();
         initializeAddNewsButton();
 
-        add(breadcrumbs, pageTitle,pageText);
+        add(breadcrumbs, pageTitle, pageText);
         if(role == 1){
             add(addNews);
         }

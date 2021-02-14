@@ -28,20 +28,16 @@ import java.io.FileInputStream;
  */
 public class NewsArticle extends HorizontalLayout {
 
-    private ImageEntity imageEntity;
-    private NewsEntity newsEntity;
-    private ImageService imageService;
-    private NewsService newsService;
+    private final ImageEntity imageEntity;
+    private final NewsEntity newsEntity;
+    private final ImageService imageService;
+    private final NewsService newsService;
 
-    private H4 title;
-    private Label date;
     private Paragraph description;
     private Image image;
-    private Button readMoreButton;
-    private Button deleteButton;
 
     private VerticalLayout textContainer;
-    private int role;
+    private final int role;
 
     public NewsArticle(ImageEntity imageEntity, NewsEntity newsEntity,
                        ImageService imageService, NewsService newsService, int role){
@@ -61,22 +57,22 @@ public class NewsArticle extends HorizontalLayout {
     }
 
     public void setData(){
-        HorizontalLayout horizontalLayout = new HorizontalLayout();;
-        title = new H4(newsEntity.getTitle());
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        H4 title = new H4(newsEntity.getTitle());
 
-        date = new Label(newsEntity.getDate().toString());
+        Label date = new Label(newsEntity.getDate().toString());
         date.setId("date");
 
         description = new Paragraph(newsEntity.getDescription());
 
-        readMoreButton = new Button("Mehr lesen", e -> {
+        Button readMoreButton = new Button("Mehr lesen", e -> {
             NewsDialog newsDialog = new NewsDialog(newsEntity);
             newsDialog.open();
         });
 
-        deleteButton = new Button("Löschen", e -> {
+        Button deleteButton = new Button("Löschen", e -> {
             NewsDeletionDialog newsDeletionDialog = new NewsDeletionDialog(newsEntity,
-                    newsService,imageService);
+                    newsService, imageService);
             newsDeletionDialog.open();
         });
 
@@ -87,7 +83,7 @@ public class NewsArticle extends HorizontalLayout {
         horizontalLayout.add(readMoreButton);
         readMoreButton.setId("readMoreButton");
         deleteButton.setId("readMoreButton");
-        textContainer = new VerticalLayout(date,title,description,horizontalLayout);
+        textContainer = new VerticalLayout(date, title,description,horizontalLayout);
     }
 
     public void initializeImage(){
