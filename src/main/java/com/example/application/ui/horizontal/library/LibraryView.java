@@ -27,7 +27,7 @@ import com.vaadin.flow.router.Route;
 
 public class LibraryView extends Div {
 
-    private PageService pageService;
+    private final PageService pageService;
     private PageEntity pageEntity;
 
     private H1 pageTitle;

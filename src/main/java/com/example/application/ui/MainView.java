@@ -38,7 +38,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
 
 public class MainView extends VerticalLayout implements RouterLayout, HorizontalBarClickedListener, NotificationCounterChangedListener {
 
-    private SettingEntity settingEntity;
+    private final SettingEntity settingEntity;
     private final VerticalLayout contentHolder;
     private final SideBar sidebar;
     GetUserController getUserController;

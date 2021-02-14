@@ -24,16 +24,16 @@ import com.vaadin.flow.router.Route;
 /**
  *  Projects View is the overview page of the projects. Here you can add a dummy project
  *
- *  @author Litharshi Sivarasa, Vanessa Skowronsky
+ *  @author Litharshi Sivarasa, Vanessa Skowronsky, Laura Neuendorf, Monika Martius
  *  @version 5.0
  *  @since 15.12.2020
- *  @lastUpdated 07.02.2021 by Jessica Reistel
+ *  @lastUpdated 14.02.2021 by Vanessa Skowronsky
  */
 @Route(value = "projects", layout = MainView.class)
 @PageTitle("Projekte")
 public class ProjectsView extends Div {
-    private PageService pageService;
-    private UserService userService;
+    private final PageService pageService;
+    private final UserService userService;
     private PageEntity pageEntity;
 
     private H1 pageTitle;

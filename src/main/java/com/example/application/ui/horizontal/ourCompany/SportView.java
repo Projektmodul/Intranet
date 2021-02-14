@@ -1,6 +1,5 @@
 package com.example.application.ui.horizontal.ourCompany;
 
-
 import com.example.application.backend.entities.RoleEntity;
 import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
@@ -34,21 +33,20 @@ import com.vaadin.flow.router.Route;
 @Route(value = "sport", layout = MainView.class)
 @PageTitle("Sport&Freizeit")
 public class SportView extends Div {
-    private UserEntity userEntity;
 
-    private TextField updateWeekday;
-    private TextField updateTime;
-    private TextField updateActivity;
+    private final TextField updateWeekday;
+    private final TextField updateTime;
+    private final TextField updateActivity;
 
-    private TextField updateWeekdayOne;
-    private TextField updateTimeOne;
-    private TextField updateActivityOne;
+    private final TextField updateWeekdayOne;
+    private final TextField updateTimeOne;
+    private final TextField updateActivityOne;
 
-    private TextField updateWeekdayTwo;
-    private TextField updateTimeTwo;
-    private TextField updateActivityTwo;
+    private final TextField updateWeekdayTwo;
+    private final TextField updateTimeTwo;
+    private final TextField updateActivityTwo;
 
-    private int role;
+    private final int role;
 
     public SportView(PageService pageService, UserService userService) {
         setId("sport");
@@ -73,10 +71,10 @@ public class SportView extends Div {
         breadcrumbs.add(new Breadcrumb("Home"), new Breadcrumb("Unser Unternehmen"), new Breadcrumb("Sport und Freizeit"));
 
         InitData initSport = new InitData(pageService);
-        this.add(breadcrumbs, initSport.setData(7));
+        this.add(breadcrumbs, InitData.setData(7));
 
         String username = getUserController.getUsername();
-        userEntity = userService.findByUsername(username);
+        UserEntity userEntity = userService.findByUsername(username);
         RoleEntity roleEntity = userEntity.getRole();
         role = roleEntity.getRoleId();
 
@@ -85,9 +83,8 @@ public class SportView extends Div {
 
     /**
      * This method creates a vertical layout in which the offered activities are listed
-     * @return activities as a vertical layout
      */
-    private VerticalLayout showActivities(){
+    private void showActivities(){
         VerticalLayout activities = new VerticalLayout();
         activities.setId("activities");
 
@@ -158,8 +155,6 @@ public class SportView extends Div {
         }
 
         this.add(activities);
-
-        return activities;
     }
 
     /**

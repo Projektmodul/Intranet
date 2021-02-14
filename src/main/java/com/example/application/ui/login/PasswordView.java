@@ -48,16 +48,14 @@ public class PasswordView extends Dialog {
 
     Binder<UserEntity> binder = new BeanValidationBinder<>(UserEntity.class);
 
-    private UserService userService = new UserService();
     private UserEntity userEntity = new UserEntity();
 
     private String answerUser = "";
-    private String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$";
+    private final String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$";
 
     public PasswordView(UserService userService){
 
         setId("passwordChange");
-        this.userService = userService;
 
         password.setLabel("Neues Passwort eingeben:");
         password.setPlaceholder("Passwort");
