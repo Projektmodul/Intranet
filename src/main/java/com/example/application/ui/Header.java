@@ -46,30 +46,4 @@ public class Header extends VerticalLayout {
         return horizontalBar;
     }
 
-    /**
-     * The method return the backgroundcolor of the routes for the views
-     * @return backgroundcolor
-     */
-    public void setBackgroundColor(String colorName) {
-
-        switch (colorName) {
-            case "HomeView":
-            case "search":
-            case "myProfile":
-            case "phoneBook":
-            case "settings":
-            case "help":
-            case "InProgressView":
-            case "mailing":
-            case "canteen":
-                            setClassName("colorHome"); break;
-            case "ourCompany": setClassName("colorCompany"); break;
-            case "center": setClassName("colorCenter"); break;
-            case "projects": setClassName("colorProjects"); break;
-            case "library": setClassName("colorLibrary"); break;
-            case "services": setClassName("colorServices"); break;
-            case "community": setClassName("colorCommunity"); break;
-            default : break;
-        }
-    }
 }
