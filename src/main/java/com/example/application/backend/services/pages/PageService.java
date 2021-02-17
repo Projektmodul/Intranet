@@ -1,6 +1,7 @@
 package com.example.application.backend.services.pages;
 
 import com.example.application.backend.entities.PageEntity;
+import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.repositories.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,9 @@ public class PageService {
     public PageRepository getPageRepository() {
         return pageRepository;
     }
+
+    public PageEntity findPageByTitleAndUsername(String title, UserEntity userEntity){
+        return getPageRepository().findPageByTitleAndUsername(title, userEntity);
+    }
+
 }
