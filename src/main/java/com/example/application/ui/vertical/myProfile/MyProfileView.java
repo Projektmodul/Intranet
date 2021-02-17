@@ -6,7 +6,7 @@ import com.example.application.backend.entities.UserEntity;
 import com.example.application.backend.security.GetUserController;
 import com.example.application.backend.services.addresses.AddressService;
 import com.example.application.backend.services.files.ImageService;
-import com.example.application.backend.services.myProfile.MyProfileViewService;
+import com.example.application.backend.services.pages.PageService;
 import com.example.application.backend.services.users.UserService;
 import com.example.application.backend.utils.images.Image;
 import com.example.application.backend.utils.images.ImagesManager;
@@ -47,6 +47,7 @@ public class MyProfileView extends Div {
     private final UserService userService;
     private final ImageService imageService;
     private final AddressService addressService;
+    private final PageService pageService;
 
     private final PageEntity pageEntity;
     private final UserEntity userEntity;
@@ -65,13 +66,14 @@ public class MyProfileView extends Div {
     private Div bigContainer;
     private Div imagesUploader;
 
-    public MyProfileView(MyProfileViewService myProfileViewService, UserService userService, AddressService addressService, ImageService imageService) {
+    public MyProfileView(PageService pageService, UserService userService, AddressService addressService, ImageService imageService) {
         setId("myProfile");
         setClassName("pageContentPosition");
         addClassName("homeColorscheme");
 
         this.userService = userService;
         this.addressService = addressService;
+        this.pageService = pageService;
 
         this.imageService = imageService;
 
@@ -85,12 +87,12 @@ public class MyProfileView extends Div {
         updatePostcode = new IntegerField();
         updateCity = new TextField();
 
-        pageEntity = myProfileViewService.findPageById(22);
 
         String username = getUserController.getUsername();
         userEntity = userService.findByUsername(username);
         addressEntity = userEntity.getAddress();
 
+        pageEntity = pageService.findPageByTitleAndUsername("Mein Profil", userEntity);
         VerticalLayout content = new VerticalLayout();
 
         initializeImagesManager();
@@ -112,7 +114,7 @@ public class MyProfileView extends Div {
      * This methods initializes the entity lists + containers
      */
     private  void initializeImagesManager(){
-        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, 1);
+        imagesManager = new ImagesManager(pageEntity.getImages(), imageService, userEntity.getRole().getRoleId());
         imagesManager.setImagesEntities(pageEntity.getImages());
         imagesManager.setAllImageEntitiesData(pageEntity,userEntity);
 
