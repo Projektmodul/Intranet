@@ -4,6 +4,7 @@ import com.example.application.backend.entities.UserEntity;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This interface is a repository for the entity user.
@@ -18,5 +19,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    @Transactional
     UserEntity findByUsername(String username);
 }
