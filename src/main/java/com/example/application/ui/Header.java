@@ -33,7 +33,7 @@ public class Header extends VerticalLayout {
 
 
         Icon logoutIcon = new Icon(VaadinIcon.SIGN_OUT);
-        logoutIcon.addClickListener(e-> logoutIcon.getUI().ifPresent(ui -> ui.getPage().setLocation("/logout")));
+        logoutIcon.addClickListener(e-> logoutIcon.getUI().ifPresent(ui -> ui.getPage().setLocation("login")));
         logoutIcon.setId("logout");
 
         HorizontalLayout iconContainer = new HorizontalLayout();

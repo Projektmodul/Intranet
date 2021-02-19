@@ -55,7 +55,7 @@ public class PdfManager {
     private PageEntity pageEntity;
     private UserEntity userEntity;
 
-    private final String RESOURCES_DIR = "~/uploads";
+    private final String RESOURCES_DIR = "/home/dummyData/pdfFiles/";
 
     public PdfManager(NotificationService notificationService,
                       DocumentService documentService, int role){

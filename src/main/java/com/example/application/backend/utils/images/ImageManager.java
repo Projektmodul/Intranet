@@ -50,7 +50,7 @@ public class ImageManager {
     private UserEntity userEntity;
     private int role;
 
-    private final String RESOURCES_DIR = "~/uploads";
+    private final String RESOURCES_DIR = "/home/dummyData/pictures/";
 
     public ImageManager(ImageService imageService, int role){
         this.imageService = imageService;
